@@ -111,6 +111,22 @@ h2 {
   font-size: 0.95rem;
 }
 
+.highlight-message {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  margin: 1.5rem 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.highlight-message strong {
+  font-weight: 600;
+}
+
 .maps-note {
   margin-top: 1rem;
   color: #6f7287;

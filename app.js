@@ -166,16 +166,14 @@
       }
       return;
     }
-    elements.autoOpenNote?.classList.add("hidden");
+    
+    // Store state for return detection
     state.waitingForGoogleReturn = true;
     localStorage.setItem("reviewToolWaitingReturn", "true");
     localStorage.setItem("reviewToolRating", state.selectedRating);
     
-    const win = window.open(state.googleReviewUrl, "_blank", "noopener,noreferrer");
-    if (!win) {
-      elements.autoOpenNote?.classList.remove("hidden");
-      elements.googleLink?.focus();
-    }
+    // Navigate in same tab for better mobile UX
+    window.location.href = state.googleReviewUrl;
   };
 
   const formatExpiryDate = (daysFromNow) => {

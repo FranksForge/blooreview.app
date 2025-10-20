@@ -3,10 +3,20 @@
 
   const sanitizeString = (value) => (typeof value === "string" ? value.trim() : "");
   const resolveSlug = () => {
-    const parts = window.location.hostname.split(".");
-    if (parts.length > 2) return parts[0].toLowerCase();
+    // Priority 1: Query parameter (for testing and explicit slugs)
     const qp = new URL(window.location.href).searchParams.get("biz");
     if (qp) return qp.toLowerCase();
+    
+    // Priority 2: Subdomain (but ignore Vercel's auto-generated subdomains)
+    const parts = window.location.hostname.split(".");
+    if (parts.length > 2) {
+      const subdomain = parts[0].toLowerCase();
+      // Ignore Vercel's auto-generated subdomains (contain hyphens and numbers)
+      if (!subdomain.includes("-") || subdomain.includes("vercel")) {
+        return subdomain;
+      }
+    }
+    
     return "default";
   };
   const sanitizeArray = (list) => [];

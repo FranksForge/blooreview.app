@@ -2,6 +2,8 @@
   const config = window.REVIEW_TOOL_CONFIG || {};
 
   const sanitizeString = (value) => (typeof value === "string" ? value.trim() : "");
+  const sanitizeArray = (list) => [];
+
   const resolveSlug = () => {
     // Priority 1: Query parameter (for testing and explicit slugs)
     const qp = new URL(window.location.href).searchParams.get("biz");
@@ -20,7 +22,6 @@
     
     return "default";
   };
-  const sanitizeArray = (list) => [];
 
   const elements = {
     businessName: document.getElementById("business-name"),

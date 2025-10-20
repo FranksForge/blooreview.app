@@ -1,4 +1,4 @@
-// Multi-tenant configs - updated: 2025-10-20T04:21:26.497Z
+// Multi-tenant configs - updated: 2025-10-20T04:32:49.772Z
 // DO NOT EDIT MANUALLY - Run 'node sync-config.js' to update from Google Sheets
 window.REVIEW_CONFIGS = {
   "bigc-donchan": {
@@ -8,7 +8,7 @@ window.REVIEW_CONFIGS = {
     "googlePlaceId": "ChIJ7_xbz-k62jARmU24rdBT2BI",
     "googleReviewBaseUrl": "https://search.google.com/local/writereview?placeid=",
     "googleReviewUrl": "",
-    "sheetScriptUrl": "https://script.google.com/macros/s/AKfycbyFgxjgCPd6kLAo60D5NUspQWLnlKTjgfbbZ77XxsyZJSb_9Br1dD6-2ZDiOcvIFz5qmA/exec",
+    "sheetScriptUrl": "https://script.google.com/macros/s/AKfycbzbo0fy_aFMAyI1I87n8XvZ6eDzaxe1nI4zuUfkkNuawcKWBIbJ2uFkJq1Ntb_c-keLEQ/exec",
     "discount": {
       "enabled": true,
       "percentage": 10,
@@ -28,7 +28,7 @@ window.REVIEW_CONFIGS = {
     "googlePlaceId": "ChIJfXvXur4w2jARcld9AjrlENQ",
     "googleReviewBaseUrl": "https://search.google.com/local/writereview?placeid=",
     "googleReviewUrl": "",
-    "sheetScriptUrl": "https://script.google.com/macros/s/AKfycbyFgxjgCPd6kLAo60D5NUspQWLnlKTjgfbbZ77XxsyZJSb_9Br1dD6-2ZDiOcvIFz5qmA/exec",
+    "sheetScriptUrl": "https://script.google.com/macros/s/AKfycbzbo0fy_aFMAyI1I87n8XvZ6eDzaxe1nI4zuUfkkNuawcKWBIbJ2uFkJq1Ntb_c-keLEQ/exec",
     "discount": {
       "enabled": true,
       "percentage": 15,
@@ -48,14 +48,14 @@ window.REVIEW_CONFIGS = {
     "googlePlaceId": "PLACE_ID",
     "googleReviewBaseUrl": "https://search.google.com/local/writereview?placeid=",
     "googleReviewUrl": "",
-    "sheetScriptUrl": "https://script.google.com/macros/s/AKfycbyFgxjgCPd6kLAo60D5NUspQWLnlKTjgfbbZ77XxsyZJSb_9Br1dD6-2ZDiOcvIFz5qmA/exec",
+    "sheetScriptUrl": "https://script.google.com/macros/s/AKfycbzbo0fy_aFMAyI1I87n8XvZ6eDzaxe1nI4zuUfkkNuawcKWBIbJ2uFkJq1Ntb_c-keLEQ/exec",
     "discount": {
       "enabled": true,
       "percentage": 10,
       "validDays": 30
     },
     "referral": {
-      "enabled": true,
+      "enabled": false,
       "message": "Invite your friends to also leave a review and get their own discount!"
     },
     "logoUrl": "",
@@ -68,7 +68,7 @@ window.REVIEW_CONFIGS = {
     "googlePlaceId": "ChIJfXvXur4w2jARcld9AjrlENQ",
     "googleReviewBaseUrl": "https://search.google.com/local/writereview?placeid=",
     "googleReviewUrl": "",
-    "sheetScriptUrl": "https://script.google.com/macros/s/AKfycbyFgxjgCPd6kLAo60D5NUspQWLnlKTjgfbbZ77XxsyZJSb_9Br1dD6-2ZDiOcvIFz5qmA/exec",
+    "sheetScriptUrl": "https://script.google.com/macros/s/AKfycbzbo0fy_aFMAyI1I87n8XvZ6eDzaxe1nI4zuUfkkNuawcKWBIbJ2uFkJq1Ntb_c-keLEQ/exec",
     "discount": {
       "enabled": false,
       "percentage": 20,

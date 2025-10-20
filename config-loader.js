@@ -33,7 +33,7 @@
       const result = await response.json();
       
       if (!result.ok) {
-        console.warn(`Config not found for slug: ${slug}, using default`);
+        console.warn(`Config not found for slug: ${slug}, using fallback`);
         return null;
       }
       
@@ -41,6 +41,50 @@
     } catch (error) {
       console.error("Failed to load config from Sheets:", error);
       return null;
+    }
+  };
+
+  // Static configs for testing (until Apps Script doGet is implemented)
+  const staticConfigs = {
+    "bigc-donchan": {
+      businessName: "Big C Supercenter Chiang Mai Don Chan",
+      businessCategory: "Hypermarket",
+      googleMapsUrl: "https://www.google.com/maps/place/Big+C+Supercenter+Chiang+Mai+Don+Chan/@18.7689158,99.0326956,17z/data=!3m1!4b1!4m6!3m5!1s0x30da2ff2f600edbd:0x961a4eee12234361!8m2!3d18.7689158!4d99.0326956!16s%2Fg%2F1tjwl1zw",
+      googlePlaceId: "ChIJ7_xbz-k62jARmU24rdBT2BI",
+      googleReviewBaseUrl: "https://search.google.com/local/writereview?placeid=",
+      googleReviewUrl: "",
+      sheetScriptUrl: "https://script.google.com/macros/s/AKfycbyFgxjgCPd6kLAo60D5NUspQWLnlKTjgfbbZ77XxsyZJSb_9Br1dD6-2ZDiOcvIFz5qmA/exec",
+      discount: {
+        enabled: true,
+        percentage: 10,
+        validDays: 30
+      },
+      referral: {
+        enabled: true,
+        message: "Invite your friends to also leave a review and get their own discount!"
+      },
+      logoUrl: "",
+      heroImageUrl: ""
+    },
+    "starbucks-123": {
+      businessName: "Starbucks Coffee Chiang Mai",
+      businessCategory: "Coffee Shop",
+      googleMapsUrl: "https://www.google.com/maps/place/Starbucks/@18.7889,98.9850,17z",
+      googlePlaceId: "ChIJ1234567890abcdef",
+      googleReviewBaseUrl: "https://search.google.com/local/writereview?placeid=",
+      googleReviewUrl: "",
+      sheetScriptUrl: "https://script.google.com/macros/s/AKfycbyFgxjgCPd6kLAo60D5NUspQWLnlKTjgfbbZ77XxsyZJSb_9Br1dD6-2ZDiOcvIFz5qmA/exec",
+      discount: {
+        enabled: true,
+        percentage: 15,
+        validDays: 30
+      },
+      referral: {
+        enabled: true,
+        message: "Share this review page with friends so they can also leave feedback and get their own discount!"
+      },
+      logoUrl: "",
+      heroImageUrl: ""
     }
   };
 
@@ -69,8 +113,10 @@
   const slug = resolveSlug();
   console.log(`Loading config for slug: ${slug}`);
   
+  // Try Sheets first, then static configs, then fallback
   const dynamicConfig = await loadConfigFromSheets(slug);
-  const finalConfig = dynamicConfig || fallbackConfig;
+  const staticConfig = staticConfigs[slug];
+  const finalConfig = dynamicConfig || staticConfig || fallbackConfig;
   
   // Set the global config for the app to use
   window.REVIEW_TOOL_CONFIG = finalConfig;

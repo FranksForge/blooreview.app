@@ -2,7 +2,10 @@
 
 // Config Sync Script
 // Run this manually after updating the Review_config Google Sheet
-// Usage: node sync-config.js
+// Usage: 
+//   node sync-config.js                    # Update all default slugs
+//   node sync-config.js slug1 slug2        # Update specific slugs only
+//   node sync-config.js newbusiness-123    # Add new business
 
 const https = require('https');
 const fs = require('fs');
@@ -10,25 +13,28 @@ const path = require('path');
 
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyFgxjgCPd6kLAo60D5NUspQWLnlKTjgfbbZ77XxsyZJSb_9Br1dD6-2ZDiOcvIFz5qmA/exec';
 const CONFIG_FILE = path.join(__dirname, 'config.js');
+const DEFAULT_SLUGS = ['bigc-donchan', 'starbucks-123', 'default', 'newbus123'];
 
-// Fetch all configs from the Google Sheet
-async function fetchAllConfigs() {
-  // First, try to get all configs in one request
+// Get command line arguments
+const args = process.argv.slice(2);
+
+// Read existing configs from config.js
+function readExistingConfigs() {
   try {
-    console.log('Fetching all configs from sheet...');
-    const url = `${APPS_SCRIPT_URL}?action=getAllConfigs`;
-    const data = await fetchJSON(url);
-    
-    if (data.ok && data.configs) {
-      console.log(`✓ Fetched all configs in one request`);
-      return data.configs;
+    const configContent = fs.readFileSync(CONFIG_FILE, 'utf8');
+    const match = configContent.match(/window\.REVIEW_CONFIGS\s*=\s*(\{[\s\S]*?\});/);
+    if (match) {
+      // Use Function constructor instead of eval for safer parsing
+      return new Function('return ' + match[1])();
     }
-  } catch (error) {
-    console.log('Note: getAllConfigs endpoint not available, fetching individually...');
+  } catch (e) {
+    console.log('Note: No existing config file found, will create new one');
   }
-  
-  // Fallback: fetch known slugs individually
-  const slugs = ['bigc-donchan', 'starbucks-123', 'default'];
+  return {};
+}
+
+// Fetch configs from the Google Sheet
+async function fetchConfigs(slugs) {
   const configs = {};
   
   for (const slug of slugs) {
@@ -40,7 +46,7 @@ async function fetchAllConfigs() {
         configs[slug] = data.config;
         console.log(`✓ Fetched config for: ${slug}`);
       } else {
-        console.warn(`✗ Failed to fetch config for: ${slug}`);
+        console.warn(`✗ Failed to fetch config for: ${slug} (${data.error || 'unknown error'})`);
       }
     } catch (error) {
       console.error(`✗ Error fetching ${slug}:`, error.message);
@@ -56,7 +62,6 @@ function fetchJSON(url) {
       https.get(requestUrl, (res) => {
         // Follow redirects
         if (res.statusCode === 301 || res.statusCode === 302 || res.statusCode === 307 || res.statusCode === 308) {
-          console.log(`  Following redirect to: ${res.headers.location}`);
           makeRequest(res.headers.location);
           return;
         }
@@ -121,18 +126,40 @@ window.REVIEW_CONFIGS = ${JSON.stringify(configs, null, 2)};
 (async () => {
   console.log('Syncing configs from Google Sheet...\n');
   
-  const configs = await fetchAllConfigs();
+  // Determine which slugs to fetch
+  let slugsToFetch;
+  let existingConfigs = {};
   
-  if (Object.keys(configs).length === 0) {
+  if (args.length > 0) {
+    // Specific slugs provided via command line
+    slugsToFetch = args;
+    console.log(`Fetching specific slugs: ${slugsToFetch.join(', ')}\n`);
+    
+    // Load existing configs to merge with
+    existingConfigs = readExistingConfigs();
+    console.log(`Loaded ${Object.keys(existingConfigs).length} existing config(s)\n`);
+  } else {
+    // No arguments: fetch all default slugs
+    slugsToFetch = DEFAULT_SLUGS;
+    console.log(`Fetching all default slugs: ${slugsToFetch.join(', ')}\n`);
+  }
+  
+  const newConfigs = await fetchConfigs(slugsToFetch);
+  
+  if (Object.keys(newConfigs).length === 0) {
     console.error('\n✗ No configs fetched. Please check your Google Sheet and Apps Script.');
     process.exit(1);
   }
   
-  generateConfigFile(configs);
+  // Merge: new configs override existing ones
+  const allConfigs = { ...existingConfigs, ...newConfigs };
   
-  console.log('\n✓ Config sync complete!');
-  console.log('Next steps:');
+  generateConfigFile(allConfigs);
+  
+  console.log(`\n✓ Config sync complete!`);
+  console.log(`✓ Updated ${Object.keys(newConfigs).length} business(es)`);
+  console.log(`✓ Total businesses in config: ${Object.keys(allConfigs).length}`);
+  console.log('\nNext steps:');
   console.log('  1. Review the changes: git diff config.js');
   console.log('  2. Commit and push: git add config.js && git commit -m "Update configs" && git push');
 })();
-

@@ -1,6 +1,4 @@
 (() => {
-  const config = window.REVIEW_TOOL_CONFIG || {};
-
   const sanitizeString = (value) => (typeof value === "string" ? value.trim() : "");
   const sanitizeArray = (list) => [];
 
@@ -55,32 +53,37 @@
     copyLinkBtn: document.getElementById("copy-link-btn")
   };
 
-  
+  // State will be initialized after config loads
+  let state = null;
 
-  const state = {
-    businessName: sanitizeString(config.businessName) || "We value your feedback",
-    businessCategory: sanitizeString(config.businessCategory),
-    mapsUrl: sanitizeString(config.googleMapsUrl),
-    placeId: sanitizeString(config.googlePlaceId),
-    googleReviewBaseUrl:
-      sanitizeString(config.googleReviewBaseUrl) ||
-      "https://search.google.com/local/writereview?placeid=",
-    googleReviewUrl: sanitizeString(config.googleReviewUrl),
+  const initializeState = () => {
+    const config = window.REVIEW_TOOL_CONFIG || {};
+    state = {
+      businessName: sanitizeString(config.businessName) || "We value your feedback",
+      businessCategory: sanitizeString(config.businessCategory),
+      mapsUrl: sanitizeString(config.googleMapsUrl),
+      placeId: sanitizeString(config.googlePlaceId),
+      googleReviewBaseUrl:
+        sanitizeString(config.googleReviewBaseUrl) ||
+        "https://search.google.com/local/writereview?placeid=",
+      googleReviewUrl: sanitizeString(config.googleReviewUrl),
+      
+      sheetScriptUrl: sanitizeString(config.sheetScriptUrl),
+      discountEnabled: config.discount?.enabled !== false,
+      discountPercentage: Number(config.discount?.percentage) || 10,
+      discountValidDays: Number(config.discount?.validDays) || 30,
+      selectedRating: null,
+      currentDiscountCode: null,
+      waitingForGoogleReturn: false,
+      userComments: null,
+      userName: null
+    };
     
-    sheetScriptUrl: sanitizeString(config.sheetScriptUrl),
-    discountEnabled: config.discount?.enabled !== false,
-    discountPercentage: Number(config.discount?.percentage) || 10,
-    discountValidDays: Number(config.discount?.validDays) || 30,
-    selectedRating: null,
-    currentDiscountCode: null,
-    waitingForGoogleReturn: false,
-    userComments: null,
-    userName: null
+    // Build the full Google Review URL if not provided
+    if (!state.googleReviewUrl && state.placeId) {
+      state.googleReviewUrl = `${state.googleReviewBaseUrl}${encodeURIComponent(state.placeId)}`;
+    }
   };
-
-  if (!state.googleReviewUrl && state.placeId) {
-    state.googleReviewUrl = `${state.googleReviewBaseUrl}${encodeURIComponent(state.placeId)}`;
-  }
 
   
 
@@ -509,6 +512,7 @@
   };
 
   const init = () => {
+    initializeState();
     attachListeners();
     applyConfigToDom();
     setupVisibilityListener();

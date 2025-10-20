@@ -1,64 +1,65 @@
-// Multi-tenant configs - update this file by running the config sync script
+// Multi-tenant configs - updated: 2025-10-20T03:16:02.772Z
+// DO NOT EDIT MANUALLY - Run 'node sync-config.js' to update from Google Sheets
 window.REVIEW_CONFIGS = {
   "bigc-donchan": {
-    businessName: "Big C Supercenter Chiang Mai Don Chan",
-    businessCategory: "Hypermarket",
-    googleMapsUrl: "https://www.google.com/maps/place/Big+C+Supercenter+Chiang+Mai+Don+Chan/@18.7689158,99.0326956,17z/data=!3m1!4b1!4m6!3m5!1s0x30da2ff2f600edbd:0x961a4eee12234361!8m2!3d18.7689158!4d99.0326956!16s%2Fg%2F1tjwl1zw",
-    googlePlaceId: "ChIJ7_xbz-k62jARmU24rdBT2BI",
-    googleReviewBaseUrl: "https://search.google.com/local/writereview?placeid=",
-    googleReviewUrl: "",
-    sheetScriptUrl: "https://script.google.com/macros/s/AKfycbyFgxjgCPd6kLAo60D5NUspQWLnlKTjgfbbZ77XxsyZJSb_9Br1dD6-2ZDiOcvIFz5qmA/exec",
-    discount: {
-      enabled: true,
-      percentage: 10,
-      validDays: 30
+    "businessName": "Big C Supercenter Chiang Mai Don Chan",
+    "businessCategory": "Hypermarket",
+    "googleMapsUrl": "https://www.google.com/maps/place/Big+C+Supercenter+Chiang+Mai+Don+Chan/@18.7689158,99.0326956,17z/data=!3m1!4b1!4m6!3m5!1s0x30da2ff2f600edbd:0x961a4eee12234361!8m2!3d18.7689158!4d99.0326956!16s%2Fg%2F1tjwl1zw",
+    "googlePlaceId": "ChIJ7_xbz-k62jARmU24rdBT2BI",
+    "googleReviewBaseUrl": "https://search.google.com/local/writereview?placeid=",
+    "googleReviewUrl": "",
+    "sheetScriptUrl": "https://script.google.com/macros/s/AKfycbyFgxjgCPd6kLAo60D5NUspQWLnlKTjgfbbZ77XxsyZJSb_9Br1dD6-2ZDiOcvIFz5qmA/exec",
+    "discount": {
+      "enabled": true,
+      "percentage": 10,
+      "validDays": 30
     },
-    referral: {
-      enabled: true,
-      message: "Invite your friends to also leave a review and get their own discount!"
+    "referral": {
+      "enabled": true,
+      "message": "Invite your friends to also leave a review and get their own discount!"
     },
-    logoUrl: "",
-    heroImageUrl: ""
+    "logoUrl": "",
+    "heroImageUrl": ""
   },
   "starbucks-123": {
-    businessName: "Starbucks Coffee Chiang Mai",
-    businessCategory: "Coffee Shop",
-    googleMapsUrl: "https://www.google.com/maps/place/Starbucks/@18.7889,98.9850,17z",
-    googlePlaceId: "ChIJ1234567890abcdef",
-    googleReviewBaseUrl: "https://search.google.com/local/writereview?placeid=",
-    googleReviewUrl: "",
-    sheetScriptUrl: "https://script.google.com/macros/s/AKfycbyFgxjgCPd6kLAo60D5NUspQWLnlKTjgfbbZ77XxsyZJSb_9Br1dD6-2ZDiOcvIFz5qmA/exec",
-    discount: {
-      enabled: true,
-      percentage: 15,
-      validDays: 30
+    "businessName": "Starbucks Coffee Chiang Mai",
+    "businessCategory": "Coffee Shop",
+    "googleMapsUrl": "https://www.google.com/maps/place/Starbucks/@18.8083378,99.0002495,3189m/data=!3m1!1e3!4m10!1m2!2m1!1sstarbuck+chiang+mai!3m6!1s0x30da30bebad77b7d:0xd410e53a027d5772!8m2!3d18.8083378!4d99.018274!15sChNzdGFyYnVjayBjaGlhbmcgbWFpIgOIAQFaFSITc3RhcmJ1Y2sgY2hpYW5nIG1haZIBC2NvZmZlZV9zaG9wqgFwCgwvZy8xMm53d3lrdjEKDC9nLzFoZHl4NHJ2ZwoJL20vMDE4Y19yEAEqDCIIc3RhcmJ1Y2soADIeEAEiGrLaiJvvDQZ5oMEldyl0tAAnhBqvGB9PYfVwMhcQAiITc3RhcmJ1Y2sgY2hpYW5nIG1haeABAA!16s%2Fg%2F11b6d4bbxd?entry=ttu&g_ep=EgoyMDI1MTAxNC4wIKXMDSoASAFQAw%3D%3D",
+    "googlePlaceId": "ChIJfXvXur4w2jARcld9AjrlENQ",
+    "googleReviewBaseUrl": "https://search.google.com/local/writereview?placeid=",
+    "googleReviewUrl": "",
+    "sheetScriptUrl": "https://script.google.com/macros/s/AKfycbyFgxjgCPd6kLAo60D5NUspQWLnlKTjgfbbZ77XxsyZJSb_9Br1dD6-2ZDiOcvIFz5qmA/exec",
+    "discount": {
+      "enabled": true,
+      "percentage": 15,
+      "validDays": 14
     },
-    referral: {
-      enabled: true,
-      message: "Share this review page with friends so they can also leave feedback and get their own discount!"
+    "referral": {
+      "enabled": true,
+      "message": "Invite your friends to also leave a review and get their own discount!"
     },
-    logoUrl: "",
-    heroImageUrl: ""
+    "logoUrl": "",
+    "heroImageUrl": ""
   },
   "default": {
-    businessName: "We value your feedback",
-    businessCategory: "Business",
-    googleMapsUrl: "",
-    googlePlaceId: "",
-    googleReviewBaseUrl: "https://search.google.com/local/writereview?placeid=",
-    googleReviewUrl: "",
-    sheetScriptUrl: "https://script.google.com/macros/s/AKfycbyFgxjgCPd6kLAo60D5NUspQWLnlKTjgfbbZ77XxsyZJSb_9Br1dD6-2ZDiOcvIFz5qmA/exec",
-    discount: {
-      enabled: true,
-      percentage: 10,
-      validDays: 30
+    "businessName": "Your Business",
+    "businessCategory": "General",
+    "googleMapsUrl": "https://maps.google.com/?q=Your+Business",
+    "googlePlaceId": "PLACE_ID",
+    "googleReviewBaseUrl": "https://search.google.com/local/writereview?placeid=",
+    "googleReviewUrl": "",
+    "sheetScriptUrl": "https://script.google.com/macros/s/AKfycbyFgxjgCPd6kLAo60D5NUspQWLnlKTjgfbbZ77XxsyZJSb_9Br1dD6-2ZDiOcvIFz5qmA/exec",
+    "discount": {
+      "enabled": true,
+      "percentage": 10,
+      "validDays": 30
     },
-    referral: {
-      enabled: true,
-      message: "Invite your friends to also leave a review and get their own discount!"
+    "referral": {
+      "enabled": true,
+      "message": "Invite your friends to also leave a review and get their own discount!"
     },
-    logoUrl: "",
-    heroImageUrl: ""
+    "logoUrl": "",
+    "heroImageUrl": ""
   }
 };
 

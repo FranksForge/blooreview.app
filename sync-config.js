@@ -16,7 +16,8 @@ const { execSync } = require('child_process');
 
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzbo0fy_aFMAyI1I87n8XvZ6eDzaxe1nI4zuUfkkNuawcKWBIbJ2uFkJq1Ntb_c-keLEQ/exec';
 const CONFIG_FILE = path.join(__dirname, 'config.js');
-const DEFAULT_SLUGS = ['bigc-donchan', 'starbucks-123', 'default', 'newbus123'];
+// Update this array to match the row order in your Google Sheet
+const DEFAULT_SLUGS = ['default', 'bigc-donchan', 'starbucks-123', 'newbus123'];
 
 // Get command line arguments
 const args = process.argv.slice(2);
@@ -38,7 +39,7 @@ function readExistingConfigs() {
   return {};
 }
 
-// Fetch configs from the Google Sheet
+// Fetch configs from the Google Sheet (preserves order)
 async function fetchConfigs(slugs) {
   const configs = {};
   
@@ -59,6 +60,30 @@ async function fetchConfigs(slugs) {
   }
   
   return configs;
+}
+
+// Sort configs to match Google Sheet row order
+function sortConfigsBySheetOrder(configs, requestedSlugs) {
+  // When fetching all, use DEFAULT_SLUGS order (which should match sheet)
+  // When fetching specific slugs, use the order they were requested
+  const orderedConfigs = {};
+  const sortOrder = requestedSlugs.length > 0 ? requestedSlugs : DEFAULT_SLUGS;
+  
+  // First add configs in the specified order
+  sortOrder.forEach(slug => {
+    if (configs[slug]) {
+      orderedConfigs[slug] = configs[slug];
+    }
+  });
+  
+  // Then add any remaining configs (shouldn't happen, but just in case)
+  Object.keys(configs).forEach(slug => {
+    if (!orderedConfigs[slug]) {
+      orderedConfigs[slug] = configs[slug];
+    }
+  });
+  
+  return orderedConfigs;
 }
 
 function fetchJSON(url) {
@@ -157,7 +182,10 @@ window.REVIEW_CONFIGS = ${JSON.stringify(configs, null, 2)};
   }
   
   // Merge: new configs override existing ones
-  const allConfigs = { ...existingConfigs, ...newConfigs };
+  const mergedConfigs = { ...existingConfigs, ...newConfigs };
+  
+  // Sort to match sheet order
+  const allConfigs = sortConfigsBySheetOrder(mergedConfigs, slugsToFetch);
   
   generateConfigFile(allConfigs);
   

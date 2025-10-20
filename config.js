@@ -1,6 +1,26 @@
-// Multi-tenant configs - updated: 2025-10-20T04:32:49.772Z
+// Multi-tenant configs - updated: 2025-10-20T04:38:26.349Z
 // DO NOT EDIT MANUALLY - Run 'node sync-config.js' to update from Google Sheets
 window.REVIEW_CONFIGS = {
+  "default": {
+    "businessName": "Your Business",
+    "businessCategory": "General",
+    "googleMapsUrl": "https://maps.google.com/?q=Your+Business",
+    "googlePlaceId": "PLACE_ID",
+    "googleReviewBaseUrl": "https://search.google.com/local/writereview?placeid=",
+    "googleReviewUrl": "",
+    "sheetScriptUrl": "https://script.google.com/macros/s/AKfycbzbo0fy_aFMAyI1I87n8XvZ6eDzaxe1nI4zuUfkkNuawcKWBIbJ2uFkJq1Ntb_c-keLEQ/exec",
+    "discount": {
+      "enabled": true,
+      "percentage": 10,
+      "validDays": 30
+    },
+    "referral": {
+      "enabled": false,
+      "message": "Invite your friends to also leave a review and get their own discount!"
+    },
+    "logoUrl": "",
+    "heroImageUrl": ""
+  },
   "bigc-donchan": {
     "businessName": "Big C Supercenter Chiang Mai Don Chan",
     "businessCategory": "Hypermarket",
@@ -36,26 +56,6 @@ window.REVIEW_CONFIGS = {
     },
     "referral": {
       "enabled": true,
-      "message": "Invite your friends to also leave a review and get their own discount!"
-    },
-    "logoUrl": "",
-    "heroImageUrl": ""
-  },
-  "default": {
-    "businessName": "Your Business",
-    "businessCategory": "General",
-    "googleMapsUrl": "https://maps.google.com/?q=Your+Business",
-    "googlePlaceId": "PLACE_ID",
-    "googleReviewBaseUrl": "https://search.google.com/local/writereview?placeid=",
-    "googleReviewUrl": "",
-    "sheetScriptUrl": "https://script.google.com/macros/s/AKfycbzbo0fy_aFMAyI1I87n8XvZ6eDzaxe1nI4zuUfkkNuawcKWBIbJ2uFkJq1Ntb_c-keLEQ/exec",
-    "discount": {
-      "enabled": true,
-      "percentage": 10,
-      "validDays": 30
-    },
-    "referral": {
-      "enabled": false,
       "message": "Invite your friends to also leave a review and get their own discount!"
     },
     "logoUrl": "",

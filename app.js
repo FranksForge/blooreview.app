@@ -58,7 +58,6 @@
 
   const initializeState = () => {
     const config = window.REVIEW_TOOL_CONFIG || {};
-    console.log("Initializing state with config:", config);
     
     state = {
       businessName: sanitizeString(config.businessName) || "We value your feedback",
@@ -85,9 +84,6 @@
     if (!state.googleReviewUrl && state.placeId) {
       state.googleReviewUrl = `${state.googleReviewBaseUrl}${encodeURIComponent(state.placeId)}`;
     }
-    
-    console.log("State initialized:", state);
-    console.log("Sheet script URL:", state.sheetScriptUrl);
   };
 
   
@@ -524,14 +520,6 @@
     checkForGoogleReturn();
   };
 
-  // Wait for config to load before initializing
-  console.log("App waiting for config to load...");
-  const waitForConfig = setInterval(() => {
-    console.log("Checking if config loaded:", window.configLoaded);
-    if (window.configLoaded) {
-      clearInterval(waitForConfig);
-      console.log("Config ready! Initializing app with config:", window.REVIEW_TOOL_CONFIG);
-      init();
-    }
-  }, 50);
+  // Initialize immediately - config.js has already loaded
+  init();
 })();

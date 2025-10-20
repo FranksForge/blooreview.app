@@ -11,7 +11,7 @@ const https = require('https');
 const fs = require('fs');
 const path = require('path');
 
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyFSNywc5F4SrtsPlQKXLPwL7qSgYlnsTADCjOvVj1E7nwa_t6ad_KyKTwYbtFr64wMfQ/exec';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzbo0fy_aFMAyI1I87n8XvZ6eDzaxe1nI4zuUfkkNuawcKWBIbJ2uFkJq1Ntb_c-keLEQ/exec';
 const CONFIG_FILE = path.join(__dirname, 'config.js');
 const DEFAULT_SLUGS = ['bigc-donchan', 'starbucks-123', 'default', 'newbus123'];
 

@@ -1,4 +1,4 @@
-// Multi-tenant configs - updated: 2025-10-20T04:09:28.684Z
+// Multi-tenant configs - updated: 2025-10-20T04:21:26.497Z
 // DO NOT EDIT MANUALLY - Run 'node sync-config.js' to update from Google Sheets
 window.REVIEW_CONFIGS = {
   "bigc-donchan": {
@@ -62,7 +62,7 @@ window.REVIEW_CONFIGS = {
     "heroImageUrl": ""
   },
   "newbus123": {
-    "businessName": "newbus123 FrankyDanky",
+    "businessName": "newbus123 Franky",
     "businessCategory": "Agency",
     "googleMapsUrl": "https://www.google.com/maps/place/Starbucks/@18.8083378,99.0002495,3189m/data=!3m1!1e3!4m10!1m2!2m1!1sstarbuck+chiang+mai!3m6!1s0x30da30bebad77b7d:0xd410e53a027d5772!8m2!3d18.8083378!4d99.018274!15sChNzdGFyYnVjayBjaGlhbmcgbWFpIgOIAQFaFSITc3RhcmJ1Y2sgY2hpYW5nIG1haZIBC2NvZmZlZV9zaG9wqgFwCgwvZy8xMm53d3lrdjEKDC9nLzFoZHl4NHJ2ZwoJL20vMDE4Y19yEAEqDCIIc3RhcmJ1Y2soADIeEAEiGrLaiJvvDQZ5oMEldyl0tAAnhBqvGB9PYfVwMhcQAiITc3RhcmJ1Y2sgY2hpYW5nIG1haeABAA!16s%2Fg%2F11b6d4bbxd?entry=ttu&g_ep=EgoyMDI1MTAxNC4wIKXMDSoASAFQAw%3D%3D",
     "googlePlaceId": "ChIJfXvXur4w2jARcld9AjrlENQ",
@@ -70,7 +70,7 @@ window.REVIEW_CONFIGS = {
     "googleReviewUrl": "",
     "sheetScriptUrl": "https://script.google.com/macros/s/AKfycbyFgxjgCPd6kLAo60D5NUspQWLnlKTjgfbbZ77XxsyZJSb_9Br1dD6-2ZDiOcvIFz5qmA/exec",
     "discount": {
-      "enabled": true,
+      "enabled": false,
       "percentage": 20,
       "validDays": 20
     },

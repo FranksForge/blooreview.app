@@ -1,4 +1,4 @@
-// Multi-tenant configs - updated: 2025-10-20T03:45:31.900Z
+// Multi-tenant configs - updated: 2025-10-20T03:54:38.481Z
 // DO NOT EDIT MANUALLY - Run 'node sync-config.js' to update from Google Sheets
 window.REVIEW_CONFIGS = {
   "bigc-donchan": {

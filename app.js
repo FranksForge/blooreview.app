@@ -515,5 +515,12 @@
     checkForGoogleReturn();
   };
 
-  init();
+  // Wait for config to load before initializing
+  const waitForConfig = setInterval(() => {
+    if (window.configLoaded) {
+      clearInterval(waitForConfig);
+      console.log("App initializing with config:", window.REVIEW_TOOL_CONFIG);
+      init();
+    }
+  }, 50);
 })();

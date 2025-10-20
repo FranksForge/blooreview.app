@@ -1,6 +1,8 @@
 // config-loader.js
 // Dynamically loads business configuration from Google Sheets by slug
 (async function loadConfig() {
+  // Prevent app.js from running until config is loaded
+  window.configLoaded = false;
   const resolveSlug = () => {
     // Priority 1: Query parameter (for testing and explicit slugs)
     const qp = new URL(window.location.href).searchParams.get("biz");
@@ -120,6 +122,9 @@
   
   // Set the global config for the app to use
   window.REVIEW_TOOL_CONFIG = finalConfig;
+  window.configLoaded = true;
   
   console.log("Config loaded:", finalConfig);
+  console.log("Business Name:", finalConfig.businessName);
+  console.log("Category:", finalConfig.businessCategory);
 })();

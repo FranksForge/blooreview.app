@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Review Intake</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="card">
+      <header id="main-header">
+        <h1 id="business-name">We value your feedback</h1>
+        <p class="subtitle">
+          Taking 2 minutes to leave a review helps us improve and grow. We really appreciate you for taking the time!
+        </p>
+      </header>
+
+      <section id="rating-step">
+        <fieldset class="rating-fieldset">
+          <legend class="sr-only">Select a star rating</legend>
+          <div class="stars" role="radiogroup" aria-label="Star rating">
+            <input type="radio" id="star5" name="rating" value="5" />
+            <label for="star5" aria-label="5 stars">★</label>
+            <input type="radio" id="star4" name="rating" value="4" />
+            <label for="star4" aria-label="4 stars">★</label>
+            <input type="radio" id="star3" name="rating" value="3" />
+            <label for="star3" aria-label="3 stars">★</label>
+            <input type="radio" id="star2" name="rating" value="2" />
+            <label for="star2" aria-label="2 stars">★</label>
+            <input type="radio" id="star1" name="rating" value="1" />
+            <label for="star1" aria-label="1 star">★</label>
+          </div>
+        </fieldset>
+        <button type="button" id="confirm-rating" class="primary rating-confirm">
+          Continue
+        </button>
+        <p
+          id="rating-error"
+          class="form-error rating-error"
+          role="alert"
+          aria-live="polite"
+        ></p>
+      </section>
+
+      <section id="followup-step" class="hidden">
+        <h2>You rated us <span id="selected-rating"></span> stars</h2>
+        <p class="muted">
+          We read every message closely. Let us know what happened so we can follow up.
+        </p>
+        <form id="feedback-form" novalidate>
+          <label class="field">
+            <span>Your name (optional)</span>
+            <input
+              type="text"
+              id="feedback-name"
+              name="name"
+              placeholder="John Doe"
+            />
+          </label>
+
+          <label class="field">
+            <span>Tell us about your experience</span>
+            <textarea
+              id="comments"
+              name="comments"
+              rows="4"
+              placeholder="Share any details you'd like"
+              required
+            ></textarea>
+          </label>
+
+          <button type="submit" class="primary">Submit feedback</button>
+          <p class="form-error" id="form-error" role="alert"></p>
+        </form>
+      </section>
+
+      <section id="thank-you" class="hidden">
+        <div class="thank-you-icon">🎉</div>
+        <h2>Thank you for your feedback!</h2>
+        <p id="thank-you-message">
+          We appreciate you taking the time to help us improve. As a token of our gratitude, here's a special discount code just for you!
+        </p>
+        
+        <div class="discount-section" id="discount-section">
+          <div class="discount-code-display">
+            <div class="discount-header">
+              <span class="discount-badge">
+                <span id="discount-percentage">10%</span> OFF
+              </span>
+            </div>
+            <span class="discount-label">Your Discount Code:</span>
+            <span class="discount-code" id="discount-code">-</span>
+            <p class="discount-expiry-text">
+              Valid until: <strong id="discount-expiry">-</strong>
+            </p>
+            <button type="button" id="copy-code-btn" class="copy-code-btn">
+              📋 Copy Code
+            </button>
+          </div>
+          
+          <div class="share-love-section" id="share-love-section">
+            <h3>💝 Invite Your Friends!</h3>
+            <p>Share this review page with friends so they can also leave feedback and get their own discount!</p>
+            <div class="share-buttons">
+              <button type="button" id="share-whatsapp-btn" class="share-btn whatsapp-btn">
+                <span class="btn-icon">📱</span> Share on WhatsApp
+              </button>
+              <button type="button" id="share-sms-btn" class="share-btn sms-btn">
+                <span class="btn-icon">💬</span> Share via SMS
+              </button>
+              <button type="button" id="copy-link-btn" class="share-btn copy-link-btn">
+                <span class="btn-icon">🔗</span> Copy Link
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="google-forward" class="hidden">
+        <h2>Thanks for the love!</h2>
+        <p>Your words mean a lot to us. We're opening Google Reviews so you can share them publicly.</p>
+        <a id="google-link" class="primary" target="_blank" rel="noopener">
+          Open Google Reviews
+        </a>
+        <p id="auto-open-note" class="muted hidden">
+          If the review page didn't open automatically, tap the button above to continue.
+        </p>
+        <p id="maps-note" class="maps-note">
+          Need a refresher about us? <a id="maps-link" target="_blank" rel="noopener">View our Google Maps listing.</a>
+        </p>
+      </section>
+
+      <footer>
+        <small>Powered by Review Tool Demo • We truly appreciate your support.</small>
+      </footer>
+    </main>
+
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

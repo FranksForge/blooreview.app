@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Business Setup • Review Tool</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .row { display: flex; gap: .5rem; align-items: center; margin: .25rem 0; }
+      .row .label { min-width: 130px; color: #6f7287; }
+      code.inline { background: #f3f5ff; padding: .15rem .35rem; border-radius: 6px; }
+      pre.code { background: #0b1020; color: #d7e1ff; padding: 1rem; border-radius: 10px; overflow: auto; }
+      .grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+      .actions { display: flex; gap: .5rem; flex-wrap: wrap; }
+      .small { font-size: .9rem; color: #6f7287; }
+      .danger { color: #d93025; }
+    </style>
+  </head>
+  <body>
+    <main class="card" style="max-width: 720px;">
+      <header>
+        <h1>Business Setup</h1>
+        <p class="subtitle">
+          Paste a Google Maps URL and your Places API key. We’ll resolve the Place ID, name, and category and generate a config snippet for your review page.
+        </p>
+      </header>
+
+      <section class="grid">
+        <label class="field">
+          <span>Google Maps URL</span>
+          <input id="maps-url" type="url" placeholder="https://www.google.com/maps/place/..." />
+        </label>
+
+        <label class="field">
+          <span>Business Name (optional override)</span>
+          <input id="business-name-input" type="text" placeholder="If provided, used as a stronger hint" />
+        </label>
+
+        <label class="field">
+          <span>Google Places API Key</span>
+          <input id="api-key" type="text" placeholder="AIza..." />
+          <small class="small">Key must allow Maps JavaScript API and Places API for this origin.</small>
+        </label>
+
+        <div class="actions">
+          <button id="resolve" class="primary" type="button">Resolve Place Info</button>
+          <button id="copy-snippet" type="button">Copy config snippet</button>
+        </div>
+
+        <p id="setup-error" class="form-error" role="alert"></p>
+      </section>
+
+      <section id="results" class="hidden">
+        <h2>Resolved Info</h2>
+        <div class="row"><span class="label">Place ID</span><code id="place-id-display" class="inline"></code></div>
+        <div class="row"><span class="label">Business Name</span><code id="name-display" class="inline"></code></div>
+        <div class="row"><span class="label">Category</span><code id="category-display" class="inline"></code></div>
+        <div class="row"><span class="label">Review Link</span><code id="review-link-display" class="inline"></code></div>
+        <div class="row"><span class="label">Map URL</span><code id="map-url-display" class="inline"></code></div>
+
+        <h3>config.js snippet</h3>
+        <pre id="config-snippet" class="code"></pre>
+      </section>
+
+      <section>
+        <h3>Debug Log</h3>
+        <pre id="debug-log" class="code" style="max-height: 220px;"></pre>
+      </section>
+
+      <footer>
+        <small class="small">This is an admin-only helper. Do not ship your API key with public pages.</small>
+      </footer>
+    </main>
+
+    <script src="setup.js"></script>
+  </body>
+  </html>
+

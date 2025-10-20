@@ -388,10 +388,15 @@
     state.userComments = comments;
     state.userName = name;
 
-    // Generate discount code up front so we can persist it in Sheets
-    const generatedCode = generateDiscountCode(name);
-    state.currentDiscountCode = generatedCode;
-    const expiryDateStr = formatExpiryDate(state.discountValidDays);
+    // Only generate discount code if discounts are enabled
+    let generatedCode = '';
+    let expiryDateStr = '';
+    
+    if (state.discountEnabled) {
+      generatedCode = generateDiscountCode(name);
+      state.currentDiscountCode = generatedCode;
+      expiryDateStr = formatExpiryDate(state.discountValidDays);
+    }
 
     const payload = {
       businessName: state.businessName,
@@ -403,8 +408,8 @@
       email: "",
       comments: comments,
       discountCode: generatedCode,
-      discountPercentage: state.discountPercentage,
-      discountValidDays: state.discountValidDays,
+      discountPercentage: state.discountEnabled ? state.discountPercentage : '',
+      discountValidDays: state.discountEnabled ? state.discountValidDays : '',
       discountExpiryDate: expiryDateStr,
       slug: resolveSlug(),
       submittedAt: new Date().toISOString()

@@ -13,8 +13,21 @@ const CONFIG_FILE = path.join(__dirname, 'config.js');
 
 // Fetch all configs from the Google Sheet
 async function fetchAllConfigs() {
-  // You'll need to add a new endpoint to your Apps Script to fetch ALL configs
-  // For now, we'll fetch known slugs
+  // First, try to get all configs in one request
+  try {
+    console.log('Fetching all configs from sheet...');
+    const url = `${APPS_SCRIPT_URL}?action=getAllConfigs`;
+    const data = await fetchJSON(url);
+    
+    if (data.ok && data.configs) {
+      console.log(`✓ Fetched all configs in one request`);
+      return data.configs;
+    }
+  } catch (error) {
+    console.log('Note: getAllConfigs endpoint not available, fetching individually...');
+  }
+  
+  // Fallback: fetch known slugs individually
   const slugs = ['bigc-donchan', 'starbucks-123', 'default'];
   const configs = {};
   
@@ -39,17 +52,35 @@ async function fetchAllConfigs() {
 
 function fetchJSON(url) {
   return new Promise((resolve, reject) => {
-    https.get(url, (res) => {
-      let data = '';
-      res.on('data', (chunk) => { data += chunk; });
-      res.on('end', () => {
-        try {
-          resolve(JSON.parse(data));
-        } catch (e) {
-          reject(e);
+    const makeRequest = (requestUrl) => {
+      https.get(requestUrl, (res) => {
+        // Follow redirects
+        if (res.statusCode === 301 || res.statusCode === 302 || res.statusCode === 307 || res.statusCode === 308) {
+          console.log(`  Following redirect to: ${res.headers.location}`);
+          makeRequest(res.headers.location);
+          return;
         }
-      });
-    }).on('error', reject);
+        
+        if (res.statusCode !== 200) {
+          reject(new Error(`HTTP ${res.statusCode}: ${res.statusMessage}`));
+          return;
+        }
+        
+        let data = '';
+        res.on('data', (chunk) => { data += chunk; });
+        res.on('end', () => {
+          try {
+            const parsed = JSON.parse(data);
+            resolve(parsed);
+          } catch (e) {
+            console.error('Response was not JSON:', data.substring(0, 200));
+            reject(new Error('Invalid JSON response'));
+          }
+        });
+      }).on('error', reject);
+    };
+    
+    makeRequest(url);
   });
 }
 

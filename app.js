@@ -11,8 +11,9 @@
     const parts = window.location.hostname.split(".");
     if (parts.length > 2) {
       const subdomain = parts[0].toLowerCase();
-      // Ignore Vercel's auto-generated subdomains (contain hyphens and numbers)
-      if (!subdomain.includes("-") || subdomain.includes("vercel")) {
+      // Ignore Vercel's auto-generated subdomains (contain random strings and numbers)
+      // Keep business slugs like "bigc-donchan", "starbucks-123", etc.
+      if (!subdomain.match(/^[a-z]+-[a-z0-9]+-[a-z0-9]+$/)) {
         return subdomain;
       }
     }

@@ -6,10 +6,13 @@
 //   node sync-config.js                    # Update all default slugs
 //   node sync-config.js slug1 slug2        # Update specific slugs only
 //   node sync-config.js newbusiness-123    # Add new business
+//   node sync-config.js --deploy           # Update all and auto-deploy
+//   node sync-config.js slug1 --deploy     # Update slug and auto-deploy
 
 const https = require('https');
 const fs = require('fs');
 const path = require('path');
+const { execSync } = require('child_process');
 
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzbo0fy_aFMAyI1I87n8XvZ6eDzaxe1nI4zuUfkkNuawcKWBIbJ2uFkJq1Ntb_c-keLEQ/exec';
 const CONFIG_FILE = path.join(__dirname, 'config.js');
@@ -17,6 +20,8 @@ const DEFAULT_SLUGS = ['bigc-donchan', 'starbucks-123', 'default', 'newbus123'];
 
 // Get command line arguments
 const args = process.argv.slice(2);
+const shouldDeploy = args.includes('--deploy');
+const slugArgs = args.filter(arg => arg !== '--deploy');
 
 // Read existing configs from config.js
 function readExistingConfigs() {
@@ -130,9 +135,9 @@ window.REVIEW_CONFIGS = ${JSON.stringify(configs, null, 2)};
   let slugsToFetch;
   let existingConfigs = {};
   
-  if (args.length > 0) {
+  if (slugArgs.length > 0) {
     // Specific slugs provided via command line
-    slugsToFetch = args;
+    slugsToFetch = slugArgs;
     console.log(`Fetching specific slugs: ${slugsToFetch.join(', ')}\n`);
     
     // Load existing configs to merge with
@@ -159,7 +164,31 @@ window.REVIEW_CONFIGS = ${JSON.stringify(configs, null, 2)};
   console.log(`\n✓ Config sync complete!`);
   console.log(`✓ Updated ${Object.keys(newConfigs).length} business(es)`);
   console.log(`✓ Total businesses in config: ${Object.keys(allConfigs).length}`);
-  console.log('\nNext steps:');
-  console.log('  1. Review the changes: git diff config.js');
-  console.log('  2. Commit and push: git add config.js && git commit -m "Update configs" && git push');
+  
+  if (shouldDeploy) {
+    console.log('\n🚀 Deploying to production...');
+    try {
+      // Check if there are changes to commit
+      execSync('git diff --quiet config.js', { stdio: 'ignore' });
+      console.log('ℹ️  No changes to deploy');
+    } catch (error) {
+      // There are changes, proceed with commit and push
+      try {
+        const slugList = slugArgs.length > 0 ? slugArgs.join(', ') : 'all configs';
+        execSync('git add config.js', { stdio: 'inherit' });
+        execSync(`git commit -m "Update configs: ${slugList}"`, { stdio: 'inherit' });
+        execSync('git push', { stdio: 'inherit' });
+        console.log('\n✅ Deployed successfully!');
+        console.log('⏳ Vercel will deploy in 2-3 minutes');
+      } catch (deployError) {
+        console.error('\n❌ Deployment failed:', deployError.message);
+        process.exit(1);
+      }
+    }
+  } else {
+    console.log('\nNext steps:');
+    console.log('  1. Review the changes: git diff config.js');
+    console.log('  2. Deploy: node sync-config.js --deploy');
+    console.log('  OR manually: git add config.js && git commit -m "Update configs" && git push');
+  }
 })();

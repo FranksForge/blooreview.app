@@ -205,12 +205,10 @@
     // Show the feedback form
     elements.followupSection.classList.remove("hidden");
     
-    // Display readonly stars showing the selected rating
-    const starsReadonly = document.querySelector('.stars-readonly');
-    if (starsReadonly) {
-      const filledStars = '★'.repeat(rating);
-      const emptyStars = '☆'.repeat(5 - rating);
-      starsReadonly.textContent = filledStars + emptyStars;
+    // Check the corresponding star in the display stars
+    const displayStar = document.getElementById(`display-star${rating}`);
+    if (displayStar) {
+      displayStar.checked = true;
     }
   };
 

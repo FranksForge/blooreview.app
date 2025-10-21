@@ -70,7 +70,8 @@
       googleForwardButton: "Google Bewertungen öffnen",
       mapsNote: "Brauchen Sie eine Erinnerung an uns?",
       mapsLink: "Sehen Sie sich unseren Google Maps Eintrag an.",
-      footer: "Powered by Review Tool Demo • Wir schätzen Ihre Unterstützung sehr.",
+      footerPoweredBy: "Powered by",
+      footerTagline: "Wir schätzen Ihre Unterstützung sehr.",
       copied: "Kopiert!",
       errorGeneric: "Etwas ist schief gelaufen. Bitte versuchen Sie es erneut."
     }

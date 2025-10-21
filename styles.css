@@ -334,6 +334,32 @@ footer {
   font-size: 0.85rem;
 }
 
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer-logo {
+  height: 28px;
+  width: auto;
+  vertical-align: middle;
+  filter: brightness(0) saturate(100%) invert(66%) sepia(8%) saturate(566%) hue-rotate(203deg) brightness(93%) contrast(90%);
+  transition: filter 0.2s ease;
+}
+
+.footer-logo:hover {
+  filter: brightness(0) saturate(100%) invert(55%) sepia(8%) saturate(700%) hue-rotate(203deg) brightness(95%) contrast(92%);
+}
+
+.footer-tagline {
+  display: block;
+  color: #b0b3c8;
+  font-size: 0.8rem;
+}
+
 .thank-you-icon {
   font-size: 3rem;
   text-align: center;

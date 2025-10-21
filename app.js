@@ -203,6 +203,12 @@
     // Hide the rating step (button and interactive stars)
     elements.ratingStep?.classList.add("hidden");
     
+    // Hide the subtitle text on feedback page
+    const subtitle = document.querySelector('.subtitle');
+    if (subtitle) {
+      subtitle.classList.add('hidden');
+    }
+    
     // Show the feedback form
     elements.followupSection.classList.remove("hidden");
     

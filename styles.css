@@ -81,6 +81,18 @@ h2 {
   color: #f5a623;
 }
 
+.rating-display {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.stars-readonly {
+  font-size: 2rem;
+  color: #f5a623;
+  letter-spacing: 0.25rem;
+  user-select: none;
+}
+
 .rating-fieldset {
   border: none;
   margin: 0;

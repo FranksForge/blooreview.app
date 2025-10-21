@@ -198,9 +198,20 @@
 
   const showFollowupForm = (rating) => {
     if (!elements.followupSection) return;
-    // Keep rating step visible - don't hide it
-    elements.ratingStep?.classList.remove("hidden");
+    
+    // Hide the rating step (button and interactive stars)
+    elements.ratingStep?.classList.add("hidden");
+    
+    // Show the feedback form
     elements.followupSection.classList.remove("hidden");
+    
+    // Display readonly stars showing the selected rating
+    const starsReadonly = document.querySelector('.stars-readonly');
+    if (starsReadonly) {
+      const filledStars = '★'.repeat(rating);
+      const emptyStars = '☆'.repeat(5 - rating);
+      starsReadonly.textContent = filledStars + emptyStars;
+    }
   };
 
   const generateDiscountCode = (name = "") => {

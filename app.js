@@ -378,7 +378,7 @@
     if (state.discountEnabled) {
       if (elements.thankYouMessage) {
         elements.thankYouMessage.textContent = 
-          "We appreciate you taking the time to help us improve. As a token of our gratitude, here's a special discount code just for you!";
+          "Wir schätzen es sehr, dass Sie sich die Zeit nehmen, uns zu helfen, besser zu werden. Als Zeichen unserer Dankbarkeit haben wir einen speziellen Rabattcode nur für Sie!";
       }
       elements.discountSection?.classList.remove("hidden");
       
@@ -409,7 +409,7 @@
     } else {
       if (elements.thankYouMessage) {
         elements.thankYouMessage.textContent = 
-          "We appreciate you taking the time to help us improve. Your feedback directly shapes how we serve our community.";
+          "Wir schätzen es sehr, dass Sie sich die Zeit nehmen, uns zu helfen, besser zu werden. Ihr Feedback prägt direkt, wie wir unserer Gemeinschaft dienen.";
       }
       elements.discountSection?.classList.add("hidden");
       elements.shareLoveSection?.classList.add("hidden");

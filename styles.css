@@ -343,9 +343,11 @@ footer {
 }
 
 .footer-logo {
-  height: 28px;
+  height: 18px;
+  max-width: 120px;
   width: auto;
   vertical-align: middle;
+  object-fit: contain;
   filter: brightness(0) saturate(100%) invert(66%) sepia(8%) saturate(566%) hue-rotate(203deg) brightness(93%) contrast(90%);
   transition: filter 0.2s ease;
 }

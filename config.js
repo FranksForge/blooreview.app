@@ -79,7 +79,7 @@ window.REVIEW_CONFIGS = {
       "message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!"
     },
     "logoUrl": "",
-    "heroImageUrl": ""
+    "heroImageUrl": "hero-demo.jpg"
   }
 };
 

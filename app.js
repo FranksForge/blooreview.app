@@ -199,6 +199,7 @@
   const showFollowupForm = (rating) => {
     if (!elements.followupSection) return;
     // Keep rating step visible - don't hide it
+    elements.ratingStep?.classList.remove("hidden");
     elements.followupSection.classList.remove("hidden");
   };
 

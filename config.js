@@ -1,4 +1,4 @@
-// Multi-tenant configs - updated: 2025-10-21T08:49:20.786Z
+// Multi-tenant configs - updated: 2025-10-21T08:53:18.301Z
 // DO NOT EDIT MANUALLY - Run 'node sync-config.js' to update from Google Sheets
 window.REVIEW_CONFIGS = {
   "bigc-donchan": {
@@ -53,6 +53,26 @@ window.REVIEW_CONFIGS = {
       "enabled": false,
       "percentage": 20,
       "validDays": 20
+    },
+    "referral": {
+      "enabled": true,
+      "message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!"
+    },
+    "logoUrl": "",
+    "heroImageUrl": ""
+  },
+  "dein-business": {
+    "businessName": "Dein lokales Business",
+    "businessCategory": "Restaurant",
+    "googleMapsUrl": "https://maps.google.com/?q=Your+Business",
+    "googlePlaceId": "ChIJXYVZhe7Xl0cRPu2a_3OZzMU",
+    "googleReviewBaseUrl": "https://search.google.com/local/writereview?placeid=",
+    "googleReviewUrl": "",
+    "sheetScriptUrl": "https://script.google.com/macros/s/AKfycbzbo0fy_aFMAyI1I87n8XvZ6eDzaxe1nI4zuUfkkNuawcKWBIbJ2uFkJq1Ntb_c-keLEQ/exec",
+    "discount": {
+      "enabled": true,
+      "percentage": 10,
+      "validDays": 30
     },
     "referral": {
       "enabled": true,

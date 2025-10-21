@@ -28,6 +28,25 @@ h2 {
   margin-top: 0;
 }
 
+.hero-image {
+  width: 100%;
+  margin: -2rem -2rem 1.5rem -2rem;
+  border-radius: 16px 16px 0 0;
+  overflow: hidden;
+}
+
+.hero-image img {
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-image.hidden {
+  display: none;
+}
+
 .subtitle {
   margin-bottom: 2rem;
   color: #55596d;

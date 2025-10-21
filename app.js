@@ -588,6 +588,19 @@
     const categoryDisplay = state.businessCategory || state.businessName;
     if (elements.categoryLabel) elements.categoryLabel.textContent = categoryDisplay;
 
+    // Apply hero image if configured
+    const heroImageContainer = document.getElementById('hero-image-container');
+    const heroImage = document.getElementById('hero-image');
+    const config = window.REVIEW_TOOL_CONFIG || {};
+    
+    if (config.heroImageUrl && heroImage && heroImageContainer) {
+      heroImage.src = config.heroImageUrl;
+      heroImage.alt = state.businessName;
+      heroImageContainer.classList.remove('hidden');
+    } else if (heroImageContainer) {
+      heroImageContainer.classList.add('hidden');
+    }
+
     if (elements.googleLink) {
       elements.googleLink.href = state.googleReviewUrl || "#";
     }

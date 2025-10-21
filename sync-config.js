@@ -39,6 +39,25 @@ function readExistingConfigs() {
   return {};
 }
 
+// Fetch all configs from the Google Sheet at once
+async function fetchAllConfigs() {
+  try {
+    const url = `${APPS_SCRIPT_URL}?action=getAllConfigs`;
+    const data = await fetchJSON(url);
+    
+    if (data.ok && data.configs) {
+      console.log(`✓ Fetched all configs: ${Object.keys(data.configs).length} businesses`);
+      return data.configs;
+    } else {
+      console.warn(`✗ Failed to fetch all configs: ${data.error || 'unknown error'}`);
+      return {};
+    }
+  } catch (error) {
+    console.error(`✗ Error fetching all configs:`, error.message);
+    return {};
+  }
+}
+
 // Fetch configs from the Google Sheet (preserves order)
 async function fetchConfigs(slugs) {
   const configs = {};
@@ -168,10 +187,54 @@ window.REVIEW_CONFIGS = ${JSON.stringify(configs, null, 2)};
     // Load existing configs to merge with
     existingConfigs = readExistingConfigs();
     console.log(`Loaded ${Object.keys(existingConfigs).length} existing config(s)\n`);
+    
+    const newConfigs = await fetchConfigs(slugsToFetch);
   } else {
-    // No arguments: fetch all default slugs
-    slugsToFetch = DEFAULT_SLUGS;
-    console.log(`Fetching all default slugs: ${slugsToFetch.join(', ')}\n`);
+    // No arguments: fetch ALL configs from Google Sheet
+    console.log(`Fetching all configs from Google Sheet...\n`);
+    
+    const allConfigs = await fetchAllConfigs();
+    
+    if (Object.keys(allConfigs).length === 0) {
+      console.error('\n✗ No configs fetched. Please check your Google Sheet and Apps Script.');
+      process.exit(1);
+    }
+    
+    // Sort to match DEFAULT_SLUGS order (for consistency)
+    const sortedConfigs = sortConfigsBySheetOrder(allConfigs, DEFAULT_SLUGS);
+    generateConfigFile(sortedConfigs);
+    
+    console.log(`\n✓ Config sync complete!`);
+    console.log(`✓ Updated ${Object.keys(allConfigs).length} business(es)`);
+    console.log(`✓ Total businesses in config: ${Object.keys(sortedConfigs).length}`);
+    
+    if (shouldDeploy) {
+      console.log('\n🚀 Deploying to production...');
+      try {
+        // Check if there are changes to commit
+        execSync('git diff --quiet config.js', { stdio: 'ignore' });
+        console.log('ℹ️  No changes to deploy');
+      } catch (error) {
+        // There are changes, proceed with commit and push
+        try {
+          execSync('git add config.js', { stdio: 'inherit' });
+          execSync(`git commit -m "Update all configs from Google Sheet"`, { stdio: 'inherit' });
+          execSync('git push', { stdio: 'inherit' });
+          console.log('\n✅ Deployed successfully!');
+          console.log('⏳ Vercel will deploy in 2-3 minutes');
+        } catch (deployError) {
+          console.error('\n❌ Deployment failed:', deployError.message);
+          process.exit(1);
+        }
+      }
+    } else {
+      console.log('\nNext steps:');
+      console.log('  1. Review the changes: git diff config.js');
+      console.log('  2. Deploy: node sync-config.js --deploy');
+      console.log('  OR manually: git add config.js && git commit -m "Update configs" && git push');
+    }
+    
+    return; // Exit early for the "fetch all" case
   }
   
   const newConfigs = await fetchConfigs(slugsToFetch);

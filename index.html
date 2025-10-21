@@ -9,9 +9,9 @@
   <body>
     <main class="card">
       <header id="main-header">
-        <h1 id="business-name">We value your feedback</h1>
-        <p class="subtitle">
-          Taking 2 minutes to leave a review helps us improve and grow. We really appreciate you for taking the time!
+        <h1 id="business-name">Wir schätzen Ihr Feedback</h1>
+        <p class="subtitle" data-translate="subtitle">
+          Nur 2 Minuten für eine Bewertung helfen uns, besser zu werden und zu wachsen. Wir schätzen Ihre Zeit sehr!
         </p>
       </header>
 
@@ -31,8 +31,8 @@
             <label for="star1" aria-label="1 star">★</label>
           </div>
         </fieldset>
-        <button type="button" id="confirm-rating" class="primary rating-confirm">
-          Continue
+        <button type="button" id="confirm-rating" class="primary rating-confirm" data-translate="continueButton">
+          Weiter
         </button>
         <p
           id="rating-error"
@@ -43,73 +43,75 @@
       </section>
 
       <section id="followup-step" class="hidden">
-        <h2>You rated us <span id="selected-rating"></span> stars</h2>
-        <p class="muted">
-          We read every message closely. Let us know what happened so we can follow up.
+        <h2>Sie haben uns <span id="selected-rating"></span> <span id="rating-text">Sterne</span> gegeben</h2>
+        <p class="muted" data-translate="feedbackIntro">
+          Wir lesen jede Nachricht sorgfältig. Lassen Sie uns wissen, was passiert ist, damit wir nachfassen können.
         </p>
         <form id="feedback-form" novalidate>
           <label class="field">
-            <span>Your name (optional)</span>
+            <span data-translate="feedbackNameLabel">Ihr Name (optional)</span>
             <input
               type="text"
               id="feedback-name"
               name="name"
-              placeholder="John Doe"
+              data-translate-placeholder="feedbackNamePlaceholder"
+              placeholder="Geben Sie Ihren Namen ein"
             />
           </label>
 
           <label class="field">
-            <span>Tell us about your experience</span>
+            <span data-translate="feedbackPrompt">Erzählen Sie uns von Ihrer Erfahrung</span>
             <textarea
               id="comments"
               name="comments"
               rows="4"
-              placeholder="Share any details you'd like"
+              data-translate-placeholder="feedbackPlaceholder"
+              placeholder="Teilen Sie Ihre Gedanken mit..."
               required
             ></textarea>
           </label>
 
-          <button type="submit" class="primary">Submit feedback</button>
+          <button type="submit" class="primary" data-translate="feedbackSubmit">Bewertung abschicken</button>
           <p class="form-error" id="form-error" role="alert"></p>
         </form>
       </section>
 
       <section id="thank-you" class="hidden">
         <div class="thank-you-icon">🎉</div>
-        <h2>Thank you for your feedback!</h2>
-        <p id="thank-you-message">
-          We appreciate you taking the time to help us improve. As a token of our gratitude, here's a special discount code just for you!
+        <h2 data-translate="thankYouTitle">Vielen Dank!</h2>
+        <p id="thank-you-message" data-translate="thankYouMessage">
+          Ihr Feedback bedeutet uns die Welt und hilft uns, Ihnen besser zu dienen.
         </p>
         
         <div class="discount-section" id="discount-section">
           <div class="discount-code-display">
             <div class="discount-header">
               <span class="discount-badge">
-                <span id="discount-percentage">10%</span> OFF
+                <span id="discount-percentage">10%</span> RABATT
               </span>
             </div>
-            <span class="discount-label">Your Discount Code:</span>
+            <span class="discount-label" data-translate="discountLabel">Ihr Rabattcode:</span>
             <span class="discount-code" id="discount-code">-</span>
             <p class="discount-expiry-text">
-              Valid until: <strong id="discount-expiry">-</strong>
+              <span data-translate="discountExpiry">Gültig bis</span>: <strong id="discount-expiry">-</strong>
             </p>
-            <button type="button" id="copy-code-btn" class="copy-code-btn">
-              📋 Copy Code
+            <button type="button" id="copy-code-btn" class="copy-code-btn" data-translate="copyCode">
+              📋 Code kopieren
             </button>
           </div>
           
           <div class="share-love-section" id="share-love-section">
-            <h3>💝 Invite Your Friends!</h3>
-            <p>Share this review page with friends so they can also leave feedback and get their own discount!</p>
+            <h3 data-translate="shareLoveTitle">💝 Teilen Sie die Liebe!</h3>
+            <p data-translate="shareLoveMessage">Laden Sie Ihre Freunde ein, auch eine Bewertung zu hinterlassen und ihren eigenen Rabatt zu erhalten!</p>
             <div class="share-buttons">
-              <button type="button" id="share-whatsapp-btn" class="share-btn whatsapp-btn">
-                <span class="btn-icon">📱</span> Share on WhatsApp
+              <button type="button" id="share-whatsapp-btn" class="share-btn whatsapp-btn" data-translate="shareWhatsapp">
+                <span class="btn-icon">📱</span> Auf WhatsApp teilen
               </button>
-              <button type="button" id="share-sms-btn" class="share-btn sms-btn">
-                <span class="btn-icon">💬</span> Share via SMS
+              <button type="button" id="share-sms-btn" class="share-btn sms-btn" data-translate="shareSMS">
+                <span class="btn-icon">💬</span> Per SMS teilen
               </button>
-              <button type="button" id="copy-link-btn" class="share-btn copy-link-btn">
-                <span class="btn-icon">🔗</span> Copy Link
+              <button type="button" id="copy-link-btn" class="share-btn copy-link-btn" data-translate="copyLink">
+                <span class="btn-icon">🔗</span> Link kopieren
               </button>
             </div>
           </div>
@@ -117,19 +119,19 @@
       </section>
 
       <section id="google-forward" class="hidden">
-        <h2>🎉 Thanks for the love!</h2>
-        <p>Your words mean a lot to us. We're opening Google Reviews so you can share them publicly.</p>
-        <p class="highlight-message">✨ <strong>After leaving your review, use the back button to return here for your discount code!</strong></p>
-        <a id="google-link" class="primary" rel="noopener">
-          Open Google Reviews
+        <h2 data-translate="googleForwardTitle">🎉 Danke für die Liebe!</h2>
+        <p data-translate="googleForwardMessage">Ihre Worte bedeuten uns viel. Wir öffnen Google Bewertungen, damit Sie sie öffentlich teilen können.</p>
+        <p class="highlight-message" data-translate="googleForwardHighlight">✨ <strong>Nach Ihrer Bewertung verwenden Sie die Zurück-Taste, um hierher zurückzukehren und Ihren Rabattcode zu erhalten!</strong></p>
+        <a id="google-link" class="primary" rel="noopener" data-translate="googleForwardButton">
+          Google Bewertungen öffnen
         </a>
         <p id="maps-note" class="maps-note">
-          Need a refresher about us? <a id="maps-link" target="_blank" rel="noopener">View our Google Maps listing.</a>
+          <span data-translate="mapsNote">Brauchen Sie eine Erinnerung an uns?</span> <a id="maps-link" target="_blank" rel="noopener" data-translate="mapsLink">Sehen Sie sich unseren Google Maps Eintrag an.</a>
         </p>
       </section>
 
       <footer>
-        <small>Powered by Review Tool Demo • We truly appreciate your support.</small>
+        <small data-translate="footer">Powered by Review Tool Demo • Wir schätzen Ihre Unterstützung sehr.</small>
       </footer>
     </main>
 

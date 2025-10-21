@@ -2,6 +2,80 @@
   const sanitizeString = (value) => (typeof value === "string" ? value.trim() : "");
   const sanitizeArray = (list) => [];
 
+  // Translations object
+  const translations = {
+    en: {
+      subtitle: "Taking 2 minutes to leave a review helps us improve and grow. We really appreciate you for taking the time!",
+      ratingPrompt: "How would you rate your experience?",
+      ratingError: "Please select a star rating to continue.",
+      continueButton: "Continue",
+      ratingStars: "stars",
+      ratingStarsSingular: "star",
+      feedbackIntro: "We read every message closely. Let us know what happened so we can follow up.",
+      feedbackPrompt: "Tell us about your experience",
+      feedbackPlaceholder: "Share your thoughts...",
+      feedbackNameLabel: "Your name (optional)",
+      feedbackNamePlaceholder: "Enter your name",
+      feedbackSubmit: "Submit Review",
+      thankYouTitle: "Thank you so much!",
+      thankYouMessage: "Your feedback means the world to us and helps us serve you better.",
+      discountTitle: "🎉 Here's your discount!",
+      discountBadge: "DISCOUNT",
+      discountLabel: "Your discount code:",
+      discountExpiry: "Valid until",
+      copyCode: "Copy Code",
+      shareLoveTitle: "Share the love!",
+      shareLoveMessage: "Invite your friends to also leave a review and get their own discount!",
+      shareWhatsapp: "Share on WhatsApp",
+      shareSMS: "Share via SMS",
+      copyLink: "Copy Link",
+      googleForwardTitle: "🎉 Thanks for the love!",
+      googleForwardMessage: "Your words mean a lot to us. We're opening Google Reviews so you can share them publicly.",
+      googleForwardHighlight: "✨ After leaving your review, use the back button to return here for your discount code!",
+      googleForwardButton: "Open Google Reviews",
+      mapsNote: "Need a refresher about us?",
+      mapsLink: "View our Google Maps listing.",
+      footer: "Powered by Review Tool Demo • We truly appreciate your support.",
+      copied: "Copied!",
+      errorGeneric: "Something went wrong. Please try again."
+    },
+    de: {
+      subtitle: "Nur 2 Minuten für eine Bewertung helfen uns, besser zu werden und zu wachsen. Wir schätzen Ihre Zeit sehr!",
+      ratingPrompt: "Wie würden Sie Ihre Erfahrung bewerten?",
+      ratingError: "Bitte wählen Sie eine Sternebewertung aus, um fortzufahren.",
+      continueButton: "Weiter",
+      ratingStars: "Sterne",
+      ratingStarsSingular: "Stern",
+      feedbackIntro: "Wir lesen jede Nachricht sorgfältig. Lassen Sie uns wissen, was passiert ist, damit wir nachfassen können.",
+      feedbackPrompt: "Erzählen Sie uns von Ihrer Erfahrung",
+      feedbackPlaceholder: "Teilen Sie Ihre Gedanken mit...",
+      feedbackNameLabel: "Ihr Name (optional)",
+      feedbackNamePlaceholder: "Geben Sie Ihren Namen ein",
+      feedbackSubmit: "Bewertung abschicken",
+      thankYouTitle: "Vielen Dank!",
+      thankYouMessage: "Ihr Feedback bedeutet uns die Welt und hilft uns, Ihnen besser zu dienen.",
+      discountTitle: "🎉 Hier ist Ihr Rabatt!",
+      discountBadge: "RABATT",
+      discountLabel: "Ihr Rabattcode:",
+      discountExpiry: "Gültig bis",
+      copyCode: "Code kopieren",
+      shareLoveTitle: "Teilen Sie die Liebe!",
+      shareLoveMessage: "Laden Sie Ihre Freunde ein, auch eine Bewertung zu hinterlassen und ihren eigenen Rabatt zu erhalten!",
+      shareWhatsapp: "Auf WhatsApp teilen",
+      shareSMS: "Per SMS teilen",
+      copyLink: "Link kopieren",
+      googleForwardTitle: "🎉 Danke für die Liebe!",
+      googleForwardMessage: "Ihre Worte bedeuten uns viel. Wir öffnen Google Bewertungen, damit Sie sie öffentlich teilen können.",
+      googleForwardHighlight: "✨ Nach Ihrer Bewertung verwenden Sie die Zurück-Taste, um hierher zurückzukehren und Ihren Rabattcode zu erhalten!",
+      googleForwardButton: "Google Bewertungen öffnen",
+      mapsNote: "Brauchen Sie eine Erinnerung an uns?",
+      mapsLink: "Sehen Sie sich unseren Google Maps Eintrag an.",
+      footer: "Powered by Review Tool Demo • Wir schätzen Ihre Unterstützung sehr.",
+      copied: "Kopiert!",
+      errorGeneric: "Etwas ist schief gelaufen. Bitte versuchen Sie es erneut."
+    }
+  };
+
   const resolveSlug = () => {
     // Priority 1: Query parameter (for testing and explicit slugs)
     const qp = new URL(window.location.href).searchParams.get("biz");
@@ -53,6 +127,11 @@
     copyLinkBtn: document.getElementById("copy-link-btn")
   };
 
+  // Translation helper function - German ONLY
+  const t = (key, fallback = '') => {
+    return translations.de[key] || fallback;
+  };
+
   // State will be initialized after config loads
   let state = null;
 
@@ -60,16 +139,17 @@
     const config = window.REVIEW_TOOL_CONFIG || {};
     
     state = {
-      businessName: sanitizeString(config.businessName) || "We value your feedback",
-      businessCategory: sanitizeString(config.businessCategory),
-      mapsUrl: sanitizeString(config.googleMapsUrl),
-      placeId: sanitizeString(config.googlePlaceId),
-      googleReviewBaseUrl:
-        sanitizeString(config.googleReviewBaseUrl) ||
-        "https://search.google.com/local/writereview?placeid=",
-      googleReviewUrl: sanitizeString(config.googleReviewUrl),
+      businessName: sanitizeString(config.businessName) || "Wir schätzen Ihr Feedback",
+    businessCategory: sanitizeString(config.businessCategory),
+    mapsUrl: sanitizeString(config.googleMapsUrl),
+    placeId: sanitizeString(config.googlePlaceId),
+    googleReviewBaseUrl:
+      sanitizeString(config.googleReviewBaseUrl) ||
+      "https://search.google.com/local/writereview?placeid=",
+    googleReviewUrl: sanitizeString(config.googleReviewUrl),
       
-      sheetScriptUrl: sanitizeString(config.sheetScriptUrl),
+    sheetScriptUrl: sanitizeString(config.sheetScriptUrl),
+      reviewThreshold: Number(config.reviewThreshold) || 5,
       discountEnabled: config.discount?.enabled !== false,
       discountPercentage: Number(config.discount?.percentage) || 10,
       discountValidDays: Number(config.discount?.validDays) || 30,
@@ -81,9 +161,9 @@
     };
     
     // Build the full Google Review URL if not provided
-    if (!state.googleReviewUrl && state.placeId) {
-      state.googleReviewUrl = `${state.googleReviewBaseUrl}${encodeURIComponent(state.placeId)}`;
-    }
+  if (!state.googleReviewUrl && state.placeId) {
+    state.googleReviewUrl = `${state.googleReviewBaseUrl}${encodeURIComponent(state.placeId)}`;
+  }
   };
 
   
@@ -122,6 +202,13 @@
     elements.followupSection.classList.remove("hidden");
     if (elements.selectedRating) {
       elements.selectedRating.textContent = rating;
+    }
+    
+    // Update rating text (singular vs plural)
+    const ratingTextElement = document.getElementById("rating-text");
+    if (ratingTextElement) {
+      const isSingular = rating === 1;
+      ratingTextElement.textContent = t(isSingular ? "ratingStarsSingular" : "ratingStars");
     }
   };
 
@@ -331,7 +418,7 @@
     clearInlineError();
   };
 
-  const handleFiveStarFlow = () => {
+  const handleHighRatingFlow = () => {
     hideRatingStep();
     elements.followupSection?.classList.add("hidden");
     elements.feedbackForm?.reset();
@@ -478,8 +565,8 @@
         return;
       }
       resetView();
-      if (state.selectedRating === 5) {
-        handleFiveStarFlow();
+      if (state.selectedRating >= state.reviewThreshold) {
+        handleHighRatingFlow();
       } else {
         showFollowupForm(state.selectedRating);
       }
@@ -515,10 +602,31 @@
     }
   };
 
+  const applyTranslations = () => {
+    // Apply translations to all elements with data-translate attribute
+    document.querySelectorAll('[data-translate]').forEach(element => {
+      const key = element.getAttribute('data-translate');
+      const translation = t(key);
+      if (translation) {
+        element.textContent = translation;
+      }
+    });
+
+    // Apply placeholder translations
+    document.querySelectorAll('[data-translate-placeholder]').forEach(element => {
+      const key = element.getAttribute('data-translate-placeholder');
+      const translation = t(key);
+      if (translation) {
+        element.placeholder = translation;
+      }
+    });
+  };
+
   const init = () => {
     initializeState();
     attachListeners();
     applyConfigToDom();
+    applyTranslations();
     setupVisibilityListener();
     checkForGoogleReturn();
   };

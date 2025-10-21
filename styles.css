@@ -77,6 +77,10 @@ h1 {
   border: 1px solid #d7d7dc;
   border-radius: 10px;
   font-size: 1rem;
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  font-weight: 400;
+  color: #222;
+  line-height: 1.5;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -85,6 +89,14 @@ h1 {
   outline: none;
   border-color: #3365ff;
   box-shadow: 0 0 0 3px rgba(51, 101, 255, 0.15);
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  font-weight: 400;
+  color: #a0a3b8;
+  opacity: 1;
 }
 
 .stars {

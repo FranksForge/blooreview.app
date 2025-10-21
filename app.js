@@ -200,16 +200,6 @@
     if (!elements.followupSection) return;
     // Keep rating step visible - don't hide it
     elements.followupSection.classList.remove("hidden");
-    if (elements.selectedRating) {
-      elements.selectedRating.textContent = rating;
-    }
-    
-    // Update rating text (singular vs plural)
-    const ratingTextElement = document.getElementById("rating-text");
-    if (ratingTextElement) {
-      const isSingular = rating === 1;
-      ratingTextElement.textContent = t(isSingular ? "ratingStarsSingular" : "ratingStars");
-    }
   };
 
   const generateDiscountCode = (name = "") => {

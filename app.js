@@ -46,7 +46,7 @@
       continueButton: "Weiter",
       ratingStars: "Sterne",
       ratingStarsSingular: "Stern",
-      feedbackIntro: "Wir lesen jede Nachricht sorgfältig. Lassen Sie uns wissen, was passiert ist, damit wir nachfassen können.",
+      feedbackIntro: "Wir lesen jede Nachricht sorgfältig. Ihr Feedback hilft uns unseren Service zukünftig noch weiter zu verbessern.",
       feedbackPrompt: "Erzählen Sie uns von Ihrer Erfahrung",
       feedbackPlaceholder: "Teilen Sie Ihre Gedanken mit...",
       feedbackNameLabel: "Ihr Name (optional)",
@@ -198,7 +198,7 @@
 
   const showFollowupForm = (rating) => {
     if (!elements.followupSection) return;
-    hideRatingStep();
+    // Keep rating step visible - don't hide it
     elements.followupSection.classList.remove("hidden");
     if (elements.selectedRating) {
       elements.selectedRating.textContent = rating;

@@ -26,10 +26,18 @@ body {
 h1,
 h2 {
   margin-top: 0;
+  text-align: center;
+}
+
+h1 {
+  font-size: 1.75rem;
+  color: #222;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
 }
 
 .hero-image {
-  width: 100%;
+  width: calc(100% + 4rem);
   margin: -2rem -2rem 1.5rem -2rem;
   border-radius: 16px 16px 0 0;
   overflow: hidden;
@@ -38,8 +46,9 @@ h2 {
 .hero-image img {
   width: 100%;
   height: auto;
-  max-height: 300px;
+  max-height: 250px;
   object-fit: cover;
+  object-position: center;
   display: block;
 }
 
@@ -51,6 +60,8 @@ h2 {
   margin-bottom: 2rem;
   color: #55596d;
   font-weight: 500;
+  text-align: center;
+  line-height: 1.5;
 }
 
 .field {
@@ -295,6 +306,15 @@ h2 {
 
   .card {
     padding: 1.5rem;
+  }
+  
+  .hero-image {
+    width: calc(100% + 3rem);
+    margin: -1.5rem -1.5rem 1.25rem -1.5rem;
+  }
+  
+  .hero-image img {
+    max-height: 200px;
   }
   
   .share-buttons {

@@ -9,7 +9,8 @@ body {
   margin: 0;
   padding: 1rem;
   display: flex;
-  min-height: 100vh;
+  min-height: 100vh; /* Fallback for older browsers */
+  min-height: 100dvh; /* Dynamic viewport height */
   align-items: center;
   justify-content: center;
 }
@@ -346,7 +347,9 @@ h1 {
 
 @media (max-width: 480px) {
   body {
-    padding: 1rem;
+    padding: 0.5rem;
+    align-items: flex-start;
+    padding-top: 1rem;
   }
 
   .card {

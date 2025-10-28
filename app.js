@@ -223,27 +223,6 @@
     }
   };
 
-  const goBackToRating = () => {
-    // Show the rating step again
-    elements.ratingStep?.classList.remove("hidden");
-    
-    // Show the subtitle again
-    const subtitle = document.querySelector('.subtitle');
-    if (subtitle) {
-      subtitle.classList.remove('hidden');
-    }
-    
-    // Hide the feedback form
-    elements.followupSection?.classList.add("hidden");
-    
-    // Clear the selected rating state
-    state.selectedRating = null;
-    
-    // Uncheck all stars
-    const stars = document.querySelectorAll('input[name="rating"]');
-    stars.forEach(star => star.checked = false);
-  };
-
   const resetToHome = () => {
     // Reset all state
     state.selectedRating = null;
@@ -649,11 +628,6 @@
     });
 
     elements.feedbackForm?.addEventListener("submit", handleFeedbackSubmit);
-
-    const backToRatingBtn = document.getElementById('back-to-rating-btn');
-    if (backToRatingBtn) {
-      backToRatingBtn.addEventListener('click', goBackToRating);
-    }
 
     elements.copyCodeBtn?.addEventListener("click", copyDiscountCode);
     

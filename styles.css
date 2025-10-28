@@ -168,12 +168,6 @@ h1 {
   font-size: 0.95rem;
 }
 
-#back-to-rating-btn {
-  width: 100%;
-  margin-bottom: 0.75rem;
-  padding: 0.6rem 1rem;
-  font-size: 0.95rem;
-}
 
 .highlight-message {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -312,12 +306,12 @@ h1 {
   top: 20px;
   left: 20px;
   background: transparent;
-  border: none;
+  border: 2px solid #d7d7dc;
   color: #999;
   font-size: 28px;
   cursor: pointer;
   padding: 8px;
-  border-radius: 8px;
+  border-radius: 50%;
   transition: all 0.2s ease;
   line-height: 1;
   z-index: 100;
@@ -330,6 +324,7 @@ h1 {
 
 .home-btn:hover {
   background: rgba(0, 0, 0, 0.05);
+  border-color: #999;
   color: #333;
 }
 

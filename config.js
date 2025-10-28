@@ -1,4 +1,4 @@
-// Multi-tenant configs - updated: 2025-10-28T02:04:51.021Z
+// Multi-tenant configs - updated: 2025-10-28T02:24:26.835Z
 // DO NOT EDIT MANUALLY - Run 'node sync-config.js' to update from Google Sheets
 window.REVIEW_CONFIGS = {
   "bigc-donchan": {
@@ -79,7 +79,7 @@ window.REVIEW_CONFIGS = {
       "message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!"
     },
     "logoUrl": "",
-    "heroImageUrl": ""
+    "heroImageUrl": "dein-business.jpg"
   },
   "bodenseebaer": {
     "businessName": "Bodenseebär",
@@ -99,7 +99,7 @@ window.REVIEW_CONFIGS = {
       "message": "Invite your friends to also leave a review and get their own discount!"
     },
     "logoUrl": "",
-    "heroImageUrl": ""
+    "heroImageUrl": "bodenseebaer.png"
   }
 };
 

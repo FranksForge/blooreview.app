@@ -601,7 +601,11 @@
     const config = window.REVIEW_TOOL_CONFIG || {};
     
     if (config.heroImageUrl && heroImage && heroImageContainer) {
-      heroImage.src = config.heroImageUrl;
+      // If heroImageUrl is just a filename (no protocol), prepend /images/
+      const imageSrc = config.heroImageUrl.startsWith('http') 
+        ? config.heroImageUrl 
+        : `/images/${config.heroImageUrl}`;
+      heroImage.src = imageSrc;
       heroImage.alt = state.businessName;
       heroImageContainer.classList.remove('hidden');
     } else if (heroImageContainer) {

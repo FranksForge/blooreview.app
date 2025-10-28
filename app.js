@@ -447,7 +447,7 @@
     elements.feedbackForm?.reset();
     elements.thankYou?.classList.add("hidden");
     elements.googleForward?.classList.remove("hidden");
-    openReviewLink();
+    // Don't auto-open - let user click the link to avoid popup blockers
   };
 
   const sendInternalFeedback = async (payload) => {

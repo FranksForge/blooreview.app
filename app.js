@@ -397,11 +397,17 @@
     hideRatingStep();
     elements.thankYou?.classList.remove("hidden");
     
-    // Update thank you message based on discount availability
+    // Update thank you message based on discount availability and rating
     if (state.discountEnabled) {
       if (elements.thankYouMessage) {
-        elements.thankYouMessage.textContent = 
-          "Wir schätzen es sehr, dass Sie sich die Zeit nehmen, uns zu helfen, besser zu werden. Als Zeichen unserer Dankbarkeit haben wir einen speziellen Rabattcode nur für Sie!";
+        // Special message for 5-star ratings (Google Reviews flow)
+        if (state.selectedRating >= state.reviewThreshold) {
+          elements.thankYouMessage.textContent = 
+            "Vielen Dank für Ihre 5-Sterne-Bewertung! Wir haben Google Bewertungen in einem neuen Tab für Sie geöffnet. Als Dankeschön erhalten Sie hier Ihren exklusiven Rabattcode!";
+        } else {
+          elements.thankYouMessage.textContent = 
+            "Wir schätzen es sehr, dass Sie sich die Zeit genommen haben, uns zu helfen, besser zu werden. Ihr Feedback hilft uns direkt dabei, unseren Service zu verbessern.";
+        }
       }
       elements.discountSection?.classList.remove("hidden");
       
@@ -442,22 +448,17 @@
   };
 
   const handleHighRatingFlow = () => {
-    hideRatingStep();
-    elements.followupSection?.classList.add("hidden");
-    elements.feedbackForm?.reset();
-    elements.thankYou?.classList.add("hidden");
-    elements.googleForward?.classList.remove("hidden");
-    
-    // Try to auto-open Google Reviews in new tab
-    // This works because it's triggered directly by user click (on continue button)
+    // Open Google Reviews in new tab automatically
     if (state.googleReviewUrl) {
       const newWindow = window.open(state.googleReviewUrl, '_blank', 'noopener,noreferrer');
       
-      // If popup was blocked, the button will still be available as fallback
       if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
-        console.log('Popup blocked - user needs to click the button manually');
+        console.log('Popup was blocked by browser');
       }
     }
+    
+    // Show thank you page directly with discount code
+    showThankYouPage();
   };
 
   const sendInternalFeedback = async (payload) => {

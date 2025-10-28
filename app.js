@@ -65,9 +65,9 @@
       shareSMS: "Per SMS teilen",
       copyLink: "Link kopieren",
       googleForwardTitle: "🎉 Danke für die Liebe!",
-      googleForwardMessage: "Ihre Worte bedeuten uns viel. Wir öffnen Google Bewertungen, damit Sie sie öffentlich teilen können.",
-      googleForwardHighlight: "✨ Nach Ihrer Bewertung verwenden Sie die Zurück-Taste, um hierher zurückzukehren und Ihren Rabattcode zu erhalten!",
-      googleForwardButton: "Google Bewertungen öffnen",
+      googleForwardMessage: "Wir haben Google Bewertungen in einem neuen Tab für Sie geöffnet. Teilen Sie dort Ihre Erfahrung!",
+      googleForwardHighlight: "✨ Nach Ihrer Bewertung kehren Sie zu diesem Tab zurück, um Ihren Rabattcode zu erhalten!",
+      googleForwardButton: "Google Bewertungen erneut öffnen",
       mapsNote: "Brauchen Sie eine Erinnerung an uns?",
       mapsLink: "Sehen Sie sich unseren Google Maps Eintrag an.",
       footerPoweredBy: "Powered by",
@@ -447,7 +447,17 @@
     elements.feedbackForm?.reset();
     elements.thankYou?.classList.add("hidden");
     elements.googleForward?.classList.remove("hidden");
-    // Don't auto-open - let user click the link to avoid popup blockers
+    
+    // Try to auto-open Google Reviews in new tab
+    // This works because it's triggered directly by user click (on continue button)
+    if (state.googleReviewUrl) {
+      const newWindow = window.open(state.googleReviewUrl, '_blank', 'noopener,noreferrer');
+      
+      // If popup was blocked, the button will still be available as fallback
+      if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
+        console.log('Popup blocked - user needs to click the button manually');
+      }
+    }
   };
 
   const sendInternalFeedback = async (payload) => {

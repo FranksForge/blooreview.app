@@ -1,4 +1,4 @@
-// Multi-tenant configs - updated: 2025-10-21T08:53:18.301Z
+// Multi-tenant configs - updated: 2025-10-28T02:04:51.021Z
 // DO NOT EDIT MANUALLY - Run 'node sync-config.js' to update from Google Sheets
 window.REVIEW_CONFIGS = {
   "bigc-donchan": {
@@ -79,7 +79,27 @@ window.REVIEW_CONFIGS = {
       "message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!"
     },
     "logoUrl": "",
-    "heroImageUrl": "hero-demo.jpg"
+    "heroImageUrl": ""
+  },
+  "bodenseebaer": {
+    "businessName": "Bodenseebär",
+    "businessCategory": "Laden",
+    "googleMapsUrl": "https://www.google.com/maps/place/Bodenseeb%C3%A4r/@47.6741986,9.3132606,566m/data=!3m2!1e3!4b1!4m6!3m5!1s0x479af9f0723d9769:0xebdffdab1f93641e!8m2!3d47.674195!4d9.3158409!16s%2Fg%2F11tw_st1pj?entry=ttu&g_ep=EgoyMDI1MTAyMi4wIKXMDSoASAFQAw%3D%3D",
+    "googlePlaceId": "ChIJaZc9cvD5mkcRHmSTH6v93-s",
+    "googleReviewBaseUrl": "https://search.google.com/local/writereview?placeid=",
+    "googleReviewUrl": "",
+    "sheetScriptUrl": "https://script.google.com/macros/s/AKfycbzbo0fy_aFMAyI1I87n8XvZ6eDzaxe1nI4zuUfkkNuawcKWBIbJ2uFkJq1Ntb_c-keLEQ/exec",
+    "discount": {
+      "enabled": false,
+      "percentage": 10,
+      "validDays": 30
+    },
+    "referral": {
+      "enabled": false,
+      "message": "Invite your friends to also leave a review and get their own discount!"
+    },
+    "logoUrl": "",
+    "heroImageUrl": ""
   }
 };
 

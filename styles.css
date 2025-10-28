@@ -148,7 +148,7 @@ h1 {
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0;
 }
 
 .rating-confirm {
@@ -375,6 +375,19 @@ footer {
   flex-wrap: wrap;
 }
 
+.footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.footer-link:hover {
+  opacity: 0.8;
+  transform: translateY(-1px);
+}
+
 .footer-logo {
   height: 20px;
   width: auto;
@@ -382,10 +395,6 @@ footer {
   object-fit: contain;
   opacity: 0.95;
   transition: opacity 0.2s ease;
-}
-
-.footer-logo:hover {
-  opacity: 1;
 }
 
 .footer-domain {

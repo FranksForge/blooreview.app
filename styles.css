@@ -154,7 +154,7 @@ h1 {
 }
 
 .rating-confirm {
-  margin-top: 0.25rem;
+  margin-top: 0;
 }
 
 .rating-error {
@@ -294,8 +294,12 @@ h1 {
 
 .form-error {
   color: #d93025;
-  min-height: 1.2em;
+  min-height: 0;
   margin-top: 0.5rem;
+}
+
+.form-error:empty {
+  margin-top: 0;
 }
 
 .hidden {

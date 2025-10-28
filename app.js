@@ -438,7 +438,7 @@
     } else {
       if (elements.thankYouMessage) {
         elements.thankYouMessage.textContent = 
-          "Wir schätzen es sehr, dass Sie sich die Zeit nehmen, uns zu helfen, besser zu werden. Ihr Feedback prägt direkt, wie wir unserer Gemeinschaft dienen.";
+          "Wir schätzen es sehr, dass Sie sich die Zeit nehmen, uns zu helfen, besser zu werden. Wir hoffen Sie bald wieder bei uns begrüßen zu dürfen!.";
       }
       elements.discountSection?.classList.add("hidden");
       elements.shareLoveSection?.classList.add("hidden");

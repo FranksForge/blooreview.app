@@ -354,6 +354,7 @@ h1 {
     padding: 0.5rem;
     align-items: flex-start;
     padding-top: 1rem;
+    min-height: auto;
   }
 
   .card {

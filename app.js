@@ -212,6 +212,10 @@
     // Show the feedback form
     elements.followupSection.classList.remove("hidden");
     
+    // Show home button
+    const homeBtn = document.getElementById('home-btn');
+    if (homeBtn) homeBtn.classList.remove('hidden');
+    
     // Check the corresponding star in the display stars
     const displayStar = document.getElementById(`display-star${rating}`);
     if (displayStar) {
@@ -238,6 +242,40 @@
     // Uncheck all stars
     const stars = document.querySelectorAll('input[name="rating"]');
     stars.forEach(star => star.checked = false);
+  };
+
+  const resetToHome = () => {
+    // Reset all state
+    state.selectedRating = null;
+    state.currentDiscountCode = null;
+    state.userComments = null;
+    state.userName = null;
+    state.waitingForGoogleReturn = false;
+    
+    // Clear form fields
+    if (elements.commentsField) elements.commentsField.value = '';
+    if (elements.feedbackName) elements.feedbackName.value = '';
+    
+    // Uncheck all stars
+    elements.ratingInputs.forEach(star => star.checked = false);
+    
+    // Show the initial screen
+    elements.ratingStep?.classList.remove("hidden");
+    elements.mainHeader?.classList.remove("hidden");
+    
+    const subtitle = document.querySelector('.subtitle');
+    if (subtitle) subtitle.classList.remove('hidden');
+    
+    // Hide all other sections
+    elements.followupSection?.classList.add("hidden");
+    elements.thankYou?.classList.add("hidden");
+    elements.googleForward?.classList.add("hidden");
+    
+    // Hide the home button on the initial screen
+    const homeBtn = document.getElementById('home-btn');
+    if (homeBtn) homeBtn.classList.add('hidden');
+    
+    clearInlineError();
   };
 
   const generateDiscountCode = (name = "") => {
@@ -397,6 +435,10 @@
     hideRatingStep();
     elements.thankYou?.classList.remove("hidden");
     
+    // Show home button
+    const homeBtn = document.getElementById('home-btn');
+    if (homeBtn) homeBtn.classList.remove('hidden');
+    
     // Update thank you message based on discount availability and rating
     if (state.discountEnabled) {
       if (elements.thankYouMessage) {
@@ -438,7 +480,7 @@
     } else {
       if (elements.thankYouMessage) {
         elements.thankYouMessage.textContent = 
-          "Wir schätzen es sehr, dass Sie sich die Zeit nehmen, uns zu helfen, besser zu werden. Wir hoffen Sie bald wieder bei uns begrüßen zu dürfen!.";
+          "Wir schätzen es sehr, dass Sie sich die Zeit nehmen, uns zu helfen, besser zu werden. Wir hoffen Sie bald wieder bei uns begrüßen zu dürfen!";
       }
       elements.discountSection?.classList.add("hidden");
       elements.shareLoveSection?.classList.add("hidden");
@@ -620,6 +662,11 @@
     elements.shareSMSBtn?.addEventListener("click", shareViaSMS);
     
     elements.copyLinkBtn?.addEventListener("click", copyReviewLink);
+    
+    const homeBtn = document.getElementById('home-btn');
+    if (homeBtn) {
+      homeBtn.addEventListener('click', resetToHome);
+    }
   };
 
   const applyConfigToDom = () => {

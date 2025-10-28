@@ -353,12 +353,16 @@ h1 {
   }
 
   .card {
-    padding: 1.5rem;
+    padding: 1.25rem 1.5rem;
+  }
+  
+  .subtitle {
+    margin-bottom: 1rem;
   }
   
   .hero-image {
     width: calc(100% + 3rem);
-    margin: -1.5rem -1.5rem 1.25rem -1.5rem;
+    margin: -1.25rem -1.5rem 1rem -1.5rem;
   }
   
   .hero-image img {
@@ -366,10 +370,11 @@ h1 {
   }
   
   footer {
+    margin-top: 1rem;
     margin-left: -1.5rem;
     margin-right: -1.5rem;
-    margin-bottom: -1.5rem;
-    padding: 1.25rem;
+    margin-bottom: -1.25rem;
+    padding: 1rem 1.25rem;
   }
   
   .share-buttons {

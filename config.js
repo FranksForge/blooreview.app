@@ -1,4 +1,4 @@
-// Multi-tenant configs - updated: 2025-10-28T02:24:26.835Z
+// Multi-tenant configs - updated: 2025-10-28T03:02:27.302Z
 // DO NOT EDIT MANUALLY - Run 'node sync-config.js' to update from Google Sheets
 window.REVIEW_CONFIGS = {
   "bigc-donchan": {
@@ -82,7 +82,7 @@ window.REVIEW_CONFIGS = {
     "heroImageUrl": "dein-business.jpg"
   },
   "bodenseebaer": {
-    "businessName": "Bodenseebär",
+    "businessName": "Bodenseebär in Hagnau",
     "businessCategory": "Laden",
     "googleMapsUrl": "https://www.google.com/maps/place/Bodenseeb%C3%A4r/@47.6741986,9.3132606,566m/data=!3m2!1e3!4b1!4m6!3m5!1s0x479af9f0723d9769:0xebdffdab1f93641e!8m2!3d47.674195!4d9.3158409!16s%2Fg%2F11tw_st1pj?entry=ttu&g_ep=EgoyMDI1MTAyMi4wIKXMDSoASAFQAw%3D%3D",
     "googlePlaceId": "ChIJaZc9cvD5mkcRHmSTH6v93-s",

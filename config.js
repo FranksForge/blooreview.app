@@ -1,4 +1,4 @@
-// Multi-tenant configs - updated: 2025-11-01T23:06:51.635Z
+// Multi-tenant configs - updated: 2025-11-01T23:10:47.274Z
 // DO NOT EDIT MANUALLY - Run 'node sync-config.js' to update from Google Sheets
 window.REVIEW_CONFIGS = {
   "hairexpress-friseur-real-bedburg": {
@@ -210,7 +210,7 @@ window.REVIEW_CONFIGS = {
     "name": "Friseur Struwwelpeter / Struwwelmobil Inh.: E. Immesberger",
     "category": "Hair Care, Store",
     "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJW1IBvPdFv0cR1s07Add3aEU",
-    "hero_image": "",
+    "hero_image": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRElKCLs_gosqF9vb3h68CaIgDAjnxU3x_PU-1j420CWaHRuA",
     "logo_url": "",
     "discount_enabled": true,
     "discount_percentage": 10,

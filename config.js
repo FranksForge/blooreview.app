@@ -1,7 +1,8 @@
-// Multi-tenant configs - updated: 2025-11-01T22:56:04.680Z
+// Multi-tenant configs - updated: 2025-11-01T23:06:51.635Z
 // DO NOT EDIT MANUALLY - Run 'node sync-config.js' to update from Google Sheets
 window.REVIEW_CONFIGS = {
   "hairexpress-friseur-real-bedburg": {
+    "place_id": "ChIJySq9pPBFv0cRUHwL6u8opjM",
     "name": "HairExpress Friseur real Bedburg",
     "category": "Hair Care",
     "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJySq9pPBFv0cRUHwL6u8opjM",
@@ -12,13 +13,13 @@ window.REVIEW_CONFIGS = {
     "discount_valid_days": 30,
     "referral_enabled": true,
     "referral_message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",
-    "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
     "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   },
   "arthair": {
+    "place_id": "ChIJoe44AXBPv0cRcpxEOwnFpb0",
     "name": "ArtHair",
     "category": "Hair Care",
     "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJoe44AXBPv0cRcpxEOwnFpb0",
@@ -29,13 +30,13 @@ window.REVIEW_CONFIGS = {
     "discount_valid_days": 30,
     "referral_enabled": true,
     "referral_message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",
-    "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
     "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   },
   "jr-cut-color": {
+    "place_id": "ChIJXfToFZNPv0cRGC_JA1cnU9Q",
     "name": "JR | Cut & Color",
     "category": "Hair Care",
     "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJXfToFZNPv0cRGC_JA1cnU9Q",
@@ -46,13 +47,13 @@ window.REVIEW_CONFIGS = {
     "discount_valid_days": 30,
     "referral_enabled": true,
     "referral_message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",
-    "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
     "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   },
   "bahaarmas-by-linas-gbr": {
+    "place_id": "ChIJW7JFF9xPv0cR-qXwlA9fdR0",
     "name": "baHAARmas by Lina's GbR",
     "category": "Hair Care",
     "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJW7JFF9xPv0cR-qXwlA9fdR0",
@@ -63,13 +64,13 @@ window.REVIEW_CONFIGS = {
     "discount_valid_days": 30,
     "referral_enabled": true,
     "referral_message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",
-    "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
     "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   },
   "haarlequeen-in-der-beautybar": {
+    "place_id": "ChIJm3FoNjxPv0cRhMiJ1waiSw8",
     "name": "Haarlequeen in der \"BeautyBAR\"",
     "category": "Hair Care",
     "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJm3FoNjxPv0cRhMiJ1waiSw8",
@@ -80,13 +81,13 @@ window.REVIEW_CONFIGS = {
     "discount_valid_days": 30,
     "referral_enabled": true,
     "referral_message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",
-    "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
     "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   },
   "giarrizzo-franco": {
+    "place_id": "ChIJK9Dp01hPv0cRcxWGk3HKOjw",
     "name": "Giarrizzo Franco",
     "category": "Hair Care",
     "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJK9Dp01hPv0cRcxWGk3HKOjw",
@@ -97,13 +98,13 @@ window.REVIEW_CONFIGS = {
     "discount_valid_days": 30,
     "referral_enabled": true,
     "referral_message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",
-    "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
     "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   },
   "style-in-lounge-inh-reyhan-leu": {
+    "place_id": "ChIJKTeufldPv0cRrlPMWVbjN-I",
     "name": "Style in lounge Inh. Reyhan Leu",
     "category": "Hair Care",
     "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJKTeufldPv0cRrlPMWVbjN-I",
@@ -114,13 +115,13 @@ window.REVIEW_CONFIGS = {
     "discount_valid_days": 30,
     "referral_enabled": true,
     "referral_message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",
-    "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
     "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   },
   "friseur-daulat": {
+    "place_id": "ChIJBb1o3PdFv0cRS4OImlpsZq0",
     "name": "Friseur Daulat",
     "category": "Hair Care",
     "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJBb1o3PdFv0cRS4OImlpsZq0",
@@ -131,13 +132,13 @@ window.REVIEW_CONFIGS = {
     "discount_valid_days": 30,
     "referral_enabled": true,
     "referral_message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",
-    "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
     "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   },
   "elisabeth-schmitz-friseursalon": {
+    "place_id": "ChIJZaf3wmRPv0cR-fKXYH4w-xE",
     "name": "Elisabeth Schmitz Friseursalon",
     "category": "Hair Care",
     "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJZaf3wmRPv0cR-fKXYH4w-xE",
@@ -148,13 +149,13 @@ window.REVIEW_CONFIGS = {
     "discount_valid_days": 30,
     "referral_enabled": true,
     "referral_message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",
-    "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
     "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   },
   "bedburg-barbershop": {
+    "place_id": "ChIJ5Q6IZNZFv0cRrF2l7-tjPLg",
     "name": "Bedburg Barbershop",
     "category": "Hair Care, Health",
     "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJ5Q6IZNZFv0cRrF2l7-tjPLg",
@@ -165,13 +166,13 @@ window.REVIEW_CONFIGS = {
     "discount_valid_days": 30,
     "referral_enabled": true,
     "referral_message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",
-    "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
     "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   },
   "hilde-dietz-frisr": {
+    "place_id": "ChIJp2r2D1dPv0cRddq-Ht7makU",
     "name": "Hilde Dietz Frisör",
     "category": "Hair Care",
     "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJp2r2D1dPv0cRddq-Ht7makU",
@@ -182,13 +183,13 @@ window.REVIEW_CONFIGS = {
     "discount_valid_days": 30,
     "referral_enabled": true,
     "referral_message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",
-    "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
     "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   },
   "salon-kcher": {
+    "place_id": "ChIJf2FGfF9Pv0cRpdqw01_ROOU",
     "name": "Salon Köcher",
     "category": "Hair Care",
     "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJf2FGfF9Pv0cRpdqw01_ROOU",
@@ -199,13 +200,13 @@ window.REVIEW_CONFIGS = {
     "discount_valid_days": 30,
     "referral_enabled": true,
     "referral_message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",
-    "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
     "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   },
   "friseur-struwwelpeter-struwwelmobil-inh-e-immesberger": {
+    "place_id": "ChIJW1IBvPdFv0cR1s07Add3aEU",
     "name": "Friseur Struwwelpeter / Struwwelmobil Inh.: E. Immesberger",
     "category": "Hair Care, Store",
     "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJW1IBvPdFv0cR1s07Add3aEU",
@@ -216,13 +217,13 @@ window.REVIEW_CONFIGS = {
     "discount_valid_days": 30,
     "referral_enabled": true,
     "referral_message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",
-    "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
     "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   },
   "beauty-bar": {
+    "place_id": "ChIJqUvS_4xPv0cRIavCzkVDbEo",
     "name": "Beauty BAR",
     "category": "Beauty Salon, Hair Care, Spa, Store",
     "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJqUvS_4xPv0cRIavCzkVDbEo",
@@ -233,13 +234,13 @@ window.REVIEW_CONFIGS = {
     "discount_valid_days": 30,
     "referral_enabled": true,
     "referral_message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",
-    "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
     "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   },
   "friseur-gudrun-meuter": {
+    "place_id": "ChIJsxGjD29Pv0cRFAe29G434u8",
     "name": "Friseur Gudrun Meuter",
     "category": "Hair Care",
     "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJsxGjD29Pv0cRFAe29G434u8",
@@ -250,13 +251,13 @@ window.REVIEW_CONFIGS = {
     "discount_valid_days": 30,
     "referral_enabled": true,
     "referral_message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",
-    "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
     "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   },
   "wellness-therapeut-andreas-rudi": {
+    "place_id": "ChIJn8LnAfdFv0cR9oh2o7EVPF4",
     "name": "Wellness Therapeut Andreas Rudi",
     "category": "Beauty Salon, Hair Care, Spa",
     "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJn8LnAfdFv0cR9oh2o7EVPF4",
@@ -267,13 +268,13 @@ window.REVIEW_CONFIGS = {
     "discount_valid_days": 30,
     "referral_enabled": true,
     "referral_message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",
-    "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
     "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   },
   "friseursalon-anke-krichel": {
+    "place_id": "ChIJjdOsC3BPv0cRgbq_kiVrPC4",
     "name": "Friseursalon Anke Krichel",
     "category": "Hair Care",
     "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJjdOsC3BPv0cRgbq_kiVrPC4",
@@ -284,13 +285,13 @@ window.REVIEW_CONFIGS = {
     "discount_valid_days": 30,
     "referral_enabled": true,
     "referral_message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",
-    "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
     "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   },
   "annemarie-osterhammel-friseursalon": {
+    "place_id": "ChIJV1oFoexFv0cRdLmEeKReyng",
     "name": "Annemarie Osterhammel Friseursalon",
     "category": "Hair Care",
     "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJV1oFoexFv0cRdLmEeKReyng",
@@ -301,13 +302,13 @@ window.REVIEW_CONFIGS = {
     "discount_valid_days": 30,
     "referral_enabled": true,
     "referral_message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",
-    "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
     "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   },
   "haircreation-jennifer-wien": {
+    "place_id": "ChIJddwpW4JPv0cR5BrNN5yhc5k",
     "name": "Haircreation Jennifer Wien",
     "category": "Hair Care",
     "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJddwpW4JPv0cR5BrNN5yhc5k",
@@ -318,13 +319,13 @@ window.REVIEW_CONFIGS = {
     "discount_valid_days": 30,
     "referral_enabled": true,
     "referral_message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",
-    "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
     "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   },
   "sara-rosa-friseurmeisterin": {
+    "place_id": "ChIJwbbTR1RFv0cRCGkiCnLz1zY",
     "name": "Sara Rosa Friseurmeisterin",
     "category": "Hair Care",
     "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJwbbTR1RFv0cRCGkiCnLz1zY",
@@ -335,7 +336,6 @@ window.REVIEW_CONFIGS = {
     "discount_valid_days": 30,
     "referral_enabled": true,
     "referral_message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",
-    "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
     "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",

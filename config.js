@@ -1,4 +1,4 @@
-// Multi-tenant configs - updated: 2025-11-01T08:41:22.863Z
+// Multi-tenant configs - updated: 2025-11-01T08:58:52.736Z
 // DO NOT EDIT MANUALLY - Run 'node sync-config.js' to update from Google Sheets
 window.REVIEW_CONFIGS = {
   "beauty-bar": {
@@ -12,10 +12,11 @@ window.REVIEW_CONFIGS = {
     "discount_percentage": 20,
     "discount_valid_days": 14,
     "referral_enabled": true,
-    "referral_message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",
+    "referral_message": "test",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": ""
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "min_review": 5
   },
   "friseur-struwwelpeter-struwwelmobil-inh-e-immesberger": {
     "place_id": "ChIJW1IBvPdFv0cR1s07Add3aEU",
@@ -28,10 +29,11 @@ window.REVIEW_CONFIGS = {
     "discount_percentage": 0,
     "discount_valid_days": 0,
     "referral_enabled": false,
-    "referral_message": "",
+    "referral_message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": ""
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "min_review": 5
   },
   "giarrizzo-franco": {
     "place_id": "ChIJK9Dp01hPv0cRcxWGk3HKOjw",
@@ -44,10 +46,11 @@ window.REVIEW_CONFIGS = {
     "discount_percentage": 0,
     "discount_valid_days": 0,
     "referral_enabled": false,
-    "referral_message": "",
+    "referral_message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": ""
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "min_review": 5
   },
   "haarlequeen-in-der-beautybar": {
     "place_id": "ChIJm3FoNjxPv0cRhMiJ1waiSw8",
@@ -60,10 +63,11 @@ window.REVIEW_CONFIGS = {
     "discount_percentage": 0,
     "discount_valid_days": 0,
     "referral_enabled": false,
-    "referral_message": "",
+    "referral_message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": ""
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "min_review": 5
   },
   "hilde-dietz-frisr": {
     "place_id": "ChIJp2r2D1dPv0cRddq-Ht7makU",
@@ -76,10 +80,11 @@ window.REVIEW_CONFIGS = {
     "discount_percentage": 0,
     "discount_valid_days": 0,
     "referral_enabled": false,
-    "referral_message": "",
+    "referral_message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": ""
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "min_review": 5
   },
   "annemarie-osterhammel-friseursalon": {
     "place_id": "ChIJV1oFoexFv0cRdLmEeKReyng",
@@ -92,10 +97,11 @@ window.REVIEW_CONFIGS = {
     "discount_percentage": 0,
     "discount_valid_days": 0,
     "referral_enabled": false,
-    "referral_message": "",
+    "referral_message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": ""
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "min_review": 5
   },
   "bedburg-barbershop": {
     "place_id": "ChIJ5Q6IZNZFv0cRrF2l7-tjPLg",
@@ -108,10 +114,11 @@ window.REVIEW_CONFIGS = {
     "discount_percentage": 0,
     "discount_valid_days": 0,
     "referral_enabled": false,
-    "referral_message": "",
+    "referral_message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": ""
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "min_review": 5
   },
   "elisabeth-schmitz-friseursalon": {
     "place_id": "ChIJZaf3wmRPv0cR-fKXYH4w-xE",
@@ -124,10 +131,11 @@ window.REVIEW_CONFIGS = {
     "discount_percentage": 0,
     "discount_valid_days": 0,
     "referral_enabled": false,
-    "referral_message": "",
+    "referral_message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": ""
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "min_review": 5
   },
   "friseur-daulat": {
     "place_id": "ChIJBb1o3PdFv0cRS4OImlpsZq0",
@@ -140,10 +148,11 @@ window.REVIEW_CONFIGS = {
     "discount_percentage": 0,
     "discount_valid_days": 0,
     "referral_enabled": false,
-    "referral_message": "",
+    "referral_message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": ""
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "min_review": 5
   },
   "friseur-gudrun-meuter": {
     "place_id": "ChIJsxGjD29Pv0cRFAe29G434u8",
@@ -156,10 +165,11 @@ window.REVIEW_CONFIGS = {
     "discount_percentage": 0,
     "discount_valid_days": 0,
     "referral_enabled": false,
-    "referral_message": "",
+    "referral_message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": ""
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "min_review": 5
   },
   "friseursalon-anke-krichel": {
     "place_id": "ChIJjdOsC3BPv0cRgbq_kiVrPC4",
@@ -172,10 +182,11 @@ window.REVIEW_CONFIGS = {
     "discount_percentage": 0,
     "discount_valid_days": 0,
     "referral_enabled": false,
-    "referral_message": "",
+    "referral_message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": ""
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "min_review": 5
   },
   "haaraktuell-inh-v-khn": {
     "place_id": "ChIJiSIdKiJEv0cRussuKguD8PY",
@@ -188,10 +199,11 @@ window.REVIEW_CONFIGS = {
     "discount_percentage": 0,
     "discount_valid_days": 0,
     "referral_enabled": false,
-    "referral_message": "",
+    "referral_message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": ""
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "min_review": 5
   },
   "haarstyling-esser-uerlings": {
     "place_id": "ChIJ9RBlAKlHv0cRqX-aqxAJjyE",
@@ -204,10 +216,11 @@ window.REVIEW_CONFIGS = {
     "discount_percentage": 0,
     "discount_valid_days": 0,
     "referral_enabled": false,
-    "referral_message": "",
+    "referral_message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": ""
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "min_review": 5
   },
   "hair-style-by-ferrand-elsdorf": {
     "place_id": "ChIJgym_wSFEv0cRrEG2oTsKAbE",
@@ -220,10 +233,11 @@ window.REVIEW_CONFIGS = {
     "discount_percentage": 0,
     "discount_valid_days": 0,
     "referral_enabled": false,
-    "referral_message": "",
+    "referral_message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": ""
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "min_review": 5
   },
   "hairexpress-friseur-real-bedburg": {
     "place_id": "ChIJySq9pPBFv0cRUHwL6u8opjM",
@@ -236,10 +250,11 @@ window.REVIEW_CONFIGS = {
     "discount_percentage": 0,
     "discount_valid_days": 0,
     "referral_enabled": false,
-    "referral_message": "",
+    "referral_message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": ""
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "min_review": 5
   },
   "haircreation-jennifer-wien": {
     "place_id": "ChIJddwpW4JPv0cR5BrNN5yhc5k",
@@ -252,10 +267,11 @@ window.REVIEW_CONFIGS = {
     "discount_percentage": 0,
     "discount_valid_days": 0,
     "referral_enabled": false,
-    "referral_message": "",
+    "referral_message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": ""
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "min_review": 5
   },
   "jr-cut-color": {
     "place_id": "ChIJXfToFZNPv0cRGC_JA1cnU9Q",
@@ -268,10 +284,11 @@ window.REVIEW_CONFIGS = {
     "discount_percentage": 0,
     "discount_valid_days": 0,
     "referral_enabled": false,
-    "referral_message": "",
+    "referral_message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": ""
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "min_review": 5
   },
   "sr-cut-color": {
     "place_id": "ChIJXdbIpatHv0cR-iFLl0J22EI",
@@ -284,10 +301,11 @@ window.REVIEW_CONFIGS = {
     "discount_percentage": 0,
     "discount_valid_days": 0,
     "referral_enabled": false,
-    "referral_message": "",
+    "referral_message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": ""
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "min_review": 5
   },
   "salon-kcher": {
     "place_id": "ChIJf2FGfF9Pv0cRpdqw01_ROOU",
@@ -300,10 +318,11 @@ window.REVIEW_CONFIGS = {
     "discount_percentage": 0,
     "discount_valid_days": 0,
     "referral_enabled": false,
-    "referral_message": "",
+    "referral_message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": ""
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "min_review": 5
   },
   "sara-rosa-friseurmeisterin": {
     "place_id": "ChIJwbbTR1RFv0cRCGkiCnLz1zY",
@@ -316,10 +335,11 @@ window.REVIEW_CONFIGS = {
     "discount_percentage": 0,
     "discount_valid_days": 0,
     "referral_enabled": false,
-    "referral_message": "",
+    "referral_message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": ""
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "min_review": 5
   },
   "style-in-lounge-inh-reyhan-leu": {
     "place_id": "ChIJKTeufldPv0cRrlPMWVbjN-I",
@@ -332,10 +352,11 @@ window.REVIEW_CONFIGS = {
     "discount_percentage": 0,
     "discount_valid_days": 0,
     "referral_enabled": false,
-    "referral_message": "",
+    "referral_message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": ""
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "min_review": 5
   },
   "wellness-therapeut-andreas-rudi": {
     "place_id": "ChIJn8LnAfdFv0cR9oh2o7EVPF4",
@@ -348,10 +369,11 @@ window.REVIEW_CONFIGS = {
     "discount_percentage": 0,
     "discount_valid_days": 0,
     "referral_enabled": false,
-    "referral_message": "",
+    "referral_message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": ""
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "min_review": 5
   },
   "bahaarmas-by-linas-gbr": {
     "place_id": "ChIJW7JFF9xPv0cR-qXwlA9fdR0",
@@ -364,10 +386,11 @@ window.REVIEW_CONFIGS = {
     "discount_percentage": 0,
     "discount_valid_days": 0,
     "referral_enabled": false,
-    "referral_message": "",
+    "referral_message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": ""
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "min_review": 5
   }
 };
 

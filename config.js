@@ -1,4 +1,4 @@
-// Multi-tenant configs - updated: 2025-10-28T03:02:27.302Z
+// Multi-tenant configs - updated: 2025-11-01T07:22:17.720Z
 // DO NOT EDIT MANUALLY - Run 'node sync-config.js' to update from Google Sheets
 window.REVIEW_CONFIGS = {
   "bigc-donchan": {
@@ -100,6 +100,26 @@ window.REVIEW_CONFIGS = {
     },
     "logoUrl": "",
     "heroImageUrl": "bodenseebaer.png"
+  },
+  "beautybar": {
+    "businessName": "Beauty BAR",
+    "businessCategory": "Beauty Salon, Hair Care, Spa, Store",
+    "googleMapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJqUvS_4xPv0cRIavCzkVDbEo",
+    "googlePlaceId": "ChIJqUvS_4xPv0cRIavCzkVDbEo",
+    "googleReviewBaseUrl": "https://search.google.com/local/writereview?placeid=",
+    "googleReviewUrl": "",
+    "sheetScriptUrl": "https://script.google.com/macros/s/AKfycbzbo0fy_aFMAyI1I87n8XvZ6eDzaxe1nI4zuUfkkNuawcKWBIbJ2uFkJq1Ntb_c-keLEQ/exec",
+    "discount": {
+      "enabled": true,
+      "percentage": 10,
+      "validDays": 30
+    },
+    "referral": {
+      "enabled": true,
+      "message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!"
+    },
+    "logoUrl": "",
+    "heroImageUrl": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AWn5SU6lgdZrtxsMlaEnuitknJJAhdXUiNyMrgAFlOAf5VNd0lsE0KMiyzvBgV1VhCMrhcvLqZfei451mMJUz9yzOCHIcOURjAyAtHEXg4JsYReFeYdF4S7UC17w8pVWyagXZBeU8n5CbflBWEC7qAMCk4b1smQ6yzDYvZMSbIlKEclJWNUTgxdDmxyKt-0h0iW_j6EOEG_QspRgDZcrraxUQzDgNpFwbK457gBJRA8mOKSzxFmWN1vTGUz9OJ4k0KdfM__e4hXF0DOxwv5sh5102rWyc4rbM5vDXQUTbGPD4UGwzQ&key=AIzaSyBTGLx7uV_OtjZwbLpQt5fuEUUwNH_bMW8"
   }
 };
 

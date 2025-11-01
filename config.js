@@ -1,4 +1,4 @@
-// Multi-tenant configs - updated: 2025-11-01T07:55:18.844Z
+// Multi-tenant configs - updated: 2025-11-01T08:05:29.779Z
 // DO NOT EDIT MANUALLY - Run 'node sync-config.js' to update from Google Sheets
 window.REVIEW_CONFIGS = {
   "beauty-bar": {

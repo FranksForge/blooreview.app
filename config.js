@@ -1,4 +1,4 @@
-// Multi-tenant configs - updated: 2025-11-01T08:05:29.779Z
+// Multi-tenant configs - updated: 2025-11-01T08:09:07.044Z
 // DO NOT EDIT MANUALLY - Run 'node sync-config.js' to update from Google Sheets
 window.REVIEW_CONFIGS = {
   "beauty-bar": {
@@ -9,7 +9,7 @@ window.REVIEW_CONFIGS = {
     "hero_image": "",
     "logo_url": "",
     "discount_enabled": true,
-    "discount_percentage": 10,
+    "discount_percentage": 20,
     "discount_valid_days": 30,
     "referral_enabled": true,
     "referral_message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",

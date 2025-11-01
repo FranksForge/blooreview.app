@@ -19,6 +19,17 @@ const CONFIG_FILE = path.join(__dirname, 'config.js');
 // Update this array to match the row order in your Google Sheet
 const DEFAULT_SLUGS = ['default', 'bigc-donchan', 'starbucks-123', 'newbus123'];
 
+// Default configuration values applied when sheet fields are empty
+const DEFAULT_CONFIG = {
+  sheet_script_url: APPS_SCRIPT_URL,
+  min_review: 5,
+  discount_enabled: true,
+  discount_percentage: 10,
+  discount_valid_days: 30,
+  referral_enabled: true,
+  referral_message: "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!"
+};
+
 // Get command line arguments
 const args = process.argv.slice(2);
 const shouldDeploy = args.includes('--deploy');
@@ -61,7 +72,19 @@ async function fetchAllConfigs() {
         console.log(`  category: "${sample.category || '(not set)'}"`);
         console.log(`  businessCategory: "${sample.businessCategory || '(not set)'}"`);
         if (sample.discount) console.log(`  discount: ${JSON.stringify(sample.discount)}`);
-        if (sample.discount_enabled !== undefined) console.log(`  discount_enabled: ${sample.discount_enabled} (type: ${typeof sample.discount_enabled})`);
+        console.log(`  discount_enabled raw: ${JSON.stringify(sample.discount_enabled)} (type: ${typeof sample.discount_enabled}, value: "${sample.discount_enabled}")`);
+        console.log(`  referral_enabled raw: ${JSON.stringify(sample.referral_enabled)} (type: ${typeof sample.referral_enabled}, value: "${sample.referral_enabled}")`);
+        // Show an entry that might have empty cells
+        const emptyTestSlug = Object.keys(data.configs).find(slug => {
+          const cfg = data.configs[slug];
+          return cfg && (cfg.discount_enabled === false || cfg.discount_enabled === '' || !cfg.discount_enabled);
+        });
+        if (emptyTestSlug && emptyTestSlug !== sampleSlug) {
+          console.log(`\nDebug - Config with potentially empty cells "${emptyTestSlug}":`);
+          const emptyTest = data.configs[emptyTestSlug];
+          console.log(`  discount_enabled raw: ${JSON.stringify(emptyTest.discount_enabled)} (type: ${typeof emptyTest.discount_enabled})`);
+          console.log(`  referral_enabled raw: ${JSON.stringify(emptyTest.referral_enabled)} (type: ${typeof emptyTest.referral_enabled})`);
+        }
       }
       
       return data.configs;
@@ -180,20 +203,88 @@ function generateConfigFile(configs) {
       return value !== undefined ? Boolean(value) : true; // default to true if undefined
     };
     
-    // Handle discount fields (flatten from nested or use flat version)
-    // Handle numeric booleans from Google Sheets (1/0 → true/false)
-    processed.discount_enabled = toBoolean(config.discount_enabled ?? config.discount?.enabled ?? true);
-    processed.discount_percentage = Number(config.discount_percentage ?? config.discount?.percentage ?? 10);
-    processed.discount_valid_days = Number(config.discount_valid_days ?? config.discount?.validDays ?? 30);
+    // Helper to get value or default (handles empty strings as missing)
+    const getValueOrDefault = (value, defaultValue) => {
+      if (value === null || value === undefined || value === '') {
+        return defaultValue;
+      }
+      return value;
+    };
     
-    // Handle referral fields
-    processed.referral_enabled = toBoolean(config.referral_enabled ?? config.referral?.enabled ?? true);
-    processed.referral_message = config.referral_message ?? config.referral?.message ?? '';
+    // Helper for numeric fields - treats 0 as empty (since empty sheet cells become 0)
+    const getNumericOrDefault = (value, defaultValue) => {
+      const numValue = value !== null && value !== undefined && value !== '' ? Number(value) : null;
+      if (numValue === null || numValue === 0 || isNaN(numValue)) {
+        return defaultValue;
+      }
+      return numValue;
+    };
+    
+    // Helper for boolean fields - treats false/0 as empty when coming from potentially empty sheet cells
+    // Only applies default if value is explicitly undefined/null/empty, not if explicitly set to false
+    const getBooleanOrDefault = (value, defaultValue) => {
+      if (value === null || value === undefined || value === '') {
+        return defaultValue;
+      }
+      // If explicitly set (even to false/0), use that value
+      return toBoolean(value);
+    };
+    
+    // Handle discount fields - convert "yes"/"no" to boolean
+    const discountEnabledRaw = config.discount_enabled ?? config.discount?.enabled;
+    const discountEnabledStr = String(discountEnabledRaw || '').toLowerCase().trim();
+    
+    if (discountEnabledStr === 'yes') {
+      processed.discount_enabled = true;
+    } else if (discountEnabledStr === 'no') {
+      processed.discount_enabled = false;
+    } else {
+      // Empty, null, undefined, or anything else → use default (true)
+      processed.discount_enabled = DEFAULT_CONFIG.discount_enabled;
+    }
+    
+    // For numeric fields, treat 0 as empty (empty sheet cells become 0)
+    processed.discount_percentage = getNumericOrDefault(
+      config.discount_percentage ?? config.discount?.percentage,
+      DEFAULT_CONFIG.discount_percentage
+    );
+    
+    processed.discount_valid_days = getNumericOrDefault(
+      config.discount_valid_days ?? config.discount?.validDays,
+      DEFAULT_CONFIG.discount_valid_days
+    );
+    
+    // Handle referral fields - convert "yes"/"no" to boolean
+    const referralEnabledRaw = config.referral_enabled ?? config.referral?.enabled;
+    const referralEnabledStr = String(referralEnabledRaw || '').toLowerCase().trim();
+    
+    if (referralEnabledStr === 'yes') {
+      processed.referral_enabled = true;
+    } else if (referralEnabledStr === 'no') {
+      processed.referral_enabled = false;
+    } else {
+      // Empty, null, undefined, or anything else → use default (true)
+      processed.referral_enabled = DEFAULT_CONFIG.referral_enabled;
+    }
+    
+    processed.referral_message = getValueOrDefault(
+      config.referral_message ?? config.referral?.message,
+      DEFAULT_CONFIG.referral_message
+    );
     
     // Handle internal fields (preserve or set defaults)
     processed.google_review_base_url = config.google_review_base_url ?? config.googleReviewBaseUrl ?? 'https://search.google.com/local/writereview?placeid=';
     processed.google_review_url = config.google_review_url ?? config.googleReviewUrl ?? '';
-    processed.sheet_script_url = config.sheet_script_url ?? config.sheetScriptUrl ?? '';
+    processed.sheet_script_url = getValueOrDefault(
+      config.sheet_script_url ?? config.sheetScriptUrl,
+      DEFAULT_CONFIG.sheet_script_url
+    );
+    
+    // Handle min_review (review threshold) - treat 0 as empty
+    processed.min_review = getNumericOrDefault(
+      config.min_review ?? config.review_threshold,
+      DEFAULT_CONFIG.min_review
+    );
     
     // Clean up old field names (remove camelCase versions if they exist)
     delete processed.businessName;

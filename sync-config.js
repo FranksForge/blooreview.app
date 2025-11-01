@@ -14,14 +14,18 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzbo0fy_aFMAyI1I87n8XvZ6eDzaxe1nI4zuUfkkNuawcKWBIbJ2uFkJq1Ntb_c-keLEQ/exec';
+// Apps Script URL for fetching configs from Google Sheet
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec';
+// Apps Script URL for submitting reviews to Google Sheet (separate tabs per slug)
+const REVIEW_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec';
+
 const CONFIG_FILE = path.join(__dirname, 'config.js');
 // Update this array to match the row order in your Google Sheet
 const DEFAULT_SLUGS = ['default', 'bigc-donchan', 'starbucks-123', 'newbus123'];
 
 // Default configuration values applied when sheet fields are empty
 const DEFAULT_CONFIG = {
-  sheet_script_url: APPS_SCRIPT_URL,
+  sheet_script_url: REVIEW_SCRIPT_URL,
   min_review: 5,
   discount_enabled: true,
   discount_percentage: 10,
@@ -315,7 +319,11 @@ window.REVIEW_CONFIGS = ${JSON.stringify(processedConfigs, null, 2)};
     const parts = window.location.hostname.split(".");
     if (parts.length > 2) {
       const subdomain = parts[0].toLowerCase();
-      if (!subdomain.match(/^[a-z]+-[a-z0-9]+-[a-z0-9]+$/)) {
+      // Only ignore obvious Vercel auto-generated subdomains (long random alphanumeric hashes)
+      // Allow all business slugs, including those with 3 segments like "friseursalon-anke-krichel"
+      // Vercel pattern: very long segments (10+ chars) with numbers, like "abc123def456-ghi789jkl012-mno345pqr678"
+      const isVercelPattern = /^[a-z0-9]{10,}-[a-z0-9]{10,}/.test(subdomain) && /\\d/.test(subdomain);
+      if (!isVercelPattern) {
         return subdomain;
       }
     }

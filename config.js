@@ -1,11 +1,11 @@
-// Multi-tenant configs - updated: 2025-11-01T11:47:07.502Z
+// Multi-tenant configs - updated: 2025-11-01T12:27:45.208Z
 // DO NOT EDIT MANUALLY - Run 'node sync-config.js' to update from Google Sheets
 window.REVIEW_CONFIGS = {
   "beauty-bar": {
     "name": "Beauty BAR",
     "category": "Beauty Salon, Hair Care, Spa, Store",
-    "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJqUvS_4xPv0cRIavCzkVDbEo",
-    "hero_image": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AWn5SU41O-uRpmf9Rdd9CmjSWh8KA2zZ5p1llyhQlP9k9Sd1AEw_vMoy-NN0fGD3rlg9feqL_i1S0jjitE5WXpiP1XIhgQFOd1-iGm9_c4mrxsjppzknV-lp_CijcWR-yIKr0dE8dcCCLwf3OR-VAtejyUoWiK98PtIEQrP24TI8alTvYrgo6zdP7Vjj-GKdlqEihvXWKOpA3XDEb86r6LJOU0TNqBjdSDbim9XUrNStRsYdM3Pv7OE9NaVd1-LWvK272ElzmEUfyLrn4W8Fd_6tmd2UdyucC1PIsxFQhw6s3TSDnw&key=AIzaSyBTGLx7uV_OtjZwbLpQt5fuEUUwNH_bMW8",
+    "google_maps_url": "www.google.com/maps/place/?q=place_id:ChIJqUvS_4xPv0cRIavCzkVDbEo",
+    "hero_image": "maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AWn5SU41O-uRpmf9Rdd9CmjSWh8KA2zZ5p1llyhQlP9k9Sd1AEw_vMoy-NN0fGD3rlg9feqL_i1S0jjitE5WXpiP1XIhgQFOd1-iGm9_c4mrxsjppzknV-lp_CijcWR-yIKr0dE8dcCCLwf3OR-VAtejyUoWiK98PtIEQrP24TI8alTvYrgo6zdP7Vjj-GKdlqEihvXWKOpA3XDEb86r6LJOU0TNqBjdSDbim9XUrNStRsYdM3Pv7OE9NaVd1-LWvK272ElzmEUfyLrn4W8Fd_6tmd2UdyucC1PIsxFQhw6s3TSDnw&key=AIzaSyBTGLx7uV_OtjZwbLpQt5fuEUUwNH_bMW8",
     "logo_url": "",
     "discount_enabled": true,
     "discount_percentage": 10,
@@ -21,7 +21,7 @@ window.REVIEW_CONFIGS = {
   "friseur-struwwelpeter-struwwelmobil-inh-e-immesberger": {
     "name": "Friseur Struwwelpeter / Struwwelmobil Inh.: E. Immesberger",
     "category": "Hair Care, Store",
-    "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJW1IBvPdFv0cR1s07Add3aEU",
+    "google_maps_url": "www.google.com/maps/place/?q=place_id:ChIJW1IBvPdFv0cR1s07Add3aEU",
     "hero_image": "",
     "logo_url": "",
     "discount_enabled": true,
@@ -38,8 +38,8 @@ window.REVIEW_CONFIGS = {
   "giarrizzo-franco": {
     "name": "Giarrizzo Franco",
     "category": "Hair Care",
-    "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJK9Dp01hPv0cRcxWGk3HKOjw",
-    "hero_image": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AWn5SU6r1mO7n3B-wLLsDMndsLpT2Ykm5Nu_b8ratW1_0OSm6wQec9biwWeQDiskxHMcAcF9esl8mMT2Z6LYzpYGXve6M8gjaj22_eKT-eHo2SyFWJ25_0lYQ7A92xG2W5IpdrAVW4swX7HEXhHg9oIPtDdVCQNmAG5HL7cnRh6x5Y0KAB-9PjG4G4u1cUXpWZI7g9JiMsis3zmbikpNpvIPCxDsJjz2kLaKCLIO_jzDHi3q1Q6OcZLOgz-iIMfBGZJ4o8pbgMNf6w02JkB_iNqGv0FxWfOkVgDmsjWP46H5aWJwDHFUGz2cR73JTI-TkjJnZbYDxY234XupSrWAQ-rTWGwnbUY3ih5Xm60PwlAsMPp-rrKbIz6y1rNnL3EJBNvg3WQLR3bE09Mg532zi0in8OXib-Sded73K5N4ZQD_eSeCJig&key=AIzaSyBTGLx7uV_OtjZwbLpQt5fuEUUwNH_bMW8",
+    "google_maps_url": "www.google.com/maps/place/?q=place_id:ChIJK9Dp01hPv0cRcxWGk3HKOjw",
+    "hero_image": "maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AWn5SU6r1mO7n3B-wLLsDMndsLpT2Ykm5Nu_b8ratW1_0OSm6wQec9biwWeQDiskxHMcAcF9esl8mMT2Z6LYzpYGXve6M8gjaj22_eKT-eHo2SyFWJ25_0lYQ7A92xG2W5IpdrAVW4swX7HEXhHg9oIPtDdVCQNmAG5HL7cnRh6x5Y0KAB-9PjG4G4u1cUXpWZI7g9JiMsis3zmbikpNpvIPCxDsJjz2kLaKCLIO_jzDHi3q1Q6OcZLOgz-iIMfBGZJ4o8pbgMNf6w02JkB_iNqGv0FxWfOkVgDmsjWP46H5aWJwDHFUGz2cR73JTI-TkjJnZbYDxY234XupSrWAQ-rTWGwnbUY3ih5Xm60PwlAsMPp-rrKbIz6y1rNnL3EJBNvg3WQLR3bE09Mg532zi0in8OXib-Sded73K5N4ZQD_eSeCJig&key=AIzaSyBTGLx7uV_OtjZwbLpQt5fuEUUwNH_bMW8",
     "logo_url": "",
     "discount_enabled": true,
     "discount_percentage": 10,
@@ -55,8 +55,8 @@ window.REVIEW_CONFIGS = {
   "haarlequeen-in-der-beautybar": {
     "name": "Haarlequeen in der \"BeautyBAR\"",
     "category": "Hair Care",
-    "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJm3FoNjxPv0cRhMiJ1waiSw8",
-    "hero_image": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AWn5SU6yPKBNnSiLk6p9smSkFjEkgFOUpqzZF8by7G-zp4nNrKFuqimO6JyDQdMq54UV0mbWRVUZPfq31LVFmxxxHVI9BnPaeXTohYF6TIoszhQ_nqTPbLgIG2XiapXMIhZCCWRiA1id9TX2WvOjo3M1cWDx0x06GwTFx9iUtVuKBY40Ky07maghNK0n38VwpbXGn-R5yQziYpoAGXjA99KOSL2iGiyya-FEWDAx9RGURj8KJFx8TulGGe6iu1ABxVEJljV9KPFsjH3eTBJwO_Wb1xwIOc_nC8nvbbDObjfHjMweMg&key=AIzaSyBTGLx7uV_OtjZwbLpQt5fuEUUwNH_bMW8",
+    "google_maps_url": "www.google.com/maps/place/?q=place_id:ChIJm3FoNjxPv0cRhMiJ1waiSw8",
+    "hero_image": "maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AWn5SU6yPKBNnSiLk6p9smSkFjEkgFOUpqzZF8by7G-zp4nNrKFuqimO6JyDQdMq54UV0mbWRVUZPfq31LVFmxxxHVI9BnPaeXTohYF6TIoszhQ_nqTPbLgIG2XiapXMIhZCCWRiA1id9TX2WvOjo3M1cWDx0x06GwTFx9iUtVuKBY40Ky07maghNK0n38VwpbXGn-R5yQziYpoAGXjA99KOSL2iGiyya-FEWDAx9RGURj8KJFx8TulGGe6iu1ABxVEJljV9KPFsjH3eTBJwO_Wb1xwIOc_nC8nvbbDObjfHjMweMg&key=AIzaSyBTGLx7uV_OtjZwbLpQt5fuEUUwNH_bMW8",
     "logo_url": "",
     "discount_enabled": true,
     "discount_percentage": 10,
@@ -72,8 +72,8 @@ window.REVIEW_CONFIGS = {
   "hair-and-beauty-lounge-de-boer": {
     "name": "Hair and Beauty Lounge De Boer",
     "category": "Hair Care",
-    "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJPx5mAIJPv0cR89UFUoxDLjg",
-    "hero_image": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AWn5SU5yxHDylKJHbNRDtwobXs3BgQUZAwnQTMIXTMuEnUei6ErPRntamCq0tEdAUBi8m5oASzRC8bL53LG4O8TXidPEezKq3qJWgij8eWWU6jgQOBC4ZU4Rxhhpdw8oH6ZVD0_nE26jzscg1FE8G8tqyYSlNxqzaXI2D5c1vivoAOwoY0wVaAsRwjg4l0MZP_1k3IF_t_IQbTJArsNix59-G9E7DxNtGFV1QXHdg_sSxLNeR0u4xelRyx1EcW-EGs8m1c7PBxfhF5HeiG5_vFCyeafW4YLQNVJmxGg4AiL3fgc&key=AIzaSyBTGLx7uV_OtjZwbLpQt5fuEUUwNH_bMW8",
+    "google_maps_url": "www.google.com/maps/place/?q=place_id:ChIJPx5mAIJPv0cR89UFUoxDLjg",
+    "hero_image": "maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AWn5SU5yxHDylKJHbNRDtwobXs3BgQUZAwnQTMIXTMuEnUei6ErPRntamCq0tEdAUBi8m5oASzRC8bL53LG4O8TXidPEezKq3qJWgij8eWWU6jgQOBC4ZU4Rxhhpdw8oH6ZVD0_nE26jzscg1FE8G8tqyYSlNxqzaXI2D5c1vivoAOwoY0wVaAsRwjg4l0MZP_1k3IF_t_IQbTJArsNix59-G9E7DxNtGFV1QXHdg_sSxLNeR0u4xelRyx1EcW-EGs8m1c7PBxfhF5HeiG5_vFCyeafW4YLQNVJmxGg4AiL3fgc&key=AIzaSyBTGLx7uV_OtjZwbLpQt5fuEUUwNH_bMW8",
     "logo_url": "",
     "discount_enabled": true,
     "discount_percentage": 10,
@@ -89,8 +89,8 @@ window.REVIEW_CONFIGS = {
   "hilde-dietz-frisr": {
     "name": "Hilde Dietz Frisör",
     "category": "Hair Care",
-    "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJp2r2D1dPv0cRddq-Ht7makU",
-    "hero_image": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AWn5SU6twgOhemF2DkW9C0W3VSpTxgARip7aGMhr_LUy8rGmKBBhV8mYub0jQul9wI6zxOs9XY0CHNWb03jVToMDyE7Fenj8M-yRL77lLIeKqN89_1aU1eNwSPyszO9z-BLRC0nGsudEdBqZFPHPYHLBU7PMUeALT6gweU2aVuKq-nKJCz5bwpZ9spcr0_MONimrS_v1xxxD0RmYM-_gSVMAG3CYaCvpkDB7XWRLVf5lYaxCagCchlqPLJQfLsQBR2G9q2eJiuylCpo2KsEdMSnwRyFDXqlXRlYLKh5V964hSv4ihA&key=AIzaSyBTGLx7uV_OtjZwbLpQt5fuEUUwNH_bMW8",
+    "google_maps_url": "www.google.com/maps/place/?q=place_id:ChIJp2r2D1dPv0cRddq-Ht7makU",
+    "hero_image": "maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AWn5SU6twgOhemF2DkW9C0W3VSpTxgARip7aGMhr_LUy8rGmKBBhV8mYub0jQul9wI6zxOs9XY0CHNWb03jVToMDyE7Fenj8M-yRL77lLIeKqN89_1aU1eNwSPyszO9z-BLRC0nGsudEdBqZFPHPYHLBU7PMUeALT6gweU2aVuKq-nKJCz5bwpZ9spcr0_MONimrS_v1xxxD0RmYM-_gSVMAG3CYaCvpkDB7XWRLVf5lYaxCagCchlqPLJQfLsQBR2G9q2eJiuylCpo2KsEdMSnwRyFDXqlXRlYLKh5V964hSv4ihA&key=AIzaSyBTGLx7uV_OtjZwbLpQt5fuEUUwNH_bMW8",
     "logo_url": "",
     "discount_enabled": true,
     "discount_percentage": 10,
@@ -106,7 +106,7 @@ window.REVIEW_CONFIGS = {
   "annemarie-osterhammel-friseursalon": {
     "name": "Annemarie Osterhammel Friseursalon",
     "category": "Hair Care",
-    "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJV1oFoexFv0cRdLmEeKReyng",
+    "google_maps_url": "www.google.com/maps/place/?q=place_id:ChIJV1oFoexFv0cRdLmEeKReyng",
     "hero_image": "",
     "logo_url": "",
     "discount_enabled": true,
@@ -123,8 +123,8 @@ window.REVIEW_CONFIGS = {
   "backstage-by-sema-yilmaz": {
     "name": "Backstage by Sema Yilmaz",
     "category": "Hair Care",
-    "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJV4jOvWRHv0cRe32kn_7nYHA",
-    "hero_image": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AWn5SU5mj9eK0_rHEffxfbjoFF8TDLqfF8oCWNaDpBe5N_sVshmtLDk8rRU8KfAXrNVUvHBzDiZLs3VulcAoFmIMJFdZ4Yqf4wNe9l_w_NUoUhfEVtuFMeg-kGILcw_VrOXJHzTBm1uoI8AABRgM5M_3HmIIar92uAughR-Ieeb-Im1q6dQwRiiIkQLo--IPAUjjqAu_PF9gFsakCoDzmXFt-auXqI73FxF0bUbj8qD91ReLHdn0xSaIp9O2BZbRYMKyNxcAHCzNWeIEGmUTWrKkUf4GGedWxlerM1NNFa8W9pf44i_FnAjxTQygqal84umbbVn2RfM7zF0Ts3K0LcHGOqek-JJVe1bg0ZEhR3a62qIgXePlYNeDUfJgnXULNSRAVX07BIOpWXm5iZLzzr4DommR0DCTjeIgm6E2DrQCeZq8A3FsyBawFFzAOjy81Mcd&key=AIzaSyBTGLx7uV_OtjZwbLpQt5fuEUUwNH_bMW8",
+    "google_maps_url": "www.google.com/maps/place/?q=place_id:ChIJV4jOvWRHv0cRe32kn_7nYHA",
+    "hero_image": "maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AWn5SU5mj9eK0_rHEffxfbjoFF8TDLqfF8oCWNaDpBe5N_sVshmtLDk8rRU8KfAXrNVUvHBzDiZLs3VulcAoFmIMJFdZ4Yqf4wNe9l_w_NUoUhfEVtuFMeg-kGILcw_VrOXJHzTBm1uoI8AABRgM5M_3HmIIar92uAughR-Ieeb-Im1q6dQwRiiIkQLo--IPAUjjqAu_PF9gFsakCoDzmXFt-auXqI73FxF0bUbj8qD91ReLHdn0xSaIp9O2BZbRYMKyNxcAHCzNWeIEGmUTWrKkUf4GGedWxlerM1NNFa8W9pf44i_FnAjxTQygqal84umbbVn2RfM7zF0Ts3K0LcHGOqek-JJVe1bg0ZEhR3a62qIgXePlYNeDUfJgnXULNSRAVX07BIOpWXm5iZLzzr4DommR0DCTjeIgm6E2DrQCeZq8A3FsyBawFFzAOjy81Mcd&key=AIzaSyBTGLx7uV_OtjZwbLpQt5fuEUUwNH_bMW8",
     "logo_url": "",
     "discount_enabled": true,
     "discount_percentage": 10,
@@ -140,8 +140,8 @@ window.REVIEW_CONFIGS = {
   "bedburg-barbershop": {
     "name": "Bedburg Barbershop",
     "category": "Hair Care, Health",
-    "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJ5Q6IZNZFv0cRrF2l7-tjPLg",
-    "hero_image": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AWn5SU7xcDIvVlYtiuat1jdjRZ9AhQRqDUinyvIzyhovgPyOE8GrLjsdFhqUXDvivIG56oqn15vlUyMj9ykPgQ8yml7ujngS6oeGsTG2PN0cRFwxwWQ1DX1KUuFqPu_Q18-xIcA851h49Ci1EEMRrQlhaRBXESNUbjTMNIeZtyReKuR0-Tc9GyPZx0Iar11KstZsrvcKL_QOclxEMPXY8BUGyy4J8nakRjeuaBldWgc0N9Dd6LJwyR0K0L_66D-a9rEn0ig_f18NA-k1Td92AXiw5jCLsFbyQd__rCIOeXbrgHHInZan3TR9zi07_qmgRBLflT6weTjm6XMU15lcTijNme5zxwKTWbxIF2MQRlG6xO5EEOU0PwjYa7hIRKzPBeCb-6djuDmbDTkevFk4JAR-Wi8XyyPJjL10cZVtqZkXpYeKG91Qw-JghpenqVHjcA&key=AIzaSyBTGLx7uV_OtjZwbLpQt5fuEUUwNH_bMW8",
+    "google_maps_url": "www.google.com/maps/place/?q=place_id:ChIJ5Q6IZNZFv0cRrF2l7-tjPLg",
+    "hero_image": "maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AWn5SU7xcDIvVlYtiuat1jdjRZ9AhQRqDUinyvIzyhovgPyOE8GrLjsdFhqUXDvivIG56oqn15vlUyMj9ykPgQ8yml7ujngS6oeGsTG2PN0cRFwxwWQ1DX1KUuFqPu_Q18-xIcA851h49Ci1EEMRrQlhaRBXESNUbjTMNIeZtyReKuR0-Tc9GyPZx0Iar11KstZsrvcKL_QOclxEMPXY8BUGyy4J8nakRjeuaBldWgc0N9Dd6LJwyR0K0L_66D-a9rEn0ig_f18NA-k1Td92AXiw5jCLsFbyQd__rCIOeXbrgHHInZan3TR9zi07_qmgRBLflT6weTjm6XMU15lcTijNme5zxwKTWbxIF2MQRlG6xO5EEOU0PwjYa7hIRKzPBeCb-6djuDmbDTkevFk4JAR-Wi8XyyPJjL10cZVtqZkXpYeKG91Qw-JghpenqVHjcA&key=AIzaSyBTGLx7uV_OtjZwbLpQt5fuEUUwNH_bMW8",
     "logo_url": "",
     "discount_enabled": true,
     "discount_percentage": 10,
@@ -157,7 +157,7 @@ window.REVIEW_CONFIGS = {
   "elisabeth-schmitz-friseursalon": {
     "name": "Elisabeth Schmitz Friseursalon",
     "category": "Hair Care",
-    "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJZaf3wmRPv0cR-fKXYH4w-xE",
+    "google_maps_url": "www.google.com/maps/place/?q=place_id:ChIJZaf3wmRPv0cR-fKXYH4w-xE",
     "hero_image": "",
     "logo_url": "",
     "discount_enabled": true,
@@ -174,8 +174,8 @@ window.REVIEW_CONFIGS = {
   "friseur-daulat": {
     "name": "Friseur Daulat",
     "category": "Hair Care",
-    "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJBb1o3PdFv0cRS4OImlpsZq0",
-    "hero_image": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AWn5SU5JvQ8ilN_pYonbKs_MOp58oh25wklGPsX7tgxqr8xr92H4pSvkwKTQdvzCSOX4US91Fpw0HSk9qlgtshZVte0H6L1YkCGeRSDUsfVF0d7mvS_asmKdr9_5EFJYCDbYADrfj-V3HnFYwEHcDUL7FUdFXm05wM9O-5D9ExknCSPzDSZgWr-daZRxFtLEeylKtO0rvtEg-r_LTXiqcuH7j3_nxrqYS2vsMVNFsbRm4O6NY-7tR2HLB99ylwr-HBbEvV2QRRIWoqXKQNb95MsayoftnX_s2AsuFnPvKKpMGdsu5Q&key=AIzaSyBTGLx7uV_OtjZwbLpQt5fuEUUwNH_bMW8",
+    "google_maps_url": "www.google.com/maps/place/?q=place_id:ChIJBb1o3PdFv0cRS4OImlpsZq0",
+    "hero_image": "maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AWn5SU5JvQ8ilN_pYonbKs_MOp58oh25wklGPsX7tgxqr8xr92H4pSvkwKTQdvzCSOX4US91Fpw0HSk9qlgtshZVte0H6L1YkCGeRSDUsfVF0d7mvS_asmKdr9_5EFJYCDbYADrfj-V3HnFYwEHcDUL7FUdFXm05wM9O-5D9ExknCSPzDSZgWr-daZRxFtLEeylKtO0rvtEg-r_LTXiqcuH7j3_nxrqYS2vsMVNFsbRm4O6NY-7tR2HLB99ylwr-HBbEvV2QRRIWoqXKQNb95MsayoftnX_s2AsuFnPvKKpMGdsu5Q&key=AIzaSyBTGLx7uV_OtjZwbLpQt5fuEUUwNH_bMW8",
     "logo_url": "",
     "discount_enabled": true,
     "discount_percentage": 10,
@@ -191,7 +191,7 @@ window.REVIEW_CONFIGS = {
   "friseur-gudrun-meuter": {
     "name": "Friseur Gudrun Meuter",
     "category": "Hair Care",
-    "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJsxGjD29Pv0cRFAe29G434u8",
+    "google_maps_url": "www.google.com/maps/place/?q=place_id:ChIJsxGjD29Pv0cRFAe29G434u8",
     "hero_image": "",
     "logo_url": "",
     "discount_enabled": true,
@@ -208,8 +208,8 @@ window.REVIEW_CONFIGS = {
   "friseursalon-anke-krichel": {
     "name": "Friseursalon Anke Krichel",
     "category": "Hair Care",
-    "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJjdOsC3BPv0cRgbq_kiVrPC4",
-    "hero_image": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AWn5SU6E137Efu8qeawrVA6bM56y23W2o7HG5o5P9Ur4LKXHC0dsK5ORh-z4OzRcyY6UEhfOq6dQ1_mzje5B0bl2Y8pyQ_Xjyyhe9JHM1Xuz7UXupuxYce_wVu5hxsppozbAuRGbwAYwaybgzO0cG8Hqf3avk1lJTH6dDdPBQBSgaQ0P1FBhWjZj4KThbWa6sy-nPsdALoO9njryiImp7A-20IsgKEgtT3ICL5V0czUOTedhThlElZBbh9IwBGcM4Ci-QchNbm2W0qTUr5VyyGBYzJ_l-TFuURcZqMc8GgfBq5i20sN-0Mve5BJHvdy0jpl-YZDlBMlx9F7jEcJPrY8LFMxQa9Kej9mTZIpbWGASmCZsd44y6C-AOJhP5YQASwSHW0TzM7umJmbKipL3b4x-CXD9jSY_hvBO_jEJaRdaaiXLcDU&key=AIzaSyBTGLx7uV_OtjZwbLpQt5fuEUUwNH_bMW8",
+    "google_maps_url": "www.google.com/maps/place/?q=place_id:ChIJjdOsC3BPv0cRgbq_kiVrPC4",
+    "hero_image": "maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AWn5SU6E137Efu8qeawrVA6bM56y23W2o7HG5o5P9Ur4LKXHC0dsK5ORh-z4OzRcyY6UEhfOq6dQ1_mzje5B0bl2Y8pyQ_Xjyyhe9JHM1Xuz7UXupuxYce_wVu5hxsppozbAuRGbwAYwaybgzO0cG8Hqf3avk1lJTH6dDdPBQBSgaQ0P1FBhWjZj4KThbWa6sy-nPsdALoO9njryiImp7A-20IsgKEgtT3ICL5V0czUOTedhThlElZBbh9IwBGcM4Ci-QchNbm2W0qTUr5VyyGBYzJ_l-TFuURcZqMc8GgfBq5i20sN-0Mve5BJHvdy0jpl-YZDlBMlx9F7jEcJPrY8LFMxQa9Kej9mTZIpbWGASmCZsd44y6C-AOJhP5YQASwSHW0TzM7umJmbKipL3b4x-CXD9jSY_hvBO_jEJaRdaaiXLcDU&key=AIzaSyBTGLx7uV_OtjZwbLpQt5fuEUUwNH_bMW8",
     "logo_url": "",
     "discount_enabled": true,
     "discount_percentage": 10,
@@ -225,7 +225,7 @@ window.REVIEW_CONFIGS = {
   "frisr-coiffeur-studio-r-hantsche": {
     "name": "Frisör Coiffeur-Studio R. Hantsche",
     "category": "Hair Care",
-    "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJyafoGxhIv0cRLHIUdu6fYc4",
+    "google_maps_url": "www.google.com/maps/place/?q=place_id:ChIJyafoGxhIv0cRLHIUdu6fYc4",
     "hero_image": "",
     "logo_url": "",
     "discount_enabled": true,
@@ -242,7 +242,7 @@ window.REVIEW_CONFIGS = {
   "haaraktuell-inh-v-khn": {
     "name": "Haaraktuell Inh. V. Kühn",
     "category": "Hair Care",
-    "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJiSIdKiJEv0cRussuKguD8PY",
+    "google_maps_url": "www.google.com/maps/place/?q=place_id:ChIJiSIdKiJEv0cRussuKguD8PY",
     "hero_image": "",
     "logo_url": "",
     "discount_enabled": true,
@@ -259,8 +259,8 @@ window.REVIEW_CONFIGS = {
   "haarstyling-esser-uerlings": {
     "name": "Haarstyling Esser & Uerlings",
     "category": "Hair Care",
-    "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJ9RBlAKlHv0cRqX-aqxAJjyE",
-    "hero_image": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AWn5SU6TbjhYIR7sJldFPO0FC85kgC5492t6GOFi86_y7N-CrnBnG5fZbtpabjyMaKvzGxm4Bakfky8HvqOwWnYRDY4-urDs4yxeAlkCQWxas5UN8-MOiYXsDbjeVCHcicHX91md2du-BjDoB5U8tcmVgs6TAwmV4BrrXVODkJjepPmFvJ4isR050Nc_wA7Y3ryWpFdjTlmp5ovsA9WBMFEmfBhXVN0ARI4ImZKIWzRhaos0VVgeukEJCpdqTh0CF3HJpHZvi64qUJ6qMceRNKgokfD6fWNzK0XR2j_yAOeqOR1YfQ&key=AIzaSyBTGLx7uV_OtjZwbLpQt5fuEUUwNH_bMW8",
+    "google_maps_url": "www.google.com/maps/place/?q=place_id:ChIJ9RBlAKlHv0cRqX-aqxAJjyE",
+    "hero_image": "maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AWn5SU6TbjhYIR7sJldFPO0FC85kgC5492t6GOFi86_y7N-CrnBnG5fZbtpabjyMaKvzGxm4Bakfky8HvqOwWnYRDY4-urDs4yxeAlkCQWxas5UN8-MOiYXsDbjeVCHcicHX91md2du-BjDoB5U8tcmVgs6TAwmV4BrrXVODkJjepPmFvJ4isR050Nc_wA7Y3ryWpFdjTlmp5ovsA9WBMFEmfBhXVN0ARI4ImZKIWzRhaos0VVgeukEJCpdqTh0CF3HJpHZvi64qUJ6qMceRNKgokfD6fWNzK0XR2j_yAOeqOR1YfQ&key=AIzaSyBTGLx7uV_OtjZwbLpQt5fuEUUwNH_bMW8",
     "logo_url": "",
     "discount_enabled": true,
     "discount_percentage": 10,
@@ -276,8 +276,8 @@ window.REVIEW_CONFIGS = {
   "hair-style-by-ferrand-elsdorf": {
     "name": "Hair & Style by Ferrand, Elsdorf",
     "category": "Hair Care",
-    "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJgym_wSFEv0cRrEG2oTsKAbE",
-    "hero_image": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AWn5SU4Gp27rY_hAKwjPOvMDoiQ-Quqt64rYfGEa2gQMojzm1PiPdjpNBT8-S0NpgvSFJALe7QWWLZsNeuNStMzA30pRHM-2nMtIXOT2I6gOhtPryl6aN2dpxdBX1U2UTEtyYxkIJQRenSxEMSUxVt6Z5gtOf5b8BYgyuIyqHjGAXxlJVbpOBChR81oezfPlEH1kwqDpYynoUzTmUPC-KutNsmlivqqkOoUBXQfpCXyjU05m5_ltke3CqhPtmg8fzMfloPSfHQlfcTznwdapwkLHt4gs4ngaZNZlY-YjpL-UaRGXBA&key=AIzaSyBTGLx7uV_OtjZwbLpQt5fuEUUwNH_bMW8",
+    "google_maps_url": "www.google.com/maps/place/?q=place_id:ChIJgym_wSFEv0cRrEG2oTsKAbE",
+    "hero_image": "maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AWn5SU4Gp27rY_hAKwjPOvMDoiQ-Quqt64rYfGEa2gQMojzm1PiPdjpNBT8-S0NpgvSFJALe7QWWLZsNeuNStMzA30pRHM-2nMtIXOT2I6gOhtPryl6aN2dpxdBX1U2UTEtyYxkIJQRenSxEMSUxVt6Z5gtOf5b8BYgyuIyqHjGAXxlJVbpOBChR81oezfPlEH1kwqDpYynoUzTmUPC-KutNsmlivqqkOoUBXQfpCXyjU05m5_ltke3CqhPtmg8fzMfloPSfHQlfcTznwdapwkLHt4gs4ngaZNZlY-YjpL-UaRGXBA&key=AIzaSyBTGLx7uV_OtjZwbLpQt5fuEUUwNH_bMW8",
     "logo_url": "",
     "discount_enabled": true,
     "discount_percentage": 10,
@@ -293,8 +293,8 @@ window.REVIEW_CONFIGS = {
   "hairexpress-friseur-real-bedburg": {
     "name": "HairExpress Friseur real Bedburg",
     "category": "Hair Care",
-    "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJySq9pPBFv0cRUHwL6u8opjM",
-    "hero_image": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AWn5SU45nQJ86EiMtdkBRNessaFWoL2HbGmsrATUjRL1RJE5-MsAoog5jCZbceTCm-RxOTeELt4c9RG73aCVUDaDtxNx4SSz1V1fMa44wx05z2TfI71-0MS8k8kunbqBcC2hFgIqeO6Q2ZSz5lyWcEnDvVaYqZo790eL6LBroRcsvHnmjhSmSUUrH_4ndDUt9f0hNNOrOLlo9lA2stvkGx2z_rgMNzCoJYHSdAlSpTMvl_CnJFC5S1si2cjRWcVQFqNewRg_b3XA20Bl5BWDO_eoRKxEORnAmSK7E9K6SGWXPXMRjL44ydewdsSRAzt86LtEI6Qd_sSkPzcsUSZ56uZjthV8-uu_qy68mFeizBVFpd0GqaXf7XvbuGawwGRh9a1MQT7wo9-CAKSPQvMwpCowpv2JkbaKXHXibLos_TC4BdSee_CBoHEuXDVVlrsyHA&key=AIzaSyBTGLx7uV_OtjZwbLpQt5fuEUUwNH_bMW8",
+    "google_maps_url": "www.google.com/maps/place/?q=place_id:ChIJySq9pPBFv0cRUHwL6u8opjM",
+    "hero_image": "maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AWn5SU45nQJ86EiMtdkBRNessaFWoL2HbGmsrATUjRL1RJE5-MsAoog5jCZbceTCm-RxOTeELt4c9RG73aCVUDaDtxNx4SSz1V1fMa44wx05z2TfI71-0MS8k8kunbqBcC2hFgIqeO6Q2ZSz5lyWcEnDvVaYqZo790eL6LBroRcsvHnmjhSmSUUrH_4ndDUt9f0hNNOrOLlo9lA2stvkGx2z_rgMNzCoJYHSdAlSpTMvl_CnJFC5S1si2cjRWcVQFqNewRg_b3XA20Bl5BWDO_eoRKxEORnAmSK7E9K6SGWXPXMRjL44ydewdsSRAzt86LtEI6Qd_sSkPzcsUSZ56uZjthV8-uu_qy68mFeizBVFpd0GqaXf7XvbuGawwGRh9a1MQT7wo9-CAKSPQvMwpCowpv2JkbaKXHXibLos_TC4BdSee_CBoHEuXDVVlrsyHA&key=AIzaSyBTGLx7uV_OtjZwbLpQt5fuEUUwNH_bMW8",
     "logo_url": "",
     "discount_enabled": true,
     "discount_percentage": 10,
@@ -310,7 +310,7 @@ window.REVIEW_CONFIGS = {
   "haircreation-jennifer-wien": {
     "name": "Haircreation Jennifer Wien",
     "category": "Hair Care",
-    "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJddwpW4JPv0cR5BrNN5yhc5k",
+    "google_maps_url": "www.google.com/maps/place/?q=place_id:ChIJddwpW4JPv0cR5BrNN5yhc5k",
     "hero_image": "",
     "logo_url": "",
     "discount_enabled": true,
@@ -327,8 +327,8 @@ window.REVIEW_CONFIGS = {
   "jr-cut-color": {
     "name": "JR | Cut & Color",
     "category": "Hair Care",
-    "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJXfToFZNPv0cRGC_JA1cnU9Q",
-    "hero_image": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AWn5SU5PlMg-CAKlDkCcCxITBUaxv2vWX3A7HVFEQpu3fyFdaIFArSsmkfLWhH5x2i6vg6hbKHurVoiclblPM7IQN67a_hTIbh8izy6nSQMzENJuOmx4UpFu63SFW7qwzHTVwYAngpqUZPs2feWdqVGcF52o1RWsobFrdmh_79gMiGyxLm8n3awv879BYdJqm2VDWDCPbERbBQUxD1mUN4nJtbHy-GYJ5mIJRpyw5qBdw167MWCM0tYM7mEKg3DnAhiWlEZJMnf8-Rcg5e0EwrPREtFCr32RSU_6kKGSZ44gDdXbtQ&key=AIzaSyBTGLx7uV_OtjZwbLpQt5fuEUUwNH_bMW8",
+    "google_maps_url": "www.google.com/maps/place/?q=place_id:ChIJXfToFZNPv0cRGC_JA1cnU9Q",
+    "hero_image": "maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AWn5SU5PlMg-CAKlDkCcCxITBUaxv2vWX3A7HVFEQpu3fyFdaIFArSsmkfLWhH5x2i6vg6hbKHurVoiclblPM7IQN67a_hTIbh8izy6nSQMzENJuOmx4UpFu63SFW7qwzHTVwYAngpqUZPs2feWdqVGcF52o1RWsobFrdmh_79gMiGyxLm8n3awv879BYdJqm2VDWDCPbERbBQUxD1mUN4nJtbHy-GYJ5mIJRpyw5qBdw167MWCM0tYM7mEKg3DnAhiWlEZJMnf8-Rcg5e0EwrPREtFCr32RSU_6kKGSZ44gDdXbtQ&key=AIzaSyBTGLx7uV_OtjZwbLpQt5fuEUUwNH_bMW8",
     "logo_url": "",
     "discount_enabled": true,
     "discount_percentage": 10,
@@ -344,8 +344,8 @@ window.REVIEW_CONFIGS = {
   "sr-cut-color": {
     "name": "SR Cut & Color",
     "category": "Hair Care",
-    "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJXdbIpatHv0cR-iFLl0J22EI",
-    "hero_image": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AWn5SU5LFmyZAjJSDFG3NgNBBSmoJ5hHJnOiYwN37XRflI4svc7Ddo_4tQ9KUPlSCecJbvRh_unfOC8w2m-ftVK2G_NRQ8s9zn4dpewh5vzUN1TxFwiSVjOT9Cd09HTVaj__IzXhGQFZ3-Aka__sh239nhunYDgcP2LSsXZPLPu5v5GhzDTqo_M9KdnoLImByQBvqDRR52LNCvrlmu9acYWix9412B1YtAkS7pHxyTIXntRxd3Y6Go9XahwELBW4t-vnXQyugH20KY36FqQWXxm1R4ADyVoJa36rsJIHsduYGuRDpQ&key=AIzaSyBTGLx7uV_OtjZwbLpQt5fuEUUwNH_bMW8",
+    "google_maps_url": "www.google.com/maps/place/?q=place_id:ChIJXdbIpatHv0cR-iFLl0J22EI",
+    "hero_image": "maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AWn5SU5LFmyZAjJSDFG3NgNBBSmoJ5hHJnOiYwN37XRflI4svc7Ddo_4tQ9KUPlSCecJbvRh_unfOC8w2m-ftVK2G_NRQ8s9zn4dpewh5vzUN1TxFwiSVjOT9Cd09HTVaj__IzXhGQFZ3-Aka__sh239nhunYDgcP2LSsXZPLPu5v5GhzDTqo_M9KdnoLImByQBvqDRR52LNCvrlmu9acYWix9412B1YtAkS7pHxyTIXntRxd3Y6Go9XahwELBW4t-vnXQyugH20KY36FqQWXxm1R4ADyVoJa36rsJIHsduYGuRDpQ&key=AIzaSyBTGLx7uV_OtjZwbLpQt5fuEUUwNH_bMW8",
     "logo_url": "",
     "discount_enabled": true,
     "discount_percentage": 10,
@@ -361,7 +361,7 @@ window.REVIEW_CONFIGS = {
   "salon-kcher": {
     "name": "Salon Köcher",
     "category": "Hair Care",
-    "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJf2FGfF9Pv0cRpdqw01_ROOU",
+    "google_maps_url": "www.google.com/maps/place/?q=place_id:ChIJf2FGfF9Pv0cRpdqw01_ROOU",
     "hero_image": "",
     "logo_url": "",
     "discount_enabled": true,
@@ -378,8 +378,8 @@ window.REVIEW_CONFIGS = {
   "sara-rosa-friseurmeisterin": {
     "name": "Sara Rosa Friseurmeisterin",
     "category": "Hair Care",
-    "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJwbbTR1RFv0cRCGkiCnLz1zY",
-    "hero_image": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AWn5SU6gcHqPQo-JfRmQYAv145be8NrY8cK_MhM7C12gEw-FG6Wg7esEPPBX8HJRHZcT_y3TkVB5_2gJQCiIaSwyrle7J3GBXBfIcxuBc5zw244vbTEbxsDbVYksyonCskXnDTFf0EMjUek5phM1LOeHal3s32qJabUQoWOnjB6JqzRXyBAFJcRwAoMiFU9AYB3WT_CtBmAhBGiNt1E1fecezzJuSpxedTtfXMS83mccGA8EEVA6NZsCwmudz543bsJEak1a1EFF8kshbu6p9CtYEHTqTAj0xNTHtNoeJIaGY-EOZA&key=AIzaSyBTGLx7uV_OtjZwbLpQt5fuEUUwNH_bMW8",
+    "google_maps_url": "www.google.com/maps/place/?q=place_id:ChIJwbbTR1RFv0cRCGkiCnLz1zY",
+    "hero_image": "maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AWn5SU6gcHqPQo-JfRmQYAv145be8NrY8cK_MhM7C12gEw-FG6Wg7esEPPBX8HJRHZcT_y3TkVB5_2gJQCiIaSwyrle7J3GBXBfIcxuBc5zw244vbTEbxsDbVYksyonCskXnDTFf0EMjUek5phM1LOeHal3s32qJabUQoWOnjB6JqzRXyBAFJcRwAoMiFU9AYB3WT_CtBmAhBGiNt1E1fecezzJuSpxedTtfXMS83mccGA8EEVA6NZsCwmudz543bsJEak1a1EFF8kshbu6p9CtYEHTqTAj0xNTHtNoeJIaGY-EOZA&key=AIzaSyBTGLx7uV_OtjZwbLpQt5fuEUUwNH_bMW8",
     "logo_url": "",
     "discount_enabled": true,
     "discount_percentage": 10,
@@ -395,8 +395,8 @@ window.REVIEW_CONFIGS = {
   "style-in-lounge-inh-reyhan-leu": {
     "name": "Style in lounge Inh. Reyhan Leu",
     "category": "Hair Care",
-    "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJKTeufldPv0cRrlPMWVbjN-I",
-    "hero_image": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AWn5SU7Sh6bxuFO8YRGbB2Ifx276-h-6TzPK_gcMbhQzlByNeWuW1CTqNmqTlg8bD_CGClu04i_RVxU8MTixCa2SXQ2DJAj9_RZ63FDu9ZZ4Np-O3QI5hKUuXybidB5DwBlev3RHhA0OLEsP_O5vPePTgr9PD5On1r8P_OimN3p3glCmWgiLQ-2Ur2P_B6sy_76EeEJPE5oXO6ykaAcdfsvK09BsSl4mKSo-lOOMoaqXG5nCxJJM8EA4WD69K9b7ud9FBE0qG5GaCrVKBkUZHPzyQNWk7RbOjZ_xtCR3yjPa2UxIDT4YGUVSRa4LWM_15wYmZvMgxGOfSewtv-FvmPYRv2amilxJY2LsNtncOudzzpN39AvOAZ61cRFMkVd9aS_WbHUrxruBiziV9beTpQQv6dgYlTbPbNaR-NzLQoALp2duWg&key=AIzaSyBTGLx7uV_OtjZwbLpQt5fuEUUwNH_bMW8",
+    "google_maps_url": "www.google.com/maps/place/?q=place_id:ChIJKTeufldPv0cRrlPMWVbjN-I",
+    "hero_image": "maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AWn5SU7Sh6bxuFO8YRGbB2Ifx276-h-6TzPK_gcMbhQzlByNeWuW1CTqNmqTlg8bD_CGClu04i_RVxU8MTixCa2SXQ2DJAj9_RZ63FDu9ZZ4Np-O3QI5hKUuXybidB5DwBlev3RHhA0OLEsP_O5vPePTgr9PD5On1r8P_OimN3p3glCmWgiLQ-2Ur2P_B6sy_76EeEJPE5oXO6ykaAcdfsvK09BsSl4mKSo-lOOMoaqXG5nCxJJM8EA4WD69K9b7ud9FBE0qG5GaCrVKBkUZHPzyQNWk7RbOjZ_xtCR3yjPa2UxIDT4YGUVSRa4LWM_15wYmZvMgxGOfSewtv-FvmPYRv2amilxJY2LsNtncOudzzpN39AvOAZ61cRFMkVd9aS_WbHUrxruBiziV9beTpQQv6dgYlTbPbNaR-NzLQoALp2duWg&key=AIzaSyBTGLx7uV_OtjZwbLpQt5fuEUUwNH_bMW8",
     "logo_url": "",
     "discount_enabled": true,
     "discount_percentage": 10,
@@ -412,8 +412,8 @@ window.REVIEW_CONFIGS = {
   "vibes-friseur": {
     "name": "Vibes Friseur",
     "category": "Hair Care",
-    "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJVdQt7C5Hv0cRa9mJXAzasWM",
-    "hero_image": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AWn5SU4DyTVQFIa9xEyIch3atDqUvR6cBrqBrcGQK7v0ZwcVvWNiY_771CT_WrAkmSuYN8qWApCCfK3ndY4ulNNmcLlkpQXFj9FPZN8GEp3AAaFG6GeG6ce38Dz8R87orTi77aY2AK6D5q7uKyX_CPjV8ZnE2TB0bk6z__KoSN6WKSFwxJMky1mBpxvTGI7Z2n7cZCWOepKZ4rH0r9poZdZ50eVMTeZY3g9_0EPv2a0i1Kl5RFbUfngQxzIbS3b7oFg2j1W5KLj_9wLSyzW3krbjXG5ZwAtlP8pKMkvyINsmbJJlMg&key=AIzaSyBTGLx7uV_OtjZwbLpQt5fuEUUwNH_bMW8",
+    "google_maps_url": "www.google.com/maps/place/?q=place_id:ChIJVdQt7C5Hv0cRa9mJXAzasWM",
+    "hero_image": "maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AWn5SU4DyTVQFIa9xEyIch3atDqUvR6cBrqBrcGQK7v0ZwcVvWNiY_771CT_WrAkmSuYN8qWApCCfK3ndY4ulNNmcLlkpQXFj9FPZN8GEp3AAaFG6GeG6ce38Dz8R87orTi77aY2AK6D5q7uKyX_CPjV8ZnE2TB0bk6z__KoSN6WKSFwxJMky1mBpxvTGI7Z2n7cZCWOepKZ4rH0r9poZdZ50eVMTeZY3g9_0EPv2a0i1Kl5RFbUfngQxzIbS3b7oFg2j1W5KLj_9wLSyzW3krbjXG5ZwAtlP8pKMkvyINsmbJJlMg&key=AIzaSyBTGLx7uV_OtjZwbLpQt5fuEUUwNH_bMW8",
     "logo_url": "",
     "discount_enabled": true,
     "discount_percentage": 10,
@@ -429,8 +429,8 @@ window.REVIEW_CONFIGS = {
   "wellness-therapeut-andreas-rudi": {
     "name": "Wellness Therapeut Andreas Rudi",
     "category": "Beauty Salon, Hair Care, Spa",
-    "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJn8LnAfdFv0cR9oh2o7EVPF4",
-    "hero_image": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AWn5SU6AeCjZ5_A9HMhUzi4bicQAEZnpAMZkF7PhBAQE1O2YTvewH-VRvyDMhp5EiZeOrxdYE5DuiR6z1KEz8r5mhhrcEX0ih8NUXbFGL7zzM_JwKrjKMhXmr8NHwJgcyZ2h7pb_PrisxAXRoBFk69KbmqRuTLBihCWGTihhMbNOvo3KfSgazbI61gyBPT_94f0fziGfgNJoj2WDz1IxlL0s71-i38N8nATJA4lxZt4HHH3qJOsWFnyWUwAiH0GwteOp3b-udwTtuogPaXfTEtlgP1nbR_NYCH1Dqjts32wbhVYrOw&key=AIzaSyBTGLx7uV_OtjZwbLpQt5fuEUUwNH_bMW8",
+    "google_maps_url": "www.google.com/maps/place/?q=place_id:ChIJn8LnAfdFv0cR9oh2o7EVPF4",
+    "hero_image": "maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AWn5SU6AeCjZ5_A9HMhUzi4bicQAEZnpAMZkF7PhBAQE1O2YTvewH-VRvyDMhp5EiZeOrxdYE5DuiR6z1KEz8r5mhhrcEX0ih8NUXbFGL7zzM_JwKrjKMhXmr8NHwJgcyZ2h7pb_PrisxAXRoBFk69KbmqRuTLBihCWGTihhMbNOvo3KfSgazbI61gyBPT_94f0fziGfgNJoj2WDz1IxlL0s71-i38N8nATJA4lxZt4HHH3qJOsWFnyWUwAiH0GwteOp3b-udwTtuogPaXfTEtlgP1nbR_NYCH1Dqjts32wbhVYrOw&key=AIzaSyBTGLx7uV_OtjZwbLpQt5fuEUUwNH_bMW8",
     "logo_url": "",
     "discount_enabled": true,
     "discount_percentage": 10,
@@ -446,8 +446,8 @@ window.REVIEW_CONFIGS = {
   "bahaarmas-by-linas-gbr": {
     "name": "baHAARmas by Lina's GbR",
     "category": "Hair Care",
-    "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJW7JFF9xPv0cR-qXwlA9fdR0",
-    "hero_image": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AWn5SU4ydAeAPqu1N0oT2vkNZHVmg0VYcMh3x6P-yDfweJjfMFZ5yaiGnc_wqs40anF22NEzAqvdbD72gdfpIzO3_kYyN7mNgKxfY-7muEECOloOZLB1tSCikJEYNZUGdMBkOlOC3P37-HIG_X9utCwIkC2bkJmE0xUzAsLLPWneEbWPAL7K7IMEVVJAtUkc8kKFY2dBTMHTwXqDerpnABE6X0R5swNr-DL88he7u1TBIPXTKP8__6HdoVeEexmRoIyK_FDx6ZbaX5wHrjm9e8_fBl3dJtINxf7g8Mgy4TBdCwrTCyASBMumTZ08o2WrS0P5Pj2qTaHpFp9UYrJVMNoUoDCKUaZGGu2LhSi2CIKUebfmqv2sdl_TO9MHLAQ6nHsdyEBd4xKR-jWFdTHxNj1foC8kwwWyg3Id4Ct5Xckj8RU&key=AIzaSyBTGLx7uV_OtjZwbLpQt5fuEUUwNH_bMW8",
+    "google_maps_url": "www.google.com/maps/place/?q=place_id:ChIJW7JFF9xPv0cR-qXwlA9fdR0",
+    "hero_image": "maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AWn5SU4ydAeAPqu1N0oT2vkNZHVmg0VYcMh3x6P-yDfweJjfMFZ5yaiGnc_wqs40anF22NEzAqvdbD72gdfpIzO3_kYyN7mNgKxfY-7muEECOloOZLB1tSCikJEYNZUGdMBkOlOC3P37-HIG_X9utCwIkC2bkJmE0xUzAsLLPWneEbWPAL7K7IMEVVJAtUkc8kKFY2dBTMHTwXqDerpnABE6X0R5swNr-DL88he7u1TBIPXTKP8__6HdoVeEexmRoIyK_FDx6ZbaX5wHrjm9e8_fBl3dJtINxf7g8Mgy4TBdCwrTCyASBMumTZ08o2WrS0P5Pj2qTaHpFp9UYrJVMNoUoDCKUaZGGu2LhSi2CIKUebfmqv2sdl_TO9MHLAQ6nHsdyEBd4xKR-jWFdTHxNj1foC8kwwWyg3Id4Ct5Xckj8RU&key=AIzaSyBTGLx7uV_OtjZwbLpQt5fuEUUwNH_bMW8",
     "logo_url": "",
     "discount_enabled": true,
     "discount_percentage": 10,
@@ -471,7 +471,11 @@ window.REVIEW_CONFIGS = {
     const parts = window.location.hostname.split(".");
     if (parts.length > 2) {
       const subdomain = parts[0].toLowerCase();
-      if (!subdomain.match(/^[a-z]+-[a-z0-9]+-[a-z0-9]+$/)) {
+      // Only ignore obvious Vercel auto-generated subdomains (long random alphanumeric hashes)
+      // Allow all business slugs, including those with 3 segments like "friseursalon-anke-krichel"
+      // Vercel pattern: very long segments (10+ chars) with numbers, like "abc123def456-ghi789jkl012-mno345pqr678"
+      const isVercelPattern = /^[a-z0-9]{10,}-[a-z0-9]{10,}/.test(subdomain) && /\d/.test(subdomain);
+      if (!isVercelPattern) {
         return subdomain;
       }
     }

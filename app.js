@@ -86,9 +86,11 @@
     const parts = window.location.hostname.split(".");
     if (parts.length > 2) {
       const subdomain = parts[0].toLowerCase();
-      // Ignore Vercel's auto-generated subdomains (contain random strings and numbers)
-      // Keep business slugs like "bigc-donchan", "starbucks-123", etc.
-      if (!subdomain.match(/^[a-z]+-[a-z0-9]+-[a-z0-9]+$/)) {
+      // Only ignore obvious Vercel auto-generated subdomains (long random alphanumeric hashes)
+      // Allow all business slugs, including those with 3 segments like "friseursalon-anke-krichel"
+      // Vercel pattern: very long segments (10+ chars) with numbers, like "abc123def456-ghi789jkl012-mno345pqr678"
+      const isVercelPattern = /^[a-z0-9]{10,}-[a-z0-9]{10,}/.test(subdomain) && /\d/.test(subdomain);
+      if (!isVercelPattern) {
         return subdomain;
       }
     }
@@ -139,6 +141,11 @@
   const initializeState = () => {
     const config = window.REVIEW_TOOL_CONFIG || {};
     
+    // Debug: Log config before using it
+    console.log('=== Initializing State ===');
+    console.log('REVIEW_TOOL_CONFIG:', config);
+    console.log('sheet_script_url from config:', config.sheet_script_url);
+    
     state = {
       businessName: sanitizeString(config.name) || "Wir schätzen Ihr Feedback",
     businessCategory: sanitizeString(config.category),
@@ -154,12 +161,17 @@
       discountEnabled: config.discount_enabled !== false,
       discountPercentage: Number(config.discount_percentage) || 10,
       discountValidDays: Number(config.discount_valid_days) || 30,
+      referralEnabled: config.referral_enabled !== false,
       selectedRating: null,
       currentDiscountCode: null,
       waitingForGoogleReturn: false,
       userComments: null,
       userName: null
     };
+    
+    // Debug: Log state after initialization
+    console.log('State initialized - sheetScriptUrl:', state.sheetScriptUrl);
+    console.log('State initialized - businessName:', state.businessName);
     
     // Build the full Google Review URL if not provided
   if (!state.googleReviewUrl && state.placeId) {
@@ -451,7 +463,7 @@
       }
       
       // Show share section if referral is enabled
-      if (config.referral_enabled !== false) {
+      if (state.referralEnabled) {
         elements.shareLoveSection?.classList.remove("hidden");
       } else {
         elements.shareLoveSection?.classList.add("hidden");
@@ -483,11 +495,21 @@
   };
 
   const sendInternalFeedback = async (payload) => {
+    // Debug: Log what we're about to send
+    console.log('=== Review Submission Debug ===');
+    console.log('sheetScriptUrl:', state.sheetScriptUrl);
+    console.log('payload:', payload);
+    
     if (!state.sheetScriptUrl || state.sheetScriptUrl.includes("YOUR_SCRIPT_ID")) {
       console.warn("Sheet script URL missing, payload not sent", payload);
+      console.warn("Current state.sheetScriptUrl:", state.sheetScriptUrl);
+      console.warn("REVIEW_TOOL_CONFIG:", window.REVIEW_TOOL_CONFIG);
       return { ok: false, skipped: true };
     }
     try {
+      console.log('Sending POST to:', state.sheetScriptUrl);
+      console.log('Payload JSON:', JSON.stringify(payload));
+      
       // Use a CORS-simple request so the browser sends it without a preflight.
       // Apps Script will read JSON from e.postData.contents.
       await fetch(state.sheetScriptUrl, {
@@ -497,10 +519,10 @@
         body: JSON.stringify(payload)
       });
       // With no-cors, the response is opaque; we assume success if no network error thrown.
-      console.log("Feedback sent to Sheets (opaque response)");
+      console.log("✓ Feedback sent to Sheets (opaque response)");
       return { ok: true, opaque: true };
     } catch (error) {
-      console.error("Sheets submission failed", error);
+      console.error("✗ Sheets submission failed", error);
       return { ok: false, error };
     }
   };

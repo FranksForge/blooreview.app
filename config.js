@@ -1,4 +1,4 @@
-// Multi-tenant configs - updated: 2025-11-01T12:27:45.208Z
+// Multi-tenant configs - updated: 2025-11-01T13:00:53.634Z
 // DO NOT EDIT MANUALLY - Run 'node sync-config.js' to update from Google Sheets
 window.REVIEW_CONFIGS = {
   "beauty-bar": {
@@ -22,7 +22,7 @@ window.REVIEW_CONFIGS = {
     "name": "Friseur Struwwelpeter / Struwwelmobil Inh.: E. Immesberger",
     "category": "Hair Care, Store",
     "google_maps_url": "www.google.com/maps/place/?q=place_id:ChIJW1IBvPdFv0cR1s07Add3aEU",
-    "hero_image": "",
+    "hero_image": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRElKCLs_gosqF9vb3h68CaIgDAjnxU3x_PU-1j420CWaHRuA",
     "logo_url": "",
     "discount_enabled": true,
     "discount_percentage": 10,
@@ -243,7 +243,7 @@ window.REVIEW_CONFIGS = {
     "name": "Haaraktuell Inh. V. Kühn",
     "category": "Hair Care",
     "google_maps_url": "www.google.com/maps/place/?q=place_id:ChIJiSIdKiJEv0cRussuKguD8PY",
-    "hero_image": "",
+    "hero_image": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQaWscqbfh72k_G0oTO_90C40m6cVpqB_YHnvm0-YZPYtf0OA",
     "logo_url": "",
     "discount_enabled": true,
     "discount_percentage": 10,

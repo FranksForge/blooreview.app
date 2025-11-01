@@ -191,10 +191,10 @@
   const buildSnippet = ({ name, category, placeId, mapUrl }) => `// Paste into config.js
 window.REVIEW_TOOL_CONFIG = {
   // ...existing fields
-  businessName: ${JSON.stringify(name)},
-  businessCategory: ${JSON.stringify(category)},
-  googlePlaceId: ${JSON.stringify(placeId)},
-  googleMapsUrl: ${JSON.stringify(mapUrl)}
+  name: ${JSON.stringify(name)},
+  category: ${JSON.stringify(category)},
+  place_id: ${JSON.stringify(placeId)},
+  google_maps_url: ${JSON.stringify(mapUrl)}
 };`;
 
   const copyText = async (text) => {

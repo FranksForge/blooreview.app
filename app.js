@@ -140,20 +140,20 @@
     const config = window.REVIEW_TOOL_CONFIG || {};
     
     state = {
-      businessName: sanitizeString(config.businessName) || "Wir schätzen Ihr Feedback",
-    businessCategory: sanitizeString(config.businessCategory),
-    mapsUrl: sanitizeString(config.googleMapsUrl),
-    placeId: sanitizeString(config.googlePlaceId),
+      businessName: sanitizeString(config.name) || "Wir schätzen Ihr Feedback",
+    businessCategory: sanitizeString(config.category),
+    mapsUrl: sanitizeString(config.google_maps_url),
+    placeId: sanitizeString(config.place_id),
     googleReviewBaseUrl:
-      sanitizeString(config.googleReviewBaseUrl) ||
+      sanitizeString(config.google_review_base_url) ||
       "https://search.google.com/local/writereview?placeid=",
-    googleReviewUrl: sanitizeString(config.googleReviewUrl),
+    googleReviewUrl: sanitizeString(config.google_review_url),
       
-    sheetScriptUrl: sanitizeString(config.sheetScriptUrl),
-      reviewThreshold: Number(config.reviewThreshold) || 5,
-      discountEnabled: config.discount?.enabled !== false,
-      discountPercentage: Number(config.discount?.percentage) || 10,
-      discountValidDays: Number(config.discount?.validDays) || 30,
+    sheetScriptUrl: sanitizeString(config.sheet_script_url),
+      reviewThreshold: Number(config.review_threshold) || 5,
+      discountEnabled: config.discount_enabled !== false,
+      discountPercentage: Number(config.discount_percentage) || 10,
+      discountValidDays: Number(config.discount_valid_days) || 30,
       selectedRating: null,
       currentDiscountCode: null,
       waitingForGoogleReturn: false,
@@ -294,7 +294,7 @@
     if (!state.googleReviewUrl) {
       if (elements.errorMessage) {
         elements.errorMessage.textContent =
-          "Google review link missing. Add googlePlaceId or googleReviewUrl to config.js.";
+          "Google review link missing. Add place_id or google_review_url to config.js.";
       }
       return;
     }
@@ -451,7 +451,7 @@
       }
       
       // Show share section if referral is enabled
-      if (config.referral?.enabled !== false) {
+      if (config.referral_enabled !== false) {
         elements.shareLoveSection?.classList.remove("hidden");
       } else {
         elements.shareLoveSection?.classList.add("hidden");
@@ -653,11 +653,11 @@
     const heroImage = document.getElementById('hero-image');
     const config = window.REVIEW_TOOL_CONFIG || {};
     
-    if (config.heroImageUrl && heroImage && heroImageContainer) {
-      // If heroImageUrl is just a filename (no protocol), prepend /images/
-      const imageSrc = config.heroImageUrl.startsWith('http') 
-        ? config.heroImageUrl 
-        : `/images/${config.heroImageUrl}`;
+    if (config.hero_image && heroImage && heroImageContainer) {
+      // If hero_image is just a filename (no protocol), prepend /images/
+      const imageSrc = config.hero_image.startsWith('http') 
+        ? config.hero_image 
+        : `/images/${config.hero_image}`;
       heroImage.src = imageSrc;
       heroImage.alt = state.businessName;
       heroImageContainer.classList.remove('hidden');
@@ -700,7 +700,23 @@
   };
 
   const init = () => {
+    // Debug: Log config status
+    console.log('=== Config Debug ===');
+    console.log('REVIEW_CONFIGS available:', typeof window.REVIEW_CONFIGS !== 'undefined');
+    console.log('REVIEW_TOOL_CONFIG:', window.REVIEW_TOOL_CONFIG);
+    console.log('Config keys:', window.REVIEW_CONFIGS ? Object.keys(window.REVIEW_CONFIGS) : 'none');
+    
     initializeState();
+    
+    // Debug: Log state after initialization
+    console.log('State after init:', {
+      businessName: state.businessName,
+      businessCategory: state.businessCategory,
+      placeId: state.placeId,
+      discountEnabled: state.discountEnabled,
+      discountPercentage: state.discountPercentage
+    });
+    
     attachListeners();
     applyConfigToDom();
     applyTranslations();

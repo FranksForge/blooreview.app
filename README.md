@@ -19,14 +19,14 @@ Edit `config.js` and replace the placeholder values:
 
 ```js
 window.REVIEW_TOOL_CONFIG = {
-  businessName: "Your Business Name",
-  businessCategory: "Retail",
-  googleMapsUrl: "https://www.google.com/maps/place/your-business",
-  googlePlaceId: "ChIJxxxxxxxxxxxxxxxxxxxx",
+  name: "Your Business Name",
+  category: "Retail",
+  google_maps_url: "https://www.google.com/maps/place/your-business",
+  place_id: "ChIJxxxxxxxxxxxxxxxxxxxx",
 
   // Optional overrides
-  googleReviewBaseUrl: "https://search.google.com/local/writereview?placeid=",
-  googleReviewUrl: "",
+  google_review_base_url: "https://search.google.com/local/writereview?placeid=",
+  google_review_url: "",
   customReviewPrompts: [
     "Share how the latte art or specialty drinks made your visit memorable.",
     "Mention the cozy seating or playlist that keeps you coming back.",
@@ -34,17 +34,17 @@ window.REVIEW_TOOL_CONFIG = {
   ],
 
   // Google Apps Script endpoint for storing internal feedback (see below).
-  sheetScriptUrl: "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec"
+  sheet_script_url: "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec"
 };
 ```
 
-- `businessName`, `businessCategory`: Displayed on the review page and attached to internal feedback rows.
-- `googleMapsUrl`: For your reference (used only in admin tooling—safe to leave blank on the public page).
-- `googlePlaceId`: Required so 5-star reviewers go straight to Google. Paste it from Google’s Place ID Finder or the setup tool output.
-- `googleReviewUrl`: Optional override if you prefer to paste the full review link yourself.
-- `googleReviewBaseUrl`: Only adjust if Google changes their review link structure.
+- `name`, `category`: Displayed on the review page and attached to internal feedback rows.
+- `google_maps_url`: For your reference (used only in admin tooling—safe to leave blank on the public page).
+- `place_id`: Required so 5-star reviewers go straight to Google. Paste it from Google's Place ID Finder or the setup tool output.
+- `google_review_url`: Optional override if you prefer to paste the full review link yourself.
+- `google_review_base_url`: Only adjust if Google changes their review link structure.
 - `customReviewPrompts`: Optional. Otherwise, category-aware defaults are generated automatically.
-- `sheetScriptUrl`: The web app URL of your Google Apps Script (instructions below) that writes submissions into a Sheet.
+- `sheet_script_url`: The web app URL of your Google Apps Script (instructions below) that writes submissions into a Sheet.
 
 If the Sheet URL is not set yet, the page still accepts reviews but logs them to the browser console so you can confirm the payload.
 
@@ -57,7 +57,7 @@ If the Sheet URL is not set yet, the page still accepts reviews but logs them to
 2. With the sheet open, click **Extensions → Apps Script**.
 3. Replace the default script with the snippet below and save the project.
 4. Click **Deploy → Test deployments → Select type: Web app**, then choose **Me** as the executing account, **Anyone** or **Anyone with the link** as “Who has access”, and deploy.
-5. Copy the “Web app URL” and paste it into `sheetScriptUrl` in `config.js`.
+5. Copy the "Web app URL" and paste it into `sheet_script_url` in `config.js`.
 
 ### Apps Script snippet
 
@@ -132,4 +132,4 @@ Use `setup.html` to resolve Place ID, name, and category from a Google Maps URL 
   - Load the new Places JS library (v=beta)
   - Search via `Place.searchByText` (with location bias) and `Place.searchNearby` fallback
   - Fetch fields with `place.fetchFields`
-- Copy the generated config snippet and paste into `config.js` for the live page. After that, your public page does not need to call Places at runtime; it just uses the saved `googlePlaceId` to build the review URL.
+- Copy the generated config snippet and paste into `config.js` for the live page. After that, your public page does not need to call Places at runtime; it just uses the saved `place_id` to build the review URL.

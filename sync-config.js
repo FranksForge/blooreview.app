@@ -14,7 +14,7 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzbo0fy_aFMAyI1I87n8XvZ6eDzaxe1nI4zuUfkkNuawcKWBIbJ2uFkJq1Ntb_c-keLEQ/exec';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec';
 const CONFIG_FILE = path.join(__dirname, 'config.js');
 // Update this array to match the row order in your Google Sheet
 const DEFAULT_SLUGS = ['default', 'bigc-donchan', 'starbucks-123', 'newbus123'];
@@ -47,6 +47,23 @@ async function fetchAllConfigs() {
     
     if (data.ok && data.configs) {
       console.log(`✓ Fetched all configs: ${Object.keys(data.configs).length} businesses`);
+      
+      // Debug: Log sample config to see what fields are being returned
+      const sampleSlug = Object.keys(data.configs)[0];
+      if (sampleSlug) {
+        console.log(`\nDebug - Sample config for "${sampleSlug}":`);
+        console.log(`  Fields: ${Object.keys(data.configs[sampleSlug]).join(', ')}`);
+        const sample = data.configs[sampleSlug];
+        console.log(`  name: "${sample.name || '(not set)'}"`);
+        console.log(`  businessName: "${sample.businessName || '(not set)'}"`);
+        console.log(`  place_id: "${sample.place_id || '(not set)'}"`);
+        console.log(`  googlePlaceId: "${sample.googlePlaceId || '(not set)'}"`);
+        console.log(`  category: "${sample.category || '(not set)'}"`);
+        console.log(`  businessCategory: "${sample.businessCategory || '(not set)'}"`);
+        if (sample.discount) console.log(`  discount: ${JSON.stringify(sample.discount)}`);
+        if (sample.discount_enabled !== undefined) console.log(`  discount_enabled: ${sample.discount_enabled} (type: ${typeof sample.discount_enabled})`);
+      }
+      
       return data.configs;
     } else {
       console.warn(`✗ Failed to fetch all configs: ${data.error || 'unknown error'}`);
@@ -140,9 +157,63 @@ function fetchJSON(url) {
 
 // Generate the config.js file
 function generateConfigFile(configs) {
+  // Process each config to ensure proper structure (sheet data should already be in snake_case)
+  const processedConfigs = {};
+  for (const [slug, config] of Object.entries(configs)) {
+    // Start with the original config (preserves all fields from sheet, including new columns)
+    const processed = { ...config };
+    
+    // Apply field mappings (handles both old camelCase and new snake_case formats)
+    // Use nullish coalescing (??) to preserve empty strings, only use fallback for null/undefined
+    processed.name = config.name ?? config.businessName ?? '';
+    processed.category = config.category ?? config.businessCategory ?? '';
+    processed.place_id = config.place_id ?? config.googlePlaceId ?? '';
+    processed.google_maps_url = config.google_maps_url ?? config.googleMapsUrl ?? '';
+    processed.hero_image = config.hero_image ?? config.heroImageUrl ?? '';
+    processed.logo_url = config.logo_url ?? config.logoUrl ?? '';
+    
+    // Helper to convert numeric booleans (1/0 from sheets) to boolean
+    const toBoolean = (value) => {
+      if (value === true || value === false) return value;
+      if (value === 1 || value === '1') return true;
+      if (value === 0 || value === '0') return false;
+      return value !== undefined ? Boolean(value) : true; // default to true if undefined
+    };
+    
+    // Handle discount fields (flatten from nested or use flat version)
+    // Handle numeric booleans from Google Sheets (1/0 → true/false)
+    processed.discount_enabled = toBoolean(config.discount_enabled ?? config.discount?.enabled ?? true);
+    processed.discount_percentage = Number(config.discount_percentage ?? config.discount?.percentage ?? 10);
+    processed.discount_valid_days = Number(config.discount_valid_days ?? config.discount?.validDays ?? 30);
+    
+    // Handle referral fields
+    processed.referral_enabled = toBoolean(config.referral_enabled ?? config.referral?.enabled ?? true);
+    processed.referral_message = config.referral_message ?? config.referral?.message ?? '';
+    
+    // Handle internal fields (preserve or set defaults)
+    processed.google_review_base_url = config.google_review_base_url ?? config.googleReviewBaseUrl ?? 'https://search.google.com/local/writereview?placeid=';
+    processed.google_review_url = config.google_review_url ?? config.googleReviewUrl ?? '';
+    processed.sheet_script_url = config.sheet_script_url ?? config.sheetScriptUrl ?? '';
+    
+    // Clean up old field names (remove camelCase versions if they exist)
+    delete processed.businessName;
+    delete processed.businessCategory;
+    delete processed.googlePlaceId;
+    delete processed.googleMapsUrl;
+    delete processed.heroImageUrl;
+    delete processed.logoUrl;
+    delete processed.googleReviewBaseUrl;
+    delete processed.googleReviewUrl;
+    delete processed.sheetScriptUrl;
+    delete processed.discount; // Remove nested discount object if it exists
+    delete processed.referral; // Remove nested referral object if it exists
+    
+    processedConfigs[slug] = processed;
+  }
+  
   const template = `// Multi-tenant configs - updated: ${new Date().toISOString()}
 // DO NOT EDIT MANUALLY - Run 'node sync-config.js' to update from Google Sheets
-window.REVIEW_CONFIGS = ${JSON.stringify(configs, null, 2)};
+window.REVIEW_CONFIGS = ${JSON.stringify(processedConfigs, null, 2)};
 
 // Resolve slug from URL and set the active config
 (function() {

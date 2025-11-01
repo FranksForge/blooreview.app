@@ -1,4 +1,4 @@
-// Multi-tenant configs - updated: 2025-11-01T10:11:30.293Z
+// Multi-tenant configs - updated: 2025-11-01T11:45:35.402Z
 // DO NOT EDIT MANUALLY - Run 'node sync-config.js' to update from Google Sheets
 window.REVIEW_CONFIGS = {
   "beauty-bar": {
@@ -15,7 +15,7 @@ window.REVIEW_CONFIGS = {
     "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   },
   "friseur-struwwelpeter-struwwelmobil-inh-e-immesberger": {
@@ -32,7 +32,7 @@ window.REVIEW_CONFIGS = {
     "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   },
   "giarrizzo-franco": {
@@ -49,7 +49,7 @@ window.REVIEW_CONFIGS = {
     "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   },
   "haarlequeen-in-der-beautybar": {
@@ -66,7 +66,7 @@ window.REVIEW_CONFIGS = {
     "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   },
   "hair-and-beauty-lounge-de-boer": {
@@ -83,7 +83,7 @@ window.REVIEW_CONFIGS = {
     "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   },
   "hilde-dietz-frisr": {
@@ -100,7 +100,7 @@ window.REVIEW_CONFIGS = {
     "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   },
   "annemarie-osterhammel-friseursalon": {
@@ -117,7 +117,7 @@ window.REVIEW_CONFIGS = {
     "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   },
   "backstage-by-sema-yilmaz": {
@@ -134,7 +134,7 @@ window.REVIEW_CONFIGS = {
     "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   },
   "bedburg-barbershop": {
@@ -151,7 +151,7 @@ window.REVIEW_CONFIGS = {
     "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   },
   "elisabeth-schmitz-friseursalon": {
@@ -168,7 +168,7 @@ window.REVIEW_CONFIGS = {
     "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   },
   "friseur-daulat": {
@@ -185,7 +185,7 @@ window.REVIEW_CONFIGS = {
     "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   },
   "friseur-gudrun-meuter": {
@@ -202,7 +202,7 @@ window.REVIEW_CONFIGS = {
     "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   },
   "friseursalon-anke-krichel": {
@@ -219,7 +219,7 @@ window.REVIEW_CONFIGS = {
     "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   },
   "frisr-coiffeur-studio-r-hantsche": {
@@ -236,7 +236,7 @@ window.REVIEW_CONFIGS = {
     "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   },
   "haaraktuell-inh-v-khn": {
@@ -253,7 +253,7 @@ window.REVIEW_CONFIGS = {
     "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   },
   "haarstyling-esser-uerlings": {
@@ -270,7 +270,7 @@ window.REVIEW_CONFIGS = {
     "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   },
   "hair-style-by-ferrand-elsdorf": {
@@ -287,7 +287,7 @@ window.REVIEW_CONFIGS = {
     "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   },
   "hairexpress-friseur-real-bedburg": {
@@ -304,7 +304,7 @@ window.REVIEW_CONFIGS = {
     "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   },
   "haircreation-jennifer-wien": {
@@ -321,7 +321,7 @@ window.REVIEW_CONFIGS = {
     "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   },
   "jr-cut-color": {
@@ -338,7 +338,7 @@ window.REVIEW_CONFIGS = {
     "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   },
   "sr-cut-color": {
@@ -355,7 +355,7 @@ window.REVIEW_CONFIGS = {
     "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   },
   "salon-kcher": {
@@ -372,7 +372,7 @@ window.REVIEW_CONFIGS = {
     "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   },
   "sara-rosa-friseurmeisterin": {
@@ -389,7 +389,7 @@ window.REVIEW_CONFIGS = {
     "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   },
   "style-in-lounge-inh-reyhan-leu": {
@@ -406,7 +406,7 @@ window.REVIEW_CONFIGS = {
     "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   },
   "vibes-friseur": {
@@ -423,7 +423,7 @@ window.REVIEW_CONFIGS = {
     "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   },
   "wellness-therapeut-andreas-rudi": {
@@ -440,7 +440,7 @@ window.REVIEW_CONFIGS = {
     "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   },
   "bahaarmas-by-linas-gbr": {
@@ -457,7 +457,7 @@ window.REVIEW_CONFIGS = {
     "place_id": "",
     "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
     "google_review_url": "",
-    "sheet_script_url": "https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec",
+    "sheet_script_url": "https://script.google.com/macros/s/AKfycbxNYoHgT4eyYukaJHuWvvdI56mIKihLGeggL_XstT7HElrjjKAPYDm-ErH-wN-RztHDZQ/exec",
     "min_review": 5
   }
 };

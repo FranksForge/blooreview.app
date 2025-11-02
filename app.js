@@ -138,6 +138,12 @@
   // State will be initialized after config loads
   let state = null;
 
+  const hasValidConfig = () => {
+    const config = window.REVIEW_TOOL_CONFIG || {};
+    // Check if config has essential fields (name or place_id indicates valid business config)
+    return !!(config.name || config.place_id);
+  };
+
   const initializeState = () => {
     const config = window.REVIEW_TOOL_CONFIG || {};
     
@@ -721,12 +727,37 @@
     });
   };
 
+  const showLandingPage = () => {
+    // Update page title
+    document.title = "Der Boost für Ihr lokales Business - Sichtbar Bewerten";
+    
+    // Hide all review-related sections
+    elements.ratingStep?.classList.add("hidden");
+    elements.mainHeader?.classList.add("hidden");
+    elements.followupSection?.classList.add("hidden");
+    elements.thankYou?.classList.add("hidden");
+    elements.googleForward?.classList.add("hidden");
+    
+    // Show landing page
+    const landingPage = document.getElementById("landing-page");
+    if (landingPage) {
+      landingPage.classList.remove("hidden");
+    }
+  };
+
   const init = () => {
     // Debug: Log config status
     console.log('=== Config Debug ===');
     console.log('REVIEW_CONFIGS available:', typeof window.REVIEW_CONFIGS !== 'undefined');
     console.log('REVIEW_TOOL_CONFIG:', window.REVIEW_TOOL_CONFIG);
     console.log('Config keys:', window.REVIEW_CONFIGS ? Object.keys(window.REVIEW_CONFIGS) : 'none');
+    
+    // Check if we have a valid config, if not show landing page
+    if (!hasValidConfig()) {
+      console.log('No valid config found, showing landing page');
+      showLandingPage();
+      return;
+    }
     
     initializeState();
     

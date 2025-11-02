@@ -710,6 +710,16 @@ footer {
   object-position: center;
 }
 
+.landing-preheader {
+  color: #3365ff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+}
+
 #landing-page h1 {
   margin-bottom: 0.5rem;
   color: #222;

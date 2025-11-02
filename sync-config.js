@@ -17,7 +17,7 @@ const { execSync } = require('child_process');
 // Apps Script URL for fetching configs from Google Sheet
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8Rb98RDYmHhjKLAbKlabPQI7VXmBH35PaUIUt_UyrLvUvswhqbs8XXpQ/exec';
 // Apps Script URL for submitting reviews to Google Sheet (separate tabs per slug)
-const REVIEW_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbysuZFWEL6zZs1fu8kowPwWRGLPFAvXvRKOCLqlxpf1qzB5pM8RiKlQmzwrQGwgMKKiNg/exec';
+const REVIEW_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzUpM-SbvZNMclVht4Q4PuWqXxG7MfrPygjx-UJOP0GNh_bzU6bC1jl2bwqSBWjlM09uw/exec ';
 
 const CONFIG_FILE = path.join(__dirname, 'config.js');
 // Update this array to match the row order in your Google Sheet

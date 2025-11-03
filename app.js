@@ -40,14 +40,14 @@
       errorGeneric: "Something went wrong. Please try again."
     },
     de: {
-      subtitle: "Nur 2 Minuten für eine Bewertung helfen uns, besser zu werden und zu wachsen. Wir schätzen Ihre Zeit sehr!",
+      subtitle: "Ihre Meinung ist uns wichtig und hilft uns, besser zu werden.",
       ratingPrompt: "Wie würden Sie Ihre Erfahrung bewerten?",
       ratingError: "Bitte wählen Sie eine Sternebewertung aus, um fortzufahren.",
       continueButton: "Weiter",
       ratingStars: "Sterne",
       ratingStarsSingular: "Stern",
       feedbackIntro: "Wir lesen jede Nachricht sorgfältig. Ihr Feedback hilft uns unseren Service zukünftig noch weiter zu verbessern.",
-      feedbackPrompt: "Erzählen Sie uns von Ihrer Erfahrung - Wie können wir uns verbessern?",
+      feedbackPrompt: "Wie können wir uns verbessern?",
       feedbackPlaceholder: "Teilen Sie Ihre Gedanken mit...",
       feedbackNameLabel: "Ihr Name (optional)",
       feedbackNamePlaceholder: "Geben Sie Ihren Namen ein",
@@ -442,7 +442,7 @@
             "Vielen Dank für Ihre Bewertung! Wir haben Google Bewertungen in einem neuen Tab geöffnet. Hier eine kleine Aufmerksamkeit von uns:";
         } else {
           elements.thankYouMessage.textContent =
-            "Vielen Dank für Ihre Rückmeldung. Sie hilft uns, unseren Service weiter zu verbessern.";
+            "Vielen Dank für Ihr Feedback! Hier eine kleine Aufmerksamkeit von uns:";
         }
       }
       elements.discountSection?.classList.remove("hidden");
@@ -474,7 +474,7 @@
     } else {
       if (elements.thankYouMessage) {
         elements.thankYouMessage.textContent =
-          "Vielen Dank für Ihre Rückmeldung. Wir freuen uns, Sie bald wieder bei uns zu begrüßen.";
+          "Vielen Dank für Ihr Feedback! Wir freuen uns, Sie bald wieder bei uns zu begrüßen.";
       }
       elements.discountSection?.classList.add("hidden");
       elements.shareLoveSection?.classList.add("hidden");

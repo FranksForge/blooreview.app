@@ -439,7 +439,7 @@
         // Special message for 5-star ratings (Google Reviews flow)
         if (state.selectedRating >= state.reviewThreshold) {
           elements.thankYouMessage.textContent =
-            "Vielen Dank für Ihre Bewertung! Wir haben Google Bewertungen in einem neuen Tab geöffnet. Hier erhalten Sie Ihren Rabattcode.";
+            "Vielen Dank für Ihre Bewertung! Wir haben Google Bewertungen in einem neuen Tab geöffnet. Hier eine kleine Aufmerksamkeit von uns:";
         } else {
           elements.thankYouMessage.textContent =
             "Vielen Dank für Ihre Rückmeldung. Sie hilft uns, unseren Service weiter zu verbessern.";

@@ -138,6 +138,14 @@ h1 {
   cursor: default;
 }
 
+.rating-prompt {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #2a2d42;
+  margin: 0 0 1rem 0;
+  text-align: center;
+}
+
 .rating-fieldset {
   border: none;
   margin: 0;

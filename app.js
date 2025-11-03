@@ -672,6 +672,13 @@
   };
 
   const applyConfigToDom = () => {
+    // Update page title based on business name
+    if (state.businessName && state.businessName !== "Wir schätzen Ihr Feedback") {
+      document.title = `${state.businessName} - Bewertung abgeben | Sichtbar Bewerten`;
+    } else {
+      document.title = "Bewertung abgeben | Sichtbar Bewerten";
+    }
+    
     if (elements.businessName) elements.businessName.textContent = state.businessName;
     const categoryDisplay = state.businessCategory || state.businessName;
     if (elements.categoryLabel) elements.categoryLabel.textContent = categoryDisplay;

@@ -335,6 +335,13 @@ h1 {
   text-align: center;
 }
 
+.buttons-row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
 .secondary {
   display: inline-flex;
   align-items: center;

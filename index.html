@@ -43,9 +43,12 @@
             <label for="star1" aria-label="1 star">★</label>
           </div>
         </fieldset>
-        <button type="button" id="confirm-rating" class="primary rating-confirm" data-translate="continueButton">
-          Weiter
-        </button>
+        <div class="buttons-row">
+          <button type="button" id="confirm-rating" class="primary rating-confirm" data-translate="continueButton">
+            Weiter
+          </button>
+          <button type="button" id="back-btn" class="secondary hidden">Zurück</button>
+        </div>
         <p
           id="rating-error"
           class="form-error rating-error"
@@ -175,10 +178,6 @@
           </a>
         </div>
       </section>
-
-      <div class="back-bar">
-        <button type="button" id="back-btn" class="secondary hidden">Zurück</button>
-      </div>
 
       <footer>
         <div class="footer-content">

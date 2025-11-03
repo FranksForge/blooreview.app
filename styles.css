@@ -305,22 +305,26 @@ h1 {
   display: none !important;
 }
 
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
 .home-btn {
-  position: absolute;
-  top: 20px;
-  left: 20px;
+  position: static;
   background: transparent;
   border: 2px solid #d7d7dc;
   color: #999;
-  font-size: 28px;
+  font-size: 22px;
   cursor: pointer;
-  padding: 8px;
+  padding: 6px;
   border-radius: 50%;
   transition: all 0.2s ease;
   line-height: 1;
-  z-index: 100;
-  width: 44px;
-  height: 44px;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;

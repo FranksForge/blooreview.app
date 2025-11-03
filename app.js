@@ -59,13 +59,13 @@
       discountLabel: "Ihr Rabattcode:",
       discountExpiry: "Gültig bis",
       copyCode: "Code kopieren",
-      shareLoveTitle: "Teilen Sie die Liebe!",
-      shareLoveMessage: "Laden Sie Ihre Freunde ein, auch eine Bewertung zu hinterlassen und ihren eigenen Rabatt zu erhalten!",
+      shareLoveTitle: "Weiterempfehlen",
+      shareLoveMessage: "Empfehlen Sie uns weiter und teilen Sie den Link mit Freunden.",
       shareWhatsapp: "Auf WhatsApp teilen",
       shareSMS: "Per SMS teilen",
       copyLink: "Link kopieren",
-      googleForwardTitle: "🎉 Danke für die Liebe!",
-      googleForwardMessage: "Wir haben Google Bewertungen in einem neuen Tab für Sie geöffnet. Teilen Sie dort Ihre Erfahrung!",
+      googleForwardTitle: "Vielen Dank für Ihre Bewertung!",
+      googleForwardMessage: "Wir öffnen Google Bewertungen, damit Sie Ihre Erfahrung öffentlich teilen können.",
       googleForwardHighlight: "✨ Nach Ihrer Bewertung kehren Sie zu diesem Tab zurück, um Ihren Rabattcode zu erhalten!",
       googleForwardButton: "Google Bewertungen erneut öffnen",
       mapsNote: "Brauchen Sie eine Erinnerung an uns?",
@@ -441,11 +441,11 @@
       if (elements.thankYouMessage) {
         // Special message for 5-star ratings (Google Reviews flow)
         if (state.selectedRating >= state.reviewThreshold) {
-          elements.thankYouMessage.textContent = 
-            "Vielen Dank für Ihre 5-Sterne-Bewertung! Wir haben Google Bewertungen in einem neuen Tab für Sie geöffnet. Als Dankeschön erhalten Sie hier Ihren exklusiven Rabattcode!";
+          elements.thankYouMessage.textContent =
+            "Vielen Dank für Ihre Bewertung! Wir haben Google Bewertungen in einem neuen Tab geöffnet. Hier erhalten Sie Ihren Rabattcode.";
         } else {
-          elements.thankYouMessage.textContent = 
-            "Wir schätzen es sehr, dass Sie sich die Zeit genommen haben, uns zu helfen, besser zu werden. Ihr Feedback hilft uns direkt dabei, unseren Service zu verbessern.";
+          elements.thankYouMessage.textContent =
+            "Vielen Dank für Ihre Rückmeldung. Sie hilft uns, unseren Service weiter zu verbessern.";
         }
       }
       elements.discountSection?.classList.remove("hidden");
@@ -476,8 +476,8 @@
       }
     } else {
       if (elements.thankYouMessage) {
-        elements.thankYouMessage.textContent = 
-          "Wir schätzen es sehr, dass Sie sich die Zeit nehmen, uns zu helfen, besser zu werden. Wir hoffen Sie bald wieder bei uns begrüßen zu dürfen!";
+        elements.thankYouMessage.textContent =
+          "Vielen Dank für Ihre Rückmeldung. Wir freuen uns, Sie bald wieder bei uns zu begrüßen.";
       }
       elements.discountSection?.classList.add("hidden");
       elements.shareLoveSection?.classList.add("hidden");

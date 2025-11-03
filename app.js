@@ -322,7 +322,7 @@
   const formatExpiryDate = (daysFromNow) => {
     const date = new Date();
     date.setDate(date.getDate() + daysFromNow);
-    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    return date.toLocaleDateString('de-DE', { year: 'numeric', month: 'long', day: 'numeric' });
   };
 
   const copyDiscountCode = async () => {

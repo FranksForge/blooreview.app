@@ -70,7 +70,7 @@
       googleForwardButton: "Google Bewertungen erneut öffnen",
       mapsNote: "Brauchen Sie eine Erinnerung an uns?",
       mapsLink: "Sehen Sie sich unseren Google Maps Eintrag an.",
-      footerPoweredBy: "Powered by",
+      footerPoweredBy: "Unterstützt durch",
       footerTagline: "Wir schätzen Ihre Unterstützung sehr.",
       copied: "Kopiert!",
       errorGeneric: "Etwas ist schief gelaufen. Bitte versuchen Sie es erneut."
@@ -230,9 +230,9 @@
     // Show the feedback form
     elements.followupSection.classList.remove("hidden");
     
-    // Show home button
-    const homeBtn = document.getElementById('home-btn');
-    if (homeBtn) homeBtn.classList.remove('hidden');
+    // Show back button
+    const backBtn = document.getElementById('back-btn');
+    if (backBtn) backBtn.classList.remove('hidden');
     
     // Check the corresponding star in the display stars
     const displayStar = document.getElementById(`display-star${rating}`);
@@ -268,9 +268,9 @@
     elements.thankYou?.classList.add("hidden");
     elements.googleForward?.classList.add("hidden");
     
-    // Hide the home button on the initial screen
-    const homeBtn = document.getElementById('home-btn');
-    if (homeBtn) homeBtn.classList.add('hidden');
+    // Hide the back button on the initial screen
+    const backBtn = document.getElementById('back-btn');
+    if (backBtn) backBtn.classList.add('hidden');
     
     clearInlineError();
   };
@@ -432,9 +432,9 @@
     hideRatingStep();
     elements.thankYou?.classList.remove("hidden");
     
-    // Show home button
-    const homeBtn = document.getElementById('home-btn');
-    if (homeBtn) homeBtn.classList.remove('hidden');
+    // Show back button
+    const backBtn = document.getElementById('back-btn');
+    if (backBtn) backBtn.classList.remove('hidden');
     
     // Update thank you message based on discount availability and rating
     if (state.discountEnabled) {
@@ -665,9 +665,9 @@
     
     elements.copyLinkBtn?.addEventListener("click", copyReviewLink);
     
-    const homeBtn = document.getElementById('home-btn');
-    if (homeBtn) {
-      homeBtn.addEventListener('click', resetToHome);
+    const backBtn = document.getElementById('back-btn');
+    if (backBtn) {
+      backBtn.addEventListener('click', resetToHome);
     }
   };
 

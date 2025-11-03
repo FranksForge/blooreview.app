@@ -330,6 +330,31 @@ h1 {
   justify-content: center;
 }
 
+.back-bar {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #eef0f5;
+  color: #1f2937;
+  border: 1px solid #d7d7dc;
+  border-radius: 999px;
+  padding: 0.6rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.secondary:hover {
+  background: #e7eaf3;
+}
+
 .home-btn:hover {
   background: rgba(0, 0, 0, 0.05);
   border-color: #999;

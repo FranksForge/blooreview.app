@@ -384,4 +384,80 @@ window.REVIEW_CONFIGS = {
   const slug = resolveSlug();
   window.REVIEW_TOOL_CONFIG = window.REVIEW_CONFIGS[slug] || window.REVIEW_CONFIGS["default"];
   console.log(`Config loaded for slug: ${slug}`, window.REVIEW_TOOL_CONFIG);
+  
+  // Update Open Graph meta tags immediately (synchronously)
+  // This ensures WhatsApp and other bots see the correct meta tags before JS executes
+  const updateMetaTags = () => {
+    const config = window.REVIEW_TOOL_CONFIG || {};
+    
+    // Check if we have a valid business config
+    const hasValidConfig = !!(config.name || config.place_id);
+    
+    if (hasValidConfig && config.name && config.name !== "Wir schätzen Ihr Feedback") {
+      const pageTitle = `Ihr Feedback - ${config.name}`;
+      const description = `Bewerten Sie ${config.name} und teilen Sie uns Ihre Meinung mit`;
+      
+      // Update meta tags if they exist in DOM
+      const ogTitle = document.getElementById('og-title');
+      const ogDescription = document.getElementById('og-description');
+      const ogUrl = document.getElementById('og-url');
+      const ogImage = document.getElementById('og-image');
+      
+      if (ogTitle) ogTitle.setAttribute('content', pageTitle);
+      if (document.title) document.title = pageTitle;
+      
+      if (ogDescription) {
+        ogDescription.setAttribute('content', description);
+      }
+      
+      if (ogUrl) {
+        ogUrl.setAttribute('content', window.location.href);
+      }
+      
+      if (ogImage) {
+        if (config.logo_url) {
+          ogImage.setAttribute('content', config.logo_url);
+        } else {
+          ogImage.setAttribute('content', `${window.location.origin}/logo.png`);
+        }
+      }
+    } else {
+      // Landing page - set appropriate meta tags
+      const landingTitle = "Der Boost für Ihr lokales Business - Sichtbar Bewerten";
+      const landingDescription = "Die intelligente Bewertungsplattform für lokale Unternehmen";
+      
+      const ogTitle = document.getElementById('og-title');
+      const ogDescription = document.getElementById('og-description');
+      const ogUrl = document.getElementById('og-url');
+      const ogImage = document.getElementById('og-image');
+      
+      if (ogTitle) ogTitle.setAttribute('content', landingTitle);
+      if (document.title && document.title === "Sichtbar Bewerten") {
+        document.title = landingTitle;
+      }
+      
+      if (ogDescription) {
+        ogDescription.setAttribute('content', landingDescription);
+      }
+      
+      if (ogUrl) {
+        ogUrl.setAttribute('content', window.location.href);
+      }
+      
+      if (ogImage) {
+        ogImage.setAttribute('content', `${window.location.origin}/logo.png`);
+      }
+    }
+  };
+  
+  // Try to update immediately (DOM might not be ready yet)
+  updateMetaTags();
+  
+  // Also update when DOM is ready (fallback)
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', updateMetaTags);
+  } else {
+    // DOM already loaded, update again to be sure
+    setTimeout(updateMetaTags, 0);
+  }
 })();

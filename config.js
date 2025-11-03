@@ -398,7 +398,8 @@ window.REVIEW_CONFIGS = {
     const ogImage = document.getElementById('og-image');
     
     if (ogTitle) ogTitle.setAttribute('content', pageTitle);
-    if (document.title && document.title === "Sichtbar Bewerten") {
+    // Always update title (remove condition check)
+    if (document.title) {
       document.title = pageTitle;
     }
     

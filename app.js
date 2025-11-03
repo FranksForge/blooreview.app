@@ -52,6 +52,8 @@
       feedbackNameLabel: "Ihr Name (optional)",
       feedbackNamePlaceholder: "Geben Sie Ihren Namen ein",
       feedbackSubmit: "Bewertung abschicken",
+      feedbackError: "Bitte teilen Sie uns Ihr Feedback mit, bevor Sie absenden.",
+      feedbackRatingError: "Bitte wählen Sie zuerst eine Bewertung von 1 bis 4 Sternen aus.",
       thankYouTitle: "Vielen Dank!",
       thankYouMessage: "Wir schätzen es sehr, dass Sie sich die Zeit genommen haben, uns zu helfen, besser zu werden. Ihr Feedback hilft uns direkt dabei, unseren Service zu verbessern.",
       discountTitle: "🎉 Hier ist Ihr Rabatt!",
@@ -536,7 +538,7 @@
 
     if (!state.selectedRating || state.selectedRating >= 5) {
       if (elements.errorMessage) {
-        elements.errorMessage.textContent = "Please pick a rating from 1 to 4 stars first.";
+        elements.errorMessage.textContent = t.feedbackRatingError;
       }
       return;
     }
@@ -544,7 +546,7 @@
     const comments = sanitizeString(elements.commentsField?.value);
     if (!comments) {
       if (elements.errorMessage) {
-        elements.errorMessage.textContent = "Please share your feedback before submitting.";
+        elements.errorMessage.textContent = t.feedbackError;
       }
       return;
     }
@@ -641,7 +643,7 @@
 
     elements.ratingSubmit?.addEventListener("click", () => {
       if (!state.selectedRating) {
-        showRatingError("Please select a star rating to continue.");
+        showRatingError(t.ratingError);
         return;
       }
       resetView();

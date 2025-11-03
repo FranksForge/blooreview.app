@@ -371,7 +371,7 @@
     const reviewUrl = getReviewPageUrl();
     
     const message = encodeURIComponent(
-      `Check out ${businessName}! Leave a quick review and get ${percentage}% off: ${reviewUrl} 🎁`
+      `Schau dir ${businessName} an! Hinterlasse eine kurze Bewertung und erhalte ${percentage}% Rabatt: ${reviewUrl} 🎁`
     );
     
     window.open(`https://wa.me/?text=${message}`, '_blank');
@@ -383,7 +383,7 @@
     const reviewUrl = getReviewPageUrl();
     
     const message = encodeURIComponent(
-      `Hey! Leave a review for ${businessName} and get ${percentage}% off: ${reviewUrl}`
+      `Hallo! Hinterlasse eine Bewertung für ${businessName} und erhalte ${percentage}% Rabatt: ${reviewUrl}`
     );
     
     // For iOS/Android SMS

@@ -1,4 +1,4 @@
-// Multi-tenant configs - updated: 2025-11-03T07:06:38.579Z
+// Multi-tenant configs - updated: 2025-11-03T07:50:41.354Z
 // DO NOT EDIT MANUALLY - Run 'node sync-config.js' to update from Google Sheets
 window.REVIEW_CONFIGS = {
   "bodenseebaer": {
@@ -278,8 +278,7 @@ window.REVIEW_CONFIGS = {
     "name": "Wellness Therapeut Andreas Rudi",
     "category": "Beauty Salon, Hair Care, Spa",
     "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJn8LnAfdFv0cR9oh2o7EVPF4",
-    /*"hero_image": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AWn5SU7Bqq3dI9LI_fltW_4OoERiZbYn-A9Z8wuRR0pwYBXqVchC6PqPxHIs4CrJBaiddXh2kkUK_AXCFeeFNoqTNLZ9fOI4p4QneUSCNxQhriHp4V3L2P_FR0hy90Fa40dzUs0sH27HQVcQYNhXjDTbdooOcg4voGD0IGTcVi9eQpX9nTsltXxYtD16i2_Fu_H4xEYE2Mx0it8MpEJ9dW0kiqhex7DYGUUN-VZj0ZESbQaVYJqbxHfuxyNHZJ-PM0-BQjowqyiIYIhP3n07DAWh5ufIWSTS1Dfd_LVKMbSmtykUMw&key=AIzaSyBTGLx7uV_OtjZwbLpQt5fuEUUwNH_bMW8",*/
-    "hero_image": "https://lh3.googleusercontent.com/places/ANXAkqFZdlmp6SADpDnB05Ka3VnVaC2x-c9scebVWzk4bMZohJmlVRjmqneEEA-if2CPLdzNge17-SaepYdlhcbNkCIG7UYONBFPPng=s1600-w800",
+    "hero_image": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AWn5SU7Bqq3dI9LI_fltW_4OoERiZbYn-A9Z8wuRR0pwYBXqVchC6PqPxHIs4CrJBaiddXh2kkUK_AXCFeeFNoqTNLZ9fOI4p4QneUSCNxQhriHp4V3L2P_FR0hy90Fa40dzUs0sH27HQVcQYNhXjDTbdooOcg4voGD0IGTcVi9eQpX9nTsltXxYtD16i2_Fu_H4xEYE2Mx0it8MpEJ9dW0kiqhex7DYGUUN-VZj0ZESbQaVYJqbxHfuxyNHZJ-PM0-BQjowqyiIYIhP3n07DAWh5ufIWSTS1Dfd_LVKMbSmtykUMw&key=AIzaSyBTGLx7uV_OtjZwbLpQt5fuEUUwNH_bMW8",
     "logo_url": "",
     "discount_enabled": true,
     "discount_percentage": 10,

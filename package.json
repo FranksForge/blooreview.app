@@ -1,0 +1,10 @@
+{
+  "name": "review-demo",
+  "version": "1.0.0",
+  "description": "Review intake platform with dynamic social sharing",
+  "scripts": {
+    "sync": "node sync-config.js",
+    "sync:deploy": "node sync-config.js --deploy"
+  },
+  "dependencies": {}
+}

@@ -341,6 +341,34 @@ window.REVIEW_CONFIGS = ${JSON.stringify(processedConfigs, null, 2)};
   console.log(`\n✓ Config file updated: ${CONFIG_FILE}`);
 }
 
+// Generate config.json for serverless function (only hero_images)
+function generateApiConfig(configs) {
+  const apiDir = path.join(__dirname, 'api');
+  
+  // Ensure api directory exists
+  if (!fs.existsSync(apiDir)) {
+    fs.mkdirSync(apiDir, { recursive: true });
+  }
+  
+  // Extract only hero_image mapping for efficiency
+  const heroImages = {};
+  Object.entries(configs).forEach(([slug, config]) => {
+    if (config.hero_image && config.hero_image.trim() !== '') {
+      heroImages[slug] = config.hero_image;
+    }
+  });
+  
+  const configJsonPath = path.join(apiDir, 'config.json');
+  fs.writeFileSync(
+    configJsonPath,
+    JSON.stringify(heroImages, null, 2),
+    'utf8'
+  );
+  
+  console.log(`✓ API config generated: ${configJsonPath}`);
+  console.log(`  → ${Object.keys(heroImages).length} businesses with hero images`);
+}
+
 // Main
 (async () => {
   console.log('Syncing configs from Google Sheet...\n');
@@ -373,6 +401,7 @@ window.REVIEW_CONFIGS = ${JSON.stringify(processedConfigs, null, 2)};
     // Sort to match DEFAULT_SLUGS order (for consistency)
     const sortedConfigs = sortConfigsBySheetOrder(allConfigs, DEFAULT_SLUGS);
     generateConfigFile(sortedConfigs);
+    generateApiConfig(sortedConfigs);
     
     console.log(`\n✓ Config sync complete!`);
     console.log(`✓ Updated ${Object.keys(allConfigs).length} business(es)`);
@@ -382,13 +411,13 @@ window.REVIEW_CONFIGS = ${JSON.stringify(processedConfigs, null, 2)};
       console.log('\n🚀 Deploying to production...');
       try {
         // Check if there are changes to commit
-        execSync('git diff --quiet config.js', { stdio: 'ignore' });
+        execSync('git diff --quiet config.js api/config.json', { stdio: 'ignore' });
         console.log('ℹ️  No changes to deploy');
       } catch (error) {
         // There are changes, proceed with commit and push
         try {
-          execSync('git add config.js', { stdio: 'inherit' });
-          execSync(`git commit -m "Update all configs from Google Sheet"`, { stdio: 'inherit' });
+          execSync('git add config.js api/config.json', { stdio: 'inherit' });
+          execSync(`git commit -m "Auto-sync: Update configs and API mapping from Google Sheets"`, { stdio: 'inherit' });
           execSync('git push', { stdio: 'inherit' });
           console.log('\n✅ Deployed successfully!');
           console.log('⏳ Vercel will deploy in 2-3 minutes');
@@ -399,9 +428,9 @@ window.REVIEW_CONFIGS = ${JSON.stringify(processedConfigs, null, 2)};
       }
     } else {
       console.log('\nNext steps:');
-      console.log('  1. Review the changes: git diff config.js');
+      console.log('  1. Review the changes: git diff config.js api/config.json');
       console.log('  2. Deploy: node sync-config.js --deploy');
-      console.log('  OR manually: git add config.js && git commit -m "Update configs" && git push');
+      console.log('  OR manually: git add config.js api/config.json && git commit -m "Update configs" && git push');
     }
     
     return; // Exit early for the "fetch all" case

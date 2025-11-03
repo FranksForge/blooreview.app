@@ -412,11 +412,18 @@ window.REVIEW_CONFIGS = {
     }
     
     if (ogImage) {
-      // Ensure absolute URL with protocol for WhatsApp/Facebook
       const protocol = window.location.protocol || 'https:';
       const host = window.location.host || window.location.hostname;
-      const logoUrl = `${protocol}//${host}/logo.png`;
-      ogImage.setAttribute('content', logoUrl);
+      
+      // Use hero_image if available in config, otherwise fallback to logo.png
+      let imageUrl;
+      if (window.REVIEW_TOOL_CONFIG && window.REVIEW_TOOL_CONFIG.hero_image) {
+        imageUrl = window.REVIEW_TOOL_CONFIG.hero_image;
+      } else {
+        imageUrl = `${protocol}//${host}/logo.png`;
+      }
+      
+      ogImage.setAttribute('content', imageUrl);
     }
   };
   

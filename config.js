@@ -411,7 +411,11 @@ window.REVIEW_CONFIGS = {
     }
     
     if (ogImage) {
-      ogImage.setAttribute('content', `${window.location.origin}/logo.png`);
+      // Ensure absolute URL with protocol for WhatsApp/Facebook
+      const protocol = window.location.protocol || 'https:';
+      const host = window.location.host || window.location.hostname;
+      const logoUrl = `${protocol}//${host}/logo.png`;
+      ogImage.setAttribute('content', logoUrl);
     }
   };
   

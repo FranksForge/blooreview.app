@@ -673,10 +673,44 @@
 
   const applyConfigToDom = () => {
     // Update page title based on business name
-    if (state.businessName && state.businessName !== "Wir schätzen Ihr Feedback") {
-      document.title = `Ihr Feedback - ${state.businessName}`;
-    } else {
-      document.title = "Ihr Feedback";
+    const pageTitle = state.businessName && state.businessName !== "Wir schätzen Ihr Feedback"
+      ? `Ihr Feedback - ${state.businessName}`
+      : "Ihr Feedback";
+    
+    document.title = pageTitle;
+    
+    // Update Open Graph meta tags for social sharing
+    const ogTitle = document.getElementById('og-title');
+    const ogDescription = document.getElementById('og-description');
+    const ogUrl = document.getElementById('og-url');
+    const ogImage = document.getElementById('og-image');
+    
+    if (ogTitle) {
+      ogTitle.setAttribute('content', pageTitle);
+    }
+    
+    if (ogDescription) {
+      const description = state.businessName && state.businessName !== "Wir schätzen Ihr Feedback"
+        ? `Bewerten Sie ${state.businessName} und teilen Sie uns Ihre Meinung mit`
+        : "Teilen Sie uns Ihre Meinung mit";
+      ogDescription.setAttribute('content', description);
+    }
+    
+    if (ogUrl) {
+      ogUrl.setAttribute('content', window.location.href);
+    }
+    
+    // Get config once for both og:image and hero image
+    const config = window.REVIEW_TOOL_CONFIG || {};
+    
+    if (ogImage) {
+      if (config.logo_url) {
+        ogImage.setAttribute('content', config.logo_url);
+      } else {
+        // Fallback to logo.png (assumes logo is at root)
+        const logoUrl = `${window.location.origin}/logo.png`;
+        ogImage.setAttribute('content', logoUrl);
+      }
     }
     
     if (elements.businessName) elements.businessName.textContent = state.businessName;
@@ -686,7 +720,6 @@
     // Apply hero image if configured
     const heroImageContainer = document.getElementById('hero-image-container');
     const heroImage = document.getElementById('hero-image');
-    const config = window.REVIEW_TOOL_CONFIG || {};
     
     if (config.hero_image && heroImage && heroImageContainer) {
       // If hero_image is just a filename (no protocol), prepend /images/
@@ -736,7 +769,29 @@
 
   const showLandingPage = () => {
     // Update page title
-    document.title = "Der Boost für Ihr lokales Business - Sichtbar Bewerten";
+    const landingTitle = "Der Boost für Ihr lokales Business - Sichtbar Bewerten";
+    document.title = landingTitle;
+    
+    // Update Open Graph meta tags for landing page
+    const ogTitle = document.getElementById('og-title');
+    const ogDescription = document.getElementById('og-description');
+    const ogUrl = document.getElementById('og-url');
+    const ogImage = document.getElementById('og-image');
+    
+    if (ogTitle) {
+      ogTitle.setAttribute('content', landingTitle);
+    }
+    if (ogDescription) {
+      ogDescription.setAttribute('content', 'Die intelligente Bewertungsplattform für lokale Unternehmen');
+    }
+    if (ogUrl) {
+      ogUrl.setAttribute('content', window.location.href);
+    }
+    if (ogImage) {
+      // Use logo.png from root
+      const logoUrl = `${window.location.origin}/logo.png`;
+      ogImage.setAttribute('content', logoUrl);
+    }
     
     // Hide all review-related sections
     elements.ratingStep?.classList.add("hidden");

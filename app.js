@@ -41,7 +41,7 @@
     },
     de: {
       subtitle: "Ihre Meinung ist uns wichtig und hilft uns, besser zu werden.",
-      ratingPrompt: "Bitte bewerten:",
+      ratingPrompt: "Wie würden Sie Ihre Erfahrung bewerten?",
       ratingError: "Bitte wählen Sie eine Sternebewertung aus, um fortzufahren.",
       continueButton: "Weiter",
       ratingStars: "Sterne",

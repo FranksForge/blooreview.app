@@ -672,28 +672,21 @@
   };
 
   const applyConfigToDom = () => {
-    // Update page title based on business name
-    const pageTitle = state.businessName && state.businessName !== "Wir schätzen Ihr Feedback"
-      ? `Ihr Feedback - ${state.businessName}`
-      : "Ihr Feedback";
+    // Keep it simple - generic page title
+    document.title = "Ihr Feedback";
     
-    document.title = pageTitle;
-    
-    // Update Open Graph meta tags for social sharing
+    // Update Open Graph meta tags for social sharing (generic)
     const ogTitle = document.getElementById('og-title');
     const ogDescription = document.getElementById('og-description');
     const ogUrl = document.getElementById('og-url');
     const ogImage = document.getElementById('og-image');
     
     if (ogTitle) {
-      ogTitle.setAttribute('content', pageTitle);
+      ogTitle.setAttribute('content', 'Ihr Feedback');
     }
     
     if (ogDescription) {
-      const description = state.businessName && state.businessName !== "Wir schätzen Ihr Feedback"
-        ? `Bewerten Sie ${state.businessName} und teilen Sie uns Ihre Meinung mit`
-        : "Teilen Sie uns Ihre Meinung mit";
-      ogDescription.setAttribute('content', description);
+      ogDescription.setAttribute('content', 'Teilen Sie uns Ihre Meinung mit');
     }
     
     if (ogUrl) {
@@ -704,13 +697,9 @@
     const config = window.REVIEW_TOOL_CONFIG || {};
     
     if (ogImage) {
-      if (config.logo_url) {
-        ogImage.setAttribute('content', config.logo_url);
-      } else {
-        // Fallback to logo.png (assumes logo is at root)
-        const logoUrl = `${window.location.origin}/logo.png`;
-        ogImage.setAttribute('content', logoUrl);
-      }
+      // Always use logo.png from root
+      const logoUrl = `${window.location.origin}/logo.png`;
+      ogImage.setAttribute('content', logoUrl);
     }
     
     if (elements.businessName) elements.businessName.textContent = state.businessName;
@@ -768,21 +757,20 @@
   };
 
   const showLandingPage = () => {
-    // Update page title
-    const landingTitle = "Der Boost für Ihr lokales Business - Sichtbar Bewerten";
-    document.title = landingTitle;
+    // Keep it simple - generic page title
+    document.title = "Ihr Feedback";
     
-    // Update Open Graph meta tags for landing page
+    // Update Open Graph meta tags (generic)
     const ogTitle = document.getElementById('og-title');
     const ogDescription = document.getElementById('og-description');
     const ogUrl = document.getElementById('og-url');
     const ogImage = document.getElementById('og-image');
     
     if (ogTitle) {
-      ogTitle.setAttribute('content', landingTitle);
+      ogTitle.setAttribute('content', 'Ihr Feedback');
     }
     if (ogDescription) {
-      ogDescription.setAttribute('content', 'Die intelligente Bewertungsplattform für lokale Unternehmen');
+      ogDescription.setAttribute('content', 'Teilen Sie uns Ihre Meinung mit');
     }
     if (ogUrl) {
       ogUrl.setAttribute('content', window.location.href);

@@ -674,9 +674,9 @@
   const applyConfigToDom = () => {
     // Update page title based on business name
     if (state.businessName && state.businessName !== "Wir schätzen Ihr Feedback") {
-      document.title = `${state.businessName} - Bewertung abgeben | Sichtbar Bewerten`;
+      document.title = `Ihr Feedback - ${state.businessName}`;
     } else {
-      document.title = "Bewertung abgeben | Sichtbar Bewerten";
+      document.title = "Ihr Feedback";
     }
     
     if (elements.businessName) elements.businessName.textContent = state.businessName;

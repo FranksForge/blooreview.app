@@ -230,9 +230,8 @@
     // Show the feedback form
     elements.followupSection.classList.remove("hidden");
     
-    // Show back button
-    const backBtn = document.getElementById('back-btn');
-    if (backBtn) backBtn.classList.remove('hidden');
+    // Show all back buttons
+    document.querySelectorAll('.back-btn').forEach(btn => btn.classList.remove('hidden'));
     
     // Check the corresponding star in the display stars
     const displayStar = document.getElementById(`display-star${rating}`);
@@ -268,9 +267,8 @@
     elements.thankYou?.classList.add("hidden");
     elements.googleForward?.classList.add("hidden");
     
-    // Hide the back button on the initial screen
-    const backBtn = document.getElementById('back-btn');
-    if (backBtn) backBtn.classList.add('hidden');
+    // Hide all back buttons on the initial screen
+    document.querySelectorAll('.back-btn').forEach(btn => btn.classList.add('hidden'));
     
     clearInlineError();
   };
@@ -432,9 +430,8 @@
     hideRatingStep();
     elements.thankYou?.classList.remove("hidden");
     
-    // Show back button
-    const backBtn = document.getElementById('back-btn');
-    if (backBtn) backBtn.classList.remove('hidden');
+    // Hide back buttons on thank you page
+    document.querySelectorAll('.back-btn').forEach(btn => btn.classList.add('hidden'));
     
     // Update thank you message based on discount availability and rating
     if (state.discountEnabled) {
@@ -665,10 +662,7 @@
     
     elements.copyLinkBtn?.addEventListener("click", copyReviewLink);
     
-    const backBtn = document.getElementById('back-btn');
-    if (backBtn) {
-      backBtn.addEventListener('click', resetToHome);
-    }
+    document.querySelectorAll('.back-btn').forEach(btn => btn.addEventListener('click', resetToHome));
   };
 
   const applyConfigToDom = () => {

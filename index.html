@@ -47,7 +47,7 @@
           <button type="button" id="confirm-rating" class="primary rating-confirm" data-translate="continueButton">
             Weiter
           </button>
-          <button type="button" id="back-btn" class="secondary hidden">Zurück</button>
+          <button type="button" class="secondary back-btn hidden">Zurück</button>
         </div>
         <p
           id="rating-error"
@@ -100,7 +100,10 @@
             ></textarea>
           </label>
 
-          <button type="submit" class="primary" data-translate="feedbackSubmit">Bewertung abschicken</button>
+          <div class="buttons-row">
+            <button type="submit" class="primary" data-translate="feedbackSubmit">Bewertung abschicken</button>
+            <button type="button" class="secondary back-btn hidden">Zurück</button>
+          </div>
           <p class="form-error" id="form-error" role="alert"></p>
         </form>
       </section>

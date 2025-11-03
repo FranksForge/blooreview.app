@@ -1,4 +1,4 @@
-// Multi-tenant configs - updated: 2025-11-03T07:02:56.266Z
+// Multi-tenant configs - updated: 2025-11-03T07:06:38.579Z
 // DO NOT EDIT MANUALLY - Run 'node sync-config.js' to update from Google Sheets
 window.REVIEW_CONFIGS = {
   "bodenseebaer": {

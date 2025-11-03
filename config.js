@@ -1,4 +1,4 @@
-// Multi-tenant configs - updated: 2025-11-02T09:34:34.700Z
+// Multi-tenant configs - updated: 2025-11-03T07:02:56.266Z
 // DO NOT EDIT MANUALLY - Run 'node sync-config.js' to update from Google Sheets
 window.REVIEW_CONFIGS = {
   "bodenseebaer": {
@@ -384,57 +384,4 @@ window.REVIEW_CONFIGS = {
   const slug = resolveSlug();
   window.REVIEW_TOOL_CONFIG = window.REVIEW_CONFIGS[slug] || window.REVIEW_CONFIGS["default"];
   console.log(`Config loaded for slug: ${slug}`, window.REVIEW_TOOL_CONFIG);
-  
-  // Update Open Graph meta tags immediately (synchronously)
-  // This ensures WhatsApp and other bots see the correct meta tags before JS executes
-  const updateMetaTags = () => {
-    // Keep it simple - generic meta tags for all pages
-    const pageTitle = "Ihr Feedback";
-    const description = "Teilen Sie uns Ihre Meinung mit";
-    
-    const ogTitle = document.getElementById('og-title');
-    const ogDescription = document.getElementById('og-description');
-    const ogUrl = document.getElementById('og-url');
-    const ogImage = document.getElementById('og-image');
-    
-    if (ogTitle) ogTitle.setAttribute('content', pageTitle);
-    // Always update title (remove condition check)
-    if (document.title) {
-      document.title = pageTitle;
-    }
-    
-    if (ogDescription) {
-      ogDescription.setAttribute('content', description);
-    }
-    
-    if (ogUrl) {
-      ogUrl.setAttribute('content', window.location.href);
-    }
-    
-    if (ogImage) {
-      const protocol = window.location.protocol || 'https:';
-      const host = window.location.host || window.location.hostname;
-      
-      // Use hero_image if available in config, otherwise fallback to logo.png
-      let imageUrl;
-      if (window.REVIEW_TOOL_CONFIG && window.REVIEW_TOOL_CONFIG.hero_image) {
-        imageUrl = window.REVIEW_TOOL_CONFIG.hero_image;
-      } else {
-        imageUrl = `${protocol}//${host}/logo.png`;
-      }
-      
-      ogImage.setAttribute('content', imageUrl);
-    }
-  };
-  
-  // Try to update immediately (DOM might not be ready yet)
-  updateMetaTags();
-  
-  // Also update when DOM is ready (fallback)
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', updateMetaTags);
-  } else {
-    // DOM already loaded, update again to be sure
-    setTimeout(updateMetaTags, 0);
-  }
 })();

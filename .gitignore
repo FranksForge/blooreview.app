@@ -1,0 +1,10 @@
+# Photo redirect cache (local development only)
+.cache_photo_redirects.json
+
+# Node modules (if any)
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+

@@ -20,6 +20,7 @@ const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzb3vP3-rbp4y8R
 const REVIEW_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzUpM-SbvZNMclVht4Q4PuWqXxG7MfrPygjx-UJOP0GNh_bzU6bC1jl2bwqSBWjlM09uw/exec ';
 
 const CONFIG_FILE = path.join(__dirname, 'config.js');
+const PHOTO_CACHE_FILE = path.join(__dirname, '.cache_photo_redirects.json');
 // Update this array to match the row order in your Google Sheet
 const DEFAULT_SLUGS = ['default', 'bigc-donchan', 'starbucks-123', 'newbus123'];
 
@@ -52,6 +53,132 @@ function readExistingConfigs() {
     console.log('Note: No existing config file found, will create new one');
   }
   return {};
+}
+
+// Photo redirect resolution cache management
+function loadPhotoCache() {
+  try {
+    if (fs.existsSync(PHOTO_CACHE_FILE)) {
+      return JSON.parse(fs.readFileSync(PHOTO_CACHE_FILE, 'utf8'));
+    }
+  } catch (e) {
+    console.log('Note: Could not load photo cache, starting fresh');
+  }
+  return {};
+}
+
+function savePhotoCache(cache) {
+  try {
+    fs.writeFileSync(PHOTO_CACHE_FILE, JSON.stringify(cache, null, 2), 'utf8');
+  } catch (e) {
+    console.warn('Warning: Could not save photo cache:', e.message);
+  }
+}
+
+// Resolve Google Maps Place Photo API URL to final lh3 URL
+function resolvePlacePhotoRedirect(url) {
+  return new Promise((resolve) => {
+    try {
+      const req = https.request(url, {
+        method: 'HEAD',
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (compatible; ReviewTool/1.0)'
+        }
+      }, (res) => {
+        // Follow redirect if present
+        if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
+          resolve(res.headers.location);
+        } else {
+          // No redirect, return original URL
+          resolve(url);
+        }
+        res.on('data', () => {}); // Drain response
+        res.on('end', () => {});
+      });
+      
+      req.on('error', (err) => {
+        console.warn(`Warning: Could not resolve photo redirect for ${url}: ${err.message}`);
+        resolve(url); // Fallback to original URL on error
+      });
+      
+      req.setTimeout(5000, () => {
+        req.destroy();
+        console.warn(`Warning: Timeout resolving photo redirect for ${url}`);
+        resolve(url); // Fallback to original URL on timeout
+      });
+      
+      req.end();
+    } catch (e) {
+      console.warn(`Warning: Error resolving photo redirect for ${url}: ${e.message}`);
+      resolve(url); // Fallback to original URL on error
+    }
+  });
+}
+
+// Resolve all photo URLs with concurrency control
+async function resolveAllPhotoUrls(configs, concurrency = 3) {
+  const cache = loadPhotoCache();
+  const toResolve = [];
+  
+  // Collect all URLs that need resolution
+  for (const [slug, cfg] of Object.entries(configs)) {
+    const url = (cfg.hero_image || '').trim();
+    if (url && url.startsWith('https://maps.googleapis.com/maps/api/place/photo')) {
+      toResolve.push({ slug, url });
+    }
+  }
+  
+  if (toResolve.length === 0) {
+    return { resolved: 0, cached: 0 };
+  }
+  
+  console.log(`\nResolving ${toResolve.length} photo URL(s) to lh3 URLs...`);
+  
+  let resolved = 0;
+  let cached = 0;
+  let i = 0;
+  
+  // Worker function with concurrency control
+  async function worker() {
+    while (i < toResolve.length) {
+      const idx = i++;
+      const { slug, url } = toResolve[idx];
+      
+      // Check cache first
+      if (cache[url]) {
+        configs[slug].hero_image = cache[url];
+        cached++;
+        continue;
+      }
+      
+      // Resolve redirect
+      const finalUrl = await resolvePlacePhotoRedirect(url);
+      
+      // Only cache if it's different from original (i.e., actually redirected)
+      if (finalUrl !== url) {
+        cache[url] = finalUrl;
+        configs[slug].hero_image = finalUrl;
+        resolved++;
+        console.log(`  ✓ ${slug}: ${finalUrl.substring(0, 60)}...`);
+      } else {
+        // Even if no redirect, cache it to avoid checking again
+        cache[url] = finalUrl;
+        configs[slug].hero_image = finalUrl;
+      }
+      
+      // Small delay to avoid rate limiting
+      await new Promise(resolve => setTimeout(resolve, 100));
+    }
+  }
+  
+  // Run workers with concurrency limit
+  const workers = Array.from({ length: Math.min(concurrency, toResolve.length) }, worker);
+  await Promise.all(workers);
+  
+  // Save updated cache
+  savePhotoCache(cache);
+  
+  return { resolved, cached };
 }
 
 // Fetch all configs from the Google Sheet at once
@@ -400,6 +527,13 @@ function generateApiConfig(configs) {
     
     // Sort to match DEFAULT_SLUGS order (for consistency)
     const sortedConfigs = sortConfigsBySheetOrder(allConfigs, DEFAULT_SLUGS);
+    
+    // Resolve Google Maps Place Photo API URLs to final lh3 URLs
+    const photoStats = await resolveAllPhotoUrls(sortedConfigs, 3);
+    if (photoStats.resolved > 0 || photoStats.cached > 0) {
+      console.log(`✓ Photo resolution complete: ${photoStats.resolved} resolved, ${photoStats.cached} from cache`);
+    }
+    
     generateConfigFile(sortedConfigs);
     generateApiConfig(sortedConfigs);
     
@@ -449,7 +583,14 @@ function generateApiConfig(configs) {
   // Sort to match sheet order
   const allConfigs = sortConfigsBySheetOrder(mergedConfigs, slugsToFetch);
   
+  // Resolve Google Maps Place Photo API URLs to final lh3 URLs
+  const photoStats = await resolveAllPhotoUrls(allConfigs, 3);
+  if (photoStats.resolved > 0 || photoStats.cached > 0) {
+    console.log(`✓ Photo resolution complete: ${photoStats.resolved} resolved, ${photoStats.cached} from cache`);
+  }
+  
   generateConfigFile(allConfigs);
+  generateApiConfig(allConfigs);
   
   console.log(`\n✓ Config sync complete!`);
   console.log(`✓ Updated ${Object.keys(newConfigs).length} business(es)`);
@@ -459,14 +600,14 @@ function generateApiConfig(configs) {
     console.log('\n🚀 Deploying to production...');
     try {
       // Check if there are changes to commit
-      execSync('git diff --quiet config.js', { stdio: 'ignore' });
+      execSync('git diff --quiet config.js api/config.json', { stdio: 'ignore' });
       console.log('ℹ️  No changes to deploy');
     } catch (error) {
       // There are changes, proceed with commit and push
       try {
         const slugList = slugArgs.length > 0 ? slugArgs.join(', ') : 'all configs';
-        execSync('git add config.js', { stdio: 'inherit' });
-        execSync(`git commit -m "Update configs: ${slugList}"`, { stdio: 'inherit' });
+        execSync('git add config.js api/config.json', { stdio: 'inherit' });
+        execSync(`git commit -m "Auto-sync: Update configs and API mapping: ${slugList}"`, { stdio: 'inherit' });
         execSync('git push', { stdio: 'inherit' });
         console.log('\n✅ Deployed successfully!');
         console.log('⏳ Vercel will deploy in 2-3 minutes');

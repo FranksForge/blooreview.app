@@ -35,6 +35,44 @@ const DEFAULT_CONFIG = {
   referral_message: "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!"
 };
 
+// Only include these keys in the generated config outputs
+const ALLOWED_KEYS = new Set([
+  'place_id',
+  'name',
+  'category',
+  'google_maps_url',
+  'hero_image',
+  'logo_url',
+  'discount_enabled',
+  'discount_percentage',
+  'discount_valid_days',
+  'referral_enabled',
+  'referral_message',
+  'google_review_base_url',
+  'google_review_url',
+  'sheet_script_url',
+  'min_review',
+  'review_threshold'
+]);
+
+function pickAllowedKeys(object) {
+  const result = {};
+  for (const key of Object.keys(object)) {
+    if (ALLOWED_KEYS.has(key)) {
+      result[key] = object[key];
+    }
+  }
+  return result;
+}
+
+function sanitizeConfigs(configsBySlug) {
+  const sanitized = {};
+  for (const [slug, cfg] of Object.entries(configsBySlug)) {
+    sanitized[slug] = pickAllowedKeys(cfg);
+  }
+  return sanitized;
+}
+
 // Get command line arguments
 const args = process.argv.slice(2);
 const shouldDeploy = args.includes('--deploy');
@@ -534,8 +572,11 @@ function generateApiConfig(configs) {
       console.log(`✓ Photo resolution complete: ${photoStats.resolved} resolved, ${photoStats.cached} from cache`);
     }
     
-    generateConfigFile(sortedConfigs);
-    generateApiConfig(sortedConfigs);
+    // Whitelist only allowed keys before generating outputs
+    const sanitizedConfigs = sanitizeConfigs(sortedConfigs);
+    
+    generateConfigFile(sanitizedConfigs);
+    generateApiConfig(sanitizedConfigs);
     
     console.log(`\n✓ Config sync complete!`);
     console.log(`✓ Updated ${Object.keys(allConfigs).length} business(es)`);
@@ -589,8 +630,11 @@ function generateApiConfig(configs) {
     console.log(`✓ Photo resolution complete: ${photoStats.resolved} resolved, ${photoStats.cached} from cache`);
   }
   
-  generateConfigFile(allConfigs);
-  generateApiConfig(allConfigs);
+  // Whitelist only allowed keys before generating outputs
+  const sanitizedConfigs = sanitizeConfigs(allConfigs);
+  
+  generateConfigFile(sanitizedConfigs);
+  generateApiConfig(sanitizedConfigs);
   
   console.log(`\n✓ Config sync complete!`);
   console.log(`✓ Updated ${Object.keys(newConfigs).length} business(es)`);

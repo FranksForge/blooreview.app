@@ -1,4 +1,4 @@
-// Multi-tenant configs - updated: 2025-11-06T04:32:23.543Z
+// Multi-tenant configs - updated: 2025-11-09T02:46:20.926Z
 // DO NOT EDIT MANUALLY - Run 'node sync-config.js' to update from Google Sheets
 window.REVIEW_CONFIGS = {
   "bodenseebaer": {
@@ -6,7 +6,7 @@ window.REVIEW_CONFIGS = {
     "name": "Bodenseebär in Hagnau",
     "category": "Kram",
     "google_maps_url": "https://www.google.com/maps/place/Bodenseeb%C3%A4r/@47.6741955,9.3156699,3a,75y,90t/data=!3m8!1e2!3m6!1sAF1QipPzJOi4MgvmLLhTroCMcYW7TspmEwuNIDyEzZpS!2e10!3e12!6shttps:%2F%2Flh3.googleusercontent.com%2Fp%2FAF1QipPzJOi4MgvmLLhTroCMcYW7TspmEwuNIDyEzZpS%3Dw114-h86-k-no!7i1600!8i1204!4m11!1m2!2m1!1sbodensee+b%C3%A4r+hagnau!3m7!1s0x479af9f0723d9769:0xebdffdab1f93641e!8m2!3d47.674195!4d9.3158409!10e5!15sChRib2RlbnNlZSBiw6RyIGhhZ25hdVoWIhRib2RlbnNlZSBiw6RyIGhhZ25hdZIBBXN0b3JlmgEjQ2haRFNVaE5NRzluUzBWSlEwRm5UVU5KYTB4dWJVOTNFQUXgAQD6AQUIkAEQEg!16s%2Fg%2F11tw_st1pj?entry=ttu&g_ep=EgoyMDI1MTAyMi4wIKXMDSoASAFQAw%3D%3D",
-    "hero_image": "https://lh3.googleusercontent.com/p/AF1QipPzJOi4MgvmLLhTroCMcYW7TspmEwuNIDyEzZpS=w408-h307-k-no",
+    "hero_image": "https://lh3.googleusercontent.com/p/AF1QipO4GZJ5CsQJdlprN6tE-dYSw6PGqMpkgYoHP-kX=w408-h305-k-no",
     "logo_url": "",
     "discount_enabled": true,
     "discount_percentage": 10,

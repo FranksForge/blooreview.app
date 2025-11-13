@@ -136,6 +136,35 @@ body {
   color: #222;
 }
 
+.review-preview {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 400px;
+}
+
+.review-preview .card {
+  max-width: 420px;
+  width: 100%;
+  margin: 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.review-preview .stars-display label {
+  pointer-events: none;
+  cursor: default;
+  color: #d7d7dc;
+}
+
+.review-preview .stars-display input:disabled ~ label {
+  color: #d7d7dc;
+}
+
+.review-preview button:disabled {
+  pointer-events: none;
+}
+
 .details-content {
   display: flex;
   flex-direction: column;

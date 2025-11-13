@@ -7,6 +7,7 @@
     fetchDetailsBtn: document.getElementById('fetch-details-btn'),
     businessDetails: document.getElementById('business-details'),
     detailsContent: document.getElementById('details-content'),
+    reviewPreview: document.getElementById('review-preview'),
     generateBtn: document.getElementById('generate-btn'),
     resetBtn: document.getElementById('reset-btn'),
     statusMessage: document.getElementById('status-message'),
@@ -83,7 +84,7 @@
     }
   };
 
-  // Display business details
+  // Display business details with review page preview
   const displayBusinessDetails = (business) => {
     fetchedBusinessData = business;
 
@@ -105,37 +106,51 @@
     
     const previewUrl = `${window.location.protocol}//${slug}.${baseDomain}`;
 
-    elements.detailsContent.innerHTML = `
-      <div class="detail-item">
-        <span class="detail-label">Business Name</span>
-        <span class="detail-value">${escapeHtml(business.name)}</span>
+    // Render full review page preview
+    const heroImageHtml = business.heroImage ? `
+      <div class="hero-image">
+        <img src="${escapeHtml(business.heroImage)}" alt="${escapeHtml(business.name)}" />
       </div>
-      <div class="detail-item">
-        <span class="detail-label">Category</span>
-        <span class="detail-value">${escapeHtml(business.category || 'N/A')}</span>
+    ` : '';
+
+    elements.reviewPreview.innerHTML = `
+      <div class="card">
+        <header id="preview-header">
+          ${heroImageHtml}
+          <h1>${escapeHtml(business.name)}</h1>
+        </header>
+
+        <section id="preview-rating-step">
+          <p class="rating-prompt">How would you rate your experience?</p>
+          <fieldset class="rating-fieldset">
+            <legend class="sr-only">Select a star rating</legend>
+            <div class="stars stars-display" role="img" aria-label="Star rating preview">
+              <input type="radio" id="preview-star5" name="preview-rating" value="5" disabled />
+              <label for="preview-star5" aria-label="5 stars">★</label>
+              <input type="radio" id="preview-star4" name="preview-rating" value="4" disabled />
+              <label for="preview-star4" aria-label="4 stars">★</label>
+              <input type="radio" id="preview-star3" name="preview-rating" value="3" disabled />
+              <label for="preview-star3" aria-label="3 stars">★</label>
+              <input type="radio" id="preview-star2" name="preview-rating" value="2" disabled />
+              <label for="preview-star2" aria-label="2 stars">★</label>
+              <input type="radio" id="preview-star1" name="preview-rating" value="1" disabled />
+              <label for="preview-star1" aria-label="1 star">★</label>
+            </div>
+          </fieldset>
+          <div class="buttons-row">
+            <button type="button" class="primary rating-confirm" disabled style="opacity: 0.6; cursor: not-allowed;">
+              Continue
+            </button>
+          </div>
+          <p class="subtitle rating-subtitle">
+            Taking 2 minutes to leave a review helps us improve and grow. We really appreciate you for taking the time!
+          </p>
+        </section>
       </div>
-      <div class="detail-item">
-        <span class="detail-label">Place ID</span>
-        <span class="detail-value">${escapeHtml(business.placeId)}</span>
-      </div>
-      <div class="detail-item">
-        <span class="detail-label">Generated Slug</span>
-        <span class="detail-value"><strong>${escapeHtml(slug)}</strong></span>
-      </div>
-      <div class="detail-item">
-        <span class="detail-label">Preview URL</span>
-        <span class="detail-value"><a href="${previewUrl}" target="_blank" rel="noopener">${previewUrl}</a></span>
-      </div>
-      ${business.heroImage ? `
-        <div class="detail-item">
-          <span class="detail-label">Hero Image</span>
-          <img src="${escapeHtml(business.heroImage)}" alt="Hero image" class="detail-image" />
-        </div>
-      ` : ''}
     `;
 
     elements.businessDetails.classList.remove('hidden');
-    showStatus('Business details fetched successfully! Review the information and click "Generate Review Page" to continue.', 'success');
+    showStatus('Business details fetched successfully! Review the preview and click "Generate Review Page" to continue.', 'success');
   };
 
   // Generate slug from business name
@@ -294,6 +309,7 @@
     elements.form.reset();
     elements.businessDetails.classList.add('hidden');
     elements.detailsContent.innerHTML = '';
+    elements.reviewPreview.innerHTML = '';
     elements.successView.classList.add('hidden');
     elements.form.classList.remove('hidden');
     fetchedBusinessData = null;

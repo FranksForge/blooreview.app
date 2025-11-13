@@ -151,25 +151,12 @@ async function readConfigFile() {
     const githubRepo = process.env.GITHUB_REPO;
 
     if (!githubToken || !githubRepo) {
-      // Fallback: try to read from local file (for development)
-      try {
-        const configPath = path.join(process.cwd(), 'config.js');
-        if (fs.existsSync(configPath)) {
-          const configContent = fs.readFileSync(configPath, 'utf8');
-          const match = configContent.match(/window\.REVIEW_CONFIGS\s*=\s*(\{[\s\S]*?\});/);
-          if (match) {
-            return new Function('return ' + match[1])();
-          }
-        }
-      } catch (error) {
-        console.error('Error reading local config file:', error);
-      }
       return {};
     }
 
-    // Read from GitHub
+    // Read from GitHub - public/config.js is the single source of truth
     const [owner, repo] = githubRepo.split('/');
-    const configContent = await readFileFromGitHub(owner, repo, 'config.js', githubToken);
+    const configContent = await readFileFromGitHub(owner, repo, 'public/config.js', githubToken);
     
     if (configContent) {
       // Extract REVIEW_CONFIGS object
@@ -310,9 +297,7 @@ async function commitAndPush(slug, name, configContent, heroImages) {
     // Get current file SHA from GitHub (required for update)
     const [owner, repo] = githubRepo.split('/');
     
-    // Get config.js SHA
-    const configSha = await getFileSha(owner, repo, 'config.js', githubToken);
-    // Get public/config.js SHA (needed for Vercel deployment)
+    // Get public/config.js SHA (single source of truth for Vercel deployment)
     const publicConfigSha = await getFileSha(owner, repo, 'public/config.js', githubToken);
     // Get api/config.json SHA
     const apiConfigSha = await getFileSha(owner, repo, 'api/config.json', githubToken);
@@ -320,25 +305,14 @@ async function commitAndPush(slug, name, configContent, heroImages) {
     // Generate api/config.json content
     const apiConfigContent = JSON.stringify(heroImages, null, 2);
 
-    // Update config.js (root directory - for local dev and source of truth)
-    await updateFileOnGitHub(
-      owner,
-      repo,
-      'config.js',
-      configContent,
-      configSha,
-      `Auto-generate: Add ${name} (${slug})`,
-      githubToken
-    );
-
-    // Update public/config.js (needed for Vercel deployment - serves from public/)
+    // Update public/config.js (single source of truth - Vercel serves from public/)
     await updateFileOnGitHub(
       owner,
       repo,
       'public/config.js',
       configContent,
       publicConfigSha,
-      `Auto-generate: Add ${name} (${slug}) - Update public config for Vercel`,
+      `Auto-generate: Add ${name} (${slug})`,
       githubToken
     );
 

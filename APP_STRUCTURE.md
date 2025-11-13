@@ -20,12 +20,12 @@ BlooReview/
 │   ├── config.json          # Hero images mapping (auto-generated)
 │   └── package.json         # API package configuration
 │
-├── _index.html              # Review page HTML template
-├── app.js                   # Review page frontend logic
-├── config.js                # Business configurations (auto-generated)
-├── styles.css               # Review page styles
-├── logo.png                 # Logo image
-├── logo_title_white.png     # Logo with title
+├── public/                  # Public assets (served by Vercel)
+│   ├── index.html          # Review page HTML template
+│   ├── app.js              # Review page frontend logic
+│   ├── styles.css          # Review page styles
+│   ├── config.js           # Business configurations (auto-generated)
+│   └── logo.png            # Logo image
 ├── vercel.json              # Vercel configuration
 └── package.json             # Project dependencies
 ```
@@ -82,12 +82,13 @@ BlooReview/
 
 ### Configuration Files
 
-#### `config.js`
+#### `public/config.js`
 - Auto-generated JavaScript file (DO NOT EDIT MANUALLY)
 - Contains all business configurations
 - Structure: `window.REVIEW_CONFIGS[slug] = { ... }`
 - Includes slug resolution logic
 - Updated via GitHub API when new businesses are added
+- Single source of truth for Vercel deployment
 
 #### `api/config.json`
 - Auto-generated JSON file (DO NOT EDIT MANUALLY)
@@ -131,7 +132,7 @@ Required environment variables:
 
 The generate API uses GitHub API to update files:
 
-1. **Read existing files** from GitHub (or fallback to local)
+1. **Read existing files** from GitHub
 2. **Update configs** in memory
 3. **Get file SHA** from GitHub (required for updates)
 4. **Update files** via GitHub API
@@ -149,8 +150,7 @@ The generate API uses GitHub API to update files:
 1. Set up environment variables in Vercel
 2. Configure domain in Vercel
 3. Set up wildcard DNS for subdomains
-4. Test admin UI locally
-5. Test Maps API integration
-6. Test business generation
-7. Deploy to production
+4. Test Maps API integration
+5. Test business generation
+6. Deploy to production
 

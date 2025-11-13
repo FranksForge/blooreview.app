@@ -247,33 +247,33 @@ body {
 
 .success-view {
   text-align: center;
-  padding: 2rem 0;
+  padding: 0;
 }
 
 .success-icon {
-  font-size: 4rem;
+  font-size: 3.5rem;
   margin-bottom: 1rem;
+  line-height: 1;
 }
 
 .success-view h2 {
   margin: 0 0 0.5rem 0;
-  font-size: 2rem;
+  font-size: 1.75rem;
   color: #222;
+  line-height: 1.3;
 }
 
 .success-message {
   margin: 0 0 2rem 0;
-  color: #555;
-  font-size: 1.1rem;
-  line-height: 1.6;
+  color: #55596d;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: 500;
 }
 
 .success-link-section {
-  margin-bottom: 2.5rem;
-  padding: 1.5rem;
-  background: #f9fafb;
-  border-radius: 10px;
-  border: 1px solid #e5e7eb;
+  margin-bottom: 2rem;
+  text-align: left;
 }
 
 .success-link-label {
@@ -281,8 +281,7 @@ body {
   font-weight: 600;
   color: #222;
   font-size: 0.95rem;
-  margin-bottom: 0.75rem;
-  text-align: left;
+  margin-bottom: 0.5rem;
 }
 
 .success-link-container {
@@ -295,11 +294,12 @@ body {
   flex: 1;
   padding: 0.75rem 0.9rem;
   border: 1px solid #d7d7dc;
-  border-radius: 8px;
+  border-radius: 10px;
   font-size: 0.9rem;
   font-family: 'Courier New', monospace;
   background: #fff;
   color: #222;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .success-link-input:focus {
@@ -316,26 +316,30 @@ body {
 
 .success-link-section .btn-primary {
   width: 100%;
+  margin-top: 0.5rem;
 }
 
 .success-qr-section {
   margin-bottom: 2rem;
   padding: 1.5rem;
-  background: #f9fafb;
-  border-radius: 10px;
-  border: 1px solid #e5e7eb;
+  background: #f9faff;
+  border: 1px solid #e5e7f2;
+  border-radius: 14px;
+  text-align: center;
 }
 
 .success-qr-section h3 {
   margin: 0 0 0.5rem 0;
-  font-size: 1.25rem;
-  color: #222;
+  font-size: 1.1rem;
+  color: #2a2d42;
+  font-weight: 500;
 }
 
 .qr-code-description {
   margin: 0 0 1.5rem 0;
-  color: #555;
+  color: #6f7287;
   font-size: 0.95rem;
+  line-height: 1.5;
 }
 
 .qr-code-container {
@@ -344,7 +348,7 @@ body {
   align-items: center;
   padding: 1rem;
   background: #fff;
-  border-radius: 8px;
+  border-radius: 10px;
   margin-bottom: 1rem;
 }
 
@@ -354,7 +358,13 @@ body {
 }
 
 .success-actions {
-  margin-top: 2rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e5e7f2;
+}
+
+.success-actions .btn {
+  width: 100%;
 }
 
 @media (max-width: 640px) {

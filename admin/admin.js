@@ -191,24 +191,33 @@
     }
   };
 
-  // Generate QR code
+  // Generate QR code via API
   const generateQRCode = async (url) => {
-    // Check if QRCode library is loaded
-    if (typeof QRCode === 'undefined') {
-      console.error('QRCode library is not loaded');
-      return false;
-    }
-    
     try {
-      await QRCode.toCanvas(elements.qrCodeCanvas, url, {
-        width: 256,
-        margin: 2,
-        color: {
-          dark: '#000000',
-          light: '#FFFFFF'
-        }
-      });
-      return true;
+      const encodedUrl = encodeURIComponent(url);
+      const response = await fetch(`/api/admin/qrcode?url=${encodedUrl}`);
+      
+      if (!response.ok) {
+        throw new Error('Failed to generate QR code');
+      }
+      
+      const data = await response.json();
+      
+      if (data.success && data.dataUrl) {
+        // Create an image from the data URL and draw it on canvas
+        const img = new Image();
+        img.onload = () => {
+          const canvas = elements.qrCodeCanvas;
+          const ctx = canvas.getContext('2d');
+          canvas.width = 256;
+          canvas.height = 256;
+          ctx.drawImage(img, 0, 0);
+        };
+        img.src = data.dataUrl;
+        return true;
+      }
+      
+      return false;
     } catch (error) {
       console.error('Error generating QR code:', error);
       return false;
@@ -257,30 +266,6 @@
     }
   };
 
-  // Wait for QRCode library to load
-  const waitForQRCode = () => {
-    return new Promise((resolve, reject) => {
-      if (typeof QRCode !== 'undefined') {
-        resolve();
-        return;
-      }
-      
-      // Wait up to 5 seconds for library to load
-      let attempts = 0;
-      const maxAttempts = 50;
-      const checkInterval = setInterval(() => {
-        attempts++;
-        if (typeof QRCode !== 'undefined') {
-          clearInterval(checkInterval);
-          resolve();
-        } else if (attempts >= maxAttempts) {
-          clearInterval(checkInterval);
-          reject(new Error('QRCode library failed to load'));
-        }
-      }, 100);
-    });
-  };
-
   // Display success view with QR code
   const displaySuccessView = async (reviewUrl) => {
     // Set the review URL
@@ -297,8 +282,6 @@
     
     // Generate QR code (non-blocking - show view even if it fails)
     try {
-      // Wait for QRCode library to be available
-      await waitForQRCode();
       await generateQRCode(reviewUrl);
     } catch (error) {
       console.error('QR code generation failed, but showing success view anyway:', error);

@@ -193,6 +193,12 @@
 
   // Generate QR code
   const generateQRCode = async (url) => {
+    // Check if QRCode library is loaded
+    if (typeof QRCode === 'undefined') {
+      console.error('QRCode library is not loaded');
+      return false;
+    }
+    
     try {
       await QRCode.toCanvas(elements.qrCodeCanvas, url, {
         width: 256,
@@ -251,6 +257,30 @@
     }
   };
 
+  // Wait for QRCode library to load
+  const waitForQRCode = () => {
+    return new Promise((resolve, reject) => {
+      if (typeof QRCode !== 'undefined') {
+        resolve();
+        return;
+      }
+      
+      // Wait up to 5 seconds for library to load
+      let attempts = 0;
+      const maxAttempts = 50;
+      const checkInterval = setInterval(() => {
+        attempts++;
+        if (typeof QRCode !== 'undefined') {
+          clearInterval(checkInterval);
+          resolve();
+        } else if (attempts >= maxAttempts) {
+          clearInterval(checkInterval);
+          reject(new Error('QRCode library failed to load'));
+        }
+      }, 100);
+    });
+  };
+
   // Display success view with QR code
   const displaySuccessView = async (reviewUrl) => {
     // Set the review URL
@@ -267,6 +297,8 @@
     
     // Generate QR code (non-blocking - show view even if it fails)
     try {
+      // Wait for QRCode library to be available
+      await waitForQRCode();
       await generateQRCode(reviewUrl);
     } catch (error) {
       console.error('QR code generation failed, but showing success view anyway:', error);

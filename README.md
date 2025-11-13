@@ -59,8 +59,7 @@ Required environment variables in Vercel:
 │   │   ├── generate.js   # Business generation endpoint
 │   │   ├── maps.js       # Maps API integration endpoint
 │   │   └── qrcode.js     # QR code generation endpoint
-│   ├── index.js          # Root handler (Open Graph injection)
-│   └── config.json       # Hero image mappings (auto-generated)
+│   └── index.js          # Root handler (Open Graph injection)
 ├── public/                # Public assets (served by Vercel)
 │   ├── admin/            # Admin panel (mirror of admin/)
 │   ├── index.html        # Review page HTML template

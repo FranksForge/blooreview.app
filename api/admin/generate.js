@@ -66,19 +66,11 @@ export default async function handler(req, res) {
     // Add business to configs
     existingConfigs[finalSlug] = businessConfig;
 
-    // Read existing api/config.json from GitHub
-    const existingHeroImages = await readApiConfigFromGitHub();
-
-    // Update hero images
-    if (heroImage) {
-      existingHeroImages[finalSlug] = heroImage;
-    }
-
     // Generate config.js content
     const configContent = generateConfigFileContent(existingConfigs);
     
     // Update files on GitHub
-    await commitAndPush(finalSlug, name, configContent, existingHeroImages);
+    await commitAndPush(finalSlug, name, configContent);
 
     // Get base domain from request
     const hostname = req.headers.host || 'blooreview.app';
@@ -203,42 +195,6 @@ async function readFileFromGitHub(owner, repo, filePath, token) {
   }
 }
 
-/**
- * Read api/config.json from GitHub
- */
-async function readApiConfigFromGitHub() {
-  try {
-    const githubToken = process.env.GITHUB_TOKEN;
-    const githubRepo = process.env.GITHUB_REPO;
-
-    if (!githubToken || !githubRepo) {
-      // Fallback: try to read from local file
-      try {
-        const apiConfigPath = path.join(process.cwd(), 'api', 'config.json');
-        if (fs.existsSync(apiConfigPath)) {
-          const content = fs.readFileSync(apiConfigPath, 'utf8');
-          return JSON.parse(content);
-        }
-      } catch (error) {
-        console.error('Error reading local API config:', error);
-      }
-      return {};
-    }
-
-    // Read from GitHub
-    const [owner, repo] = githubRepo.split('/');
-    const content = await readFileFromGitHub(owner, repo, 'api/config.json', githubToken);
-    
-    if (content) {
-      return JSON.parse(content);
-    }
-    
-    return {};
-  } catch (error) {
-    console.error('Error reading API config:', error);
-    return {};
-  }
-}
 
 /**
  * Generate config.js file content
@@ -283,7 +239,7 @@ window.REVIEW_CONFIGS = ${JSON.stringify(configs, null, 2)};
  * Note: In Vercel serverless functions, we need to use GitHub API
  * since we can't run git commands directly
  */
-async function commitAndPush(slug, name, configContent, heroImages) {
+async function commitAndPush(slug, name, configContent) {
   try {
     const githubToken = process.env.GITHUB_TOKEN;
     const githubRepo = process.env.GITHUB_REPO; // Format: owner/repo (e.g., username/repo)
@@ -299,11 +255,6 @@ async function commitAndPush(slug, name, configContent, heroImages) {
     
     // Get public/config.js SHA (single source of truth for Vercel deployment)
     const publicConfigSha = await getFileSha(owner, repo, 'public/config.js', githubToken);
-    // Get api/config.json SHA
-    const apiConfigSha = await getFileSha(owner, repo, 'api/config.json', githubToken);
-
-    // Generate api/config.json content
-    const apiConfigContent = JSON.stringify(heroImages, null, 2);
 
     // Update public/config.js (single source of truth - Vercel serves from public/)
     await updateFileOnGitHub(
@@ -313,17 +264,6 @@ async function commitAndPush(slug, name, configContent, heroImages) {
       configContent,
       publicConfigSha,
       `Auto-generate: Add ${name} (${slug})`,
-      githubToken
-    );
-
-    // Update api/config.json
-    await updateFileOnGitHub(
-      owner,
-      repo,
-      'api/config.json',
-      apiConfigContent,
-      apiConfigSha,
-      `Auto-generate: Add ${name} (${slug}) - Update hero images`,
       githubToken
     );
 

@@ -5,15 +5,28 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Load hero images from auto-generated config.json
+// Load hero images from public/config.js (single source of truth)
 let HERO_IMAGES = {};
 try {
-  const configPath = path.join(__dirname, 'config.json');
+  const configPath = path.join(process.cwd(), 'public', 'config.js');
   const configContent = fs.readFileSync(configPath, 'utf8');
-  HERO_IMAGES = JSON.parse(configContent);
-  console.log(`Loaded ${Object.keys(HERO_IMAGES).length} hero images`);
+  
+  // Extract REVIEW_CONFIGS object from JavaScript file
+  const match = configContent.match(/window\.REVIEW_CONFIGS\s*=\s*(\{[\s\S]*?\});/);
+  if (match) {
+    const configs = new Function('return ' + match[1])();
+    
+    // Extract hero_image from each config
+    for (const [slug, config] of Object.entries(configs)) {
+      if (config.hero_image) {
+        HERO_IMAGES[slug] = config.hero_image;
+      }
+    }
+    
+    console.log(`Loaded ${Object.keys(HERO_IMAGES).length} hero images from config.js`);
+  }
 } catch (error) {
-  console.error('Failed to load config.json:', error.message);
+  console.error('Failed to load config.js:', error.message);
   // Fallback to empty object - will use logo.png for all
 }
 

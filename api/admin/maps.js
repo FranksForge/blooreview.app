@@ -146,9 +146,15 @@ async function fetchPlaceDetails(placeId, apiKey) {
     let heroImage = null;
     if (place.photos && place.photos.length > 0) {
       const photoReference = place.photos[0].photo_reference;
-      heroImage = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=${photoReference}&key=${apiKey}`;
-      // Resolve to final URL
-      heroImage = await resolvePhotoUrl(heroImage);
+      const photoUrlWithKey = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=${photoReference}&key=${apiKey}`;
+      // Resolve to final URL (must not contain API key)
+      heroImage = await resolvePhotoUrl(photoUrlWithKey);
+      
+      // If resolution failed, don't store URL with API key
+      if (!heroImage) {
+        console.warn('Failed to resolve hero image URL - skipping hero image');
+        heroImage = null;
+      }
     }
 
     return {
@@ -214,25 +220,69 @@ function formatCategory(type) {
 
 /**
  * Resolve photo URL to final lh3 URL (follow redirect)
+ * Never returns a URL containing an API key - returns null if resolution fails
  */
 async function resolvePhotoUrl(photoUrl) {
-  try {
-    // Follow redirect to get final URL
-    const response = await fetch(photoUrl, {
-      method: 'HEAD',
-      redirect: 'follow'
-    });
-
-    if (response.ok && response.url) {
-      return response.url;
-    }
-
-    // Fallback: return original URL
-    return photoUrl;
-  } catch (error) {
-    console.error('Error resolving photo URL:', error);
-    // Fallback: return original URL
-    return photoUrl;
+  // Safety check: never return URLs with API keys
+  if (photoUrl.includes('&key=') || photoUrl.includes('?key=')) {
+    console.warn('Photo URL contains API key, attempting resolution...');
   }
+
+  const maxRetries = 3;
+  let lastError = null;
+
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      // Follow redirect to get final URL
+      const response = await fetch(photoUrl, {
+        method: 'HEAD',
+        redirect: 'follow',
+        // Add timeout to prevent hanging
+        signal: AbortSignal.timeout(10000) // 10 second timeout
+      });
+
+      if (response.ok && response.url) {
+        const resolvedUrl = response.url;
+        
+        // Safety check: ensure resolved URL doesn't contain API key
+        if (resolvedUrl.includes('&key=') || resolvedUrl.includes('?key=')) {
+          console.error('Resolved URL still contains API key, rejecting');
+          return null;
+        }
+
+        // Ensure it's a valid lh3.googleusercontent.com URL
+        if (resolvedUrl.includes('lh3.googleusercontent.com')) {
+          return resolvedUrl;
+        }
+
+        // If it's not an lh3 URL but also doesn't have a key, it might be valid
+        // But log it for investigation
+        console.warn('Resolved URL is not lh3.googleusercontent.com:', resolvedUrl);
+        return resolvedUrl;
+      }
+    } catch (error) {
+      lastError = error;
+      console.warn(`Photo URL resolution attempt ${attempt}/${maxRetries} failed:`, error.message);
+      
+      // Wait before retry (exponential backoff)
+      if (attempt < maxRetries) {
+        await new Promise(resolve => setTimeout(resolve, 1000 * attempt));
+      }
+    }
+  }
+
+  // All retries failed - never return URL with API key
+  console.error('Failed to resolve photo URL after all retries:', lastError?.message);
+  
+  // Check if original URL contains API key
+  if (photoUrl.includes('&key=') || photoUrl.includes('?key=')) {
+    console.error('Cannot return URL with API key - returning null');
+    return null;
+  }
+
+  // If original URL doesn't have a key, it might be safe to return
+  // But log it as it shouldn't happen in normal flow
+  console.warn('Returning unresolved URL (no API key detected):', photoUrl);
+  return photoUrl;
 }
 

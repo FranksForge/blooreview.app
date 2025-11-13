@@ -17,7 +17,6 @@ BlooReview/
 │   │   ├── maps.js          # Google Maps API integration
 │   │   └── generate.js      # Business generation endpoint
 │   ├── index.js             # Dynamic HTML injection (Open Graph)
-│   ├── config.json          # Hero images mapping (auto-generated)
 │   └── package.json         # API package configuration
 │
 ├── public/                  # Public assets (served by Vercel)
@@ -75,8 +74,7 @@ BlooReview/
   - Generates slug from business name
   - Handles slug collisions (appends numbers)
   - Reads existing configs from GitHub
-  - Updates `config.js` with new business
-  - Updates `api/config.json` with hero images
+  - Updates `public/config.js` with new business (including hero images)
   - Commits changes to GitHub via API
   - Returns preview URL
 
@@ -84,17 +82,12 @@ BlooReview/
 
 #### `public/config.js`
 - Auto-generated JavaScript file (DO NOT EDIT MANUALLY)
-- Contains all business configurations
+- Contains all business configurations including hero images
 - Structure: `window.REVIEW_CONFIGS[slug] = { ... }`
 - Includes slug resolution logic
 - Updated via GitHub API when new businesses are added
 - Single source of truth for Vercel deployment
-
-#### `api/config.json`
-- Auto-generated JSON file (DO NOT EDIT MANUALLY)
-- Maps business slugs to hero image URLs
-- Used by `api/index.js` for Open Graph meta tags
-- Updated via GitHub API when new businesses are added
+- Used by `api/index.js` for Open Graph meta tags (reads hero images from here)
 
 ### Vercel Configuration
 

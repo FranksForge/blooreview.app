@@ -1,0 +1,245 @@
+(() => {
+  'use strict';
+
+  const elements = {
+    form: document.getElementById('generate-form'),
+    mapsUrlInput: document.getElementById('maps-url'),
+    fetchDetailsBtn: document.getElementById('fetch-details-btn'),
+    businessDetails: document.getElementById('business-details'),
+    detailsContent: document.getElementById('details-content'),
+    generateBtn: document.getElementById('generate-btn'),
+    resetBtn: document.getElementById('reset-btn'),
+    statusMessage: document.getElementById('status-message'),
+    loading: document.getElementById('loading')
+  };
+
+  let fetchedBusinessData = null;
+
+  // Show status message
+  const showStatus = (message, type = 'info') => {
+    elements.statusMessage.textContent = message;
+    elements.statusMessage.className = `status-message ${type}`;
+    elements.statusMessage.classList.remove('hidden');
+    
+    if (type === 'success') {
+      setTimeout(() => {
+        elements.statusMessage.classList.add('hidden');
+      }, 5000);
+    }
+  };
+
+  // Hide status message
+  const hideStatus = () => {
+    elements.statusMessage.classList.add('hidden');
+  };
+
+  // Show loading state
+  const showLoading = () => {
+    elements.loading.classList.remove('hidden');
+    elements.fetchDetailsBtn.disabled = true;
+    elements.generateBtn.disabled = true;
+  };
+
+  // Hide loading state
+  const hideLoading = () => {
+    elements.loading.classList.add('hidden');
+    elements.fetchDetailsBtn.disabled = false;
+    elements.generateBtn.disabled = false;
+  };
+
+  // Fetch business details from Maps API
+  const fetchBusinessDetails = async (mapsUrl) => {
+    try {
+      showLoading();
+      hideStatus();
+
+      const response = await fetch('/api/admin/maps', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ mapsUrl })
+      });
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error || 'Failed to fetch business details');
+      }
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Error fetching business details:', error);
+      throw error;
+    } finally {
+      hideLoading();
+    }
+  };
+
+  // Display business details
+  const displayBusinessDetails = (business) => {
+    fetchedBusinessData = business;
+
+    const slug = generateSlug(business.name);
+
+    // Generate preview URL
+    const hostname = window.location.hostname;
+    let baseDomain = 'blooreview.app';
+    
+    // Extract base domain from current hostname
+    if (hostname.includes('admin.')) {
+      baseDomain = hostname.replace('admin.', '');
+    } else if (hostname.includes('.')) {
+      const parts = hostname.split('.');
+      if (parts.length >= 2) {
+        baseDomain = parts.slice(-2).join('.'); // Get last two parts (e.g., blooreview.app)
+      }
+    }
+    
+    const previewUrl = `${window.location.protocol}//${slug}.${baseDomain}`;
+
+    elements.detailsContent.innerHTML = `
+      <div class="detail-item">
+        <span class="detail-label">Business Name</span>
+        <span class="detail-value">${escapeHtml(business.name)}</span>
+      </div>
+      <div class="detail-item">
+        <span class="detail-label">Category</span>
+        <span class="detail-value">${escapeHtml(business.category || 'N/A')}</span>
+      </div>
+      <div class="detail-item">
+        <span class="detail-label">Place ID</span>
+        <span class="detail-value">${escapeHtml(business.placeId)}</span>
+      </div>
+      <div class="detail-item">
+        <span class="detail-label">Generated Slug</span>
+        <span class="detail-value"><strong>${escapeHtml(slug)}</strong></span>
+      </div>
+      <div class="detail-item">
+        <span class="detail-label">Preview URL</span>
+        <span class="detail-value"><a href="${previewUrl}" target="_blank" rel="noopener">${previewUrl}</a></span>
+      </div>
+      ${business.heroImage ? `
+        <div class="detail-item">
+          <span class="detail-label">Hero Image</span>
+          <img src="${escapeHtml(business.heroImage)}" alt="Hero image" class="detail-image" />
+        </div>
+      ` : ''}
+    `;
+
+    elements.businessDetails.classList.remove('hidden');
+    showStatus('Business details fetched successfully! Review the information and click "Generate Review Page" to continue.', 'success');
+  };
+
+  // Generate slug from business name
+  const generateSlug = (name) => {
+    return name
+      .toLowerCase()
+      .trim()
+      .replace(/[^\w\s-]/g, '') // Remove special characters
+      .replace(/\s+/g, '-') // Replace spaces with hyphens
+      .replace(/-+/g, '-') // Replace multiple hyphens with single hyphen
+      .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
+  };
+
+  // Escape HTML to prevent XSS
+  const escapeHtml = (text) => {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  };
+
+  // Generate review page
+  const generateReviewPage = async (business) => {
+    try {
+      showLoading();
+      hideStatus();
+
+      const response = await fetch('/api/admin/generate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          placeId: business.placeId,
+          name: business.name,
+          category: business.category,
+          mapsUrl: business.mapsUrl,
+          heroImage: business.heroImage
+        })
+      });
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error || 'Failed to generate review page');
+      }
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Error generating review page:', error);
+      throw error;
+    } finally {
+      hideLoading();
+    }
+  };
+
+  // Reset form
+  const resetForm = () => {
+    elements.form.reset();
+    elements.businessDetails.classList.add('hidden');
+    elements.detailsContent.innerHTML = '';
+    fetchedBusinessData = null;
+    hideStatus();
+  };
+
+  // Event listeners
+  elements.fetchDetailsBtn.addEventListener('click', async (e) => {
+    e.preventDefault();
+    const mapsUrl = elements.mapsUrlInput.value.trim();
+
+    if (!mapsUrl) {
+      showStatus('Please enter a Google Maps URL', 'error');
+      return;
+    }
+
+    try {
+      const business = await fetchBusinessDetails(mapsUrl);
+      displayBusinessDetails(business);
+    } catch (error) {
+      showStatus(error.message || 'Failed to fetch business details', 'error');
+    }
+  });
+
+  elements.form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    if (!fetchedBusinessData) {
+      showStatus('Please fetch business details first', 'error');
+      return;
+    }
+
+    try {
+      const result = await generateReviewPage(fetchedBusinessData);
+      showStatus(
+        `Review page generated successfully! Preview: ${result.previewUrl}`,
+        'success'
+      );
+      
+      // Show preview link
+      setTimeout(() => {
+        if (confirm('Review page generated! Would you like to open it?')) {
+          window.open(result.previewUrl, '_blank');
+        }
+      }, 1000);
+    } catch (error) {
+      showStatus(error.message || 'Failed to generate review page', 'error');
+    }
+  });
+
+  elements.resetBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    resetForm();
+  });
+})();
+

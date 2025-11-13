@@ -3,9 +3,21 @@
     "api/index.js": {
       "memory": 1024,
       "maxDuration": 10
+    },
+    "api/admin/*.js": {
+      "memory": 1024,
+      "maxDuration": 30
     }
   },
   "rewrites": [
+    {
+      "source": "/admin",
+      "destination": "/admin/index.html"
+    },
+    {
+      "source": "/api/admin/:path*",
+      "destination": "/api/admin/:path*"
+    },
     {
       "source": "/",
       "destination": "/api/index"

@@ -1,10 +1,45 @@
-# Photo redirect cache (local development only)
-.cache_photo_redirects.json
-
-# Node modules (if any)
+# Dependencies
 node_modules/
+package-lock.json
+yarn.lock
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Cache files
+.cache/
+.cache_*.json
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # OS files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
 
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Build files
+dist/
+build/
+.next/
+.vercel/
+
+# Temporary files
+*.tmp
+*.temp

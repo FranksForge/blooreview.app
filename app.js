@@ -709,11 +709,8 @@
     const heroImage = document.getElementById('hero-image');
     
     if (config.hero_image && heroImage && heroImageContainer) {
-      // If hero_image is just a filename (no protocol), prepend /images/
-      const imageSrc = config.hero_image.startsWith('http') 
-        ? config.hero_image 
-        : `/images/${config.hero_image}`;
-      heroImage.src = imageSrc;
+      // Hero image is always a full URL from Google Maps API
+      heroImage.src = config.hero_image;
       heroImage.alt = state.businessName;
       heroImageContainer.classList.remove('hidden');
     } else if (heroImageContainer) {

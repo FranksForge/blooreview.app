@@ -1,10 +1,18 @@
 {
-  "name": "review-demo",
-  "version": "1.0.0",
-  "description": "Review intake platform with dynamic social sharing",
+  "name": "blooreview",
+  "version": "2.0.0",
+  "description": "SaaS review collection platform with automated business registration",
+  "type": "module",
   "scripts": {
-    "sync": "node sync-config.js",
-    "sync:deploy": "node sync-config.js --deploy"
+    "dev": "node dev-server.js",
+    "dev:vercel": "vercel dev",
+    "dev:simple": "npx http-server . -p 3000 -o",
+    "build": "echo 'No build step required'"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "vercel": "^34.0.0",
+    "express": "^4.18.2",
+    "dotenv": "^16.3.1"
+  }
 }

@@ -1,135 +1,166 @@
-# Review Tool Demo
+# BlooReview
 
-A simple single-page review intake flow. Visitors rate their experience, and:
+SaaS review collection platform with automated business registration and review page generation.
 
-- 5-star reviewers are immediately forwarded to your Google review link.
-- 1–4 star ratings reveal an optional form where visitors can leave contact details and comments that are stored privately in a Google Sheet you control.
+## Overview
 
-The project is intentionally lightweight (plain HTML/CSS/JS) so you can deploy it anywhere.
+BlooReview is a multi-tenant review collection platform that automatically generates personalized review pages for businesses. Each business gets its own subdomain (e.g., `joes-pizza.blooreview.app`) with a customized review collection flow.
 
-## Quick start
+## Features
 
-1. Update `config.js` with your business information (details below).
-2. Run a simple local server (for example `npx serve .`) and open the provided URL in your browser—this gives the Google Maps script a valid origin for your API key.
-3. When you are ready to go live, upload the files to any static hosting provider (Netlify, Vercel, GitHub Pages, etc.).
+- **Automated Business Registration**: Input Google Maps URL and automatically generate review page
+- **Multi-Tenant Architecture**: Each business gets its own subdomain and config
+- **Review Collection**: 5-star reviews → Google Reviews, 1-4 star reviews → Internal feedback
+- **Discount System**: Automated discount code generation for reviewers
+- **Social Sharing**: WhatsApp, SMS, and link sharing for referrals
+- **Google Sheets Integration**: Review data stored in Google Sheets
 
-## Configure the app
+## Tech Stack
 
-Edit `config.js` and replace the placeholder values:
+- **Frontend**: Vanilla JavaScript, HTML, CSS
+- **Backend**: Vercel Serverless Functions (Node.js)
+- **Storage**: config.js (business configs), Google Sheets (review data)
+- **Hosting**: Vercel
+- **Domain**: blooreview.app
 
-```js
-window.REVIEW_TOOL_CONFIG = {
-  name: "Your Business Name",
-  category: "Retail",
-  google_maps_url: "https://www.google.com/maps/place/your-business",
-  place_id: "ChIJxxxxxxxxxxxxxxxxxxxx",
+## Quick Start
 
-  // Optional overrides
-  google_review_base_url: "https://search.google.com/local/writereview?placeid=",
-  google_review_url: "",
-  customReviewPrompts: [
-    "Share how the latte art or specialty drinks made your visit memorable.",
-    "Mention the cozy seating or playlist that keeps you coming back.",
-    "Talk about the friendly staff and how they made your day."
-  ],
+### Admin UI
 
-  // Google Apps Script endpoint for storing internal feedback (see below).
-  sheet_script_url: "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec"
-};
+1. Visit `admin.blooreview.app` or `/admin`
+2. Input Google Maps URL
+3. System automatically:
+   - Fetches business details from Maps API
+   - Generates slug
+   - Creates config
+   - Updates config.js
+   - Deploys to Vercel
+4. Review page is live at `[slug].blooreview.app`
+
+### Environment Variables
+
+Required environment variables in Vercel:
+
+- `GOOGLE_MAPS_API_KEY` - Google Maps API key (required)
+- `GITHUB_TOKEN` - GitHub personal access token for updating config files (required)
+- `GITHUB_REPO` - GitHub repository in format `owner/repo` (required)
+- `REVIEW_SCRIPT_URL` - Google Apps Script URL for review data collection (optional)
+
+## Project Structure
+
+```
+/
+├── admin/                 # Admin panel
+│   ├── index.html        # Admin UI
+│   ├── admin.js          # Admin frontend logic
+│   └── admin.css         # Admin styles
+├── api/                   # API endpoints
+│   ├── admin/
+│   │   ├── generate.js   # Business generation endpoint
+│   │   └── maps.js       # Maps API integration endpoint
+│   ├── index.js          # Root handler (Open Graph injection)
+│   └── config.json       # Hero image mappings (auto-generated)
+├── app.js                 # Review page frontend logic
+├── config.js             # Business configs (auto-generated)
+├── _index.html           # Review page HTML template
+├── styles.css            # Review page styles
+├── logo.png              # Logo image
+├── logo_title_white.png  # Logo with title
+└── vercel.json           # Vercel configuration
 ```
 
-- `name`, `category`: Displayed on the review page and attached to internal feedback rows.
-- `google_maps_url`: For your reference (used only in admin tooling—safe to leave blank on the public page).
-- `place_id`: Required so 5-star reviewers go straight to Google. Paste it from Google's Place ID Finder or the setup tool output.
-- `google_review_url`: Optional override if you prefer to paste the full review link yourself.
-- `google_review_base_url`: Only adjust if Google changes their review link structure.
-- `customReviewPrompts`: Optional. Otherwise, category-aware defaults are generated automatically.
-- `sheet_script_url`: The web app URL of your Google Apps Script (instructions below) that writes submissions into a Sheet.
+## Development
 
-If the Sheet URL is not set yet, the page still accepts reviews but logs them to the browser console so you can confirm the payload.
+### Prerequisites
 
-## Set up Google Sheets logging
+- Node.js 18+ installed
+- npm or yarn package manager
+- Google Maps API key
+- GitHub personal access token (for admin API)
 
-1. Create a new Google Sheet and add the following header row in the first sheet (adjust as needed):
+### Local Development Setup
+
+1. **Install dependencies:**
+   ```bash
+   npm install
    ```
-   submittedAt	name	email	rating	comments	businessName	businessCategory	placeId	mapUrl
+
+2. **Set up environment variables:**
+   ```bash
+   cp .env.example .env.local
+   # Then edit .env.local with your actual values
    ```
-2. With the sheet open, click **Extensions → Apps Script**.
-3. Replace the default script with the snippet below and save the project.
-4. Click **Deploy → Test deployments → Select type: Web app**, then choose **Me** as the executing account, **Anyone** or **Anyone with the link** as “Who has access”, and deploy.
-5. Copy the "Web app URL" and paste it into `sheet_script_url` in `config.js`.
 
-### Apps Script snippet
+3. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
 
-```js
-const SHEET_NAME = "Sheet1";
+The dev server will start at `http://localhost:3000` by default.
 
-function doPost(request) {
-  try {
-    const {
-      comments,
-      email,
-      name,
-      rating,
-      submittedAt,
-      businessName,
-      businessCategory,
-      placeId,
-      mapUrl
-    } = JSON.parse(request.postData.contents);
+**Access URLs:**
+- Admin UI: `http://localhost:3000/admin`
+- Review pages: `http://localhost:3000/?biz=slug` (use `?biz=slug` query param for testing)
 
-    const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(SHEET_NAME);
-    sheet.appendRow([
-      submittedAt || new Date().toISOString(),
-      name || "",
-      email || "",
-      rating || "",
-      comments || "",
-      businessName || "",
-      businessCategory || "",
-      placeId || "",
-      mapUrl || ""
-    ]);
+### Environment Variables for Local Development
 
-    return ContentService.createTextOutput(
-      JSON.stringify({ ok: true })
-    ).setMimeType(ContentService.MimeType.JSON);
-  } catch (error) {
-    console.error(error);
-    return ContentService.createTextOutput(
-      JSON.stringify({ ok: false, error: error.message })
-    )
-      .setMimeType(ContentService.MimeType.JSON)
-      .setResponseCode(500);
-  }
-}
-```
+1. Copy the example environment file:
+   ```bash
+   cp .env.example .env.local
+   ```
 
-> If you use a different sheet name, update the `SHEET_NAME` constant accordingly.
+2. Edit `.env.local` and add your actual values:
+   ```env
+   GOOGLE_MAPS_API_KEY=your_google_maps_api_key
+   GITHUB_TOKEN=your_github_personal_access_token
+   GITHUB_REPO=owner/repo
+   REVIEW_SCRIPT_URL=your_google_apps_script_url
+   ```
 
-## Customization ideas
+**Note**: 
+- Vercel CLI automatically loads `.env.local` file
+- `.env.local` is already in `.gitignore` to prevent committing secrets
+- For production, set these variables in Vercel dashboard under Project Settings > Environment Variables
 
-- Swap in your own branding by editing `styles.css`.
-- Add fields (phone number, visit date, etc.) by updating both `index.html` and `app.js`.
-- Send yourself email or SMS alerts by extending the Apps Script to trigger additional services.
+### Adding a New Business
 
-## Testing the flow
+1. Use admin UI to input Google Maps URL
+2. System automatically generates review page
+3. Review page is live at `[slug].blooreview.app`
 
-1. Open `index.html` in your browser.
-2. Click 5 stars → the Google Reviews form opens in a new tab and the page reveals copy-ready review prompts. (Pop-up blockers may require you to click the button manually.)
-3. Click 1–4 stars, optionally add details, and submit → check your Google Sheet for the new row.
+## Deployment
 
-Enjoy the streamlined review collection process!
+Deployment is automatic via Vercel:
 
-## Admin Setup Tool (optional but recommended)
+1. Push to git
+2. Vercel automatically deploys
+3. Changes are live in 2-3 minutes
 
-Use `setup.html` to resolve Place ID, name, and category from a Google Maps URL (one-time per business).
+## Configuration
 
-- Start a local server (`npx serve .`) and open `/setup.html`.
-- Paste the full Google Maps URL and a Places API key (enable Maps JavaScript API + Places API; restrict it to your setup origin).
-- Click “Resolve Place Info”. The tool will:
-  - Parse the URL for name/coordinates
-  - Load the new Places JS library (v=beta)
-  - Search via `Place.searchByText` (with location bias) and `Place.searchNearby` fallback
-  - Fetch fields with `place.fetchFields`
-- Copy the generated config snippet and paste into `config.js` for the live page. After that, your public page does not need to call Places at runtime; it just uses the saved `place_id` to build the review URL.
+Business configs are stored in `config.js` and auto-generated by the admin UI. Each business has:
+
+- `place_id` - Google Places API Place ID
+- `name` - Business name
+- `category` - Business category
+- `google_maps_url` - Google Maps URL
+- `hero_image` - Hero image URL
+- `discount_enabled` - Enable discount codes
+- `discount_percentage` - Discount percentage
+- `discount_valid_days` - Discount validity period
+- `referral_enabled` - Enable referral sharing
+- `min_review` - Minimum review threshold (5 stars)
+- `sheet_script_url` - Google Sheets script URL for review data
+
+## Review Data Collection
+
+Review data is stored in Google Sheets via `sheet_script_url`. Each business's reviews are stored in separate sheets.
+
+## License
+
+Private - All rights reserved
+
+## Support
+
+For issues or questions, please contact the development team.
+

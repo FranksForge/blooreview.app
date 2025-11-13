@@ -13,7 +13,7 @@ const DEFAULT_CONFIG = {
   discount_percentage: 10,
   discount_valid_days: 30,
   referral_enabled: true,
-  referral_message: "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",
+  referral_message: "Invite your friends to get their own discount code!",
   google_review_base_url: "https://search.google.com/local/writereview?placeid=",
   google_review_url: "",
   logo_url: ""

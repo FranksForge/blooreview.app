@@ -132,9 +132,9 @@
     copyLinkBtn: document.getElementById("copy-link-btn")
   };
 
-  // Translation helper function - German ONLY
+  // Translation helper function - English by default
   const t = (key, fallback = '') => {
-    return translations.de[key] || fallback;
+    return translations.en[key] || fallback;
   };
 
   // State will be initialized after config loads
@@ -155,7 +155,7 @@
     console.log('sheet_script_url from config:', config.sheet_script_url);
     
     state = {
-      businessName: sanitizeString(config.name) || "Wir schätzen Ihr Feedback",
+      businessName: sanitizeString(config.name) || "We Value Your Feedback",
     businessCategory: sanitizeString(config.category),
     mapsUrl: sanitizeString(config.google_maps_url),
     placeId: sanitizeString(config.place_id),
@@ -324,7 +324,7 @@
   const formatExpiryDate = (daysFromNow) => {
     const date = new Date();
     date.setDate(date.getDate() + daysFromNow);
-    return date.toLocaleDateString('de-DE', { year: 'numeric', month: 'long', day: 'numeric' });
+    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
   };
 
   const copyDiscountCode = async () => {
@@ -373,7 +373,7 @@
     const reviewUrl = getReviewPageUrl();
     
     const message = encodeURIComponent(
-      `Schau dir ${businessName} an! Hinterlasse eine kurze Bewertung und erhalte ${percentage}% Rabatt: ${reviewUrl} 🎁`
+      `Check out ${businessName}! Leave a quick review and get ${percentage}% off: ${reviewUrl} 🎁`
     );
     
     window.open(`https://wa.me/?text=${message}`, '_blank');
@@ -385,7 +385,7 @@
     const reviewUrl = getReviewPageUrl();
     
     const message = encodeURIComponent(
-      `Hallo! Hinterlasse eine Bewertung für ${businessName} und erhalte ${percentage}% Rabatt: ${reviewUrl}`
+      `Hi! Leave a review for ${businessName} and get ${percentage}% off: ${reviewUrl}`
     );
     
     // For iOS/Android SMS
@@ -441,10 +441,10 @@
         // Special message for 5-star ratings (Google Reviews flow)
         if (state.selectedRating >= state.reviewThreshold) {
           elements.thankYouMessage.textContent =
-            "Vielen Dank für Ihre Bewertung! Wir haben Google Bewertungen in einem neuen Tab geöffnet. Hier eine kleine Aufmerksamkeit von uns:";
+            "Thank you so much for your review! We've opened Google Reviews in a new tab. Here's a little thank you from us:";
         } else {
           elements.thankYouMessage.textContent =
-            "Vielen Dank für Ihr Feedback! Hier eine kleine Aufmerksamkeit von uns:";
+            "Thank you so much for your feedback! Here's a little thank you from us:";
         }
       }
       elements.discountSection?.classList.remove("hidden");
@@ -476,7 +476,7 @@
     } else {
       if (elements.thankYouMessage) {
         elements.thankYouMessage.textContent =
-          "Vielen Dank für Ihr Feedback! Wir freuen uns, Sie bald wieder bei uns zu begrüßen.";
+          "Thank you so much for your feedback! We look forward to welcoming you back soon.";
       }
       elements.discountSection?.classList.add("hidden");
       elements.shareLoveSection?.classList.add("hidden");
@@ -538,7 +538,7 @@
 
     if (!state.selectedRating || state.selectedRating >= 5) {
       if (elements.errorMessage) {
-        elements.errorMessage.textContent = t.feedbackRatingError;
+        elements.errorMessage.textContent = t('feedbackRatingError', 'Please select a rating from 1 to 4 stars first.');
       }
       return;
     }
@@ -546,7 +546,7 @@
     const comments = sanitizeString(elements.commentsField?.value);
     if (!comments) {
       if (elements.errorMessage) {
-        elements.errorMessage.textContent = t.feedbackError;
+        elements.errorMessage.textContent = t('feedbackError', 'Please share your feedback before submitting.');
       }
       return;
     }
@@ -643,7 +643,7 @@
 
     elements.ratingSubmit?.addEventListener("click", () => {
       if (!state.selectedRating) {
-        showRatingError(t.ratingError);
+        showRatingError(t('ratingError', 'Please select a star rating to continue.'));
         return;
       }
       resetView();
@@ -669,7 +669,7 @@
 
   const applyConfigToDom = () => {
     // Keep it simple - generic page title
-    document.title = "Ihr Feedback";
+    document.title = "Your Feedback";
     
     // Update Open Graph meta tags for social sharing (generic)
     const ogTitle = document.getElementById('og-title');
@@ -678,11 +678,11 @@
     const ogImage = document.getElementById('og-image');
     
     if (ogTitle) {
-      ogTitle.setAttribute('content', 'Ihr Feedback');
+      ogTitle.setAttribute('content', 'Your Feedback');
     }
     
     if (ogDescription) {
-      ogDescription.setAttribute('content', 'Teilen Sie uns Ihre Meinung mit');
+      ogDescription.setAttribute('content', 'Share your opinion with us');
     }
     
     if (ogUrl) {
@@ -753,7 +753,7 @@
 
   const showLandingPage = () => {
     // Keep it simple - generic page title
-    document.title = "Ihr Feedback";
+    document.title = "Your Feedback";
     
     // Update Open Graph meta tags (generic)
     const ogTitle = document.getElementById('og-title');
@@ -762,10 +762,10 @@
     const ogImage = document.getElementById('og-image');
     
     if (ogTitle) {
-      ogTitle.setAttribute('content', 'Ihr Feedback');
+      ogTitle.setAttribute('content', 'Your Feedback');
     }
     if (ogDescription) {
-      ogDescription.setAttribute('content', 'Teilen Sie uns Ihre Meinung mit');
+      ogDescription.setAttribute('content', 'Share your opinion with us');
     }
     if (ogUrl) {
       ogUrl.setAttribute('content', window.location.href);

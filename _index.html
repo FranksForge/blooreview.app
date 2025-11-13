@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ihr Feedback</title>
+    <title>Your Feedback</title>
     
     <!-- Open Graph / Facebook / WhatsApp / etc. -->
-    <meta property="og:title" content="Ihr Feedback" id="og-title" />
-    <meta property="og:description" content="Teilen Sie uns Ihre Meinung mit" id="og-description" />
+    <meta property="og:title" content="Your Feedback" id="og-title" />
+    <meta property="og:description" content="Share your opinion with us" id="og-description" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="" id="og-url" />
-    <meta property="og:image" content="https://sichtbar-bewerten.de/logo.png" id="og-image" />
+    <meta property="og:image" content="https://blooreview.com/logo.png" id="og-image" />
     
     <link rel="icon" type="image/png" href="logo.png" />
     <link rel="stylesheet" href="styles.css" />
@@ -21,14 +21,14 @@
         <div id="hero-image-container" class="hero-image hidden">
           <img id="hero-image" src="" alt="Business" />
         </div>
-        <h1 id="business-name">Wir schätzen Ihr Feedback</h1>
+        <h1 id="business-name">We Value Your Feedback</h1>
         <p class="subtitle" data-translate="subtitle">
-          Ihre Meinung ist uns wichtig und hilft uns, besser zu werden.
+          Your opinion matters to us and helps us improve.
         </p>
       </header>
 
       <section id="rating-step">
-        <p class="rating-prompt" data-translate="ratingPrompt">Wie würden Sie Ihre Erfahrung bewerten?</p>
+        <p class="rating-prompt" data-translate="ratingPrompt">How would you rate your experience?</p>
         <fieldset class="rating-fieldset">
           <legend class="sr-only">Select a star rating</legend>
           <div class="stars" role="radiogroup" aria-label="Star rating">
@@ -46,9 +46,9 @@
         </fieldset>
         <div class="buttons-row">
           <button type="button" id="confirm-rating" class="primary rating-confirm" data-translate="continueButton">
-            Weiter
+            Continue
           </button>
-          <button type="button" class="secondary back-btn hidden">Zurück</button>
+          <button type="button" class="secondary back-btn hidden">Back</button>
         </div>
         <p
           id="rating-error"
@@ -75,35 +75,35 @@
         </div>
         
         <p class="muted" data-translate="feedbackIntro">
-          Wir lesen jede Nachricht sorgfältig. Ihr Feedback hilft uns unseren Service zukünftig noch weiter zu verbessern.
+          We read every message carefully. Your feedback helps us improve our service.
         </p>
         <form id="feedback-form" novalidate>
           <label class="field">
-            <span data-translate="feedbackNameLabel">Ihr Name (optional)</span>
+            <span data-translate="feedbackNameLabel">Your name (optional)</span>
             <input
               type="text"
               id="feedback-name"
               name="name"
               data-translate-placeholder="feedbackNamePlaceholder"
-              placeholder="Geben Sie Ihren Namen ein"
+              placeholder="Enter your name"
             />
           </label>
 
           <label class="field">
-            <span data-translate="feedbackPrompt">Wie können wir uns verbessern?</span>
+            <span data-translate="feedbackPrompt">How can we improve?</span>
             <textarea
               id="comments"
               name="comments"
               rows="4"
               data-translate-placeholder="feedbackPlaceholder"
-              placeholder="Teilen Sie Ihre Gedanken mit..."
+              placeholder="Share your thoughts..."
               required
             ></textarea>
           </label>
 
           <div class="buttons-row">
-            <button type="submit" class="primary" data-translate="feedbackSubmit">Bewertung abschicken</button>
-            <button type="button" class="secondary back-btn hidden">Zurück</button>
+            <button type="submit" class="primary" data-translate="feedbackSubmit">Submit Review</button>
+            <button type="button" class="secondary back-btn hidden">Back</button>
           </div>
           <p class="form-error" id="form-error" role="alert"></p>
         </form>
@@ -111,40 +111,40 @@
 
       <section id="thank-you" class="hidden">
         <div class="thank-you-icon">🎉</div>
-        <h2 data-translate="thankYouTitle">Vielen Dank!</h2>
+        <h2 data-translate="thankYouTitle">Thank You So Much!</h2>
         <p id="thank-you-message" data-translate="thankYouMessage">
-          Ihr Feedback bedeutet uns die Welt und hilft uns, Ihnen besser zu dienen.
+          Your feedback means the world to us and helps us serve you better.
         </p>
         
         <div class="discount-section" id="discount-section">
           <div class="discount-code-display">
             <div class="discount-header">
               <span class="discount-badge">
-                <span id="discount-percentage">10%</span> RABATT
+                <span id="discount-percentage">10%</span> DISCOUNT
               </span>
             </div>
-            <span class="discount-label" data-translate="discountLabel">Ihr Rabattcode:</span>
+            <span class="discount-label" data-translate="discountLabel">Your discount code:</span>
             <span class="discount-code" id="discount-code">-</span>
             <p class="discount-expiry-text">
-              <span data-translate="discountExpiry">Gültig bis</span>: <strong id="discount-expiry">-</strong>
+              <span data-translate="discountExpiry">Valid until</span>: <strong id="discount-expiry">-</strong>
             </p>
             <button type="button" id="copy-code-btn" class="copy-code-btn" data-translate="copyCode">
-              📋 Code kopieren
+              📋 Copy Code
             </button>
           </div>
           
           <div class="share-love-section" id="share-love-section">
-            <h3 data-translate="shareLoveTitle">💝 Teilen Sie die Liebe!</h3>
-            <p data-translate="shareLoveMessage">Laden Sie Ihre Freunde ein, auch eine Bewertung zu hinterlassen und ihren eigenen Rabatt zu erhalten!</p>
+            <h3 data-translate="shareLoveTitle">💝 Share the Love!</h3>
+            <p data-translate="shareLoveMessage">Invite your friends to also leave a review and get their own discount!</p>
             <div class="share-buttons">
               <button type="button" id="share-whatsapp-btn" class="share-btn whatsapp-btn" data-translate="shareWhatsapp">
-                <span class="btn-icon">📱</span> Auf WhatsApp teilen
+                <span class="btn-icon">📱</span> Share on WhatsApp
               </button>
               <button type="button" id="share-sms-btn" class="share-btn sms-btn" data-translate="shareSMS">
-                <span class="btn-icon">💬</span> Per SMS teilen
+                <span class="btn-icon">💬</span> Share via SMS
               </button>
               <button type="button" id="copy-link-btn" class="share-btn copy-link-btn" data-translate="copyLink">
-                <span class="btn-icon">🔗</span> Link kopieren
+                <span class="btn-icon">🔗</span> Copy Link
               </button>
             </div>
           </div>
@@ -152,43 +152,43 @@
       </section>
 
       <section id="google-forward" class="hidden">
-        <h2 data-translate="googleForwardTitle">🎉 Danke für die Liebe!</h2>
-        <p data-translate="googleForwardMessage">Ihre Worte bedeuten uns viel. Wir öffnen Google Bewertungen, damit Sie sie öffentlich teilen können.</p>
-        <p class="highlight-message" data-translate="googleForwardHighlight">✨ <strong>Nach Ihrer Bewertung verwenden Sie die Zurück-Taste, um hierher zurückzukehren und Ihren Rabattcode zu erhalten!</strong></p>
+        <h2 data-translate="googleForwardTitle">🎉 Thanks for the Love!</h2>
+        <p data-translate="googleForwardMessage">Your words mean a lot to us. We're opening Google Reviews so you can share them publicly.</p>
+        <p class="highlight-message" data-translate="googleForwardHighlight">✨ <strong>After leaving your review, use the back button to return here for your discount code!</strong></p>
         <a id="google-link" class="primary" target="_blank" rel="noopener noreferrer" data-translate="googleForwardButton">
-          Google Bewertungen öffnen
+          Open Google Reviews
         </a>
         <p id="maps-note" class="maps-note">
-          <span data-translate="mapsNote">Brauchen Sie eine Erinnerung an uns?</span> <a id="maps-link" target="_blank" rel="noopener" data-translate="mapsLink">Sehen Sie sich unseren Google Maps Eintrag an.</a>
+          <span data-translate="mapsNote">Need a refresher about us?</span> <a id="maps-link" target="_blank" rel="noopener" data-translate="mapsLink">View our Google Maps listing.</a>
         </p>
       </section>
 
       <section id="landing-page" class="hidden">
         <div class="landing-banner">
-          <img src="logo_title_white.png" alt="Sichtbar Bewerten" />
+          <img src="logo_title_white.png" alt="BlooReview" />
         </div>
-        <h1>Der Boost für Ihr lokales Unternehmen</h1>
-        <p class="landing-preheader">Die intelligente Bewertungsplattform</p>
-        <p class="landing-subtitle">So einfach wie effektiv.</p>
+        <h1>The Boost for Your Local Business</h1>
+        <p class="landing-preheader">The Smart Review Platform</p>
+        <p class="landing-subtitle">Simple and effective.</p>
         <ul class="landing-benefits">
-          <li>Personalisierte Bewertungsseite mit QR-Codes</li>
-          <li>Mehr gute Google Bewertungen</li>
-          <li>Mehr internes Feedback zur Verbesserung Ihrer Services</li>
-          <li>Optional: Rabatt- und Empfehlungsaktionen</li>
+          <li>Personalized review page with QR codes</li>
+          <li>More positive Google reviews</li>
+          <li>More internal feedback to improve your services</li>
+          <li>Optional: Discount and referral campaigns</li>
         </ul>
         <div class="landing-cta">
-          <a href="https://sichtbar-vor-ort.de" class="primary" target="_blank" rel="noopener noreferrer">
-            Mehr erfahren
+          <a href="https://blooreview.com" class="primary" target="_blank" rel="noopener noreferrer">
+            Learn More
           </a>
         </div>
       </section>
 
       <footer>
         <div class="footer-content">
-          <span data-translate="footerPoweredBy">Unterstützt durch</span>
-          <a href="https://sichtbar-vor-ort.de" target="_blank" rel="noopener noreferrer" class="footer-link">
-            <img src="logo.png" alt="Sichtbar vor Ort" class="footer-logo">
-            <span class="footer-domain">sichtbar-vor-ort.de</span>
+          <span data-translate="footerPoweredBy">Powered by</span>
+          <a href="https://blooreview.com" target="_blank" rel="noopener noreferrer" class="footer-link">
+            <img src="logo.png" alt="BlooReview" class="footer-logo">
+            <span class="footer-domain">blooreview.com</span>
           </a>
         </div>
       </footer>

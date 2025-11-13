@@ -312,13 +312,15 @@ async function commitAndPush(slug, name, configContent, heroImages) {
     
     // Get config.js SHA
     const configSha = await getFileSha(owner, repo, 'config.js', githubToken);
+    // Get public/config.js SHA (needed for Vercel deployment)
+    const publicConfigSha = await getFileSha(owner, repo, 'public/config.js', githubToken);
     // Get api/config.json SHA
     const apiConfigSha = await getFileSha(owner, repo, 'api/config.json', githubToken);
 
     // Generate api/config.json content
     const apiConfigContent = JSON.stringify(heroImages, null, 2);
 
-    // Update config.js
+    // Update config.js (root directory - for local dev and source of truth)
     await updateFileOnGitHub(
       owner,
       repo,
@@ -326,6 +328,17 @@ async function commitAndPush(slug, name, configContent, heroImages) {
       configContent,
       configSha,
       `Auto-generate: Add ${name} (${slug})`,
+      githubToken
+    );
+
+    // Update public/config.js (needed for Vercel deployment - serves from public/)
+    await updateFileOnGitHub(
+      owner,
+      repo,
+      'public/config.js',
+      configContent,
+      publicConfigSha,
+      `Auto-generate: Add ${name} (${slug}) - Update public config for Vercel`,
       githubToken
     );
 

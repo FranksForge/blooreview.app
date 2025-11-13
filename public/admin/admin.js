@@ -10,7 +10,12 @@
     generateBtn: document.getElementById('generate-btn'),
     resetBtn: document.getElementById('reset-btn'),
     statusMessage: document.getElementById('status-message'),
-    loading: document.getElementById('loading')
+    loading: document.getElementById('loading'),
+    qrCodeSection: document.getElementById('qr-code-section'),
+    qrCodeCanvas: document.getElementById('qr-code-canvas'),
+    qrReviewUrl: document.getElementById('qr-review-url'),
+    downloadQrBtn: document.getElementById('download-qr-btn'),
+    copyUrlBtn: document.getElementById('copy-url-btn')
   };
 
   let fetchedBusinessData = null;
@@ -184,11 +189,83 @@
     }
   };
 
+  // Generate QR code
+  const generateQRCode = async (url) => {
+    try {
+      await QRCode.toCanvas(elements.qrCodeCanvas, url, {
+        width: 256,
+        margin: 2,
+        color: {
+          dark: '#000000',
+          light: '#FFFFFF'
+        }
+      });
+      return true;
+    } catch (error) {
+      console.error('Error generating QR code:', error);
+      return false;
+    }
+  };
+
+  // Download QR code as PNG
+  const downloadQRCode = () => {
+    const canvas = elements.qrCodeCanvas;
+    const url = canvas.toDataURL('image/png');
+    const link = document.createElement('a');
+    link.download = `qr-code-${Date.now()}.png`;
+    link.href = url;
+    link.click();
+  };
+
+  // Copy URL to clipboard
+  const copyUrlToClipboard = async (url) => {
+    try {
+      await navigator.clipboard.writeText(url);
+      const originalText = elements.copyUrlBtn.textContent;
+      elements.copyUrlBtn.textContent = 'Copied!';
+      setTimeout(() => {
+        elements.copyUrlBtn.textContent = originalText;
+      }, 2000);
+    } catch (error) {
+      console.error('Error copying URL:', error);
+      // Fallback for older browsers
+      const textarea = document.createElement('textarea');
+      textarea.value = url;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand('copy');
+        const originalText = elements.copyUrlBtn.textContent;
+        elements.copyUrlBtn.textContent = 'Copied!';
+        setTimeout(() => {
+          elements.copyUrlBtn.textContent = originalText;
+        }, 2000);
+      } catch (err) {
+        console.error('Fallback copy failed:', err);
+      }
+      document.body.removeChild(textarea);
+    }
+  };
+
+  // Display QR code section
+  const displayQRCode = async (reviewUrl) => {
+    elements.qrReviewUrl.textContent = reviewUrl;
+    const success = await generateQRCode(reviewUrl);
+    if (success) {
+      elements.qrCodeSection.classList.remove('hidden');
+      // Scroll to QR code section
+      elements.qrCodeSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  };
+
   // Reset form
   const resetForm = () => {
     elements.form.reset();
     elements.businessDetails.classList.add('hidden');
     elements.detailsContent.innerHTML = '';
+    elements.qrCodeSection.classList.add('hidden');
     fetchedBusinessData = null;
     hideStatus();
   };
@@ -226,6 +303,9 @@
         'success'
       );
       
+      // Display QR code
+      await displayQRCode(result.previewUrl);
+      
       // Show preview link
       setTimeout(() => {
         if (confirm('Review page generated! Would you like to open it?')) {
@@ -240,6 +320,18 @@
   elements.resetBtn.addEventListener('click', (e) => {
     e.preventDefault();
     resetForm();
+  });
+
+  // QR code event listeners
+  elements.downloadQrBtn?.addEventListener('click', () => {
+    downloadQRCode();
+  });
+
+  elements.copyUrlBtn?.addEventListener('click', () => {
+    const url = elements.qrReviewUrl.textContent;
+    if (url) {
+      copyUrlToClipboard(url);
+    }
   });
 })();
 

@@ -245,6 +245,76 @@ body {
   display: none !important;
 }
 
+.qr-code-section {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: #f9fafb;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+}
+
+.qr-code-section h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+  color: #222;
+}
+
+.qr-code-description {
+  margin: 0 0 1.5rem 0;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.qr-code-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.qr-code-container canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+.qr-code-url {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.qr-url-label {
+  font-weight: 600;
+  color: #555;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.qr-url-value {
+  color: #222;
+  font-size: 0.9rem;
+  word-break: break-all;
+  font-family: 'Courier New', monospace;
+}
+
+.qr-code-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.qr-code-actions .btn {
+  flex: 1;
+}
+
 @media (max-width: 640px) {
   .admin-container {
     padding: 1.5rem;
@@ -255,6 +325,14 @@ body {
   }
 
   .form-actions .btn {
+    width: 100%;
+  }
+
+  .qr-code-actions {
+    flex-direction: column;
+  }
+
+  .qr-code-actions .btn {
     width: 100%;
   }
 }

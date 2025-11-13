@@ -51,40 +51,6 @@ window.REVIEW_CONFIGS = {
     "google_review_url": "",
     "sheet_script_url": "(optional, leave empty for now)",
     "min_review": 5
-  },
-  "chef-o": {
-    "place_id": "ChIJ6T1_Kwo72jARVswwVJ4vUjU",
-    "name": "Chef O",
-    "category": "Establishment",
-    "google_maps_url": "https://maps.google.com/?cid=3842185789164276822",
-    "hero_image": "https://lh3.googleusercontent.com/place-photos/AEkURDw_MmBBFSLVgCWtHVI9d9A3FKYOBMu4MZzr80UqDk0AlwXAl3FgOwhI52rkvlBb_WcRLbPB8GzjzOGZLZmGfi3blTsio3GvLSok5z24gehuyufCkztpoGXN-lbIRWQglO0dt2InS5obFn4llA=s1600-w800",
-    "logo_url": "",
-    "discount_enabled": true,
-    "discount_percentage": 10,
-    "discount_valid_days": 30,
-    "referral_enabled": true,
-    "referral_message": "Lade deine Freunde ein sich Ihren eigenen Rabattcode zu holen!",
-    "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
-    "google_review_url": "",
-    "sheet_script_url": "(optional, leave empty for now)",
-    "min_review": 5
-  },
-  "chef-o-2": {
-    "place_id": "ChIJ6T1_Kwo72jARVswwVJ4vUjU",
-    "name": "Chef O",
-    "category": "Establishment",
-    "google_maps_url": "https://maps.google.com/?cid=3842185789164276822",
-    "hero_image": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=AWn5SU4l3l_G660pINd_kAxbk6DvOJd32w15r1t94GKDV9s2dbh4IYV-8Ozgi28gAq_6HT90l4xyBJRyQ6SGQi9em-L58wn0FOSpLlY0sc6aIzxrQtImyuVa1LqfTyM-L2VUCZqxyiC5BmY3fSGWaI79gH-TWgtA9xAtKTK1luhez5uhw-_j9khHCOuYp3K9EPWvZKxAJFKud8BV27Nu20keedrpDbKljGqU3iRixGINtfL_okGFuwJlkf0b3p3dWZk8Pca37K-ZERSoScQD1jEKfcrnrlNb0BdcTq-VnKXA1IB84XdzRgjHtuHdqSYCBsLYeQz8IY_kOvvwV3-V4XgIzxM18wQ98C0_pbXHAH_TJhOKC7v7SpoSM-1AHFrcvYhNEuSupKPUt8fP_Mn36mwilt_I4tlJAdgLekOZEMrZ7RTTWw&key=AIzaSyBTGLx7uV_OtjZwbLpQt5fuEUUwNH_bMW8",
-    "logo_url": "",
-    "discount_enabled": true,
-    "discount_percentage": 10,
-    "discount_valid_days": 30,
-    "referral_enabled": true,
-    "referral_message": "Invite your friends to get their own discount code!",
-    "google_review_base_url": "https://search.google.com/local/writereview?placeid=",
-    "google_review_url": "",
-    "sheet_script_url": "your_google_apps_script_url_here",
-    "min_review": 5
   }
 };
 

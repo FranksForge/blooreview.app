@@ -139,7 +139,7 @@
           </fieldset>
           <div class="buttons-row">
             <button type="button" class="primary rating-confirm" disabled style="opacity: 0.6; cursor: not-allowed;">
-              Continue
+              Preview only
             </button>
           </div>
           <p class="subtitle rating-subtitle">

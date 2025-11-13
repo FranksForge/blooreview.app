@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Generate Review Page | BlooReview</title>
+  <link rel="stylesheet" href="/admin/admin.css">
+  <link rel="icon" type="image/png" href="/logo.png" />
+</head>
+<body>
+  <main class="admin-container">
+    <header class="admin-header">
+      <h1>BlooReview Admin</h1>
+      <p class="admin-subtitle">Generate review pages for businesses</p>
+    </header>
+
+    <form id="generate-form" class="admin-form">
+      <div class="form-group">
+        <label for="maps-url" class="form-label">
+          Google Maps URL
+        </label>
+        <input 
+          type="url" 
+          id="maps-url" 
+          name="maps-url"
+          class="form-input"
+          placeholder="https://www.google.com/maps/place/..." 
+          required
+        />
+        <p class="form-help">Paste the Google Maps URL of the business</p>
+      </div>
+
+      <button type="button" id="fetch-details-btn" class="btn btn-primary">
+        Fetch Details
+      </button>
+
+      <div id="business-details" class="business-details hidden">
+        <h2>Business Details</h2>
+        <div id="details-content" class="details-content">
+          <!-- Business details will be displayed here -->
+        </div>
+        
+        <div class="form-actions">
+          <button type="submit" id="generate-btn" class="btn btn-success">
+            Generate Review Page
+          </button>
+          <button type="button" id="reset-btn" class="btn btn-secondary">
+            Start Over
+          </button>
+        </div>
+      </div>
+
+      <div id="status-message" class="status-message"></div>
+    </form>
+
+    <div id="loading" class="loading hidden">
+      <div class="spinner"></div>
+      <p>Processing...</p>
+    </div>
+  </main>
+
+  <script src="/admin/admin.js"></script>
+</body>
+</html>
+

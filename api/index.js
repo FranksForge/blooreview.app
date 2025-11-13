@@ -38,8 +38,8 @@ export default function handler(req, res) {
       }
     }
     
-    // Read _index.html from project root (renamed to prevent Vercel from serving it statically)
-    const htmlPath = path.join(process.cwd(), '_index.html');
+    // Read index.html from public directory
+    const htmlPath = path.join(process.cwd(), 'public', 'index.html');
     let html = fs.readFileSync(htmlPath, 'utf8');
     
     // Determine og:image: hero_image if available, otherwise fallback to logo.png
@@ -66,9 +66,9 @@ export default function handler(req, res) {
     
   } catch (error) {
     console.error('Error in serverless function:', error);
-    // Fallback: try to serve static _index.html
+    // Fallback: try to serve static index.html
     try {
-      const htmlPath = path.join(process.cwd(), '_index.html');
+      const htmlPath = path.join(process.cwd(), 'public', 'index.html');
       const html = fs.readFileSync(htmlPath, 'utf8');
       res.setHeader('Content-Type', 'text/html; charset=utf-8');
       res.status(200).send(html);

@@ -14,7 +14,7 @@
       <p class="admin-subtitle">Generate review pages for businesses</p>
     </header>
 
-    <form id="generate-form" class="admin-form" novalidate>
+    <form id="generate-form" class="admin-form">
       <div class="form-group">
         <label for="maps-url" class="form-label">
           Google Maps URL
@@ -25,6 +25,7 @@
           name="maps-url"
           class="form-input"
           placeholder="https://www.google.com/maps/place/..." 
+          required
         />
         <p class="form-help">Paste the Google Maps URL of the business</p>
       </div>
@@ -52,19 +53,31 @@
       <div id="status-message" class="status-message"></div>
     </form>
 
-    <div id="qr-code-section" class="qr-code-section hidden">
-      <h2>QR Code</h2>
-      <p class="qr-code-description">Scan this QR code to access the review page, or download it to print or display.</p>
-      <div class="qr-code-container">
-        <canvas id="qr-code-canvas"></canvas>
+    <div id="success-view" class="success-view hidden">
+      <div class="success-icon">✅</div>
+      <h2>Your page is ready!</h2>
+      <p class="success-message">Your review page will be live in about 2 minutes. Here is your link and QR code to share:</p>
+      
+      <div class="success-link-section">
+        <label class="success-link-label">Review Page URL:</label>
+        <div class="success-link-container">
+          <input type="text" id="success-review-url" class="success-link-input" readonly />
+          <button type="button" id="copy-success-url-btn" class="btn btn-secondary btn-small">Copy</button>
+        </div>
+        <a id="open-review-link" href="#" target="_blank" rel="noopener" class="btn btn-primary">Open Review Page</a>
       </div>
-      <div class="qr-code-url">
-        <span class="qr-url-label">Review Page URL:</span>
-        <span id="qr-review-url" class="qr-url-value"></span>
-      </div>
-      <div class="qr-code-actions">
+
+      <div class="success-qr-section">
+        <h3>QR Code</h3>
+        <p class="qr-code-description">Scan this QR code to access the review page, or download it to print or display.</p>
+        <div class="qr-code-container">
+          <canvas id="qr-code-canvas"></canvas>
+        </div>
         <button type="button" id="download-qr-btn" class="btn btn-primary">Download QR Code</button>
-        <button type="button" id="copy-url-btn" class="btn btn-secondary">Copy URL</button>
+      </div>
+
+      <div class="success-actions">
+        <button type="button" id="create-another-btn" class="btn btn-secondary">Create Another Page</button>
       </div>
     </div>
 

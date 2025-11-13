@@ -11,11 +11,13 @@
     resetBtn: document.getElementById('reset-btn'),
     statusMessage: document.getElementById('status-message'),
     loading: document.getElementById('loading'),
-    qrCodeSection: document.getElementById('qr-code-section'),
+    successView: document.getElementById('success-view'),
     qrCodeCanvas: document.getElementById('qr-code-canvas'),
-    qrReviewUrl: document.getElementById('qr-review-url'),
+    successReviewUrl: document.getElementById('success-review-url'),
+    openReviewLink: document.getElementById('open-review-link'),
     downloadQrBtn: document.getElementById('download-qr-btn'),
-    copyUrlBtn: document.getElementById('copy-url-btn')
+    copySuccessUrlBtn: document.getElementById('copy-success-url-btn'),
+    createAnotherBtn: document.getElementById('create-another-btn')
   };
 
   let fetchedBusinessData = null;
@@ -221,10 +223,10 @@
   const copyUrlToClipboard = async (url) => {
     try {
       await navigator.clipboard.writeText(url);
-      const originalText = elements.copyUrlBtn.textContent;
-      elements.copyUrlBtn.textContent = 'Copied!';
+      const originalText = elements.copySuccessUrlBtn.textContent;
+      elements.copySuccessUrlBtn.textContent = 'Copied!';
       setTimeout(() => {
-        elements.copyUrlBtn.textContent = originalText;
+        elements.copySuccessUrlBtn.textContent = originalText;
       }, 2000);
     } catch (error) {
       console.error('Error copying URL:', error);
@@ -237,10 +239,10 @@
       textarea.select();
       try {
         document.execCommand('copy');
-        const originalText = elements.copyUrlBtn.textContent;
-        elements.copyUrlBtn.textContent = 'Copied!';
+        const originalText = elements.copySuccessUrlBtn.textContent;
+        elements.copySuccessUrlBtn.textContent = 'Copied!';
         setTimeout(() => {
-          elements.copyUrlBtn.textContent = originalText;
+          elements.copySuccessUrlBtn.textContent = originalText;
         }, 2000);
       } catch (err) {
         console.error('Fallback copy failed:', err);
@@ -249,14 +251,22 @@
     }
   };
 
-  // Display QR code section
-  const displayQRCode = async (reviewUrl) => {
-    elements.qrReviewUrl.textContent = reviewUrl;
+  // Display success view with QR code
+  const displaySuccessView = async (reviewUrl) => {
+    // Set the review URL
+    elements.successReviewUrl.value = reviewUrl;
+    elements.openReviewLink.href = reviewUrl;
+    
+    // Generate QR code
     const success = await generateQRCode(reviewUrl);
     if (success) {
-      elements.qrCodeSection.classList.remove('hidden');
-      // Scroll to QR code section
-      elements.qrCodeSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      // Hide form and show success view
+      elements.form.classList.add('hidden');
+      elements.statusMessage.classList.add('hidden');
+      elements.successView.classList.remove('hidden');
+      
+      // Scroll to top to show success view
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
@@ -265,7 +275,8 @@
     elements.form.reset();
     elements.businessDetails.classList.add('hidden');
     elements.detailsContent.innerHTML = '';
-    elements.qrCodeSection.classList.add('hidden');
+    elements.successView.classList.add('hidden');
+    elements.form.classList.remove('hidden');
     fetchedBusinessData = null;
     hideStatus();
   };
@@ -298,20 +309,9 @@
 
     try {
       const result = await generateReviewPage(fetchedBusinessData);
-      showStatus(
-        `Review page generated successfully! Preview: ${result.previewUrl}`,
-        'success'
-      );
       
-      // Display QR code
-      await displayQRCode(result.previewUrl);
-      
-      // Show preview link
-      setTimeout(() => {
-        if (confirm('Review page generated! Would you like to open it?')) {
-          window.open(result.previewUrl, '_blank');
-        }
-      }, 1000);
+      // Display success view with QR code
+      await displaySuccessView(result.previewUrl);
     } catch (error) {
       showStatus(error.message || 'Failed to generate review page', 'error');
     }
@@ -322,16 +322,20 @@
     resetForm();
   });
 
-  // QR code event listeners
+  // Success view event listeners
   elements.downloadQrBtn?.addEventListener('click', () => {
     downloadQRCode();
   });
 
-  elements.copyUrlBtn?.addEventListener('click', () => {
-    const url = elements.qrReviewUrl.textContent;
+  elements.copySuccessUrlBtn?.addEventListener('click', () => {
+    const url = elements.successReviewUrl.value;
     if (url) {
       copyUrlToClipboard(url);
     }
+  });
+
+  elements.createAnotherBtn?.addEventListener('click', () => {
+    resetForm();
   });
 })();
 

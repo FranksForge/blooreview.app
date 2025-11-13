@@ -245,15 +245,88 @@ body {
   display: none !important;
 }
 
-.qr-code-section {
-  margin-top: 2rem;
+.success-view {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.success-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.success-view h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 2rem;
+  color: #222;
+}
+
+.success-message {
+  margin: 0 0 2rem 0;
+  color: #555;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.success-link-section {
+  margin-bottom: 2.5rem;
   padding: 1.5rem;
   background: #f9fafb;
   border-radius: 10px;
   border: 1px solid #e5e7eb;
 }
 
-.qr-code-section h2 {
+.success-link-label {
+  display: block;
+  font-weight: 600;
+  color: #222;
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+  text-align: left;
+}
+
+.success-link-container {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.success-link-input {
+  flex: 1;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid #d7d7dc;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-family: 'Courier New', monospace;
+  background: #fff;
+  color: #222;
+}
+
+.success-link-input:focus {
+  outline: none;
+  border-color: #3365ff;
+  box-shadow: 0 0 0 3px rgba(51, 101, 255, 0.15);
+}
+
+.btn-small {
+  padding: 0.75rem 1.25rem;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.success-link-section .btn-primary {
+  width: 100%;
+}
+
+.success-qr-section {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: #f9fafb;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+}
+
+.success-qr-section h3 {
   margin: 0 0 0.5rem 0;
   font-size: 1.25rem;
   color: #222;
@@ -280,39 +353,8 @@ body {
   height: auto;
 }
 
-.qr-code-url {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-  padding: 0.75rem;
-  background: #fff;
-  border-radius: 8px;
-  border: 1px solid #e5e7eb;
-}
-
-.qr-url-label {
-  font-weight: 600;
-  color: #555;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.qr-url-value {
-  color: #222;
-  font-size: 0.9rem;
-  word-break: break-all;
-  font-family: 'Courier New', monospace;
-}
-
-.qr-code-actions {
-  display: flex;
-  gap: 1rem;
-}
-
-.qr-code-actions .btn {
-  flex: 1;
+.success-actions {
+  margin-top: 2rem;
 }
 
 @media (max-width: 640px) {
@@ -328,11 +370,11 @@ body {
     width: 100%;
   }
 
-  .qr-code-actions {
+  .success-link-container {
     flex-direction: column;
   }
 
-  .qr-code-actions .btn {
+  .success-link-input {
     width: 100%;
   }
 }

@@ -34,6 +34,7 @@ window.REVIEW_CONFIGS = {
     "google_review_url": "",
     "sheet_script_url": "https://script.google.com/macros/s/AKfycbzUpM-SbvZNMclVht4Q4PuWqXxG7MfrPygjx-UJOP0GNh_bzU6bC1jl2bwqSBWjlM09uw/exec ",
     "min_review": 5
+<<<<<<< HEAD
   },
   "the-coco-club": {
     "place_id": "ChIJ1_S1trA72jARF7oXy2uAU6U",
@@ -221,6 +222,8 @@ window.REVIEW_CONFIGS = {
     "google_review_url": "",
     "sheet_script_url": "(optional, leave empty for now)",
     "min_review": 5
+=======
+>>>>>>> ee97514 (Clean up config files: keep only first two entries (bodenseebaer and arthair))
   }
 };
 

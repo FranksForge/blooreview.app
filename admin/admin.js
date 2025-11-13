@@ -257,16 +257,20 @@
     elements.successReviewUrl.value = reviewUrl;
     elements.openReviewLink.href = reviewUrl;
     
-    // Generate QR code
-    const success = await generateQRCode(reviewUrl);
-    if (success) {
-      // Hide form and show success view
-      elements.form.classList.add('hidden');
-      elements.statusMessage.classList.add('hidden');
-      elements.successView.classList.remove('hidden');
-      
-      // Scroll to top to show success view
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Hide form and show success view first
+    elements.form.classList.add('hidden');
+    elements.statusMessage.classList.add('hidden');
+    elements.successView.classList.remove('hidden');
+    
+    // Scroll to top to show success view
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    // Generate QR code (non-blocking - show view even if it fails)
+    try {
+      await generateQRCode(reviewUrl);
+    } catch (error) {
+      console.error('QR code generation failed, but showing success view anyway:', error);
+      // Optionally show a message that QR code couldn't be generated
     }
   };
 

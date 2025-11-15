@@ -111,7 +111,7 @@ export default async function handler(req, res) {
         ${googleMapsUrl || null},
         ${heroImage || null},
         ${logoUrl || null},
-        ${JSON.stringify(businessConfig)}
+        ${JSON.stringify(businessConfig)}::jsonb
       )
       RETURNING id, slug, name, category, created_at
     `;

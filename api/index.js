@@ -34,29 +34,97 @@ try {
  * Serverless function handler
  * Intercepts requests to / and dynamically injects og:image based on subdomain
  */
-export default function handler(req, res) {
+export default async function handler(req, res) {
   try {
     const hostname = req.headers.host || '';
     
     // Extract subdomain from hostname
     const parts = hostname.split('.');
-    let subdomain = 'default';
+    let slug = 'default';
     
     if (parts.length > 2) {
       const sub = parts[0].toLowerCase();
       // Ignore Vercel auto-generated deployment subdomains
       const isVercelPattern = /^[a-z0-9]{10,}-[a-z0-9]{10,}/.test(sub) && /\d/.test(sub);
       if (!isVercelPattern) {
-        subdomain = sub;
+        slug = sub;
       }
+    }
+    
+    // Try to load business from database
+    let business = null;
+    let heroImage = null;
+    
+    if (slug !== 'default') {
+      try {
+        const { sql } = await import('../lib/db.js');
+        const result = await sql`
+          SELECT 
+            place_id,
+            name,
+            category,
+            google_maps_url,
+            hero_image,
+            logo_url,
+            config
+          FROM businesses
+          WHERE slug = ${slug}
+        `;
+        
+        if (result.rows.length > 0) {
+          business = result.rows[0];
+          heroImage = business.hero_image;
+        }
+      } catch (dbError) {
+        console.error('Error loading business from database:', dbError);
+        // Fall back to config.js
+      }
+    }
+    
+    // Fallback to config.js if database lookup failed
+    if (!heroImage && HERO_IMAGES[slug]) {
+      heroImage = HERO_IMAGES[slug];
     }
     
     // Read index.html from public directory
     const htmlPath = path.join(process.cwd(), 'public', 'index.html');
     let html = fs.readFileSync(htmlPath, 'utf8');
     
+    // If we have a business from database, inject config script
+    if (business && slug !== 'default') {
+      const businessConfig = business.config || {};
+      
+      // Build config object in the format expected by the frontend
+      const config = {
+        place_id: business.place_id || '',
+        name: business.name || '',
+        category: business.category || '',
+        google_maps_url: business.google_maps_url || '',
+        hero_image: business.hero_image || '',
+        logo_url: business.logo_url || '',
+        google_review_base_url: 'https://search.google.com/local/writereview?placeid=',
+        google_review_url: business.place_id 
+          ? `https://search.google.com/local/writereview?placeid=${encodeURIComponent(business.place_id)}`
+          : '',
+        sheet_script_url: businessConfig.sheet_script_url || '',
+        review_threshold: businessConfig.review_threshold || 5,
+        discount_enabled: businessConfig.discount_enabled !== false,
+        discount_percentage: businessConfig.discount_percentage || 10,
+        discount_valid_days: businessConfig.discount_valid_days || 30,
+        referral_enabled: businessConfig.referral_enabled !== false,
+        min_review: businessConfig.review_threshold || 5
+      };
+      
+      // Inject config script before the existing config.js script
+      const configScript = `<script>window.REVIEW_TOOL_CONFIG = ${JSON.stringify(config)};</script>`;
+      html = html.replace(
+        /<script src="config\.js"><\/script>/,
+        `${configScript}\n    <script src="config.js"></script>`
+      );
+    }
+    
     // Determine og:image: hero_image if available, otherwise fallback to logo.png
-    const ogImage = HERO_IMAGES[subdomain] || `https://${hostname}/logo.png`;
+    const ogImage = heroImage || `https://${hostname}/logo.png`;
     const currentUrl = `https://${hostname}${req.url || '/'}`;
     
     // Replace Open Graph meta tags

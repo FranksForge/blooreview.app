@@ -8,6 +8,17 @@ export default async function handler(req, res) {
   }
 
   try {
+    // Test database connection first
+    try {
+      await sql`SELECT 1`;
+    } catch (dbError) {
+      console.error('Database connection error:', dbError);
+      return res.status(500).json({ 
+        error: 'Database connection failed',
+        message: process.env.NODE_ENV === 'development' ? dbError.message : undefined
+      });
+    }
+
     const { email, password, name } = req.body;
 
     // Validation
@@ -58,7 +69,15 @@ export default async function handler(req, res) {
     });
   } catch (error) {
     console.error('Registration error:', error);
-    return res.status(500).json({ error: 'Internal server error' });
+    console.error('Error details:', {
+      message: error.message,
+      stack: error.stack,
+      code: error.code
+    });
+    return res.status(500).json({ 
+      error: 'Internal server error',
+      message: process.env.NODE_ENV === 'development' ? error.message : undefined
+    });
   }
 }
 

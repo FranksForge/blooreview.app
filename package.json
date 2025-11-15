@@ -1,14 +1,19 @@
 {
   "name": "blooreview",
   "version": "2.0.0",
-  "description": "SaaS review collection platform with automated business registration",
+  "description": "SaaS review collection platform with automated business registration and authentication",
   "type": "module",
   "scripts": {
     "dev:vercel": "vercel dev",
     "build": "echo 'No build step required'"
   },
   "dependencies": {
-    "qrcode": "^1.5.4"
+    "qrcode": "^1.5.4",
+    "@vercel/postgres": "^0.5.1",
+    "jsonwebtoken": "^9.0.2",
+    "bcryptjs": "^2.4.3",
+    "cookie": "^0.6.0",
+    "stripe": "^14.9.0"
   },
   "devDependencies": {
     "vercel": "^34.0.0"

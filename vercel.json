@@ -9,6 +9,10 @@
     "api/admin/*.js": {
       "memory": 1024,
       "maxDuration": 30
+    },
+    "api/auth/*.js": {
+      "memory": 1024,
+      "maxDuration": 10
     }
   },
   "rewrites": [
@@ -19,6 +23,22 @@
     {
       "source": "/api/admin/:path*",
       "destination": "/api/admin/:path*"
+    },
+    {
+      "source": "/api/auth/:path*",
+      "destination": "/api/auth/:path*"
+    },
+    {
+      "source": "/signup",
+      "destination": "/signup/index.html"
+    },
+    {
+      "source": "/dashboard",
+      "destination": "/dashboard/index.html"
+    },
+    {
+      "source": "/billing",
+      "destination": "/billing/index.html"
     },
     {
       "source": "/",

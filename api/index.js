@@ -91,8 +91,8 @@ export default async function handler(req, res) {
       heroImage = HERO_IMAGES[slug];
     }
     
-    // Read index.html from public directory
-    const htmlPath = path.join(process.cwd(), 'public', 'index.html');
+    // Read index.html from templates directory
+    const htmlPath = path.join(process.cwd(), 'templates', 'index.html');
     let html = fs.readFileSync(htmlPath, 'utf8');
     
     // If we have a business from database, inject config script and skip config.js
@@ -160,9 +160,9 @@ export default async function handler(req, res) {
     
   } catch (error) {
     console.error('Error in serverless function:', error);
-    // Fallback: try to serve static index.html
+    // Fallback: try to serve template index.html
     try {
-      const htmlPath = path.join(process.cwd(), 'public', 'index.html');
+      const htmlPath = path.join(process.cwd(), 'templates', 'index.html');
       const html = fs.readFileSync(htmlPath, 'utf8');
       res.setHeader('Content-Type', 'text/html; charset=utf-8');
       res.status(200).send(html);

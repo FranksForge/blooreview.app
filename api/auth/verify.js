@@ -1,5 +1,5 @@
 import { getUserFromRequest } from '../../lib/auth.js';
-import { sql } from '@vercel/postgres';
+import { sql } from '../../lib/db.js';
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') {

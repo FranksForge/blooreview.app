@@ -1,4 +1,4 @@
-import { sql } from '@vercel/postgres';
+import { sql } from '../../lib/db.js';
 import bcrypt from 'bcryptjs';
 import { generateToken, setAuthCookie } from '../../lib/auth.js';
 

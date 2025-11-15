@@ -1,4 +1,4 @@
-import { sql } from '@vercel/postgres';
+import { sql } from '../../lib/db.js';
 import { requireAuth } from '../../lib/auth.js';
 
 /**

@@ -44,6 +44,7 @@
     confirmBusinessBtn: document.getElementById('confirm-business'),
 
     // Config step
+    upgradeNotice: document.getElementById('upgrade-notice'),
     discountEnabled: document.getElementById('discount-enabled'),
     discountSettings: document.getElementById('discount-settings'),
     discountPercentage: document.getElementById('discount-percentage'),
@@ -78,7 +79,7 @@
 
     // Business form
     elements.businessForm?.addEventListener('submit', handleBusinessSubmit);
-    elements.confirmBusinessBtn?.addEventListener('click', () => goToStep(3));
+    elements.confirmBusinessBtn?.addEventListener('click', () => goToStep(4));
     document.getElementById('change-business')?.addEventListener('click', () => {
       elements.businessPreview?.classList.add('hidden');
       elements.mapsUrl.value = '';
@@ -88,7 +89,7 @@
     elements.configForm?.addEventListener('submit', handleConfigSubmit);
     elements.discountEnabled?.addEventListener('change', toggleDiscountSettings);
 
-    // Payment step
+    // Plan selection
     document.querySelectorAll('[data-plan]').forEach(btn => {
       btn.addEventListener('click', (e) => {
         const plan = e.target.getAttribute('data-plan');
@@ -97,9 +98,9 @@
     });
 
     // Navigation buttons
-    document.getElementById('back-to-account')?.addEventListener('click', () => goToStep(1));
-    document.getElementById('back-to-business')?.addEventListener('click', () => goToStep(2));
-    document.getElementById('back-to-config')?.addEventListener('click', () => goToStep(3));
+    document.getElementById('back-to-plan')?.addEventListener('click', () => goToStep(1));
+    document.getElementById('back-to-account')?.addEventListener('click', () => goToStep(2));
+    document.getElementById('back-to-business')?.addEventListener('click', () => goToStep(3));
 
     // Success step
     elements.copyUrlBtn?.addEventListener('click', copyReviewUrl);
@@ -117,6 +118,11 @@
       stepElement.classList.add('active');
       state.currentStep = step;
       updateStepIndicator();
+      
+      // Apply plan restrictions when entering Settings step (step 4)
+      if (step === 4 && state.selectedPlan) {
+        applyPlanRestrictions(state.selectedPlan);
+      }
     }
   }
 
@@ -196,8 +202,8 @@
       
       // Token is automatically set in cookie by the API
 
-      // Move to next step
-      goToStep(2);
+      // Move to next step (Business)
+      goToStep(3);
     } catch (error) {
       showError('account-error', error.message);
     }
@@ -265,45 +271,118 @@
     elements.businessPreview.classList.remove('hidden');
   }
 
+  // Apply plan restrictions to Settings
+  function applyPlanRestrictions(plan) {
+    const isFree = plan === 'free';
+    const allConfigFields = [
+      elements.discountEnabled,
+      elements.discountPercentage,
+      elements.discountDays,
+      elements.referralEnabled,
+      elements.reviewThreshold,
+      elements.sheetScriptUrl
+    ];
+
+    if (isFree) {
+      // Show upgrade notice
+      elements.upgradeNotice?.classList.remove('hidden');
+      
+      // Disable all fields
+      allConfigFields.forEach(field => {
+        if (field) {
+          field.disabled = true;
+          field.classList.add('disabled-field');
+        }
+      });
+      
+      // Set Free plan defaults
+      elements.discountEnabled.checked = false;
+      elements.discountPercentage.value = '10';
+      elements.discountDays.value = '30';
+      elements.referralEnabled.checked = false;
+      elements.reviewThreshold.value = '5';
+      elements.sheetScriptUrl.value = '';
+      
+      // Hide discount settings
+      elements.discountSettings.style.display = 'none';
+    } else {
+      // Hide upgrade notice
+      elements.upgradeNotice?.classList.add('hidden');
+      
+      // Enable all fields
+      allConfigFields.forEach(field => {
+        if (field) {
+          field.disabled = false;
+          field.classList.remove('disabled-field');
+        }
+      });
+      
+      // Set Pro plan defaults (editable)
+      elements.discountEnabled.checked = true;
+      elements.discountPercentage.value = '10';
+      elements.discountDays.value = '30';
+      elements.referralEnabled.checked = true;
+      elements.reviewThreshold.value = '5';
+      elements.sheetScriptUrl.value = '';
+      
+      // Show discount settings if enabled
+      toggleDiscountSettings();
+    }
+  }
+
   // Configuration submission
   async function handleConfigSubmit(e) {
     e.preventDefault();
     hideError('config-error');
 
-    const config = {
-      discount_enabled: elements.discountEnabled.checked,
-      discount_percentage: parseInt(elements.discountPercentage.value) || 10,
-      discount_valid_days: parseInt(elements.discountDays.value) || 30,
-      referral_enabled: elements.referralEnabled.checked,
-      review_threshold: parseInt(elements.reviewThreshold.value) || 5,
-      sheet_script_url: elements.sheetScriptUrl.value.trim() || ''
-    };
+    let config;
+    
+    if (state.selectedPlan === 'free') {
+      // Free plan: Use hardcoded defaults (no discount, no referrals)
+      config = {
+        discount_enabled: false,
+        discount_percentage: 10,
+        discount_valid_days: 30,
+        referral_enabled: false,
+        review_threshold: 5,
+        sheet_script_url: ''
+      };
+    } else {
+      // Pro plan: Use form values
+      config = {
+        discount_enabled: elements.discountEnabled.checked,
+        discount_percentage: parseInt(elements.discountPercentage.value) || 10,
+        discount_valid_days: parseInt(elements.discountDays.value) || 30,
+        referral_enabled: elements.referralEnabled.checked,
+        review_threshold: parseInt(elements.reviewThreshold.value) || 5,
+        sheet_script_url: elements.sheetScriptUrl.value.trim() || ''
+      };
+    }
 
     state.configData = config;
 
-    // Move to payment step
-    goToStep(4);
+    // Create business and move to success
+    await createBusiness();
   }
 
   // Plan selection
   async function handlePlanSelection(plan) {
     state.selectedPlan = plan;
-
-    if (plan === 'free') {
-      // For free plan, create business immediately
-      await createBusiness();
-    } else {
-      // For paid plans, redirect to Stripe (will be implemented in Phase 3)
-      showError('payment-error', 'Payment integration coming soon. For now, please select Free plan.');
-    }
+    hideError('payment-error');
+    
+    // Apply plan restrictions to Settings step
+    applyPlanRestrictions(plan);
+    
+    // Navigate to Account step
+    goToStep(2);
   }
 
   // Create business
   async function createBusiness() {
-    hideError('payment-error');
+    hideError('config-error');
 
     if (!state.businessData || !state.configData) {
-      showError('payment-error', 'Missing business or configuration data');
+      showError('config-error', 'Missing business or configuration data');
       return;
     }
 
@@ -339,7 +418,7 @@
       goToStep(5);
 
     } catch (error) {
-      showError('payment-error', error.message);
+      showError('config-error', error.message);
     }
   }
 

@@ -14,19 +14,19 @@
         <div class="step-indicator">
           <div class="step" data-step="1">
             <div class="step-number">1</div>
-            <div class="step-label">Account</div>
+            <div class="step-label">Plan</div>
           </div>
           <div class="step" data-step="2">
             <div class="step-number">2</div>
-            <div class="step-label">Business</div>
+            <div class="step-label">Account</div>
           </div>
           <div class="step" data-step="3">
             <div class="step-number">3</div>
-            <div class="step-label">Settings</div>
+            <div class="step-label">Business</div>
           </div>
           <div class="step" data-step="4">
             <div class="step-number">4</div>
-            <div class="step-label">Payment</div>
+            <div class="step-label">Settings</div>
           </div>
           <div class="step" data-step="5">
             <div class="step-number">5</div>
@@ -34,8 +34,42 @@
           </div>
         </div>
 
-        <!-- Step 1: Account Creation -->
+        <!-- Step 1: Plan Selection -->
         <section id="step-1" class="step-content active">
+          <h1>Choose Your Plan</h1>
+          <p class="subtitle">Select a plan to get started</p>
+          
+          <div class="pricing-plans">
+            <div class="plan-card">
+              <h3>Free</h3>
+              <div class="plan-price">$0<span>/month</span></div>
+              <ul class="plan-features">
+                <li>1 Business</li>
+                <li>Basic Features</li>
+                <li>Review Collection</li>
+              </ul>
+              <button type="button" class="primary" data-plan="free">Select Free Plan</button>
+            </div>
+
+            <div class="plan-card featured">
+              <div class="plan-badge">Popular</div>
+              <h3>Pro</h3>
+              <div class="plan-price">$9.99<span>/month</span></div>
+              <ul class="plan-features">
+                <li>5 Businesses</li>
+                <li>Advanced Features</li>
+                <li>Custom Branding</li>
+                <li>Priority Support</li>
+              </ul>
+              <button type="button" class="primary" data-plan="pro">Select Pro Plan</button>
+            </div>
+          </div>
+
+          <div class="error-message" id="payment-error"></div>
+        </section>
+
+        <!-- Step 2: Account Creation -->
+        <section id="step-2" class="step-content">
           <h1>Create Your Account</h1>
           <p class="subtitle">Get started with BlooReview in just a few steps</p>
           
@@ -58,12 +92,15 @@
 
             <div class="error-message" id="account-error"></div>
 
-            <button type="submit" class="primary">Continue</button>
+            <div class="buttons-row">
+              <button type="button" class="secondary" id="back-to-plan">Back</button>
+              <button type="submit" class="primary">Continue</button>
+            </div>
           </form>
         </section>
 
-        <!-- Step 2: Business Lookup -->
-        <section id="step-2" class="step-content">
+        <!-- Step 3: Business Lookup -->
+        <section id="step-3" class="step-content">
           <h1>Find Your Business</h1>
           <p class="subtitle">Enter your Google Maps URL to automatically fetch business details</p>
           
@@ -106,10 +143,15 @@
           </div>
         </section>
 
-        <!-- Step 3: Configuration -->
-        <section id="step-3" class="step-content">
+        <!-- Step 4: Settings -->
+        <section id="step-4" class="step-content">
           <h1>Configure Your Review Page</h1>
           <p class="subtitle">Customize how your review page works</p>
+          
+          <!-- Upgrade Notice for Free Plan -->
+          <div id="upgrade-notice" class="upgrade-notice hidden">
+            <strong>Upgrade to Pro</strong> to customize these settings. Free plan uses default settings only.
+          </div>
           
           <form id="config-form" novalidate>
             <div class="field">
@@ -158,47 +200,9 @@
 
             <div class="buttons-row">
               <button type="button" class="secondary" id="back-to-business">Back</button>
-              <button type="submit" class="primary">Continue to Payment</button>
+              <button type="submit" class="primary">Continue</button>
             </div>
           </form>
-        </section>
-
-        <!-- Step 4: Payment -->
-        <section id="step-4" class="step-content">
-          <h1>Choose Your Plan</h1>
-          <p class="subtitle">Select a plan to get started</p>
-          
-          <div class="pricing-plans">
-            <div class="plan-card">
-              <h3>Free</h3>
-              <div class="plan-price">$0<span>/month</span></div>
-              <ul class="plan-features">
-                <li>1 Business</li>
-                <li>Basic Features</li>
-                <li>Review Collection</li>
-              </ul>
-              <button type="button" class="primary" data-plan="free">Select Free Plan</button>
-            </div>
-
-            <div class="plan-card featured">
-              <div class="plan-badge">Popular</div>
-              <h3>Pro</h3>
-              <div class="plan-price">$9.99<span>/month</span></div>
-              <ul class="plan-features">
-                <li>5 Businesses</li>
-                <li>Advanced Features</li>
-                <li>Custom Branding</li>
-                <li>Priority Support</li>
-              </ul>
-              <button type="button" class="primary" data-plan="pro">Select Pro Plan</button>
-            </div>
-          </div>
-
-          <div class="error-message" id="payment-error"></div>
-
-          <div class="buttons-row">
-            <button type="button" class="secondary" id="back-to-config">Back</button>
-          </div>
         </section>
 
         <!-- Step 5: Success -->

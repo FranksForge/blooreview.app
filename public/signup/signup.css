@@ -154,6 +154,24 @@ h1 {
   box-shadow: 0 0 0 3px rgba(51, 101, 255, 0.15);
 }
 
+.field input.disabled-field,
+.field select.disabled-field,
+.field textarea.disabled-field,
+.field input:disabled,
+.field select:disabled,
+.field textarea:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: #f5f6fb;
+  pointer-events: none;
+}
+
+.checkbox-label input[type="checkbox"]:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 .field small {
   font-size: 0.8rem;
   color: #666;
@@ -274,6 +292,27 @@ h1 {
 
 .error-message.show {
   display: block;
+}
+
+/* Upgrade Notice */
+.upgrade-notice {
+  background: #fff3cd;
+  border: 1px solid #ffc107;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  color: #856404;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.upgrade-notice strong {
+  color: #856404;
+  font-weight: 600;
+}
+
+.upgrade-notice.hidden {
+  display: none;
 }
 
 /* Business Preview */

@@ -71,9 +71,14 @@ export default async function handler(req, res) {
           WHERE slug = ${slug}
         `;
         
+        console.log(`Database query for slug "${slug}": found ${result.rows.length} businesses`);
+        
         if (result.rows.length > 0) {
           business = result.rows[0];
           heroImage = business.hero_image;
+          console.log(`Business found in database: ${business.name}`);
+        } else {
+          console.log(`Business not found in database for slug: ${slug}`);
         }
       } catch (dbError) {
         console.error('Error loading business from database:', dbError);

@@ -95,7 +95,7 @@ export default async function handler(req, res) {
     const htmlPath = path.join(process.cwd(), 'public', 'index.html');
     let html = fs.readFileSync(htmlPath, 'utf8');
     
-    // If we have a business from database, inject config script
+    // If we have a business from database, inject config script and skip config.js
     if (business && slug !== 'default') {
       const businessConfig = business.config || {};
       
@@ -120,17 +120,20 @@ export default async function handler(req, res) {
         min_review: businessConfig.review_threshold || 5
       };
       
-      // Inject config script BEFORE config.js so it's available when config.js runs
-      // Replace the config.js script with our injected config + config.js
+      // Inject config script and REMOVE config.js dependency for database businesses
       const configScript = `<script>
-  // Business config loaded from database
+  // Business config loaded from database for slug: ${slug}
   window.REVIEW_TOOL_CONFIG = ${JSON.stringify(config, null, 2)};
-  console.log('Database config loaded for slug: ${slug}', window.REVIEW_TOOL_CONFIG);
+  console.log('✅ Database config loaded for slug: ${slug}', window.REVIEW_TOOL_CONFIG);
 </script>`;
+      
+      // Replace config.js with our database config (don't load config.js for database businesses)
       html = html.replace(
-        /<script src="config\.js"><\/script>/,
-        `${configScript}\n    <script src="config.js"></script>`
+        /(\s*)<script src="config\.js"><\/script>/,
+        `$1${configScript}`
       );
+      
+      console.log(`✅ Injected database config for business: ${business.name}`);
     }
     
     // Determine og:image: hero_image if available, otherwise fallback to logo.png

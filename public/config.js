@@ -144,6 +144,12 @@ window.REVIEW_CONFIGS = {
   };
   
   const slug = resolveSlug();
-  window.REVIEW_TOOL_CONFIG = window.REVIEW_CONFIGS[slug] || window.REVIEW_CONFIGS["default"];
-  console.log(`Config loaded for slug: ${slug}`, window.REVIEW_TOOL_CONFIG);
+  
+  // If REVIEW_TOOL_CONFIG is already set (from database), don't overwrite it
+  if (!window.REVIEW_TOOL_CONFIG) {
+    window.REVIEW_TOOL_CONFIG = window.REVIEW_CONFIGS[slug] || window.REVIEW_CONFIGS["default"];
+    console.log(`Config loaded from config.js for slug: ${slug}`, window.REVIEW_TOOL_CONFIG);
+  } else {
+    console.log(`Config already loaded from database for slug: ${slug}`, window.REVIEW_TOOL_CONFIG);
+  }
 })();

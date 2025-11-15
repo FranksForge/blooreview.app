@@ -115,8 +115,13 @@ export default async function handler(req, res) {
         min_review: businessConfig.review_threshold || 5
       };
       
-      // Inject config script before the existing config.js script
-      const configScript = `<script>window.REVIEW_TOOL_CONFIG = ${JSON.stringify(config)};</script>`;
+      // Inject config script BEFORE config.js so it's available when config.js runs
+      // Replace the config.js script with our injected config + config.js
+      const configScript = `<script>
+  // Business config loaded from database
+  window.REVIEW_TOOL_CONFIG = ${JSON.stringify(config, null, 2)};
+  console.log('Database config loaded for slug: ${slug}', window.REVIEW_TOOL_CONFIG);
+</script>`;
       html = html.replace(
         /<script src="config\.js"><\/script>/,
         `${configScript}\n    <script src="config.js"></script>`

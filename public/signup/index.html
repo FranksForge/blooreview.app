@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up - BlooReview</title>
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="stylesheet" href="/signup/signup.css" />
+  </head>
+  <body>
+    <main class="signup-container">
+      <div class="signup-card">
+        <!-- Step Indicator -->
+        <div class="step-indicator">
+          <div class="step" data-step="1">
+            <div class="step-number">1</div>
+            <div class="step-label">Account</div>
+          </div>
+          <div class="step" data-step="2">
+            <div class="step-number">2</div>
+            <div class="step-label">Business</div>
+          </div>
+          <div class="step" data-step="3">
+            <div class="step-number">3</div>
+            <div class="step-label">Settings</div>
+          </div>
+          <div class="step" data-step="4">
+            <div class="step-number">4</div>
+            <div class="step-label">Payment</div>
+          </div>
+          <div class="step" data-step="5">
+            <div class="step-number">5</div>
+            <div class="step-label">Success</div>
+          </div>
+        </div>
+
+        <!-- Step 1: Account Creation -->
+        <section id="step-1" class="step-content active">
+          <h1>Create Your Account</h1>
+          <p class="subtitle">Get started with BlooReview in just a few steps</p>
+          
+          <form id="account-form" novalidate>
+            <div class="field">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" required placeholder="you@example.com" />
+            </div>
+
+            <div class="field">
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" required placeholder="At least 8 characters" minlength="8" />
+              <div class="password-strength" id="password-strength"></div>
+            </div>
+
+            <div class="field">
+              <label for="name">Your Name (Optional)</label>
+              <input type="text" id="name" name="name" placeholder="John Doe" />
+            </div>
+
+            <div class="error-message" id="account-error"></div>
+
+            <button type="submit" class="primary">Continue</button>
+          </form>
+        </section>
+
+        <!-- Step 2: Business Lookup -->
+        <section id="step-2" class="step-content">
+          <h1>Find Your Business</h1>
+          <p class="subtitle">Enter your Google Maps URL to automatically fetch business details</p>
+          
+          <form id="business-form" novalidate>
+            <div class="field">
+              <label for="maps-url">Google Maps URL</label>
+              <input type="url" id="maps-url" name="maps-url" required placeholder="https://www.google.com/maps/place/..." />
+              <small>Paste the full URL from Google Maps</small>
+            </div>
+
+            <div class="error-message" id="business-error"></div>
+
+            <div class="buttons-row">
+              <button type="button" class="secondary" id="back-to-account">Back</button>
+              <button type="submit" class="primary" id="fetch-business-btn">
+                <span class="btn-text">Fetch Business</span>
+                <span class="btn-loader hidden">Loading...</span>
+              </button>
+            </div>
+          </form>
+
+          <!-- Business Preview -->
+          <div id="business-preview" class="business-preview hidden">
+            <h3>Business Details</h3>
+            <div class="preview-card">
+              <div id="preview-hero" class="preview-hero hidden">
+                <img id="preview-hero-img" src="" alt="Business" />
+              </div>
+              <div class="preview-content">
+                <h4 id="preview-name"></h4>
+                <p id="preview-category" class="preview-category"></p>
+                <p id="preview-address" class="preview-address"></p>
+              </div>
+            </div>
+
+            <div class="buttons-row">
+              <button type="button" class="secondary" id="change-business">Change Business</button>
+              <button type="button" class="primary" id="confirm-business">Continue</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Step 3: Configuration -->
+        <section id="step-3" class="step-content">
+          <h1>Configure Your Review Page</h1>
+          <p class="subtitle">Customize how your review page works</p>
+          
+          <form id="config-form" novalidate>
+            <div class="field">
+              <label class="checkbox-label">
+                <input type="checkbox" id="discount-enabled" name="discount-enabled" checked />
+                <span>Enable discount codes for reviewers</span>
+              </label>
+            </div>
+
+            <div id="discount-settings" class="discount-settings">
+              <div class="field">
+                <label for="discount-percentage">Discount Percentage</label>
+                <input type="number" id="discount-percentage" name="discount-percentage" value="10" min="1" max="100" />
+              </div>
+
+              <div class="field">
+                <label for="discount-days">Discount Valid For (Days)</label>
+                <input type="number" id="discount-days" name="discount-days" value="30" min="1" max="365" />
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="checkbox-label">
+                <input type="checkbox" id="referral-enabled" name="referral-enabled" checked />
+                <span>Enable referral sharing</span>
+              </label>
+            </div>
+
+            <div class="field">
+              <label for="review-threshold">Review Threshold (Stars)</label>
+              <select id="review-threshold" name="review-threshold">
+                <option value="5">5 stars - Redirect to Google Reviews</option>
+                <option value="4">4 stars - Redirect to Google Reviews</option>
+                <option value="3">3 stars - Collect internal feedback</option>
+              </select>
+              <small>Reviews at or above this rating will redirect to Google Reviews</small>
+            </div>
+
+            <div class="field">
+              <label for="sheet-script-url">Google Sheets Script URL (Optional)</label>
+              <input type="url" id="sheet-script-url" name="sheet-script-url" placeholder="https://script.google.com/..." />
+              <small>For storing review data in Google Sheets</small>
+            </div>
+
+            <div class="error-message" id="config-error"></div>
+
+            <div class="buttons-row">
+              <button type="button" class="secondary" id="back-to-business">Back</button>
+              <button type="submit" class="primary">Continue to Payment</button>
+            </div>
+          </form>
+        </section>
+
+        <!-- Step 4: Payment -->
+        <section id="step-4" class="step-content">
+          <h1>Choose Your Plan</h1>
+          <p class="subtitle">Select a plan to get started</p>
+          
+          <div class="pricing-plans">
+            <div class="plan-card">
+              <h3>Free</h3>
+              <div class="plan-price">$0<span>/month</span></div>
+              <ul class="plan-features">
+                <li>1 Business</li>
+                <li>Basic Features</li>
+                <li>Review Collection</li>
+              </ul>
+              <button type="button" class="primary" data-plan="free">Select Free Plan</button>
+            </div>
+
+            <div class="plan-card featured">
+              <div class="plan-badge">Popular</div>
+              <h3>Pro</h3>
+              <div class="plan-price">$9.99<span>/month</span></div>
+              <ul class="plan-features">
+                <li>5 Businesses</li>
+                <li>Advanced Features</li>
+                <li>Custom Branding</li>
+                <li>Priority Support</li>
+              </ul>
+              <button type="button" class="primary" data-plan="pro">Select Pro Plan</button>
+            </div>
+          </div>
+
+          <div class="error-message" id="payment-error"></div>
+
+          <div class="buttons-row">
+            <button type="button" class="secondary" id="back-to-config">Back</button>
+          </div>
+        </section>
+
+        <!-- Step 5: Success -->
+        <section id="step-5" class="step-content">
+          <div class="success-icon">🎉</div>
+          <h1>Welcome to BlooReview!</h1>
+          <p class="subtitle">Your review page is ready</p>
+          
+          <div class="success-content">
+            <div class="success-card">
+              <h3>Your Review Page</h3>
+              <div class="review-url-display">
+                <input type="text" id="review-url" readonly value="" />
+                <button type="button" class="secondary" id="copy-url-btn">Copy</button>
+              </div>
+              <a href="" id="view-review-link" target="_blank" class="primary">View Review Page</a>
+            </div>
+
+            <div class="qr-section">
+              <h3>QR Code</h3>
+              <canvas id="qr-canvas"></canvas>
+              <button type="button" class="secondary" id="download-qr-btn">Download QR Code</button>
+            </div>
+          </div>
+
+          <div class="buttons-row">
+            <a href="/dashboard" class="primary">Go to Dashboard</a>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="/signup/signup.js"></script>
+  </body>
+</html>
+

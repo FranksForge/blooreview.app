@@ -447,6 +447,35 @@ h1 {
   font-weight: 600;
 }
 
+.plan-features li.unavailable {
+  color: #999;
+}
+
+.plan-features li.unavailable::before {
+  content: '—';
+  color: #999;
+}
+
+.plan-features li.muted {
+  color: #6f7287;
+}
+
+.plan-top-price {
+  font-size: 0.95rem;
+  color: #6f7287;
+  margin-bottom: 0.25rem;
+}
+
+.plan-top-price s {
+  color: #999;
+}
+
+.plan-discount {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #222;
+}
+
 .plan-card button {
   width: 100%;
 }

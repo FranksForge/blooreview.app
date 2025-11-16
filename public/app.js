@@ -500,35 +500,27 @@
   };
 
   const sendInternalFeedback = async (payload) => {
-    // Debug: Log what we're about to send
-    console.log('=== Review Submission Debug ===');
-    console.log('sheetScriptUrl:', state.sheetScriptUrl);
-    console.log('payload:', payload);
-    
-    if (!state.sheetScriptUrl || state.sheetScriptUrl.includes("YOUR_SCRIPT_ID")) {
-      console.warn("Sheet script URL missing, payload not sent", payload);
-      console.warn("Current state.sheetScriptUrl:", state.sheetScriptUrl);
-      console.warn("REVIEW_TOOL_CONFIG:", window.REVIEW_TOOL_CONFIG);
-      return { ok: false, skipped: true };
-    }
+    // Send to backend which stores in DB and mirrors to Sheets if configured
     try {
-      console.log('Sending POST to:', state.sheetScriptUrl);
-      console.log('Payload JSON:', JSON.stringify(payload));
-      
-      // Use a CORS-simple request so the browser sends it without a preflight.
-      // Apps Script will read JSON from e.postData.contents.
-      await fetch(state.sheetScriptUrl, {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "text/plain;charset=utf-8" },
-        body: JSON.stringify(payload)
+      const response = await fetch('/api/reviews/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          businessSlug: payload.slug || resolveSlug(),
+          rating: payload.rating,
+          name: payload.name || '',
+          comments: payload.comments
+        })
       });
-      // With no-cors, the response is opaque; we assume success if no network error thrown.
-      console.log("✓ Feedback sent to Sheets (opaque response)");
-      return { ok: true, opaque: true };
+      if (!response.ok) {
+        const data = await response.json().catch(() => ({}));
+        console.error('✗ Review submit failed:', data.error || response.statusText);
+        return { ok: false, error: data.error || 'Failed to submit review' };
+      }
+      return { ok: true };
     } catch (error) {
-      console.error("✗ Sheets submission failed", error);
-      return { ok: false, error };
+      console.error('✗ Review submit network error:', error);
+      return { ok: false, error: 'Network error' };
     }
   };
 

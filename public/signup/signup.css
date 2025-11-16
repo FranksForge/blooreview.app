@@ -394,6 +394,12 @@ h1 {
   background: #fff;
 }
 
+.plan-subline {
+  margin: 0.25rem 0 1rem 0;
+  color: #6f7287;
+  font-size: 0.95rem;
+}
+
 .plan-badge {
   position: absolute;
   top: -10px;
@@ -412,17 +418,11 @@ h1 {
   color: #222;
 }
 
-.plan-price {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #222;
-  margin-bottom: 1.5rem;
-}
-
-.plan-price span {
-  font-size: 1rem;
-  font-weight: 400;
-  color: #666;
+.plan-price-top {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  text-align: right;
 }
 
 .plan-features {

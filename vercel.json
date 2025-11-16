@@ -55,6 +55,15 @@
   ],
   "headers": [
     {
+      "source": "/app.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        }
+      ]
+    },
+    {
       "source": "/(.*\\.(?:css|js))",
       "headers": [
         {

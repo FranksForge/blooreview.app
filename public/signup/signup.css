@@ -25,7 +25,7 @@ body {
   border-radius: 16px;
   padding: 2rem;
   box-shadow: 0 16px 50px -30px rgba(0, 0, 0, 0.35);
-  max-width: 600px;
+  max-width: 1000px;
   width: 100%;
 }
 
@@ -374,7 +374,7 @@ h1 {
 /* Pricing Plans */
 .pricing-plans {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
   gap: 1.5rem;
   margin: 2rem 0;
 }
@@ -458,6 +458,11 @@ h1 {
 
 .plan-features li.muted {
   color: #6f7287;
+  padding-left: 0;
+}
+
+.plan-features li.muted::before {
+  content: '';
 }
 
 .plan-top-price {

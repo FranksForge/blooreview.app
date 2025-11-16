@@ -21,6 +21,10 @@
   },
   "rewrites": [
     {
+      "source": "/favicon.ico",
+      "destination": "/logo.png"
+    },
+    {
       "source": "/admin",
       "destination": "/admin/index.html"
     },

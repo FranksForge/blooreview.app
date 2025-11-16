@@ -91,20 +91,7 @@ export default async function handler(req, res) {
       heroImage = HERO_IMAGES[slug];
     }
     
-    // If this is the apex/root domain (no business slug), serve the minimal login/home page
-    if (slug === 'default') {
-      try {
-        const homePath = path.join(process.cwd(), 'public', 'home.html');
-        const homeHtml = fs.readFileSync(homePath, 'utf8');
-        res.setHeader('Content-Type', 'text/html; charset=utf-8');
-        res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate=600');
-        return res.status(200).send(homeHtml);
-      } catch (e) {
-        // Fall through to review template if home is missing
-      }
-    }
-
-    // Read review template from templates directory for business subdomains
+    // Read index.html from templates directory
     const htmlPath = path.join(process.cwd(), 'templates', 'index.html');
     let html = fs.readFileSync(htmlPath, 'utf8');
     

@@ -6,17 +6,25 @@
       "memory": 1024,
       "maxDuration": 10
     },
-    "api/admin/*.js": {
+    "api/admin.js": {
       "memory": 1024,
       "maxDuration": 30
     },
-    "api/auth/*.js": {
+    "api/auth.js": {
       "memory": 1024,
       "maxDuration": 10
     },
-    "api/business/*.js": {
+    "api/business.js": {
       "memory": 1024,
       "maxDuration": 30
+    },
+    "api/user.js": {
+      "memory": 1024,
+      "maxDuration": 10
+    },
+    "api/reviews/submit.js": {
+      "memory": 1024,
+      "maxDuration": 10
     }
   },
   "rewrites": [

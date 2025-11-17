@@ -6,9 +6,9 @@
       "memory": 1024,
       "maxDuration": 10
     },
-    "api/admin.js": {
+    "api/admin/qrcode.js": {
       "memory": 1024,
-      "maxDuration": 30
+      "maxDuration": 10
     },
     "api/auth/register.js": {
       "memory": 1024,
@@ -48,14 +48,6 @@
     }
   },
   "rewrites": [
-    {
-      "source": "/admin",
-      "destination": "/admin/index.html"
-    },
-    {
-      "source": "/api/admin/:path*",
-      "destination": "/api/admin/:path*"
-    },
     {
       "source": "/signup",
       "destination": "/signup/index.html"

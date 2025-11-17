@@ -106,6 +106,7 @@
       </div>
       <p class="business-card-category">${escapeHtml(business.category || 'Business')}</p>
       <div class="business-card-actions">
+        <a href="/business/${business.slug}/reviews" class="secondary">Reviews</a>
         <a href="/business/${business.slug}/settings" class="secondary">Settings</a>
         <a href="${reviewUrl}" target="_blank" class="primary">View Page</a>
       </div>

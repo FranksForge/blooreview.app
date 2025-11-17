@@ -38,6 +38,10 @@
       "memory": 1024,
       "maxDuration": 10
     },
+    "api/business/[slug]/reviews.js": {
+      "memory": 1024,
+      "maxDuration": 10
+    },
     "api/user/businesses.js": {
       "memory": 1024,
       "maxDuration": 10
@@ -63,6 +67,10 @@
     {
       "source": "/billing",
       "destination": "/billing/index.html"
+    },
+    {
+      "source": "/business/:slug/reviews",
+      "destination": "/business/[slug]/reviews/index.html"
     },
     {
       "source": "/",

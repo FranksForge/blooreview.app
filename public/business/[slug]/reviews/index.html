@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reviews - BlooReview</title>
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="stylesheet" href="/dashboard/dashboard.css" />
+    <link rel="stylesheet" href="reviews.css" />
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <header class="dashboard-header">
+        <div class="header-content">
+          <h1>BlooReview</h1>
+          <nav class="header-nav">
+            <a href="/dashboard" class="nav-link">Dashboard</a>
+            <a href="/account" class="nav-link">Account</a>
+            <button id="logout-btn" class="nav-link">Logout</button>
+          </nav>
+        </div>
+      </header>
+
+      <main class="dashboard-main">
+        <div class="dashboard-content">
+          <div class="dashboard-header-section">
+            <div>
+              <h2 id="business-name">Reviews</h2>
+              <p class="reviews-subtitle">Internal feedback from your customers</p>
+            </div>
+            <a href="/dashboard" class="secondary">Back to Dashboard</a>
+          </div>
+
+          <div id="loading" class="loading">
+            <p>Loading reviews...</p>
+          </div>
+
+          <div id="error" class="error-message hidden"></div>
+
+          <div id="reviews-list" class="reviews-list">
+            <!-- Reviews will be inserted here -->
+          </div>
+
+          <div id="empty-state" class="empty-state hidden">
+            <div class="empty-icon">💬</div>
+            <h3>No reviews yet</h3>
+            <p>Reviews from your customers will appear here</p>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="reviews.js"></script>
+  </body>
+</html>
+

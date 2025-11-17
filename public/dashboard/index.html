@@ -47,6 +47,24 @@
       </main>
     </div>
 
+    <!-- QR Code Modal -->
+    <div id="qr-modal" class="qr-modal hidden">
+      <div class="qr-modal-content">
+        <div class="qr-modal-header">
+          <h3 id="qr-modal-title">QR Code</h3>
+          <button id="qr-modal-close" class="qr-modal-close">&times;</button>
+        </div>
+        <div class="qr-modal-body">
+          <canvas id="qr-canvas"></canvas>
+          <div class="qr-modal-actions">
+            <button id="download-qr-btn" class="primary">Download QR Code</button>
+            <button id="copy-qr-url-btn" class="secondary">Copy URL</button>
+          </div>
+          <input type="text" id="qr-url-input" class="qr-url-input" readonly />
+        </div>
+      </div>
+    </div>
+
     <script src="/dashboard/dashboard.js"></script>
   </body>
 </html>

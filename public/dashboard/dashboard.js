@@ -7,8 +7,18 @@
     error: document.getElementById('error'),
     businessesGrid: document.getElementById('businesses-grid'),
     emptyState: document.getElementById('empty-state'),
-    logoutBtn: document.getElementById('logout-btn')
+    logoutBtn: document.getElementById('logout-btn'),
+    qrModal: document.getElementById('qr-modal'),
+    qrModalClose: document.getElementById('qr-modal-close'),
+    qrModalTitle: document.getElementById('qr-modal-title'),
+    qrCanvas: document.getElementById('qr-canvas'),
+    downloadQrBtn: document.getElementById('download-qr-btn'),
+    copyQrUrlBtn: document.getElementById('copy-qr-url-btn'),
+    qrUrlInput: document.getElementById('qr-url-input')
   };
+
+  // Current QR code data
+  let currentQrUrl = null;
 
   // Initialize
   async function init() {
@@ -24,6 +34,16 @@
 
     // Setup event listeners
     elements.logoutBtn?.addEventListener('click', handleLogout);
+    elements.qrModalClose?.addEventListener('click', closeQrModal);
+    elements.downloadQrBtn?.addEventListener('click', downloadQRCode);
+    elements.copyQrUrlBtn?.addEventListener('click', copyQrUrl);
+    
+    // Close modal when clicking outside
+    elements.qrModal?.addEventListener('click', (e) => {
+      if (e.target === elements.qrModal) {
+        closeQrModal();
+      }
+    });
   }
 
   // Check authentication
@@ -89,8 +109,7 @@
 
   // Render business card
   function renderBusinessCard(business) {
-    const card = document.createElement('a');
-    card.href = `/business/${business.slug}/settings`;
+    const card = document.createElement('div');
     card.className = 'business-card';
 
     const hostname = window.location.hostname;
@@ -106,11 +125,27 @@
       </div>
       <p class="business-card-category">${escapeHtml(business.category || 'Business')}</p>
       <div class="business-card-actions">
+        <button type="button" class="qr-btn" data-slug="${escapeHtml(business.slug)}" data-url="${escapeHtml(reviewUrl)}" data-name="${escapeHtml(business.name)}" title="QR Code">
+          <span class="qr-icon">📱</span>
+        </button>
         <a href="/business/${business.slug}/reviews" class="secondary">Reviews</a>
         <a href="/business/${business.slug}/settings" class="secondary">Settings</a>
         <a href="${reviewUrl}" target="_blank" class="primary">View Page</a>
       </div>
     `;
+
+    // Add click handler for QR button
+    const qrBtn = card.querySelector('.qr-btn');
+    if (qrBtn) {
+      qrBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const slug = qrBtn.dataset.slug;
+        const url = qrBtn.dataset.url;
+        const name = qrBtn.dataset.name;
+        showQrModal(url, name);
+      });
+    }
 
     elements.businessesGrid.appendChild(card);
   }
@@ -128,6 +163,87 @@
       console.error('Logout failed:', error);
       // Redirect anyway
       window.location.href = '/signup';
+    }
+  }
+
+  // Show QR Code Modal
+  async function showQrModal(url, businessName) {
+    currentQrUrl = url;
+    
+    if (elements.qrModalTitle) {
+      elements.qrModalTitle.textContent = `${businessName} - QR Code`;
+    }
+    
+    if (elements.qrUrlInput) {
+      elements.qrUrlInput.value = url;
+    }
+    
+    elements.qrModal?.classList.remove('hidden');
+    
+    // Generate QR code
+    await generateQRCode(url);
+  }
+
+  // Close QR Code Modal
+  function closeQrModal() {
+    elements.qrModal?.classList.add('hidden');
+    currentQrUrl = null;
+  }
+
+  // Generate QR code
+  async function generateQRCode(url) {
+    try {
+      const response = await fetch(`/api/qrcode?url=${encodeURIComponent(url)}`);
+      const data = await response.json();
+
+      if (data.success && data.dataUrl) {
+        const img = new Image();
+        img.onload = () => {
+          const canvas = elements.qrCanvas;
+          if (canvas) {
+            const ctx = canvas.getContext('2d');
+            canvas.width = 256;
+            canvas.height = 256;
+            ctx.drawImage(img, 0, 0);
+          }
+        };
+        img.src = data.dataUrl;
+      }
+    } catch (error) {
+      console.error('Failed to generate QR code:', error);
+    }
+  }
+
+  // Download QR Code
+  function downloadQRCode() {
+    const canvas = elements.qrCanvas;
+    if (!canvas) return;
+    
+    const url = canvas.toDataURL('image/png');
+    const link = document.createElement('a');
+    link.download = `qr-code-${Date.now()}.png`;
+    link.href = url;
+    link.click();
+  }
+
+  // Copy QR URL
+  async function copyQrUrl() {
+    if (!currentQrUrl) return;
+    
+    try {
+      await navigator.clipboard.writeText(currentQrUrl);
+      const originalText = elements.copyQrUrlBtn.textContent;
+      elements.copyQrUrlBtn.textContent = 'Copied!';
+      setTimeout(() => {
+        elements.copyQrUrlBtn.textContent = originalText;
+      }, 2000);
+    } catch (error) {
+      console.error('Failed to copy:', error);
+      // Fallback: select the input
+      if (elements.qrUrlInput) {
+        elements.qrUrlInput.select();
+        elements.qrUrlInput.setSelectionRange(0, 99999);
+      }
     }
   }
 

@@ -151,7 +151,6 @@ body {
   padding: 1.5rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  cursor: pointer;
   text-decoration: none;
   color: inherit;
   display: block;
@@ -229,6 +228,180 @@ body {
 
 .business-card-actions .primary:hover {
   background: #2551e6;
+}
+
+/* QR Code Button */
+.qr-btn {
+  flex: 0 0 auto;
+  width: 40px;
+  padding: 0.5rem;
+  border: 1px solid #d7d7dc;
+  background: #fff;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  text-align: center;
+  color: #666;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qr-btn:hover {
+  background: #f5f6fb;
+  border-color: #bbb;
+  color: #222;
+}
+
+.qr-icon {
+  display: inline-block;
+  line-height: 1;
+}
+
+/* QR Code Modal */
+.qr-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.qr-modal.hidden {
+  display: none;
+}
+
+.qr-modal-content {
+  background: #fff;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.qr-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.qr-modal-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #222;
+}
+
+.qr-modal-close {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #666;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  line-height: 1;
+}
+
+.qr-modal-close:hover {
+  background: #f5f6fb;
+  color: #222;
+}
+
+.qr-modal-body {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+#qr-canvas {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.qr-modal-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  justify-content: center;
+}
+
+.qr-modal-actions button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.qr-modal-actions .primary {
+  background: #3365ff;
+  color: #fff;
+}
+
+.qr-modal-actions .primary:hover {
+  background: #2551e6;
+}
+
+.qr-modal-actions .secondary {
+  background: #f5f6fb;
+  color: #666;
+  border: 1px solid #d7d7dc;
+}
+
+.qr-modal-actions .secondary:hover {
+  background: #e8e9ed;
+  color: #222;
+}
+
+.qr-url-input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #d7d7dc;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  background: #f9f9f9;
+  color: #666;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .qr-modal-content {
+    margin: 1rem;
+    max-width: calc(100% - 2rem);
+  }
+
+  .qr-modal-actions {
+    flex-direction: column;
+  }
+
+  .qr-modal-actions button {
+    width: 100%;
+  }
 }
 
 /* Empty State */

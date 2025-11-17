@@ -71,6 +71,15 @@
       });
 
       if (!response.ok) {
+        let errorMessage = 'Failed to load reviews';
+        try {
+          const errorData = await response.json();
+          errorMessage = errorData.error || errorMessage;
+        } catch (e) {
+          // If response is not JSON, use status text
+          errorMessage = response.statusText || errorMessage;
+        }
+        
         if (response.status === 401) {
           window.location.href = '/signup';
           return;
@@ -81,7 +90,7 @@
         if (response.status === 404) {
           throw new Error('Business not found');
         }
-        throw new Error('Failed to load reviews');
+        throw new Error(errorMessage);
       }
 
       const data = await response.json();
@@ -107,7 +116,9 @@
     } catch (error) {
       console.error('Error loading reviews:', error);
       elements.loading.style.display = 'none';
-      elements.error.textContent = error.message || 'Failed to load reviews';
+      const errorMessage = error.message || 'Failed to load reviews';
+      console.error('Error details:', errorMessage);
+      elements.error.textContent = errorMessage;
       elements.error.classList.remove('hidden');
     }
   }

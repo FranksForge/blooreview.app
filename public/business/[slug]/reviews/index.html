@@ -30,6 +30,7 @@
             </div>
             <div class="header-actions">
               <button id="get-analytics-btn" class="primary">Get Analytics</button>
+              <button id="get-insights-btn" class="primary">AI Insights</button>
               <a href="/dashboard" class="secondary">Back to Dashboard</a>
             </div>
           </div>
@@ -62,6 +63,35 @@
                 <h4>Reviews Over Time (Last 30 Days)</h4>
                 <div id="time-series-chart" class="chart-container">
                   <canvas id="time-series-canvas"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="insights-section" class="insights-section hidden">
+            <div class="insights-header">
+              <h3>AI Insights & Recommendations</h3>
+              <button id="close-insights-btn" class="insights-close">&times;</button>
+            </div>
+            <div class="insights-content">
+              <div id="insights-loading" class="insights-loading hidden">
+                <p>🤖 Analyzing reviews with AI...</p>
+                <p class="insights-loading-subtitle">This may take a few moments</p>
+              </div>
+              <div id="insights-data" class="insights-data hidden">
+                <div class="insights-summary">
+                  <h4>Summary</h4>
+                  <p id="insights-summary-text"></p>
+                </div>
+                
+                <div class="insights-themes" id="insights-themes-container">
+                  <h4>Key Themes</h4>
+                  <div id="insights-themes-list"></div>
+                </div>
+
+                <div class="insights-recommendations" id="insights-recommendations-container">
+                  <h4>Recommendations</h4>
+                  <ul id="insights-recommendations-list"></ul>
                 </div>
               </div>
             </div>

@@ -15,7 +15,15 @@
     statTotal: document.getElementById('stat-total'),
     statAverage: document.getElementById('stat-average'),
     ratingDistributionChart: document.getElementById('rating-distribution-chart'),
-    timeSeriesCanvas: document.getElementById('time-series-canvas')
+    timeSeriesCanvas: document.getElementById('time-series-canvas'),
+    getInsightsBtn: document.getElementById('get-insights-btn'),
+    insightsSection: document.getElementById('insights-section'),
+    closeInsightsBtn: document.getElementById('close-insights-btn'),
+    insightsLoading: document.getElementById('insights-loading'),
+    insightsData: document.getElementById('insights-data'),
+    insightsSummaryText: document.getElementById('insights-summary-text'),
+    insightsThemesList: document.getElementById('insights-themes-list'),
+    insightsRecommendationsList: document.getElementById('insights-recommendations-list')
   };
 
   // Extract slug from URL
@@ -39,6 +47,8 @@
     elements.logoutBtn?.addEventListener('click', handleLogout);
     elements.getAnalyticsBtn?.addEventListener('click', handleGetAnalytics);
     elements.closeAnalyticsBtn?.addEventListener('click', closeAnalytics);
+    elements.getInsightsBtn?.addEventListener('click', handleGetInsights);
+    elements.closeInsightsBtn?.addEventListener('click', closeInsights);
 
     // Load reviews
     await loadReviews();
@@ -241,6 +251,140 @@
   function closeAnalytics() {
     if (elements.analyticsSection) {
       elements.analyticsSection.classList.add('hidden');
+    }
+  }
+
+  // Handle Get Insights
+  async function handleGetInsights() {
+    try {
+      const slug = getSlugFromUrl();
+      if (!slug) {
+        throw new Error('Invalid business slug');
+      }
+
+      // Show insights section and loading state
+      if (elements.insightsSection) {
+        elements.insightsSection.classList.remove('hidden');
+      }
+      if (elements.insightsLoading) {
+        elements.insightsLoading.classList.remove('hidden');
+      }
+      if (elements.insightsData) {
+        elements.insightsData.classList.add('hidden');
+      }
+
+      // Disable button
+      if (elements.getInsightsBtn) {
+        elements.getInsightsBtn.disabled = true;
+        elements.getInsightsBtn.textContent = 'Analyzing...';
+      }
+
+      const response = await fetch(`/api/business/${slug}/reviews?insights=true`, {
+        credentials: 'include'
+      });
+
+      if (!response.ok) {
+        let errorMessage = 'Failed to generate insights';
+        try {
+          const errorData = await response.json();
+          errorMessage = errorData.error || errorData.message || errorMessage;
+        } catch (e) {
+          errorMessage = response.statusText || errorMessage;
+        }
+        throw new Error(errorMessage);
+      }
+
+      const data = await response.json();
+      const { insights } = data;
+
+      // Hide loading, show data
+      if (elements.insightsLoading) {
+        elements.insightsLoading.classList.add('hidden');
+      }
+      if (elements.insightsData) {
+        elements.insightsData.classList.remove('hidden');
+      }
+
+      // Display insights
+      displayInsights(insights);
+
+    } catch (error) {
+      console.error('Error loading insights:', error);
+      
+      // Hide loading
+      if (elements.insightsLoading) {
+        elements.insightsLoading.classList.add('hidden');
+      }
+      
+      // Show error message
+      if (elements.insightsData) {
+        elements.insightsData.classList.remove('hidden');
+        elements.insightsData.innerHTML = `
+          <div class="insights-error">
+            <p><strong>Error:</strong> ${escapeHtml(error.message || 'Failed to generate insights')}</p>
+            <p>Please try again later.</p>
+          </div>
+        `;
+      }
+    } finally {
+      // Reset button
+      if (elements.getInsightsBtn) {
+        elements.getInsightsBtn.disabled = false;
+        elements.getInsightsBtn.textContent = 'AI Insights';
+      }
+    }
+  }
+
+  // Close Insights
+  function closeInsights() {
+    if (elements.insightsSection) {
+      elements.insightsSection.classList.add('hidden');
+    }
+  }
+
+  // Display Insights
+  function displayInsights(insights) {
+    // Display summary
+    if (elements.insightsSummaryText && insights.summary) {
+      elements.insightsSummaryText.textContent = insights.summary;
+    }
+
+    // Display themes
+    if (elements.insightsThemesList) {
+      elements.insightsThemesList.innerHTML = '';
+      
+      if (!insights.themes || insights.themes.length === 0) {
+        elements.insightsThemesList.innerHTML = '<p class="insights-empty">No themes identified.</p>';
+      } else {
+        insights.themes.forEach(theme => {
+          const themeItem = document.createElement('div');
+          themeItem.className = `insights-theme insights-theme-${theme.type || 'neutral'}`;
+          themeItem.innerHTML = `
+            <div class="insights-theme-header">
+              <span class="insights-theme-type">${theme.type === 'positive' ? '✓' : theme.type === 'negative' ? '⚠' : '•'}</span>
+              <span class="insights-theme-description">${escapeHtml(theme.description || '')}</span>
+            </div>
+            ${theme.frequency ? `<div class="insights-theme-frequency">${escapeHtml(theme.frequency)}</div>` : ''}
+          `;
+          elements.insightsThemesList.appendChild(themeItem);
+        });
+      }
+    }
+
+    // Display recommendations
+    if (elements.insightsRecommendationsList) {
+      elements.insightsRecommendationsList.innerHTML = '';
+      
+      if (!insights.recommendations || insights.recommendations.length === 0) {
+        elements.insightsRecommendationsList.innerHTML = '<li class="insights-empty">No recommendations available.</li>';
+      } else {
+        insights.recommendations.forEach(recommendation => {
+          const li = document.createElement('li');
+          li.className = 'insights-recommendation';
+          li.textContent = recommendation;
+          elements.insightsRecommendationsList.appendChild(li);
+        });
+      }
     }
   }
 

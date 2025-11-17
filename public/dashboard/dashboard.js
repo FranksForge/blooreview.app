@@ -125,8 +125,21 @@
       </div>
       <p class="business-card-category">${escapeHtml(business.category || 'Business')}</p>
       <div class="business-card-actions">
-        <button type="button" class="qr-btn" data-slug="${escapeHtml(business.slug)}" data-url="${escapeHtml(reviewUrl)}" data-name="${escapeHtml(business.name)}" title="QR Code">
-          <span class="qr-icon">📱</span>
+        <button type="button" class="qr-btn secondary" data-slug="${escapeHtml(business.slug)}" data-url="${escapeHtml(reviewUrl)}" data-name="${escapeHtml(business.name)}" title="QR Code">
+          <svg class="qr-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="5" height="5"></rect>
+            <rect x="16" y="3" width="5" height="5"></rect>
+            <rect x="3" y="16" width="5" height="5"></rect>
+            <path d="M11 3h2v2h-2z"></path>
+            <path d="M11 19h2v2h-2z"></path>
+            <path d="M3 11h2v2H3z"></path>
+            <path d="M19 11h2v2h-2z"></path>
+            <path d="M8 11h2v2H8z"></path>
+            <path d="M14 11h2v2h-2z"></path>
+            <path d="M8 16h2v2H8z"></path>
+            <path d="M14 16h2v2h-2z"></path>
+            <path d="M16 8h2v2h-2z"></path>
+          </svg>
         </button>
         <a href="/business/${business.slug}/reviews" class="secondary">Reviews</a>
         <a href="/business/${business.slug}/settings" class="secondary">Settings</a>

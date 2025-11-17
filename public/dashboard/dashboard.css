@@ -232,13 +232,12 @@ body {
 
 /* QR Code Button */
 .qr-btn {
-  flex: 0 0 auto;
-  width: 40px;
+  flex: 1;
   padding: 0.5rem;
   border: 1px solid #d7d7dc;
   background: #fff;
   border-radius: 6px;
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   cursor: pointer;
   text-align: center;
   color: #666;
@@ -247,6 +246,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 0.25rem;
 }
 
 .qr-btn:hover {
@@ -256,8 +256,9 @@ body {
 }
 
 .qr-icon {
-  display: inline-block;
-  line-height: 1;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
 }
 
 /* QR Code Modal */

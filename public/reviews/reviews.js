@@ -199,7 +199,7 @@
         elements.getAnalyticsBtn.textContent = 'Loading...';
       }
 
-      const response = await fetch(`/api/business/${slug}/analytics`, {
+      const response = await fetch(`/api/business/${slug}/reviews?analytics=true`, {
         credentials: 'include'
       });
 

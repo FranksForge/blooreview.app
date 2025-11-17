@@ -42,10 +42,6 @@
       "memory": 1024,
       "maxDuration": 10
     },
-    "api/business/[slug]/analytics.js": {
-      "memory": 1024,
-      "maxDuration": 10
-    },
     "api/user/businesses.js": {
       "memory": 1024,
       "maxDuration": 10

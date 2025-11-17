@@ -10,11 +10,19 @@
       "memory": 1024,
       "maxDuration": 30
     },
-    "api/auth.js": {
+    "api/auth/register.js": {
       "memory": 1024,
       "maxDuration": 10
     },
-    "api/auth/[...slug].js": {
+    "api/auth/login.js": {
+      "memory": 1024,
+      "maxDuration": 10
+    },
+    "api/auth/logout.js": {
+      "memory": 1024,
+      "maxDuration": 10
+    },
+    "api/auth/verify.js": {
       "memory": 1024,
       "maxDuration": 10
     },

@@ -28,7 +28,43 @@
               <h2 id="business-name">Reviews</h2>
               <p class="reviews-subtitle">Internal feedback from your customers</p>
             </div>
-            <a href="/dashboard" class="secondary">Back to Dashboard</a>
+            <div class="header-actions">
+              <button id="get-analytics-btn" class="primary">Get Analytics</button>
+              <a href="/dashboard" class="secondary">Back to Dashboard</a>
+            </div>
+          </div>
+
+          <div id="analytics-section" class="analytics-section hidden">
+            <div class="analytics-header">
+              <h3>Review Analytics</h3>
+              <button id="close-analytics-btn" class="analytics-close">&times;</button>
+            </div>
+            <div class="analytics-content">
+              <div class="analytics-stats">
+                <div class="stat-card">
+                  <div class="stat-value" id="stat-total">0</div>
+                  <div class="stat-label">Total Reviews</div>
+                </div>
+                <div class="stat-card">
+                  <div class="stat-value" id="stat-average">0.0</div>
+                  <div class="stat-label">Average Rating</div>
+                </div>
+              </div>
+              
+              <div class="analytics-chart-section">
+                <h4>Rating Distribution</h4>
+                <div id="rating-distribution-chart" class="chart-container">
+                  <!-- Chart will be rendered here -->
+                </div>
+              </div>
+
+              <div class="analytics-chart-section">
+                <h4>Reviews Over Time (Last 30 Days)</h4>
+                <div id="time-series-chart" class="chart-container">
+                  <canvas id="time-series-canvas"></canvas>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div id="loading" class="loading">

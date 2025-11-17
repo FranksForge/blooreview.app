@@ -8,7 +8,14 @@
     reviewsList: document.getElementById('reviews-list'),
     emptyState: document.getElementById('empty-state'),
     businessName: document.getElementById('business-name'),
-    logoutBtn: document.getElementById('logout-btn')
+    logoutBtn: document.getElementById('logout-btn'),
+    getAnalyticsBtn: document.getElementById('get-analytics-btn'),
+    analyticsSection: document.getElementById('analytics-section'),
+    closeAnalyticsBtn: document.getElementById('close-analytics-btn'),
+    statTotal: document.getElementById('stat-total'),
+    statAverage: document.getElementById('stat-average'),
+    ratingDistributionChart: document.getElementById('rating-distribution-chart'),
+    timeSeriesCanvas: document.getElementById('time-series-canvas')
   };
 
   // Extract slug from URL
@@ -30,6 +37,8 @@
 
     // Setup event listeners
     elements.logoutBtn?.addEventListener('click', handleLogout);
+    elements.getAnalyticsBtn?.addEventListener('click', handleGetAnalytics);
+    elements.closeAnalyticsBtn?.addEventListener('click', closeAnalytics);
 
     // Load reviews
     await loadReviews();
@@ -173,6 +182,191 @@
       console.error('Logout failed:', error);
       // Redirect anyway
       window.location.href = '/signup';
+    }
+  }
+
+  // Handle Get Analytics
+  async function handleGetAnalytics() {
+    try {
+      const slug = getSlugFromUrl();
+      if (!slug) {
+        throw new Error('Invalid business slug');
+      }
+
+      // Show loading state
+      if (elements.getAnalyticsBtn) {
+        elements.getAnalyticsBtn.disabled = true;
+        elements.getAnalyticsBtn.textContent = 'Loading...';
+      }
+
+      const response = await fetch(`/api/business/${slug}/analytics`, {
+        credentials: 'include'
+      });
+
+      if (!response.ok) {
+        let errorMessage = 'Failed to load analytics';
+        try {
+          const errorData = await response.json();
+          errorMessage = errorData.error || errorMessage;
+        } catch (e) {
+          errorMessage = response.statusText || errorMessage;
+        }
+        throw new Error(errorMessage);
+      }
+
+      const data = await response.json();
+      const { analytics } = data;
+
+      // Display analytics
+      displayAnalytics(analytics);
+
+      // Show analytics section
+      if (elements.analyticsSection) {
+        elements.analyticsSection.classList.remove('hidden');
+      }
+
+    } catch (error) {
+      console.error('Error loading analytics:', error);
+      alert(error.message || 'Failed to load analytics');
+    } finally {
+      // Reset button
+      if (elements.getAnalyticsBtn) {
+        elements.getAnalyticsBtn.disabled = false;
+        elements.getAnalyticsBtn.textContent = 'Get Analytics';
+      }
+    }
+  }
+
+  // Close Analytics
+  function closeAnalytics() {
+    if (elements.analyticsSection) {
+      elements.analyticsSection.classList.add('hidden');
+    }
+  }
+
+  // Display Analytics
+  function displayAnalytics(analytics) {
+    // Update stats
+    if (elements.statTotal) {
+      elements.statTotal.textContent = analytics.totalReviews;
+    }
+    if (elements.statAverage) {
+      elements.statAverage.textContent = analytics.averageRating.toFixed(1);
+    }
+
+    // Render rating distribution chart
+    renderRatingDistribution(analytics.ratingDistribution);
+
+    // Render time series chart
+    renderTimeSeriesChart(analytics.timeSeries);
+  }
+
+  // Render Rating Distribution Bar Chart
+  function renderRatingDistribution(distribution) {
+    if (!elements.ratingDistributionChart) return;
+
+    elements.ratingDistributionChart.innerHTML = '';
+
+    const maxCount = Math.max(...Object.values(distribution.counts));
+    const ratings = [1, 2, 3, 4, 5];
+
+    ratings.forEach(rating => {
+      const count = distribution.counts[rating] || 0;
+      const percentage = distribution.percentages[rating] || 0;
+      const barHeight = maxCount > 0 ? (count / maxCount) * 100 : 0;
+
+      const barContainer = document.createElement('div');
+      barContainer.className = 'rating-bar-container';
+      barContainer.innerHTML = `
+        <div class="rating-bar-label">
+          <span>${rating}★</span>
+          <span class="rating-bar-count">${count}</span>
+        </div>
+        <div class="rating-bar-wrapper">
+          <div class="rating-bar" style="width: ${barHeight}%"></div>
+        </div>
+        <div class="rating-bar-percentage">${percentage.toFixed(1)}%</div>
+      `;
+      elements.ratingDistributionChart.appendChild(barContainer);
+    });
+  }
+
+  // Render Time Series Line Chart
+  function renderTimeSeriesChart(timeSeries) {
+    if (!elements.timeSeriesCanvas) return;
+
+    const canvas = elements.timeSeriesCanvas;
+    const ctx = canvas.getContext('2d');
+    const padding = 40;
+    const chartWidth = canvas.offsetWidth || 600;
+    const chartHeight = 200;
+
+    canvas.width = chartWidth;
+    canvas.height = chartHeight;
+
+    const maxCount = Math.max(...timeSeries.map(d => d.count), 1);
+    const dataPoints = timeSeries.length;
+    const stepX = (chartWidth - padding * 2) / (dataPoints - 1);
+
+    // Clear canvas
+    ctx.clearRect(0, 0, chartWidth, chartHeight);
+
+    // Draw axes
+    ctx.strokeStyle = '#ddd';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(padding, padding);
+    ctx.lineTo(padding, chartHeight - padding);
+    ctx.lineTo(chartWidth - padding, chartHeight - padding);
+    ctx.stroke();
+
+    // Draw grid lines
+    ctx.strokeStyle = '#f0f0f0';
+    for (let i = 0; i <= 5; i++) {
+      const y = padding + (chartHeight - padding * 2) * (i / 5);
+      ctx.beginPath();
+      ctx.moveTo(padding, y);
+      ctx.lineTo(chartWidth - padding, y);
+      ctx.stroke();
+    }
+
+    // Draw line
+    ctx.strokeStyle = '#3365ff';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+
+    timeSeries.forEach((point, index) => {
+      const x = padding + index * stepX;
+      const y = chartHeight - padding - (point.count / maxCount) * (chartHeight - padding * 2);
+      
+      if (index === 0) {
+        ctx.moveTo(x, y);
+      } else {
+        ctx.lineTo(x, y);
+      }
+    });
+    ctx.stroke();
+
+    // Draw points
+    ctx.fillStyle = '#3365ff';
+    timeSeries.forEach((point, index) => {
+      const x = padding + index * stepX;
+      const y = chartHeight - padding - (point.count / maxCount) * (chartHeight - padding * 2);
+      
+      ctx.beginPath();
+      ctx.arc(x, y, 3, 0, Math.PI * 2);
+      ctx.fill();
+    });
+
+    // Draw labels (every 5 days)
+    ctx.fillStyle = '#666';
+    ctx.font = '10px sans-serif';
+    ctx.textAlign = 'center';
+    for (let i = 0; i < dataPoints; i += 5) {
+      const x = padding + i * stepX;
+      const date = new Date(timeSeries[i].date);
+      const label = `${date.getMonth() + 1}/${date.getDate()}`;
+      ctx.fillText(label, x, chartHeight - padding + 15);
     }
   }
 

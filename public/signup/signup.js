@@ -434,7 +434,7 @@
   // Generate QR code
   async function generateQRCode(url) {
     try {
-      const response = await fetch(`/api/admin/qrcode?url=${encodeURIComponent(url)}`);
+      const response = await fetch(`/api/qrcode?url=${encodeURIComponent(url)}`);
       const data = await response.json();
 
       if (data.success && data.dataUrl) {

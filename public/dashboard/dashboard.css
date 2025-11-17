@@ -170,10 +170,14 @@ body {
 }
 
 .business-card-header {
+  margin-bottom: 0.5rem;
+}
+
+.business-card-header-content {
   display: flex;
   justify-content: space-between;
-  align-items: start;
-  margin-bottom: 0.5rem;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .business-card-name {
@@ -230,35 +234,34 @@ body {
   background: #2551e6;
 }
 
-/* QR Code Button */
-.qr-btn {
-  flex: 1;
-  padding: 0.5rem;
+/* QR Code Button in Header */
+.qr-btn-header {
+  padding: 0.375rem;
   border: 1px solid #d7d7dc;
   background: #fff;
   border-radius: 6px;
-  font-size: 0.9rem;
   cursor: pointer;
-  text-align: center;
   color: #666;
   transition: all 0.2s ease;
   font-family: inherit;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.25rem;
+  flex-shrink: 0;
+  line-height: 0;
 }
 
-.qr-btn:hover {
+.qr-btn-header:hover {
   background: #f5f6fb;
   border-color: #bbb;
   color: #222;
 }
 
 .qr-icon {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   flex-shrink: 0;
+  display: block;
 }
 
 /* QR Code Modal */

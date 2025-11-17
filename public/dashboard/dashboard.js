@@ -121,26 +121,28 @@
     card.innerHTML = `
       ${business.heroImage ? `<img src="${business.heroImage}" alt="${business.name}" class="business-card-hero" />` : ''}
       <div class="business-card-header">
-        <h3 class="business-card-name">${escapeHtml(business.name)}</h3>
+        <div class="business-card-header-content">
+          <h3 class="business-card-name">${escapeHtml(business.name)}</h3>
+          <button type="button" class="qr-btn-header" data-slug="${escapeHtml(business.slug)}" data-url="${escapeHtml(reviewUrl)}" data-name="${escapeHtml(business.name)}" title="QR Code">
+            <svg class="qr-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="5" height="5"></rect>
+              <rect x="16" y="3" width="5" height="5"></rect>
+              <rect x="3" y="16" width="5" height="5"></rect>
+              <path d="M11 3h2v2h-2z"></path>
+              <path d="M11 19h2v2h-2z"></path>
+              <path d="M3 11h2v2H3z"></path>
+              <path d="M19 11h2v2h-2z"></path>
+              <path d="M8 11h2v2H8z"></path>
+              <path d="M14 11h2v2h-2z"></path>
+              <path d="M8 16h2v2H8z"></path>
+              <path d="M14 16h2v2h-2z"></path>
+              <path d="M16 8h2v2h-2z"></path>
+            </svg>
+          </button>
+        </div>
       </div>
       <p class="business-card-category">${escapeHtml(business.category || 'Business')}</p>
       <div class="business-card-actions">
-        <button type="button" class="qr-btn secondary" data-slug="${escapeHtml(business.slug)}" data-url="${escapeHtml(reviewUrl)}" data-name="${escapeHtml(business.name)}" title="QR Code">
-          <svg class="qr-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="3" width="5" height="5"></rect>
-            <rect x="16" y="3" width="5" height="5"></rect>
-            <rect x="3" y="16" width="5" height="5"></rect>
-            <path d="M11 3h2v2h-2z"></path>
-            <path d="M11 19h2v2h-2z"></path>
-            <path d="M3 11h2v2H3z"></path>
-            <path d="M19 11h2v2h-2z"></path>
-            <path d="M8 11h2v2H8z"></path>
-            <path d="M14 11h2v2h-2z"></path>
-            <path d="M8 16h2v2H8z"></path>
-            <path d="M14 16h2v2h-2z"></path>
-            <path d="M16 8h2v2h-2z"></path>
-          </svg>
-        </button>
         <a href="/business/${business.slug}/reviews" class="secondary">Reviews</a>
         <a href="/business/${business.slug}/settings" class="secondary">Settings</a>
         <a href="${reviewUrl}" target="_blank" class="primary">View Page</a>
@@ -148,7 +150,7 @@
     `;
 
     // Add click handler for QR button
-    const qrBtn = card.querySelector('.qr-btn');
+    const qrBtn = card.querySelector('.qr-btn-header');
     if (qrBtn) {
       qrBtn.addEventListener('click', (e) => {
         e.preventDefault();

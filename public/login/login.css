@@ -1,0 +1,158 @@
+:root {
+  color-scheme: light;
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  background: #f5f6fb;
+  color: #222;
+}
+
+body {
+  margin: 0;
+  padding: 1rem;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+}
+
+.login-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 16px 50px -30px rgba(0, 0, 0, 0.35);
+  max-width: 420px;
+  width: 100%;
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.login-logo {
+  width: 100px;
+  height: auto;
+  margin: 0 auto 1.5rem;
+  display: block;
+}
+
+.login-header h1 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.75rem;
+  color: #222;
+}
+
+.login-subtitle {
+  text-align: center;
+  color: #55596d;
+  margin: 0 0 0 0;
+  font-size: 0.95rem;
+}
+
+/* Form Fields */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.field label {
+  font-weight: 500;
+  color: #222;
+  font-size: 0.9rem;
+}
+
+.field input {
+  padding: 0.75rem 0.9rem;
+  border: 1px solid #d7d7dc;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: inherit;
+  color: #222;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.field input:focus {
+  outline: none;
+  border-color: #3365ff;
+  box-shadow: 0 0 0 3px rgba(51, 101, 255, 0.15);
+}
+
+.field input::placeholder {
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  font-weight: 400;
+  color: #a0a3b8;
+  opacity: 1;
+}
+
+/* Buttons */
+.primary {
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  font-family: inherit;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  background: #3365ff;
+  color: #fff;
+}
+
+.primary:hover {
+  background: #2551e6;
+}
+
+.primary:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Error Messages */
+.error-message {
+  color: #ef4444;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  display: none;
+}
+
+.error-message.show {
+  display: block;
+}
+
+/* Footer */
+.login-footer {
+  margin-top: 1.5rem;
+  text-align: center;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.login-footer a {
+  color: #3365ff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.login-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .login-card {
+    padding: 1.5rem;
+  }
+}
+

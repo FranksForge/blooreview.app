@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - BlooReview</title>
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="stylesheet" href="/login/login.css" />
+  </head>
+  <body>
+    <main class="login-container">
+      <div class="login-card">
+        <div class="login-header">
+          <img src="/logo.png" alt="BlooReview" class="login-logo" />
+          <h1>Welcome Back</h1>
+          <p class="login-subtitle">Sign in to your BlooReview account</p>
+        </div>
+
+        <form id="login-form" novalidate>
+          <div class="field">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required placeholder="you@example.com" />
+          </div>
+
+          <div class="field">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required placeholder="Enter your password" />
+          </div>
+
+          <div class="error-message" id="login-error"></div>
+
+          <button type="submit" class="primary">Sign In</button>
+
+          <div class="login-footer">
+            <p>Don't have an account? <a href="/signup">Sign up</a></p>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <script src="/login/login.js"></script>
+  </body>
+</html>
+

@@ -26,9 +26,17 @@
       "memory": 1024,
       "maxDuration": 10
     },
-    "api/business.js": {
+    "api/business/maps.js": {
       "memory": 1024,
       "maxDuration": 30
+    },
+    "api/business/create.js": {
+      "memory": 1024,
+      "maxDuration": 30
+    },
+    "api/business/[slug]/config.js": {
+      "memory": 1024,
+      "maxDuration": 10
     },
     "api/user.js": {
       "memory": 1024,
@@ -47,10 +55,6 @@
     {
       "source": "/api/admin/:path*",
       "destination": "/api/admin/:path*"
-    },
-    {
-      "source": "/api/business/:path*",
-      "destination": "/api/business/:path*"
     },
     {
       "source": "/signup",

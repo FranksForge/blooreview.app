@@ -38,7 +38,7 @@
       "memory": 1024,
       "maxDuration": 10
     },
-    "api/user.js": {
+    "api/user/businesses.js": {
       "memory": 1024,
       "maxDuration": 10
     },

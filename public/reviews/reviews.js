@@ -261,34 +261,41 @@
     renderTimeSeriesChart(analytics.timeSeries);
   }
 
-  // Render Rating Distribution Bar Chart
+  // Render Rating Distribution Bar Chart (Vertical)
   function renderRatingDistribution(distribution) {
     if (!elements.ratingDistributionChart) return;
 
     elements.ratingDistributionChart.innerHTML = '';
 
-    const maxCount = Math.max(...Object.values(distribution.counts));
+    const maxCount = Math.max(...Object.values(distribution.counts), 1);
     const ratings = [1, 2, 3, 4, 5];
+    const chartHeight = 200; // Fixed height for vertical bars
+
+    // Create chart container with bars
+    const chartBars = document.createElement('div');
+    chartBars.className = 'rating-chart-bars';
 
     ratings.forEach(rating => {
       const count = distribution.counts[rating] || 0;
       const percentage = distribution.percentages[rating] || 0;
-      const barHeight = maxCount > 0 ? (count / maxCount) * 100 : 0;
+      const barHeight = maxCount > 0 ? (count / maxCount) * chartHeight : 0;
 
       const barContainer = document.createElement('div');
-      barContainer.className = 'rating-bar-container';
+      barContainer.className = 'rating-bar-container-vertical';
       barContainer.innerHTML = `
-        <div class="rating-bar-label">
-          <span>${rating}★</span>
-          <span class="rating-bar-count">${count}</span>
+        <div class="rating-bar-value">${count > 0 ? count : ''}</div>
+        <div class="rating-bar-wrapper-vertical" style="height: ${chartHeight}px">
+          <div class="rating-bar-vertical" style="height: ${barHeight}px" data-rating="${rating}"></div>
         </div>
-        <div class="rating-bar-wrapper">
-          <div class="rating-bar" style="width: ${barHeight}%"></div>
+        <div class="rating-bar-label-vertical">
+          <span class="rating-star">${rating}★</span>
+          <span class="rating-percentage">${percentage.toFixed(1)}%</span>
         </div>
-        <div class="rating-bar-percentage">${percentage.toFixed(1)}%</div>
       `;
-      elements.ratingDistributionChart.appendChild(barContainer);
+      chartBars.appendChild(barContainer);
     });
+
+    elements.ratingDistributionChart.appendChild(chartBars);
   }
 
   // Render Time Series Line Chart
